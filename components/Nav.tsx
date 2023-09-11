@@ -47,10 +47,10 @@ export const Nav = () => {
               <Github />
             </Button>
             <Button variant={"link"} size={"default"}>
-              Join Discord
+              <Link href={"https://discord.gg/vUHMxPvege"}>Join Discord</Link>
             </Button>
             <Link
-              className={`rounded-md bg-[#0e0e0e] text-white hover:bg-gray-600 border border-gray-600 hidden  sm:block px-4 py-2.5 text-sm font-medium shadow`}
+              className={`rounded-md bg-[#282828] text-white hover:bg-gray-600 border border-gray-600 hidden  sm:block px-4 py-2.5 text-sm font-medium shadow`}
               href="https://github.com/hellofaizan/xprofile"
               target="_blank"
               rel="noopener noreferrer"
@@ -61,22 +61,22 @@ export const Nav = () => {
           </div>
 
           <div className='flex sm:hidden'>
-          <Sheet>
-            <SheetTrigger>
-              <Button className='flex sm:hidden' variant={"link"} size={"icon"}>
-                <Menu />
-              </Button>
-            </SheetTrigger>
-            <SheetContent>
-              <SheetHeader>
-                <SheetTitle>Are you sure absolutely sure?</SheetTitle>
-                <SheetDescription>
-                  This action cannot be undone. This will permanently delete your account
-                  and remove your data from our servers.
-                </SheetDescription>
-              </SheetHeader>
-            </SheetContent>
-          </Sheet>
+            <Sheet>
+              <SheetTrigger>
+                <Button className='flex sm:hidden' variant={"link"} size={"icon"}>
+                  <Menu />
+                </Button>
+              </SheetTrigger>
+              <SheetContent className='dark:bg-[#121212] dark:text-white'>
+                <SheetHeader>
+                  <SheetTitle>Are you sure absolutely sure?</SheetTitle>
+                  <SheetDescription>
+                    This action cannot be undone. This will permanently delete your account
+                    and remove your data from our servers.
+                  </SheetDescription>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
           </div>
         </div >
       </div >
