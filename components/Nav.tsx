@@ -5,18 +5,27 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import { ModeToggle } from '@/components/toggle-btn'
-import { Github, Twitter } from 'lucide-react'
+import { Github, Menu, Twitter } from 'lucide-react'
 import { Separator } from "@/components/ui/separator"
 import { cn } from '@/lib/utils'
 import { Button } from './ui/button'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
 export const Nav = () => {
   const { theme, setTheme } = useTheme()
   return (
     <div className="">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <div className="md:flex md:items-center md:gap-12">
+        <div className="flex h-16 items-center justify-between grid-cols-2">
+
+          <div className="md:flex md:items-center md:gap-12 col-span-1">
             <div className="flex flex-row">
               <span className="sr-only">Home</span>
               <Image
@@ -26,29 +35,10 @@ export const Nav = () => {
                 height={40}
                 priority
               />
-              <Separator orientation="vertical" />
             </div>
           </div>
-          {/* <div className="hidden sm:block">
-                  <form className="flex items-center w-80">
-                    <label htmlFor="simple-search" className="sr-only">
-                      Search
-                    </label>
-                    <div className="relative w-full">
-                      <input
-                        type="text"
-                        onChange={(e) => setSearch(e.target.value)}
-                        id="simple-search"
-                        className={`border border-gray text-sm rounded-lg block shadow w-full pl-3 p-2.5  ${theme == "light" ? "bg-white" : "bg-[#0e0e0e]"
-                          }  border-gray-600 placeholder-gray-400 ${theme == "dark" ? "text-white" : "text-black"
-                          } focus:ring-blue-500 focus:border-blue-500`}
-                        placeholder="Search by Name or Username..."
-                        required
-                      ></input>
-                    </div>
-                  </form>
-                </div> */}
-          <div className="hidden sm:flex items-center sm:gap-2">
+
+          <div className="hidden sm:flex sm:gap-2 col-span-1">
             <ModeToggle />
             <Button variant={"link"} size={"icon"}>
               <Twitter />
@@ -68,6 +58,25 @@ export const Nav = () => {
             >
               Contribute ⭐
             </Link>
+          </div>
+
+          <div className='flex sm:hidden'>
+          <Sheet>
+            <SheetTrigger>
+              <Button className='flex sm:hidden' variant={"link"} size={"icon"}>
+                <Menu />
+              </Button>
+            </SheetTrigger>
+            <SheetContent>
+              <SheetHeader>
+                <SheetTitle>Are you sure absolutely sure?</SheetTitle>
+                <SheetDescription>
+                  This action cannot be undone. This will permanently delete your account
+                  and remove your data from our servers.
+                </SheetDescription>
+              </SheetHeader>
+            </SheetContent>
+          </Sheet>
           </div>
         </div >
       </div >
