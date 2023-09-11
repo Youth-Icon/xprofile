@@ -20,7 +20,7 @@ export default function RootLayout({
       <meta property="og:image" content="/public/ogImage.jpeg" />
       <meta name="twitter:image" content="/public/ogImage.jpeg" />
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
         </ThemeProvider>
       </body>

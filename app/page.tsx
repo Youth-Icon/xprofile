@@ -15,11 +15,6 @@ export default function Home() {
           </p>
         </div>
       </main>
-
-      <div className='absolute top-10 right-10'>
-        <ModeToggle />
-      </div>
-
     </>
   )
 }
