@@ -29,7 +29,7 @@ export const Nav = () => {
             <div className="flex flex-row">
               <span className="sr-only">Home</span>
               <Image
-                src={cn(theme === "dark" ? "/x_white.png" : "/x_black.png")}
+                src={cn(theme === "light" ? "/x_black.png" : "/x_white.png")}
                 alt="Logo"
                 width={40}
                 height={40}
