@@ -60,7 +60,9 @@ export const Nav = () => {
             </Link>
           </div>
 
-          <div className='flex sm:hidden'>
+          <div className='flex space-x-2 sm:hidden'>
+            <ModeToggle />
+
             <Sheet>
               <SheetTrigger>
                 <Button className='flex sm:hidden' variant={"link"} size={"icon"}>
