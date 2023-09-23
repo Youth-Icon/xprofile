@@ -17,14 +17,19 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useRouter } from "next/navigation";
 
 export const Nav = () => {
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
   return (
     <div className="px-4 sm:px-6 lg:px-8 z-20 fixed top-0 w-full">
       <div className="flex h-16 items-center justify-between grid-cols-2">
         <div className="md:flex md:items-center md:gap-12 col-span-1">
-          <div className="flex flex-row">
+          <div
+            className="flex flex-row hover:cursor-pointer"
+            onClick={() => router.replace("/")}
+          >
             <span className="sr-only">Home</span>
             <Image
               src={cn(theme === "light" ? "/x_black.png" : "/x_white.png")}
