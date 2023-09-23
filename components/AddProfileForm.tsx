@@ -13,8 +13,41 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { Check, ChevronsUpDown } from "lucide-react";
+import { cn } from "@/lib/utils";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import Link from "next/link";
 import Image from "next/image";
+
+const predefinedTags = [
+  {
+    value: "coder",
+    label: "🖥️Coder",
+  },
+  {
+    value: "gamer",
+    label: "🎮Gamer",
+  },
+  {
+    value: "designer",
+    label: "🎨Designer",
+  },
+  {
+    value: "photographer",
+    label: "📷Photographer",
+  },
+];
 
 const AddProfileForm = () => {
   const [username, setUsername] = useState<string>("Username");
@@ -27,6 +60,7 @@ const AddProfileForm = () => {
   const [tags, setTags] = useState<string[]>(["furry", "python", "shrek"]);
   const [typing, setTyping] = useState<boolean>(false);
   const [inputTag, setInputTag] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
 
   const removeTag = (tag: any) => {
     const nextTags = tags.filter((item) => item !== tag);
@@ -47,16 +81,50 @@ const AddProfileForm = () => {
   const renderInput = () => {
     if (typing) {
       return (
-        <Badge variant={"outline"} className="flex items-center">
-          <input
-            className="bg-slate-100 dark:bg-zinc-900 outline-none"
-            id="tags"
-            placeholder="Add a tag"
-            autoFocus
-            onChange={(e) => setInputTag(e.target.value)}
-          />
-          <button onClick={addTag}>Add</button>
-        </Badge>
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="link"
+              role="combobox"
+              aria-expanded={open}
+              className="w-[200px] justify-between rounded-full"
+            >
+              {inputTag
+                ? predefinedTags.find((tag) => tag.value === inputTag)?.label
+                : "Select tag..."}
+              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-[200px] p-0">
+            <Command>
+              <CommandInput placeholder="Search tag..." />
+              <CommandEmpty>No tag found.</CommandEmpty>
+              <CommandGroup className="bg-slate-200 dark:bg-zinc-950 text-zinc-900 dark:text-slate-100">
+                {predefinedTags.map((tag) => (
+                  <CommandItem
+                    key={tag.value}
+                    onSelect={(currentValue) => {
+                      setInputTag(
+                        currentValue === inputTag ? "" : currentValue
+                      );
+                      setTags([...tags, currentValue]);
+                      setOpen(false);
+                      setTyping(false);
+                    }}
+                  >
+                    <Check
+                      className={cn(
+                        "mr-2 h-4 w-4",
+                        inputTag === tag.value ? "opacity-100" : "opacity-0"
+                      )}
+                    />
+                    {tag.label}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </Command>
+          </PopoverContent>
+        </Popover>
       );
     }
 
@@ -189,11 +257,8 @@ const AddProfileForm = () => {
                   </Link>
                 </div>
               </div>
-              <div className="mx-4 md:mx-5 text-base overflow-hidden min-h-[48px] text-ellipsis line-clamp-none md:line-clamp-2 md:active:line-clamp-3 cursor-pointer">
-                {description}
-              </div>
 
-              <div className="flex flex-row gap-2 flex-wrap mx-4 md:mx-5">
+              <div className="flex flex-row gap-2 flex-wrap mx-4 md:mx-5 my-2">
                 {tags.map((tag) => (
                   <Badge
                     key={tag}
@@ -203,6 +268,9 @@ const AddProfileForm = () => {
                     <p className="text-sm">{tag}</p>
                   </Badge>
                 ))}
+              </div>
+              <div className="mx-4 md:mx-5 text-base overflow-hidden min-h-[48px] text-ellipsis line-clamp-none md:line-clamp-2 md:active:line-clamp-3 cursor-pointer">
+                {description}
               </div>
 
               {/* Follow on github and on twitter button 2 in column */}
