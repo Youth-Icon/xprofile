@@ -59,26 +59,30 @@ export const Nav = () => {
             </Link>
           </div>
 
-          {/* <div className='flex space-x-2 sm:hidden'>
+          <div className="flex space-x-2 sm:hidden">
             <ModeToggle />
 
             <Sheet>
               <SheetTrigger>
-                <Button className='flex sm:hidden' variant={"link"} size={"icon"}>
+                <Button
+                  className="flex sm:hidden"
+                  variant={"link"}
+                  size={"icon"}
+                >
                   <Menu />
                 </Button>
               </SheetTrigger>
-              <SheetContent className='dark:bg-[#121212] dark:text-white'>
+              <SheetContent className="dark:bg-[#121212] dark:text-white">
                 <SheetHeader>
                   <SheetTitle>Are you sure absolutely sure?</SheetTitle>
                   <SheetDescription>
-                    This action cannot be undone. This will permanently delete your account
-                    and remove your data from our servers.
+                    This action cannot be undone. This will permanently delete
+                    your account and remove your data from our servers.
                   </SheetDescription>
                 </SheetHeader>
               </SheetContent>
             </Sheet>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
