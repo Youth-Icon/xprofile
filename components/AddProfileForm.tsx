@@ -12,15 +12,64 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
 
 const AddProfileForm = () => {
-  const [username, setUsername] = useState("Username");
-  const [github, setGithub] = useState("identicon");
-  const [twitter, setTwitter] = useState("tweethandle");
-  const [description, setDescription] = useState("this is a description");
-  const [color, setColor] = useState("#ffffff");
+  const [username, setUsername] = useState<string>("Username");
+  const [github, setGithub] = useState<string>("identicon");
+  const [twitter, setTwitter] = useState<string>("tweethandle");
+  const [description, setDescription] = useState<string>(
+    "this is a description"
+  );
+  const [color, setColor] = useState<string>("#00FFFF");
+  const [tags, setTags] = useState<string[]>(["furry", "python", "shrek"]);
+  const [typing, setTyping] = useState<boolean>(false);
+  const [inputTag, setInputTag] = useState<string>("");
+
+  const removeTag = (tag: any) => {
+    const nextTags = tags.filter((item) => item !== tag);
+    setTags(nextTags);
+  };
+
+  const addTag = () => {
+    const nextTags = inputTag ? [...tags, inputTag] : tags;
+    setTags(nextTags);
+    setTyping(false);
+    setInputTag("");
+  };
+
+  const handleButtonClick = () => {
+    setTyping(true);
+  };
+
+  const renderInput = () => {
+    if (typing) {
+      return (
+        <Badge variant={"outline"} className="flex items-center">
+          <input
+            className="bg-slate-100 dark:bg-zinc-900 outline-none"
+            id="tags"
+            placeholder="Add a tag"
+            autoFocus
+            onChange={(e) => setInputTag(e.target.value)}
+          />
+          <button onClick={addTag}>Add</button>
+        </Badge>
+      );
+    }
+
+    return (
+      <Badge
+        variant={"outline"}
+        onClick={handleButtonClick}
+        className="hover:bg-slate-200 dark:hover:bg-zinc-800 cursor-pointer"
+      >
+        +
+      </Badge>
+    );
+  };
 
   return (
     <div className="flex flex-col lg:flex-row gap-5 md:gap-0 w-full">
@@ -60,12 +109,33 @@ const AddProfileForm = () => {
                     onChange={(e) => setTwitter(e.target.value)}
                   />
                 </div>
+                <div className="flex flex-col space-y-2">
+                  <Label htmlFor="tags">Tags</Label>
+                  <div className="flex flex-row gap-2 flex-wrap">
+                    {renderInput()}
+                    {tags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        variant="outline"
+                        className="flex items-center justify-between px-3 py-1"
+                      >
+                        <button
+                          className="mr-1 text-red-500 rounded-full flex items-center justify-center"
+                          onClick={() => removeTag(tag)}
+                        >
+                          x
+                        </button>
+                        <p className="text-sm">{tag}</p>
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="color">Banner Color</Label>
                   <Input
                     className="bg-slate-200 dark:bg-zinc-950"
                     id="color"
-                    placeholder="Color in hex (e.g. #000000)"
+                    placeholder="Color in hex (e.g. #00FFFF)"
                     onChange={(e) => setColor(e.target.value)}
                   />
                 </div>
@@ -121,6 +191,18 @@ const AddProfileForm = () => {
               </div>
               <div className="mx-4 md:mx-5 text-base overflow-hidden min-h-[48px] text-ellipsis line-clamp-none md:line-clamp-2 md:active:line-clamp-3 cursor-pointer">
                 {description}
+              </div>
+
+              <div className="flex flex-row gap-2 flex-wrap mx-4 md:mx-5">
+                {tags.map((tag) => (
+                  <Badge
+                    key={tag}
+                    variant="outline"
+                    className="flex items-center justify-between px-3 py-1"
+                  >
+                    <p className="text-sm">{tag}</p>
+                  </Badge>
+                ))}
               </div>
 
               {/* Follow on github and on twitter button 2 in column */}
