@@ -13,7 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, X, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Command,
@@ -58,7 +58,6 @@ const AddProfileForm = () => {
   );
   const [color, setColor] = useState<string>("#00FFFF");
   const [tags, setTags] = useState<string[]>(["furry", "python", "shrek"]);
-  const [typing, setTyping] = useState<boolean>(false);
   const [inputTag, setInputTag] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
 
@@ -67,75 +66,46 @@ const AddProfileForm = () => {
     setTags(nextTags);
   };
 
-  const addTag = () => {
-    const nextTags = inputTag ? [...tags, inputTag] : tags;
-    setTags(nextTags);
-    setTyping(false);
-    setInputTag("");
-  };
-
-  const handleButtonClick = () => {
-    setTyping(true);
-  };
-
   const renderInput = () => {
-    if (typing) {
-      return (
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              variant="link"
-              role="combobox"
-              aria-expanded={open}
-              className="w-[200px] justify-between rounded-full"
-            >
-              {inputTag
-                ? predefinedTags.find((tag) => tag.value === inputTag)?.label
-                : "Select tag..."}
-              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-[200px] p-0">
-            <Command>
-              <CommandInput placeholder="Search tag..." />
-              <CommandEmpty>No tag found.</CommandEmpty>
-              <CommandGroup className="bg-slate-200 dark:bg-zinc-950 text-zinc-900 dark:text-slate-100">
-                {predefinedTags.map((tag) => (
-                  <CommandItem
-                    key={tag.value}
-                    onSelect={(currentValue) => {
-                      setInputTag(
-                        currentValue === inputTag ? "" : currentValue
-                      );
-                      setTags([...tags, currentValue]);
-                      setOpen(false);
-                      setTyping(false);
-                    }}
-                  >
-                    <Check
-                      className={cn(
-                        "mr-2 h-4 w-4",
-                        inputTag === tag.value ? "opacity-100" : "opacity-0"
-                      )}
-                    />
-                    {tag.label}
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            </Command>
-          </PopoverContent>
-        </Popover>
-      );
-    }
-
     return (
-      <Badge
-        variant={"outline"}
-        onClick={handleButtonClick}
-        className="hover:bg-slate-200 dark:hover:bg-zinc-800 cursor-pointer"
-      >
-        +
-      </Badge>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="link"
+            role="combobox"
+            aria-expanded={open}
+            className="hover:bg-slate-200 dark:hover:bg-zinc-800 cursor-pointer rounded-full"
+          >
+            <Plus size={15} />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-[200px] p-0">
+          <Command>
+            <CommandInput placeholder="Search tag..." />
+            <CommandEmpty>No tag found.</CommandEmpty>
+            <CommandGroup className="bg-slate-200 dark:bg-zinc-950 text-zinc-900 dark:text-slate-100">
+              {predefinedTags.map((tag) => (
+                <CommandItem
+                  key={tag.value}
+                  onSelect={(currentValue) => {
+                    setInputTag(currentValue === inputTag ? "" : currentValue);
+                    setTags([...tags, currentValue]);
+                    setOpen(false);
+                  }}
+                >
+                  <Check
+                    className={cn(
+                      "mr-2 h-4 w-4",
+                      inputTag === tag.value ? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                  {tag.label}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </Command>
+        </PopoverContent>
+      </Popover>
     );
   };
 
@@ -191,7 +161,7 @@ const AddProfileForm = () => {
                           className="mr-1 text-red-500 rounded-full flex items-center justify-center"
                           onClick={() => removeTag(tag)}
                         >
-                          x
+                          <X size={15} />
                         </button>
                         <p className="text-sm">{tag}</p>
                       </Badge>
