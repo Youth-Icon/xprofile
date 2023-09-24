@@ -153,7 +153,12 @@ const AddProfileForm = () => {
       formData.append("tags", tag);
     });
 
-    await deployProfile(formData);
+    try {
+      await deployProfile(formData);
+      router.replace("/explore");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
