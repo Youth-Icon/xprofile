@@ -23,7 +23,7 @@ export const Nav = () => {
   const { theme, setTheme } = useTheme();
   const router = useRouter();
   return (
-    <div className="px-4 sm:px-6 lg:px-8 z-20 fixed top-0 w-full">
+    <div className={`px-4 ${theme == 'light' ? 'bg-[rgba(255,255,255,0.5)]' :'bg-[#18181b82]'}  backdrop-blur-[5px] sm:px-6 lg:px-8 z-20 fixed top-0 w-full`}>
       <div className="flex h-16 items-center justify-between grid-cols-2">
         <div className="md:flex md:items-center md:gap-12 col-span-1">
           <div

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Cardui = (props: any) => {
     const about = props.about;
-    const aboutLink = about.includes("http");
+    const aboutLink = about?.includes("http");
 
     let aboutLinkMain;
     let aboutWithoutLink;
@@ -25,7 +25,7 @@ const Cardui = (props: any) => {
                 <div className="bg-white dark:bg-[#080808] rounded-lg shadow-lg">
 
                     <div className="flex flex-col">
-                        <div className="h-20 md:h-24" style={{ backgroundColor: props.bannerColor }}
+                        <div className="h-20 md:h-24" style={{ backgroundColor: props.banner_color }}
                         ></div>
 
                         <div className="flex space-x-2">
@@ -40,13 +40,14 @@ const Cardui = (props: any) => {
                                 <p className="mt-2 font-bold text-lg md:text-xl">
                                     {props.name}
                                 </p>
+                                {/* TODO: Change this href to project domain */}
                                 <Link
-                                    href={"https://twitter.com/" + props.username}
+                                    href={"https://twitter.com/" + props.xusername}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="mt-2 font-mono italic text-black dark:text-gray-300 text-sm hover:text-blue-400 cursor-pointer"
                                 >
-                                    @{props.username}
+                                    @{props.xusername}
                                 </Link>
                             </div>
                         </div>
@@ -78,8 +79,9 @@ const Cardui = (props: any) => {
                                 className="col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 rounded focus:outline-none focus:ring" >
                                 Follow on <i className="bi bi-github"></i>
                             </Link>
+                            {/* TODO: Change this username value to twitter/X username */}
                             <Link
-                                href={"https://x.com/" + props.username}
+                                href={"https://x.com/" + props.xusername}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 rounded focus:outline-none focus:ring"
