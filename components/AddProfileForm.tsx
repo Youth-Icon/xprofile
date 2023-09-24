@@ -38,6 +38,8 @@ import {
 import ScrollContainer from "react-indiana-drag-scroll";
 import Link from "next/link";
 import Image from "next/image";
+import { deployProfile } from "@/backend/deployProfile";
+import { useRouter } from "next/navigation";
 
 const predefinedTags = [
   {
@@ -71,24 +73,23 @@ const predefinedTags = [
 ];
 
 const AddProfileForm = () => {
-  const [username, setUsername] = useState<string>("Username");
-  const [github, setGithub] = useState<string>("identicon");
-  const [twitter, setTwitter] = useState<string>("tweethandle");
-  const [description, setDescription] = useState<string>(
-    "this is a description"
-  );
-  const [color, setColor] = useState<string>("#00FFFF");
-  const [tags, setTags] = useState<string[]>([
-    predefinedTags[0].label,
-    predefinedTags[1].label,
-  ]);
+  const [data, setData] = useState<any>({
+    username: "Username",
+    github: "identicon",
+    twitter: "tweethandle",
+    description: "this is a description",
+    color: "#00FFFF",
+    tags: [predefinedTags[0].label, predefinedTags[1].label],
+  });
   const [inputTag, setInputTag] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
 
   const removeTag = (tag: any) => {
-    const nextTags = tags.filter((item) => item !== tag);
-    setTags(nextTags);
+    const nextTags = data.tags.filter((item: string) => item !== tag);
+    setData({ ...data, tags: nextTags });
   };
+
+  const router = useRouter();
 
   const renderInput = () => {
     return (
@@ -113,7 +114,13 @@ const AddProfileForm = () => {
                   key={tag.value}
                   onSelect={(currentValue) => {
                     setInputTag(currentValue === inputTag ? "" : currentValue);
-                    setTags([...tags, tag.label === inputTag ? "" : tag.label]);
+                    setData({
+                      ...data,
+                      tags: [
+                        ...data.tags,
+                        tag.label === inputTag ? "" : tag.label,
+                      ],
+                    });
                     setOpen(false);
                   }}
                 >
@@ -133,8 +140,24 @@ const AddProfileForm = () => {
     );
   };
 
+  const handleDeploy = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("username", data.username);
+    formData.append("github", data.github);
+    formData.append("twitter", data.twitter);
+    formData.append("description", data.description);
+    formData.append("color", data.color);
+    data.tags.forEach((tag: string) => {
+      formData.append("tags", tag);
+    });
+
+    await deployProfile(formData);
+  };
+
   return (
-    <div className="flex flex-col lg:flex-row gap-5 md:gap-0 w-full">
+    <div className="flex flex-col lg:flex-row gap-5 lg:gap-0 w-full">
       <section className="lg:flex-1 flex items-center justify-center">
         <Card className="w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600">
           <CardHeader>
@@ -149,8 +172,10 @@ const AddProfileForm = () => {
                   <Input
                     className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
                     id="username"
-                    placeholder="Your username"
-                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Your name"
+                    onChange={(e) =>
+                      setData({ ...data, username: e.target.value })
+                    }
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
@@ -159,7 +184,9 @@ const AddProfileForm = () => {
                     className="bg-slate-200 dark:bg-zinc-950"
                     id="github"
                     placeholder="Name of your github account"
-                    onChange={(e) => setGithub(e.target.value)}
+                    onChange={(e) =>
+                      setData({ ...data, github: e.target.value })
+                    }
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
@@ -168,14 +195,16 @@ const AddProfileForm = () => {
                     className="bg-slate-200 dark:bg-zinc-950"
                     id="twitter"
                     placeholder="Name of twitter account"
-                    onChange={(e) => setTwitter(e.target.value)}
+                    onChange={(e) =>
+                      setData({ ...data, twitter: e.target.value })
+                    }
                   />
                 </div>
                 <div className="flex flex-col space-y-2">
                   <Label htmlFor="tags">Tags</Label>
                   <div className="flex flex-row gap-2 flex-wrap">
                     {renderInput()}
-                    {tags.map((tag) => (
+                    {data.tags.map((tag: string) => (
                       <Badge
                         key={tag}
                         variant="outline"
@@ -198,7 +227,9 @@ const AddProfileForm = () => {
                     className="bg-slate-200 dark:bg-zinc-950"
                     id="color"
                     placeholder="Color in hex (e.g. #00FFFF)"
-                    onChange={(e) => setColor(e.target.value)}
+                    onChange={(e) =>
+                      setData({ ...data, color: e.target.value })
+                    }
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
@@ -207,7 +238,9 @@ const AddProfileForm = () => {
                     className="bg-slate-200 dark:bg-zinc-950"
                     id="description"
                     placeholder="Account description"
-                    onChange={(e) => setDescription(e.target.value)}
+                    onChange={(e) =>
+                      setData({ ...data, description: e.target.value })
+                    }
                   />
                 </div>
               </div>
@@ -226,14 +259,20 @@ const AddProfileForm = () => {
                     creating your profile?
                   </DialogDescription>
                   <DialogDescription>
-                    <Button variant={"link"} className="my-2 hover:bg-red-500">
+                    <Button
+                      onClick={() => router.replace("/")}
+                      variant={"link"}
+                      className="my-2 hover:bg-red-500"
+                    >
                       Discard
                     </Button>
                   </DialogDescription>
                 </DialogHeader>
               </DialogContent>
             </Dialog>
-            <Button className="active:scale-90">Deploy</Button>
+            <Button onClick={handleDeploy} className="active:scale-90">
+              Deploy
+            </Button>
           </CardFooter>
         </Card>
       </section>
@@ -244,32 +283,34 @@ const AddProfileForm = () => {
             <div className="flex flex-col">
               <div
                 className="h-20 md:h-24"
-                style={{ backgroundColor: color }}
+                style={{ backgroundColor: data.color }}
               ></div>
 
               <div className="flex space-x-2 mb-2">
                 <Image
-                  src={"https://avatars.githubusercontent.com/" + github}
-                  alt={github}
+                  src={"https://avatars.githubusercontent.com/" + data.github}
+                  alt={data.github}
                   width={100}
                   height={100}
                   className="object-cover rounded-full ml-2 md:ml-4 -mt-8 border-4 border-white dark:border-black text-white dark:text-gray-300"
                 />
                 <div className="flex flex-col w-full">
                   <div className="flex items-baseline gap-1">
-                    <p className="font-bold text-lg md:text-xl">{username}</p>
+                    <p className="font-bold text-lg md:text-xl">
+                      {data.username}
+                    </p>
                     <Link
-                      href={"https://twitter.com/" + twitter}
+                      href={"https://twitter.com/" + data.twitter}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-mono italic text-black dark:text-gray-300 text-sm hover:text-blue-400 cursor-pointer"
                     >
-                      @{twitter}
+                      @{data.twitter}
                     </Link>
                   </div>
 
                   <ScrollContainer className="cursor-grab active:cursor-grabbing flex flex-row gap-2 my-2">
-                    {tags.map((tag) => (
+                    {data.tags.map((tag: string) => (
                       <Badge
                         key={tag}
                         variant="outline"
@@ -282,13 +323,13 @@ const AddProfileForm = () => {
                 </div>
               </div>
               <div className="mx-4 md:mx-5 text-base overflow-hidden min-h-[48px] text-ellipsis line-clamp-none md:line-clamp-2 md:active:line-clamp-3 cursor-pointer">
-                {description}
+                {data.description}
               </div>
 
               {/* Follow on github and on twitter button 2 in column */}
               <div className="grid grid-cols-2 gap-2 md:gap-3 text-center justify-between mt-2 mb-4 mx-4 md:mx-5">
                 <Link
-                  href={"https://github.com/" + github}
+                  href={"https://github.com/" + data.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-row items-center justify-center gap-2 col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 rounded focus:outline-none focus:ring"
@@ -296,7 +337,7 @@ const AddProfileForm = () => {
                   Follow on <Github size={20} />
                 </Link>
                 <Link
-                  href={"https://x.com/" + username}
+                  href={"https://x.com/" + data.username}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 rounded focus:outline-none focus:ring"
