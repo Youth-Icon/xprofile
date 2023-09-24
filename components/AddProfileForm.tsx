@@ -13,7 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { Check, X, Plus } from "lucide-react";
+import { Check, X, Plus, Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Command,
@@ -27,6 +27,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import ScrollContainer from "react-indiana-drag-scroll";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -47,6 +56,18 @@ const predefinedTags = [
     value: "photographer",
     label: "📷Photographer",
   },
+  {
+    value: "musician",
+    label: "🎵Musician",
+  },
+  {
+    value: "pirate",
+    label: "🏴‍☠️Pirate",
+  },
+  {
+    value: "waffle",
+    label: "🧇Waffle",
+  },
 ];
 
 const AddProfileForm = () => {
@@ -57,7 +78,10 @@ const AddProfileForm = () => {
     "this is a description"
   );
   const [color, setColor] = useState<string>("#00FFFF");
-  const [tags, setTags] = useState<string[]>(["furry", "python", "shrek"]);
+  const [tags, setTags] = useState<string[]>([
+    predefinedTags[0].label,
+    predefinedTags[1].label,
+  ]);
   const [inputTag, setInputTag] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
 
@@ -89,7 +113,7 @@ const AddProfileForm = () => {
                   key={tag.value}
                   onSelect={(currentValue) => {
                     setInputTag(currentValue === inputTag ? "" : currentValue);
-                    setTags([...tags, currentValue]);
+                    setTags([...tags, tag.label === inputTag ? "" : tag.label]);
                     setOpen(false);
                   }}
                 >
@@ -190,7 +214,25 @@ const AddProfileForm = () => {
             </form>
           </CardContent>
           <CardFooter className="flex justify-between">
-            <Button variant="outline">Cancel</Button>
+            <Dialog>
+              <DialogTrigger>
+                <Button variant={"outline"}>Cancel</Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Are you sure absolutely sure?</DialogTitle>
+                  <DialogDescription>
+                    Your data will be lost. Are you sure you want to discard
+                    creating your profile?
+                  </DialogDescription>
+                  <DialogDescription>
+                    <Button variant={"link"} className="my-2 hover:bg-red-500">
+                      Discard
+                    </Button>
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
             <Button className="active:scale-90">Deploy</Button>
           </CardFooter>
         </Card>
@@ -205,39 +247,39 @@ const AddProfileForm = () => {
                 style={{ backgroundColor: color }}
               ></div>
 
-              <div className="flex space-x-2">
+              <div className="flex space-x-2 mb-2">
                 <Image
                   src={"https://avatars.githubusercontent.com/" + github}
                   alt={github}
-                  width={95}
-                  height={95}
-                  className="rounded-full ml-2 md:ml-4 -mt-8 border-4 border-white dark:border-black text-white dark:text-gray-300"
+                  width={100}
+                  height={100}
+                  className="object-cover rounded-full ml-2 md:ml-4 -mt-8 border-4 border-white dark:border-black text-white dark:text-gray-300"
                 />
-                <div className="flex items-baseline gap-1">
-                  <p className="mt-2 font-bold text-lg md:text-xl">
-                    {username}
-                  </p>
-                  <Link
-                    href={"https://twitter.com/" + twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 font-mono italic text-black dark:text-gray-300 text-sm hover:text-blue-400 cursor-pointer"
-                  >
-                    @{twitter}
-                  </Link>
-                </div>
-              </div>
+                <div className="flex flex-col w-full">
+                  <div className="flex items-baseline gap-1">
+                    <p className="font-bold text-lg md:text-xl">{username}</p>
+                    <Link
+                      href={"https://twitter.com/" + twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono italic text-black dark:text-gray-300 text-sm hover:text-blue-400 cursor-pointer"
+                    >
+                      @{twitter}
+                    </Link>
+                  </div>
 
-              <div className="flex flex-row gap-2 flex-wrap mx-4 md:mx-5 my-2">
-                {tags.map((tag) => (
-                  <Badge
-                    key={tag}
-                    variant="outline"
-                    className="flex items-center justify-between px-3 py-1"
-                  >
-                    <p className="text-sm">{tag}</p>
-                  </Badge>
-                ))}
+                  <ScrollContainer className="cursor-grab active:cursor-grabbing flex flex-row gap-2 my-2">
+                    {tags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        variant="outline"
+                        className="flex items-center justify-between px-2 py-0.5"
+                      >
+                        <p className="text-sm whitespace-nowrap">{tag}</p>
+                      </Badge>
+                    ))}
+                  </ScrollContainer>
+                </div>
               </div>
               <div className="mx-4 md:mx-5 text-base overflow-hidden min-h-[48px] text-ellipsis line-clamp-none md:line-clamp-2 md:active:line-clamp-3 cursor-pointer">
                 {description}
@@ -249,9 +291,9 @@ const AddProfileForm = () => {
                   href={"https://github.com/" + github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 rounded focus:outline-none focus:ring"
+                  className="flex flex-row items-center justify-center gap-2 col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 rounded focus:outline-none focus:ring"
                 >
-                  Follow on <i className="bi bi-github"></i>
+                  Follow on <Github size={20} />
                 </Link>
                 <Link
                   href={"https://x.com/" + username}
