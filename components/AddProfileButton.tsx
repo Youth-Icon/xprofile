@@ -18,7 +18,7 @@ const AddProfileButton = ({ className, ...props }: AddProfileButtonProps) => {
         "absolute top-0 right-40 m-4 hover:bg-slate-200 dark:hover:bg-zinc-800 hover:scale-105 active:translate-y-1",
         className
       )}
-      onClick={() => router.push("/create")}
+      onClick={() => router.replace("/create")}
     >
       Add Profile✨
     </Button>
