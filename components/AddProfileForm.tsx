@@ -36,6 +36,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import ScrollContainer from "react-indiana-drag-scroll";
+import INSTAGRAM from "@/public/instagram.png";
+import LINKEDIN from "@/public/linkedin.png";
+import REDDIT from "@/public/reddit.png";
 import Link from "next/link";
 import Image from "next/image";
 import { deployProfile } from "@/backend/deployProfile";
@@ -85,6 +88,7 @@ const AddProfileForm = () => {
   const [inputTag, setInputTag] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const [socialCount, setSocialCount] = useState<number>(0);
+  const [formStep, setFormStep] = useState<number>(1);
 
   const removeTag = (tag: any) => {
     const nextTags = data.tags.filter((item: string) => item !== tag);
@@ -142,6 +146,7 @@ const AddProfileForm = () => {
       </Popover>
     );
   };
+  // ----------------------END OF RENDER INPUT FUNCTION----------------------
 
   const handleDeploy = async () => {
     const formData = new FormData();
@@ -165,10 +170,23 @@ const AddProfileForm = () => {
     }
   };
 
+  const NextStep = () => {
+    setFormStep(formStep + 1);
+  };
+
+  const PreviousStep = () => {
+    setFormStep(formStep - 1);
+  };
+
+  // ----------------------ACTUAL RETURN----------------------
   return (
     <div className="flex flex-col lg:flex-row gap-5 lg:gap-0 w-full">
       <section className="lg:flex-1 flex items-center justify-center">
-        <Card className="w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600">
+        {/* Step 1 */}
+        <Card
+          className="w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600"
+          style={{ display: formStep === 1 ? "block" : "none" }}
+        >
           <CardHeader>
             <CardTitle>Add your profile!</CardTitle>
             <CardDescription>Deploy your profile in one-click.</CardDescription>
@@ -209,7 +227,7 @@ const AddProfileForm = () => {
                     }
                   />
                 </div>
-                {Array.from({ length: socialCount }).map((_, index) => (
+                {/* {Array.from({ length: socialCount }).map((_, index) => (
                   <div key={index} className="flex flex-col space-y-1.5">
                     <Label htmlFor={`social${index}`}>Social {index + 1}</Label>
                     <Input
@@ -231,7 +249,7 @@ const AddProfileForm = () => {
                   className="w-[50%] hover:bg-zinc-800"
                 >
                   Add Socials
-                </Button>
+                </Button> */}
                 <div className="flex flex-col space-y-2">
                   <Label htmlFor="tags">Tags</Label>
                   <div className="flex flex-row gap-2 flex-wrap">
@@ -302,13 +320,95 @@ const AddProfileForm = () => {
                 </DialogHeader>
               </DialogContent>
             </Dialog>
-            <Button onClick={handleDeploy} className="active:scale-90">
-              Deploy
+            <Button
+              type="button"
+              onClick={NextStep}
+              className="active:scale-90"
+            >
+              Next
             </Button>
           </CardFooter>
         </Card>
+        {/* End of Step 1 */}
+
+        {/* Step 2 */}
+        <Card
+          className="w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600"
+          style={{ display: formStep === 2 ? "block" : "none" }}
+        >
+          <CardHeader>
+            <CardTitle>Almost There!</CardTitle>
+            <CardDescription>
+              Cool! Let&apos;s add your social media account!
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form>
+              <div className="grid w-full items-center gap-4">
+                <div className="flex flex-row space-x-1.5">
+                  <Image
+                    src={INSTAGRAM}
+                    alt="instagram"
+                    width={35}
+                    height={35}
+                    className="object-contain"
+                  />
+                  <Input
+                    className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
+                    id="instagram"
+                    placeholder="Instagram account"
+                  />
+                </div>
+                <div className="flex flex-row space-x-1.5">
+                  <Image
+                    src={LINKEDIN}
+                    alt="linkedin"
+                    width={35}
+                    height={35}
+                    className="object-contain"
+                  />
+                  <Input
+                    className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
+                    id="linkedin"
+                    placeholder="LinkedIn account"
+                  />
+                </div>
+                <div className="flex flex-row space-x-1.5">
+                  <Image
+                    src={REDDIT}
+                    alt="reddit"
+                    width={35}
+                    height={35}
+                    className="object-contain"
+                  />
+                  <Input
+                    className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
+                    id="reddit"
+                    placeholder="Reddit account"
+                  />
+                </div>
+              </div>
+            </form>
+          </CardContent>
+          <CardFooter className="flex justify-between">
+            <Button type="button" onClick={PreviousStep} variant={"outline"}>
+              Back
+            </Button>
+            <Button
+              type="button"
+              onClick={NextStep}
+              className="active:scale-90"
+            >
+              Next
+            </Button>
+          </CardFooter>
+        </Card>
+        {/* End of Step 2 */}
       </section>
 
+      {/* ----------------------END OF FORM---------------------- */}
+
+      {/* ----------------------PREVIEW---------------------- */}
       <section className="lg:flex-1 flex items-center justify-center">
         <div className="w-[350px] shadow h-auto overflow-hidden border border-gray-700 hover:border-gray-600 rounded-xl">
           <div className="bg-white dark:bg-[#080808] rounded-lg shadow-lg">
