@@ -22,19 +22,19 @@ const Cardui = (props: any) => {
         <>
             {/* design a card using tailwind css good ui */}
             <div className=" w-full shadow h-auto overflow-hidden border border-gray-700 hover:border-gray-600 hover:scale-[1.006] rounded-xl">
-                <div className="bg-white dark:bg-[#080808] rounded-lg shadow-lg">
+                <div className="bg-zinc-200 dark:bg-zinc-800 rounded-lg shadow-lg">
 
                     <div className="flex flex-col">
                         <div className="h-20 md:h-24" style={{ backgroundColor: props.banner_color }}
                         ></div>
 
-                        <div className="flex space-x-2">
+                        <div className="flex  space-x-2">
                             <Image
                                 src={"https://avatars.githubusercontent.com/" + props.github}
                                 alt={props.name}
                                 width={95}
                                 height={95}
-                                className="rounded-full ml-2 md:ml-4 -mt-8 border-4 border-white dark:border-black text-white dark:text-gray-300"
+                                className="rounded-full ml-2 md:ml-4 -mt-8 border-4 border-white dark:border-black text-zinc-700 dark:text-gray-300"
                             />
                             <div className="flex items-baseline gap-1">
                                 <p className="mt-2 font-bold text-lg md:text-xl">
@@ -76,7 +76,7 @@ const Cardui = (props: any) => {
                                 href={"https://github.com/" + props.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 rounded focus:outline-none focus:ring" >
+                                className="col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-zinc-600 dark:text-white dark:hover:bg-zinc-500 rounded focus:outline-none focus:ring" >
                                 Follow on <i className="bi bi-github"></i>
                             </Link>
                             {/* TODO: Change this username value to twitter/X username */}
@@ -84,7 +84,7 @@ const Cardui = (props: any) => {
                                 href={"https://x.com/" + props.xusername}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 rounded focus:outline-none focus:ring"
+                                className="col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-zinc-600 dark:text-white dark:hover:bg-zinc-500 rounded focus:outline-none focus:ring"
                             >
                                 Follow on 𝕏
                             </Link>
