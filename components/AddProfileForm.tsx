@@ -36,9 +36,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import ScrollContainer from "react-indiana-drag-scroll";
-import INSTAGRAM from "@/public/instagram.png";
-import LINKEDIN from "@/public/linkedin.png";
-import REDDIT from "@/public/reddit.png";
+import { BsInstagram } from "react-icons/bs";
+import { GrLinkedinOption } from "react-icons/gr";
+import { FaRedditAlien } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 import { deployProfile } from "@/backend/deployProfile";
@@ -346,13 +346,9 @@ const AddProfileForm = () => {
             <form>
               <div className="grid w-full items-center gap-4">
                 <div className="flex flex-row space-x-1.5">
-                  <Image
-                    src={INSTAGRAM}
-                    alt="instagram"
-                    width={35}
-                    height={35}
-                    className="object-contain"
-                  />
+                  <span className="p-1 bg-gradient-to-br from-yellow-400 via-red-500 to-purple-800 rounded-lg flex items-center justify-center">
+                    <BsInstagram size={30} className="text-white" />
+                  </span>
                   <Input
                     className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
                     id="instagram"
@@ -360,13 +356,9 @@ const AddProfileForm = () => {
                   />
                 </div>
                 <div className="flex flex-row space-x-1.5">
-                  <Image
-                    src={LINKEDIN}
-                    alt="linkedin"
-                    width={35}
-                    height={35}
-                    className="object-contain"
-                  />
+                  <span className="p-1 bg-gradient-to-br bg-blue-600 rounded-lg flex items-center justify-center">
+                    <GrLinkedinOption size={30} className="text-white" />
+                  </span>
                   <Input
                     className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
                     id="linkedin"
@@ -374,13 +366,9 @@ const AddProfileForm = () => {
                   />
                 </div>
                 <div className="flex flex-row space-x-1.5">
-                  <Image
-                    src={REDDIT}
-                    alt="reddit"
-                    width={35}
-                    height={35}
-                    className="object-contain"
-                  />
+                  <span className="p-1 bg-gradient-to-br bg-orange-600 rounded-lg flex items-center justify-center">
+                    <FaRedditAlien size={30} className="text-white" />
+                  </span>
                   <Input
                     className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
                     id="reddit"
