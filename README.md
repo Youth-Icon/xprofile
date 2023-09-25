@@ -28,7 +28,7 @@ To run XProfile locally for development, follow these steps:
    cd xprofile
    ```
 
-4. If you want to run it with yarn install yarn otherwise skip to step 3:
+4. If you want to run it with yarn install yarn otherwise skip to step 5:
    ```
    npm install -g yarn
    ```
