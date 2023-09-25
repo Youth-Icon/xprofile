@@ -84,7 +84,7 @@ const AddProfileForm = () => {
   });
   const [inputTag, setInputTag] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
-  const [socialCount, setSocialCount] = useState<number>(1);
+  const [socialCount, setSocialCount] = useState<number>(0);
 
   const removeTag = (tag: any) => {
     const nextTags = data.tags.filter((item: string) => item !== tag);
@@ -99,6 +99,7 @@ const AddProfileForm = () => {
         <PopoverTrigger asChild>
           <Button
             variant="link"
+            type="button"
             role="combobox"
             aria-expanded={open}
             className="hover:bg-slate-200 dark:hover:bg-zinc-800 cursor-pointer rounded-full"
