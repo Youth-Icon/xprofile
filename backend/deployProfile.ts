@@ -13,7 +13,7 @@ export async function deployProfile(userData: FormData) {
       banner_color: userData.get("color"),
       about: userData.get("description"),
       tags: userData.getAll("tags"),
-      socials: ["dummy socials"],
+      socials: userData.getAll("socials"),
       repos: ["dummy repos"],
       links: ["dummy links"],
     },
