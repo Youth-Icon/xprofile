@@ -80,9 +80,11 @@ const AddProfileForm = () => {
     description: "this is a description",
     color: "#00FFFF",
     tags: [predefinedTags[0].label, predefinedTags[1].label],
+    socials: [],
   });
   const [inputTag, setInputTag] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
+  const [socialCount, setSocialCount] = useState<number>(1);
 
   const removeTag = (tag: any) => {
     const nextTags = data.tags.filter((item: string) => item !== tag);
@@ -140,9 +142,7 @@ const AddProfileForm = () => {
     );
   };
 
-  const handleDeploy = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-
+  const handleDeploy = async () => {
     const formData = new FormData();
     formData.append("username", data.username);
     formData.append("github", data.github);
@@ -151,6 +151,9 @@ const AddProfileForm = () => {
     formData.append("color", data.color);
     data.tags.forEach((tag: string) => {
       formData.append("tags", tag);
+    });
+    data.socials.forEach((socials: string) => {
+      formData.append("socials", socials);
     });
 
     try {
@@ -205,6 +208,29 @@ const AddProfileForm = () => {
                     }
                   />
                 </div>
+                {Array.from({ length: socialCount }).map((_, index) => (
+                  <div key={index} className="flex flex-col space-y-1.5">
+                    <Label htmlFor={`social${index}`}>Social {index + 1}</Label>
+                    <Input
+                      className="bg-slate-200 dark:bg-zinc-950"
+                      id={`social${index}`}
+                      placeholder={`Social account ${index + 1} link`}
+                      onChange={(e) => {
+                        const updatedSocials = [...data.socials];
+                        updatedSocials[index] = e.target.value;
+                        setData({ ...data, socials: updatedSocials });
+                      }}
+                      value={data.socials[index] || ""}
+                    />
+                  </div>
+                ))}
+                <Button
+                  type="button"
+                  onClick={() => setSocialCount(socialCount + 1)}
+                  className="w-[50%] hover:bg-zinc-800"
+                >
+                  Add Socials
+                </Button>
                 <div className="flex flex-col space-y-2">
                   <Label htmlFor="tags">Tags</Label>
                   <div className="flex flex-row gap-2 flex-wrap">
