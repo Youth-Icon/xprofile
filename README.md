@@ -53,10 +53,10 @@ To run XProfile locally for development, follow these steps:
 
 Finally You can see the website running in port 3000. Access it by hitting the url: `http://localhost:3000`
 
-Head over to Contributing guide to get an idea on how to contribute to this project.
+Head over to [Contributing guide](#contributing-guide) to get an idea on how to contribute to this project.
 
 
-## Contributing Guide
+# Contributing Guide
 
 To get started with XProfile, follow these steps:
 
@@ -98,7 +98,5 @@ git push origin <branch-name>
 10. **Review and Discussion**: Engage in any discussions or reviews related to your pull request. Be open to feedback and make necessary adjustments.
 
 11. **Merge**: Once your PR has been reviewed and approved, it will be merged into the main project. Congratulations, you've contributed to XProfile!
-
-Please be sure to adhere to our [code of conduct](CODE_OF_CONDUCT.md) and review the [contributing guidelines](CONTRIBUTING.md) for more specific details on our contribution process.
-
+    
 Thank you for your interest in XProfile, and happy exploring!
