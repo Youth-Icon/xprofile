@@ -49,3 +49,25 @@
     --ring: 240 4.9% 83.9%;
   }
 }
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    display: none;
+    width: 20px;
+    height: 7px;
+  }
+
+  /* .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: rgb(44, 52, 58);
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: rgb(80, 92, 102);
+    border-radius: 100vh;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgb(91, 107, 117);
+  } */
+}
