@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function MostStarredCard(props: any) {
     return (
         <div className='text-center w-[200px] flex-shrink-0 my-4 p-4  rounded-lg dark:bg-zinc-800 bg-zinc-200 border-slate-600'>
-            <Image className='object-contain rounded-full border border-zinc-400' src={props.avatar_url} alt="profile pic" width={96} height={96} />
+            <Image className='w-max items-center justify-center object-contain rounded-full border border-zinc-400' src={props.avatar_url} alt="profile pic" width={96} height={96} />
             <div className='w-max mx-auto mt-2 flex flex-col gap-2'>
                 <h1 className=''>{props.name}</h1>
                 <p>{props.github}</p>
