@@ -3,12 +3,11 @@
 import supabase from "./supabase";
 
 export async function deployProfile(userData: FormData) {
-  //   console.log(userData.getAll("tags"));
   const { data, error } = await supabase.from("profiles").insert([
     {
       xusername: userData.get("twitter"),
       name: userData.get("username"),
-      location: "dummy loc",
+      location: userData.get("location"),
       github: userData.get("github"),
       banner_color: userData.get("color"),
       about: userData.get("description"),
