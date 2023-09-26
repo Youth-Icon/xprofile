@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import supabase from '../../../backend/supabase';
+import supabase from '../../../../backend/supabase';
 
 export async function GET(request: Request) {
 
@@ -14,12 +14,12 @@ export async function GET(request: Request) {
         return { from, to };
     }
 
-    const {from,to}=getFromAndTo(page,size);
+    const { from, to } = getFromAndTo(page, size);
     let { data, error } = await supabase
         .from('profiles')
         .select('*')
         // .order('id', { ascending: true })
-        .range(from , to)
+        .range(from, to)
 
     if (error) console.error('Error: ', error)
     // console.log(data)
