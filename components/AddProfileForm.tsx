@@ -228,29 +228,6 @@ const AddProfileForm = () => {
                     }
                   />
                 </div>
-                {/* {Array.from({ length: socialCount }).map((_, index) => (
-                  <div key={index} className="flex flex-col space-y-1.5">
-                    <Label htmlFor={`social${index}`}>Social {index + 1}</Label>
-                    <Input
-                      className="bg-slate-200 dark:bg-zinc-950"
-                      id={`social${index}`}
-                      placeholder={`Social account ${index + 1} link`}
-                      onChange={(e) => {
-                        const updatedSocials = [...data.socials];
-                        updatedSocials[index] = e.target.value;
-                        setData({ ...data, socials: updatedSocials });
-                      }}
-                      value={data.socials[index] || ""}
-                    />
-                  </div>
-                ))}
-                <Button
-                  type="button"
-                  onClick={() => setSocialCount(socialCount + 1)}
-                  className="w-[50%] hover:bg-zinc-800"
-                >
-                  Add Socials
-                </Button> */}
                 <div className="flex flex-col space-y-2">
                   <Label htmlFor="tags">Tags</Label>
                   <div className="flex flex-row gap-2 flex-wrap">
@@ -354,6 +331,12 @@ const AddProfileForm = () => {
                     className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
                     id="instagram"
                     placeholder="Instagram account"
+                    onChange={(e) => {
+                      const updatedSocials = [...data.socials];
+                      updatedSocials[0] = e.target.value;
+                      setData({ ...data, socials: updatedSocials });
+                    }}
+                    value={data.socials[0] || ""}
                   />
                 </div>
                 <div className="flex flex-row space-x-1.5">
@@ -364,6 +347,12 @@ const AddProfileForm = () => {
                     className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
                     id="linkedin"
                     placeholder="LinkedIn account"
+                    onChange={(e) => {
+                      const updatedSocials = [...data.socials];
+                      updatedSocials[1] = e.target.value;
+                      setData({ ...data, socials: updatedSocials });
+                    }}
+                    value={data.socials[1] || ""}
                   />
                 </div>
                 <div className="flex flex-row space-x-1.5">
@@ -374,6 +363,12 @@ const AddProfileForm = () => {
                     className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
                     id="reddit"
                     placeholder="Reddit account"
+                    onChange={(e) => {
+                      const updatedSocials = [...data.socials];
+                      updatedSocials[2] = e.target.value;
+                      setData({ ...data, socials: updatedSocials });
+                    }}
+                    value={data.socials[2] || ""}
                   />
                 </div>
               </div>
