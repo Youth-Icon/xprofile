@@ -86,7 +86,7 @@ export const Nav = () => {
           </Link>
         </div>
 
-        <div className="flex space-x-2 sm:hidden">
+        <div className="flex mx-2 space-x-2 sm:hidden">
           <ModeToggle />
 
           <Sheet>

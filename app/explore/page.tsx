@@ -47,7 +47,7 @@ export default function Page() {
   return (
     <div className='p-6 mt-20'>
       <div className='w-[100%]'>
-        <h1 className='text-4xl font-bold'>Profiles with most Github Stars</h1>
+        <h1 className='text-4xl font-bold'>Github Stars</h1>
         <p className='text-gray-500 my-2'>Find and connect with people</p>
         <div className='flex scrollbar pb-4 overflow-x-scroll gap-4 my-7'>
           {mostStar?.map((eachprof, key)=> 
