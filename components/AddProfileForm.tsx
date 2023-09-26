@@ -84,10 +84,10 @@ const AddProfileForm = () => {
     color: "#00FFFF",
     tags: [predefinedTags[0].label, predefinedTags[1].label],
     socials: [],
+    location: "",
   });
   const [inputTag, setInputTag] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
-  const [socialCount, setSocialCount] = useState<number>(0);
   const [formStep, setFormStep] = useState<number>(1);
 
   const removeTag = (tag: any) => {
@@ -161,6 +161,7 @@ const AddProfileForm = () => {
     data.socials.forEach((socials: string) => {
       formData.append("socials", socials);
     });
+    formData.append("location", data.location);
 
     try {
       await deployProfile(formData);
@@ -392,6 +393,45 @@ const AddProfileForm = () => {
           </CardFooter>
         </Card>
         {/* End of Step 2 */}
+
+        {/* Step 3 */}
+        <Card
+          className="w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600"
+          style={{ display: formStep === 3 ? "block" : "none" }}
+        >
+          <CardHeader>
+            <CardTitle>Finally!</CardTitle>
+            <CardDescription>
+              We just need a little bit more information about you!
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form>
+              <div className="grid w-full items-center gap-4">
+                <div className="flex flex-col space-y-1.5">
+                  <Label htmlFor="location">Country</Label>
+                  <Input
+                    className="bg-slate-200 dark:bg-zinc-950"
+                    id="location"
+                    placeholder="Where you're from"
+                    onChange={(e) =>
+                      setData({ ...data, location: e.target.value })
+                    }
+                  />
+                </div>
+              </div>
+            </form>
+          </CardContent>
+          <CardFooter className="flex justify-between">
+            <Button type="button" onClick={PreviousStep} variant={"outline"}>
+              Back
+            </Button>
+            <Button onClick={handleDeploy} className="active:scale-90">
+              Deploy
+            </Button>
+          </CardFooter>
+        </Card>
+        {/* End of Step 3 */}
       </section>
 
       {/* ----------------------END OF FORM---------------------- */}
