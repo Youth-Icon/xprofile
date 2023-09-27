@@ -754,11 +754,17 @@ const AddProfile = () => {
                 className="my-2 py-5 px-3 bg-slate-200 dark:bg-zinc-950 hover:scale-105 hover:my-3 cursor-pointer"
               >
                 <Link
-                  href={link}
+                  href={`https://${link}`}
                   target="_blank"
-                  rel="noopener noreferrer"
                   className="flex items-center flex-row justify-between space-x-2 font-mono italic"
                 >
+                  <Image
+                    src={`https://s2.googleusercontent.com/s2/favicons?domain=https://${link}`}
+                    alt=""
+                    width={20}
+                    height={20}
+                  />
+
                   <p>{link}</p>
                   <BiLinkExternal className="text-zinc-900 dark:text-slate-100" />
                 </Link>
