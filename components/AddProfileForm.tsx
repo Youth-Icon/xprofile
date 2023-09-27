@@ -83,7 +83,20 @@ const AddProfileForm = () => {
     description: "this is a description",
     color: "#00FFFF",
     tags: [predefinedTags[0].label, predefinedTags[1].label],
-    socials: [],
+    socials: [
+      {
+        link: "",
+        type: "instagram",
+      },
+      {
+        link: "",
+        type: "linkedin",
+      },
+      {
+        link: "",
+        type: "reddit",
+      },
+    ],
     location: "",
   });
   const [inputTag, setInputTag] = useState<string>("");
@@ -150,6 +163,7 @@ const AddProfileForm = () => {
 
   const handleDeploy = async () => {
     const formData = new FormData();
+
     formData.append("username", data.username);
     formData.append("github", data.github);
     formData.append("twitter", data.twitter);
@@ -158,14 +172,14 @@ const AddProfileForm = () => {
     data.tags.forEach((tag: string) => {
       formData.append("tags", tag);
     });
-    data.socials.forEach((socials: string) => {
-      formData.append("socials", socials);
-    });
+    formData.append("socials", JSON.stringify(data.socials));
+    // formData.append("socials", newSocial);
     formData.append("location", data.location);
 
     try {
+      // console.log(JSON.parse(formData.get("socials") as string));
       await deployProfile(formData);
-      router.replace("/explore");
+      // router.replace("/explore");
     } catch (error) {
       console.log(error);
     }
@@ -333,10 +347,13 @@ const AddProfileForm = () => {
                     placeholder="Instagram account"
                     onChange={(e) => {
                       const updatedSocials = [...data.socials];
-                      updatedSocials[0] = e.target.value;
-                      setData({ ...data, socials: updatedSocials });
+                      updatedSocials[0].link = e.target.value;
+                      setData({
+                        ...data,
+                        socials: updatedSocials,
+                      });
                     }}
-                    value={data.socials[0] || ""}
+                    value={data.socials[0].link || ""}
                   />
                 </div>
                 <div className="flex flex-row space-x-1.5">
@@ -349,10 +366,10 @@ const AddProfileForm = () => {
                     placeholder="LinkedIn account"
                     onChange={(e) => {
                       const updatedSocials = [...data.socials];
-                      updatedSocials[1] = e.target.value;
+                      updatedSocials[1].link = e.target.value;
                       setData({ ...data, socials: updatedSocials });
                     }}
-                    value={data.socials[1] || ""}
+                    value={data.socials[1].link || ""}
                   />
                 </div>
                 <div className="flex flex-row space-x-1.5">
@@ -365,10 +382,10 @@ const AddProfileForm = () => {
                     placeholder="Reddit account"
                     onChange={(e) => {
                       const updatedSocials = [...data.socials];
-                      updatedSocials[2] = e.target.value;
+                      updatedSocials[2].link = e.target.value;
                       setData({ ...data, socials: updatedSocials });
                     }}
-                    value={data.socials[2] || ""}
+                    value={data.socials[2].link || ""}
                   />
                 </div>
               </div>
@@ -432,8 +449,15 @@ const AddProfileForm = () => {
       {/* ----------------------END OF FORM---------------------- */}
 
       {/* ----------------------PREVIEW---------------------- */}
+
       <section className="lg:flex-1 flex items-center justify-center">
-        <div className="w-[350px] shadow h-auto overflow-hidden border border-gray-700 hover:border-gray-600 rounded-xl">
+        {/* Step 1 */}
+        <div
+          className="w-[350px] shadow h-auto overflow-hidden border border-gray-700 hover:border-gray-600 rounded-xl"
+          style={{
+            display: formStep === 1 ? "block" : "none",
+          }}
+        >
           <div className="bg-white dark:bg-[#080808] rounded-lg shadow-lg">
             <div className="flex flex-col">
               <div
@@ -503,6 +527,22 @@ const AddProfileForm = () => {
             </div>
           </div>
         </div>
+        {/* End of Step 1 */}
+
+        {/* Step 2 */}
+
+        <div
+          className="w-[70%] bg-zinc-950"
+          style={{
+            display: formStep === 2 ? "block" : "none",
+          }}
+        >
+          links
+        </div>
+
+        {/* End of Step 2 */}
+
+        {/* Step 3 */}
       </section>
     </div>
   );

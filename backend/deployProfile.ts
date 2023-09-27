@@ -3,6 +3,12 @@
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
+const socialPrefix = {
+  instagram: "https://instagram.com/",
+  linkedin: "https://linkedin.com/in/",
+  reddit: "https://reddit.com/u/",
+};
+
 export async function deployProfile(userData: FormData) {
   const githubstars = await fetch(
     `https://api.github-star-counter.workers.dev/user/${userData.get("github")}`
@@ -20,19 +26,30 @@ export async function deployProfile(userData: FormData) {
       return data.followers;
     });
 
+  const newSocial = JSON.parse(userData.get("socials") as string).map(
+    (social: { [x: string]: string; type: string }) => {
+      return {
+        link:
+          socialPrefix[social.type as keyof typeof socialPrefix] + social.link,
+        type: social.type,
+      };
+    }
+  );
+
   await addDoc(collection(db, "profiles"), {
-    xusername: userData.get("twitter"),
-    name: userData.get("username"),
-    location: userData.get("location"),
-    github: userData.get("github"),
-    banner_color: userData.get("color"),
     about: userData.get("description"),
-    tags: userData.getAll("tags"),
-    socials: userData.getAll("socials"),
-    repos: ["dummy repos"],
-    links: ["dummy links"],
-    github_stars: githubstars,
+    banner_color: userData.get("color"),
     github_followers: githubfollowers,
+    github_stars: githubstars,
+    github_username: userData.get("github"),
+    image: `https://avatars.githubusercontent.com/${userData.get("github")}`,
+    links: ["dummy links"],
+    location: userData.get("location"),
+    name: userData.get("username"),
+    // tags: userData.getAll("tags"),
+    // socials: userData.get("socials"),
+    socials: newSocial,
+    twitter: userData.get("twitter"),
   });
 
   // const { data, error } = await supabase.from("profiles").insert([
