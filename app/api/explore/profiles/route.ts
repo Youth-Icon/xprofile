@@ -23,6 +23,5 @@ export async function GET(request: Request) {
   // if (error) console.error('Error: ', error)
   // // console.log(data)
 
-  // return NextResponse.json({ data })
-  return null;
+  return NextResponse.json("dummy response");
 }
