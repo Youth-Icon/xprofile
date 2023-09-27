@@ -7,6 +7,8 @@ const socialPrefix = {
   instagram: "https://instagram.com/",
   linkedin: "https://linkedin.com/in/",
   reddit: "https://reddit.com/u/",
+  youtube: "https://youtube.com/",
+  paypal: "https://paypal.me/",
 };
 
 export async function deployProfile(userData: FormData) {

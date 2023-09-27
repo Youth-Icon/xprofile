@@ -36,9 +36,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import ScrollContainer from "react-indiana-drag-scroll";
-import { BsInstagram } from "react-icons/bs";
+import { BsInstagram, BsFillPlayFill } from "react-icons/bs";
 import { GrLinkedinOption } from "react-icons/gr";
-import { FaRedditAlien } from "react-icons/fa";
+import { FaRedditAlien, FaPaypal } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 import { deployProfile } from "@/backend/deployProfile";
@@ -95,6 +95,14 @@ const AddProfileForm = () => {
       {
         link: "",
         type: "reddit",
+      },
+      {
+        link: "",
+        type: "youtube",
+      },
+      {
+        link: "",
+        type: "paypal",
       },
     ],
     location: "",
@@ -196,11 +204,11 @@ const AddProfileForm = () => {
   // ----------------------ACTUAL RETURN----------------------
   return (
     <div className="flex flex-col lg:flex-row gap-5 lg:gap-0 w-full">
-      <section className="lg:flex-1 flex items-center justify-center">
+      <section className="lg:flex-1 flex items-center justify-center relative">
         {/* Step 1 */}
         <Card
-          className="w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600"
-          style={{ display: formStep === 1 ? "block" : "none" }}
+          className="absolute w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
+          style={{ transform: formStep === 1 ? "scale(1)" : "scale(0)" }}
         >
           <CardHeader>
             <CardTitle>Add your profile!</CardTitle>
@@ -325,8 +333,8 @@ const AddProfileForm = () => {
 
         {/* Step 2 */}
         <Card
-          className="w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600"
-          style={{ display: formStep === 2 ? "block" : "none" }}
+          className="absolute w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
+          style={{ transform: formStep === 2 ? "scale(1)" : "scale(0)" }}
         >
           <CardHeader>
             <CardTitle>Almost There!</CardTitle>
@@ -388,6 +396,38 @@ const AddProfileForm = () => {
                     value={data.socials[2].link || ""}
                   />
                 </div>
+                <div className="flex flex-row space-x-1.5">
+                  <span className="p-1 bg-gradient-to-br bg-orange-600 rounded-lg flex items-center justify-center aspect-square">
+                    <BsFillPlayFill size={30} className="text-white" />
+                  </span>
+                  <Input
+                    className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
+                    id="youtube"
+                    placeholder="Youtube account"
+                    onChange={(e) => {
+                      const updatedSocials = [...data.socials];
+                      updatedSocials[3].link = e.target.value;
+                      setData({ ...data, socials: updatedSocials });
+                    }}
+                    value={data.socials[3].link || ""}
+                  />
+                </div>
+                <div className="flex flex-row space-x-1.5">
+                  <span className="p-1 bg-gradient-to-br bg-blue-600 rounded-lg flex items-center justify-center">
+                    <FaPaypal size={30} className="text-white" />
+                  </span>
+                  <Input
+                    className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
+                    id="paypal"
+                    placeholder="Paypal account"
+                    onChange={(e) => {
+                      const updatedSocials = [...data.socials];
+                      updatedSocials[4].link = e.target.value;
+                      setData({ ...data, socials: updatedSocials });
+                    }}
+                    value={data.socials[4].link || ""}
+                  />
+                </div>
               </div>
             </form>
           </CardContent>
@@ -408,8 +448,10 @@ const AddProfileForm = () => {
 
         {/* Step 3 */}
         <Card
-          className="w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600"
-          style={{ display: formStep === 3 ? "block" : "none" }}
+          className="absolute w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
+          style={{
+            transform: formStep === 3 ? "scale(1)" : "scale(0)",
+          }}
         >
           <CardHeader>
             <CardTitle>Finally!</CardTitle>
@@ -450,12 +492,12 @@ const AddProfileForm = () => {
 
       {/* ----------------------PREVIEW---------------------- */}
 
-      <section className="lg:flex-1 flex items-center justify-center">
+      <section className="relative lg:flex-1 flex items-center justify-center">
         {/* Step 1 */}
         <div
-          className="w-[350px] shadow h-auto overflow-hidden border border-gray-700 hover:border-gray-600 rounded-xl"
+          className="absolute w-[350px] shadow h-auto overflow-hidden border border-gray-700 hover:border-gray-600 rounded-xl transition-all duration-500"
           style={{
-            display: formStep === 1 ? "block" : "none",
+            transform: formStep === 1 ? "scale(1)" : "scale(0)",
           }}
         >
           <div className="bg-white dark:bg-[#080808] rounded-lg shadow-lg">
@@ -532,9 +574,9 @@ const AddProfileForm = () => {
         {/* Step 2 */}
 
         <div
-          className="w-[70%] bg-zinc-950"
+          className="absolute w-[70%] bg-zinc-950 transition-all duration-500"
           style={{
-            display: formStep === 2 ? "block" : "none",
+            transform: formStep === 2 ? "scale(1)" : "scale(0)",
           }}
         >
           links
