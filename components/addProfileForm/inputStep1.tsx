@@ -33,7 +33,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
-
+import { PickerExample } from "../ColorPicker";
 import { useState } from "react";
 
 interface InputStep1Props {
@@ -55,44 +55,15 @@ interface InputStep1Props {
   }) => void;
   formStep: number;
   setFormStep: (step: number) => void;
+  predefinedTags: any;
 }
-
-const predefinedTags = [
-  {
-    value: "coder",
-    label: "🖥️Coder",
-  },
-  {
-    value: "gamer",
-    label: "🎮Gamer",
-  },
-  {
-    value: "designer",
-    label: "🎨Designer",
-  },
-  {
-    value: "photographer",
-    label: "📷Photographer",
-  },
-  {
-    value: "musician",
-    label: "🎵Musician",
-  },
-  {
-    value: "pirate",
-    label: "🏴‍☠️Pirate",
-  },
-  {
-    value: "waffle",
-    label: "🧇Waffle",
-  },
-];
 
 const InputStep1 = ({
   data,
   setData,
   formStep,
   setFormStep,
+  predefinedTags,
 }: InputStep1Props) => {
   const [inputTag, setInputTag] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
@@ -123,7 +94,7 @@ const InputStep1 = ({
             <CommandInput placeholder="Search tag..." />
             <CommandEmpty>No tag found.</CommandEmpty>
             <CommandGroup className="bg-slate-200 dark:bg-zinc-950 text-zinc-900 dark:text-slate-100">
-              {predefinedTags.map((tag) => (
+              {predefinedTags.map((tag: any) => (
                 <CommandItem
                   key={tag.value}
                   onSelect={(currentValue) => {
@@ -216,7 +187,7 @@ const InputStep1 = ({
                 ))}
               </div>
             </div>
-            <div className="flex flex-col space-y-1.5">
+            {/* <div className="flex flex-col space-y-1.5">
               <Label htmlFor="color">Banner Color</Label>
               <Input
                 className="bg-slate-200 dark:bg-zinc-950"
@@ -224,7 +195,12 @@ const InputStep1 = ({
                 placeholder="Color in hex (e.g. #00FFFF)"
                 onChange={(e) => setData({ ...data, color: e.target.value })}
               />
+            </div> */}
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="color">Banner Color</Label>
+              <PickerExample data={data} setData={setData} />
             </div>
+
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="description">Description</Label>
               <Input

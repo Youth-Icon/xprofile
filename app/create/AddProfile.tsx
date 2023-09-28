@@ -113,6 +113,7 @@ const AddProfile = () => {
           setData={setData}
           formStep={formStep}
           setFormStep={setFormStep}
+          predefinedTags={predefinedTags}
         />
 
         {/* Step 2 */}
