@@ -5,9 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { ModeToggle } from "@/components/toggle-btn";
-import { Menu } from "lucide-react";
+import { Menu, GitForkIcon, StarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import { Separator } from "@/components/ui/separator"
+
 import {
   Sheet,
   SheetContent,
@@ -38,7 +40,7 @@ export const Nav = () => {
       <div className="flex h-16 items-center justify-between grid-cols-2">
         <div className="md:flex md:items-center md:gap-12 col-span-1">
           <div
-            className="flex flex-row hover:cursor-pointer"
+            className="flex flex-row hover:cursor-pointer mx-2"
             onClick={() => router.replace("/")}
           >
             <span className="sr-only">Home</span>
@@ -53,29 +55,33 @@ export const Nav = () => {
         </div>
 
         <div className="hidden sm:flex sm:gap-2 col-span-1">
-          {/* <div className="flex flex-col justify-center items-center">
-            <div className="flex flex-row">
-              
+          <div className="flex flex-col items-center mr-1">
+            <div className="flex flex-row justify-center items-center">
+              <GitForkIcon size={14} />
+              <span className="ml-1 text-sm">{forksAndStars[0]}</span>
             </div>
-          </div> */}
+            <Separator />
+            <div className="flex flex-row justify-center items-center">
+              <StarIcon size={15} color="#fbff00" fill="#fbff00" />
+              <span className="ml-1 text-sm">{forksAndStars[1]}</span>
+            </div>
+          </div>
           <ModeToggle />
           <Button
             variant={"outline"}
             className={cn("border hover:bg-zinc-200 border-zinc-400")}
             size={"icon"}
           >
-            <Link href={"https://discord.gg/vUHMxPvege"}><FaDiscord size={24}/></Link>
+            <Link href={"https://discord.gg/vUHMxPvege"}><FaDiscord size={24} /></Link>
           </Button>
           <Link
             href="https://github.com/hellofaizan/xprofile"
             target="_blank"
             rel="noopener noreferrer"
-            title="Add your 𝕏 (Twitter) Profile to this list :)"
-          >
+            title="Add your 𝕏 (Twitter) Profile to this list :)" >
             <Button
               className={cn("border hover:bg-zinc-200 border-zinc-400")}
-              variant={"outline"}
-            >
+              variant={"outline"} >
               Contribute ⭐
             </Button>
           </Link>
