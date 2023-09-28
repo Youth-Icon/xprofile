@@ -25,12 +25,20 @@ const PreviewStep3 = ({ data, formStep }: PreviewStep3Props) => {
             className="my-2 py-5 px-3 bg-slate-200 dark:bg-zinc-950 hover:scale-105 hover:my-3 cursor-pointer"
           >
             <Link
-              href={`https://${link}`}
+              href={
+                link.includes("https://" || "http://")
+                  ? link
+                  : `https://${link}`
+              }
               target="_blank"
               className="flex items-center flex-row justify-between space-x-2 font-mono italic"
             >
               <Image
-                src={`https://s2.googleusercontent.com/s2/favicons?domain=https://${link}`}
+                src={
+                  link.includes("https://" || "http://")
+                    ? `https://s2.googleusercontent.com/s2/favicons?domain=${link}`
+                    : `https://s2.googleusercontent.com/s2/favicons?domain=https://${link}`
+                }
                 alt=""
                 width={20}
                 height={20}
