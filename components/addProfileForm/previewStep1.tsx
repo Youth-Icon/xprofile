@@ -19,7 +19,7 @@ interface PreviewStep1Props {
 const PreviewStep1 = ({ data, formStep }: PreviewStep1Props) => {
   return (
     <div
-      className="w-[350px] shadow h-auto overflow-none border border-gray-700 hover:border-gray-600 rounded-xl transition-all duration-500"
+      className="w-[350px] shadow h-auto overflow-hidden border border-gray-700 hover:border-gray-600 rounded-xl transition-all duration-500"
       style={{
         display: formStep === 1 ? "block" : "none",
       }}
