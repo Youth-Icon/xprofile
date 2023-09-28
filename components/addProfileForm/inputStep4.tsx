@@ -18,6 +18,8 @@ interface InputStep4Props {
   formStep: number;
   setFormStep: (step: number) => void;
   handleDeploy: () => void;
+  loading: boolean;
+  error: boolean;
 }
 
 const InputStep4 = ({
@@ -26,6 +28,8 @@ const InputStep4 = ({
   formStep,
   setFormStep,
   handleDeploy,
+  loading,
+  error,
 }: InputStep4Props) => {
   return (
     <Card
@@ -63,9 +67,18 @@ const InputStep4 = ({
         >
           Back
         </Button>
-        <Button onClick={handleDeploy} className="active:scale-90">
-          Deploy
+        <Button
+          onClick={handleDeploy}
+          disabled={loading ? true : false}
+          className={`active:scale-90 ${loading && `cursor-not-allowed`}`}
+        >
+          {loading ? "Deploying..." : "Deploy"}
         </Button>
+        {error && (
+          <p className="text-red-500 dark:text-red-400">
+            Something went wrong. Please try again.
+          </p>
+        )}
       </CardFooter>
     </Card>
   );
