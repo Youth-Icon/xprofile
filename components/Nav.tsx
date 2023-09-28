@@ -5,8 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { ModeToggle } from "@/components/toggle-btn";
-import { Github, Menu, Twitter } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import {
@@ -18,6 +17,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useRouter } from "next/navigation";
+import { FaDiscord } from "react-icons/fa";
 
 export const Nav = () => {
   const { theme, setTheme } = useTheme();
@@ -53,69 +53,18 @@ export const Nav = () => {
         </div>
 
         <div className="hidden sm:flex sm:gap-2 col-span-1">
-          <Button
-            className={cn("border hover:bg-zinc-200 border-zinc-400")}
-            variant={"outline"}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 icon icon-tabler icon-tabler-git-fork"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M12 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-              <path d="M7 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-              <path d="M17 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-              <path d="M7 8v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2 -2v-2"></path>
-              <path d="M12 12l0 4"></path>
-            </svg>{" "}
-            {forksAndStars[0] || 0}
-          </Button>
-          <Button
-            className={cn("border hover:bg-zinc-200 border-zinc-400")}
-            variant={"outline"}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 icon icon-tabler icon-tabler-star"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
-            </svg>{" "}
-            {forksAndStars[1] || 0}
-          </Button>
+          {/* <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-row">
+              
+            </div>
+          </div> */}
           <ModeToggle />
           <Button
-            className={cn("border hover:bg-zinc-200 border-zinc-400")}
             variant={"outline"}
+            className={cn("border hover:bg-zinc-200 border-zinc-400")}
             size={"icon"}
           >
-            <Twitter />
-          </Button>
-          <Button
-            className={cn("border hover:bg-zinc-200 border-zinc-400")}
-            variant={"outline"}
-            size={"icon"}
-          >
-            <Github />
-          </Button>
-          <Button
-            variant={"outline"}
-            className={cn("border hover:bg-zinc-200 border-zinc-400")}
-            size={"default"}
-          >
-            <Link href={"https://discord.gg/vUHMxPvege"}>Join Discord</Link>
+            <Link href={"https://discord.gg/vUHMxPvege"}><FaDiscord size={24}/></Link>
           </Button>
           <Link
             href="https://github.com/hellofaizan/xprofile"
