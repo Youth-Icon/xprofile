@@ -45,7 +45,7 @@ export async function deployProfile(userData: FormData) {
     github_stars: githubstars,
     github_username: userData.get("github"),
     image: `https://avatars.githubusercontent.com/${userData.get("github")}`,
-    links: ["dummy links"],
+    links: userData.getAll("links"),
     location: userData.get("location"),
     name: userData.get("username"),
     // tags: userData.getAll("tags"),
