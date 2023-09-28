@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { deployProfile } from "@/backend/deployProfile";
+import { useRouter } from "next/navigation";
 import InputStep1 from "@/components/addProfileForm/inputStep1";
 import InputStep2 from "@/components/addProfileForm/inputStep2";
 import InputStep3 from "@/components/addProfileForm/inputStep3";
@@ -76,8 +77,13 @@ const AddProfile = () => {
   });
   const [formStep, setFormStep] = useState<number>(1);
   const [linkCount, setLinkCount] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+
+  const router = useRouter();
 
   const handleDeploy = async () => {
+    setLoading(true);
     const formData = new FormData();
 
     formData.append("username", data.username);
@@ -98,9 +104,11 @@ const AddProfile = () => {
     try {
       // console.log(JSON.parse(formData.get("socials") as string));
       await deployProfile(formData);
-      // router.replace("/explore");
+      router.replace("/explore");
     } catch (error) {
-      console.log(error);
+      setError(true);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -141,6 +149,8 @@ const AddProfile = () => {
           formStep={formStep}
           setFormStep={setFormStep}
           handleDeploy={handleDeploy}
+          loading={loading}
+          error={error}
         />
       </section>
       {/* ----------------------END OF FORM---------------------- */}
