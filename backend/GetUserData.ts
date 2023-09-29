@@ -12,7 +12,7 @@ export async function GetUserData({ user }: userData) {
 
   const querySnapshot = await getDocs(collection(db, "profiles"));
   const profiles = querySnapshot.docs.map((doc) => doc.data());
-  const profile = profiles.find((profile) => profile.twitter === user);
+  const profile = profiles.find((profile) => profile.slug === user);
 
   console.log("profile", profile);
   return profile;
