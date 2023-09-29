@@ -33,6 +33,7 @@
     "next": "13.4.19",
     "next-themes": "^0.2.1",
     "postcss": "8.4.29",
+    "radix-ui": "^1.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",

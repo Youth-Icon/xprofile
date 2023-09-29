@@ -2,12 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { signInWithGoogle } from "../../backend/firebase";
-import { userAuth } from "../context/AuthContext";
+import { useUserAuth } from "../context/AuthContext";
 import { useEffect } from "react";
 import { redirect } from "next/navigation";
 
 export default function Page() {
-    const { user, loading } = userAuth();
+    const { user, loading } = useUserAuth();
     useEffect(() => {
         if (user) {
             redirect('/create')

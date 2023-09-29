@@ -1,7 +1,7 @@
 "use client"
 
 import { useContext, useState, createContext, useEffect } from "react";
-import { auth, signInWithGoogle, db, logout } from '../firebase'
+import { auth, signInWithGoogle, db, logout } from '@/backend/firebase'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -26,6 +26,6 @@ export const AuthContextProvider = ({ children }) => {
     )
 }
 
-export const userAuth = () => {
+export const useUserAuth = () => {
     return useContext(AuthContext);
 }

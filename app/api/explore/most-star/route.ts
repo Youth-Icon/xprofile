@@ -1,6 +1,6 @@
 
 import { NextResponse } from 'next/server'
-import {db} from '../../../../backend/firebase';
+import {db} from '@/backend/firebase';
 import { query,collection, orderBy,limit, getDocs } from 'firebase/firestore';
 
 export async function GET(request: Request) {

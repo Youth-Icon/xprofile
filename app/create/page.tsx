@@ -3,7 +3,7 @@
 import type { Metadata } from "next";
 import AddProfile from "./AddProfile";
 import {useEffect} from 'react';
-import { userAuth } from "../context/AuthContext";
+import { useUserAuth } from "../context/AuthContext";
 import { redirect } from "next/navigation";
 import { Loader } from "lucide-react";
 
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const {user,loading}=userAuth();  
+  const {user,loading}=useUserAuth();  
   useEffect(() => {
     console.log(user)
     if(!loading){
