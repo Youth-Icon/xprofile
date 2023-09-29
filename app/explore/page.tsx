@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Cardui from '@/components/Cardui'
 import React, { useEffect, useState } from 'react'
@@ -23,9 +23,10 @@ export default function Page() {
       setMostStar(data)
     }
     fetchMostStar();
-  }, [])
+  }, []);
 
   async function fetcher(page: number) {
+
     setLoadingData(true)
     console.log("in prof id",profiles[profiles.length - 1]?.id)
     const res = await fetch(`/api/explore/profiles?page=${page}&lastdocid=${profiles[profiles.length - 1]?.id}`);
@@ -42,7 +43,7 @@ export default function Page() {
 
   useEffect(() => {
     fetcher(page);
-  }, [page])
+  }, [page]);
 
   return (
     <React.StrictMode>
@@ -71,5 +72,5 @@ export default function Page() {
 
     </React.StrictMode>
   )
-}
 
+}

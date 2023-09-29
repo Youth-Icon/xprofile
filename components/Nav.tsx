@@ -24,15 +24,17 @@ export const Nav = () => {
   const [forksAndStars, setForksAndStars] = React.useState([0, 0]);
   useEffect(() => {
     async function fetchForksAndStars() {
-      const res = await fetch(`https://api.github.com/repos/hellofaizan/xprofile`);
+      const res = await fetch(
+        `https://api.github.com/repos/hellofaizan/xprofile`
+      );
       const { forks_count, stargazers_count } = await res.json();
-      setForksAndStars(prev => [forks_count, stargazers_count]);
+      setForksAndStars((prev) => [forks_count, stargazers_count]);
     }
     fetchForksAndStars();
   }, []);
   const router = useRouter();
   return (
-    <div className='bg-[rgba(255,255,255,0.5)] dark:bg-[#18181b82]  backdrop-blur-[5px] sm:px-6 lg:px-8 z-20 fixed top-0 w-full'>
+    <div className="bg-[rgba(255,255,255,0.5)] dark:bg-[#18181b82]  backdrop-blur-[5px] sm:px-6 lg:px-8 z-20 fixed top-0 w-full">
       <div className="flex h-16 items-center justify-between grid-cols-2">
         <div className="md:flex md:items-center md:gap-12 col-span-1">
           <div
@@ -64,33 +66,47 @@ export const Nav = () => {
             <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
           </svg> {forksAndStars[1] || 0}</Button>
           <ModeToggle />
-          <Button className={cn("border hover:bg-zinc-200 border-zinc-400")} variant={"outline"} size={"icon"}>
+          <Button
+            className={cn("border hover:bg-zinc-200 border-zinc-400")}
+            variant={"outline"}
+            size={"icon"}
+          >
             <Twitter />
           </Button>
-          <Button className={cn("border hover:bg-zinc-200 border-zinc-400")} variant={"outline"} size={"icon"}>
+          <Button
+            className={cn("border hover:bg-zinc-200 border-zinc-400")}
+            variant={"outline"}
+            size={"icon"}
+          >
             <Github />
           </Button>
-          <Button variant={"outline"} className={cn("border hover:bg-zinc-200 border-zinc-400")} size={"default"}>
+          <Button
+            variant={"outline"}
+            className={cn("border hover:bg-zinc-200 border-zinc-400")}
+            size={"default"}
+          >
             <Link href={"https://discord.gg/vUHMxPvege"}>Join Discord</Link>
           </Button>
           <Link
-
             href="https://github.com/hellofaizan/xprofile"
             target="_blank"
             rel="noopener noreferrer"
             title="Add your 𝕏 (Twitter) Profile to this list :)"
           >
-            <Button className={cn("border hover:bg-zinc-200 border-zinc-400")}  variant={"outline"}>
+            <Button
+              className={cn("border hover:bg-zinc-200 border-zinc-400")}
+              variant={"outline"}
+            >
               Contribute ⭐
             </Button>
           </Link>
         </div>
 
-        <div className="flex space-x-2 sm:hidden">
+        <div className="flex mx-2 space-x-2 sm:hidden">
           <ModeToggle />
 
           <Sheet>
-            <SheetTrigger>
+            <SheetTrigger asChild>
               <Button className="flex sm:hidden" variant={"link"} size={"icon"}>
                 <Menu />
               </Button>

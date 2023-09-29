@@ -1,7 +1,10 @@
+
 import { NextResponse } from 'next/server'
 import { db, auth } from '../../../firebase';
 import { query, collection, orderBy, doc, startAt, endAt, getDocs, getDoc, startAfter, limit } from "firebase/firestore";
-export async function GET(request: Request) {
+
+import { NextResponse } from "next/server";
+// import supabase from '../../../../backend/supabase';
 
     const size = 6;
     const url = new URL(request.url);
@@ -46,5 +49,4 @@ export async function GET(request: Request) {
         console.log(e);
         return NextResponse.json({ error: e })
     }
-
 }
