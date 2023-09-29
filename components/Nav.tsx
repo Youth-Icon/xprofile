@@ -5,10 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { ModeToggle } from "@/components/toggle-btn";
-import { Github, Menu, Twitter } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { Menu, GitForkIcon, StarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import { Separator } from "@/components/ui/separator"
+
 import {
   Sheet,
   SheetContent,
@@ -18,6 +19,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useRouter } from "next/navigation";
+import { FaDiscord } from "react-icons/fa";
 
 export const Nav = () => {
   const { theme, setTheme } = useTheme();
@@ -38,7 +40,7 @@ export const Nav = () => {
       <div className="flex h-16 items-center justify-between grid-cols-2">
         <div className="md:flex md:items-center md:gap-12 col-span-1">
           <div
-            className="flex flex-row hover:cursor-pointer"
+            className="flex flex-row hover:cursor-pointer mx-2"
             onClick={() => router.replace("/")}
           >
             <span className="sr-only">Home</span>
@@ -65,38 +67,23 @@ export const Nav = () => {
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
           </svg> {forksAndStars[1] || 0}</Button>
+
           <ModeToggle />
           <Button
-            className={cn("border hover:bg-zinc-200 border-zinc-400")}
             variant={"outline"}
+            className={cn("border hover:bg-zinc-200 border-zinc-400")}
             size={"icon"}
           >
-            <Twitter />
-          </Button>
-          <Button
-            className={cn("border hover:bg-zinc-200 border-zinc-400")}
-            variant={"outline"}
-            size={"icon"}
-          >
-            <Github />
-          </Button>
-          <Button
-            variant={"outline"}
-            className={cn("border hover:bg-zinc-200 border-zinc-400")}
-            size={"default"}
-          >
-            <Link href={"https://discord.gg/vUHMxPvege"}>Join Discord</Link>
+            <Link href={"https://discord.gg/vUHMxPvege"}><FaDiscord size={24} /></Link>
           </Button>
           <Link
             href="https://github.com/hellofaizan/xprofile"
             target="_blank"
             rel="noopener noreferrer"
-            title="Add your 𝕏 (Twitter) Profile to this list :)"
-          >
+            title="Add your 𝕏 (Twitter) Profile to this list :)" >
             <Button
               className={cn("border hover:bg-zinc-200 border-zinc-400")}
-              variant={"outline"}
-            >
+              variant={"outline"} >
               Contribute ⭐
             </Button>
           </Link>

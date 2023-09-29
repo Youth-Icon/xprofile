@@ -12,7 +12,7 @@ interface PreviewStep3Props {
 const PreviewStep3 = ({ data, formStep }: PreviewStep3Props) => {
   return (
     <div
-      className="flex flex-col items-center justify-center h-auto w-[70%]"
+      className="flex flex-col items-center justify-center h-auto sm:w-[70%] w-full mx-2"
       style={{
         display: formStep === 3 ? "block" : "none",
       }}
@@ -22,7 +22,7 @@ const PreviewStep3 = ({ data, formStep }: PreviewStep3Props) => {
         .map((link: string, index: number) => (
           <div
             key={index}
-            className="my-2 py-5 px-3 bg-slate-200 dark:bg-zinc-950 hover:scale-105 hover:my-3 cursor-pointer"
+            className="my-2 py-5 px-3 bg-slate-200 dark:bg-black/10 hover:scale-105 hover:my-3 cursor-pointer"
           >
             <Link
               href={
@@ -44,7 +44,7 @@ const PreviewStep3 = ({ data, formStep }: PreviewStep3Props) => {
                 height={20}
               />
 
-              <p>{link}</p>
+              <p className="overflow-hidden">{link}</p>
               <BiLinkExternal className="text-zinc-900 dark:text-slate-100" />
             </Link>
           </div>

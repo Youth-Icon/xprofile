@@ -31,7 +31,7 @@ const InputStep3 = ({
 }: InputStep3Props) => {
   return (
     <Card
-      className=" w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
+      className=" sm:w-[400px] w-full mx-2 bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
       style={{
         display: formStep === 3 ? "block" : "none",
       }}
