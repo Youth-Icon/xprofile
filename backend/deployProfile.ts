@@ -38,6 +38,10 @@ export async function deployProfile(userData: FormData) {
     }
   );
 
+  function convertToSlug(inputString: string) {
+    return inputString.toLowerCase().replace(/ /g, "-");
+  }
+
   await addDoc(collection(db, "profiles"), {
     about: userData.get("description"),
     banner_color: userData.get("color"),
@@ -52,6 +56,7 @@ export async function deployProfile(userData: FormData) {
     // socials: userData.get("socials"),
     socials: newSocial,
     twitter: userData.get("twitter"),
+    slug: convertToSlug(userData.get("username") as string),
   });
 
   // const { data, error } = await supabase.from("profiles").insert([

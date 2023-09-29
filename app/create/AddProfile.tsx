@@ -3,6 +3,10 @@
 import { useState } from "react";
 import { deployProfile } from "@/backend/deployProfile";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
+import { redirect } from "next/navigation";
+import { Loader } from "lucide-react";
 import InputStep1 from "@/components/addProfileForm/inputStep1";
 import InputStep2 from "@/components/addProfileForm/inputStep2";
 import InputStep3 from "@/components/addProfileForm/inputStep3";
@@ -77,8 +81,18 @@ const AddProfile = () => {
   });
   const [formStep, setFormStep] = useState<number>(1);
   const [linkCount, setLinkCount] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+
+  const { user, loading } = useAuth();
+  useEffect(() => {
+    console.log(user);
+    if (!loading) {
+      if (!user) {
+        redirect("/login");
+      }
+    }
+  }, [user, loading]);
 
   const router = useRouter();
 
@@ -112,7 +126,9 @@ const AddProfile = () => {
     }
   };
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : user ? (
     <div className="flex md:flex-row flex-col gap-5 md:gap-0 w-full min-h-screen pt-20">
       <section className="md:flex-1 flex items-center justify-center ">
         {/* Step 1 */}
@@ -149,7 +165,7 @@ const AddProfile = () => {
           formStep={formStep}
           setFormStep={setFormStep}
           handleDeploy={handleDeploy}
-          loading={loading}
+          loading={isLoading}
           error={error}
         />
       </section>
@@ -167,6 +183,8 @@ const AddProfile = () => {
         <PreviewStep3 data={data} formStep={formStep} />
       </section>
     </div>
+  ) : (
+    redirect("/login")
   );
 };
 
