@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import UserPage from "./UserPage";
+import { GetUserData } from "@/backend/GetUserData";
 
 type Params = {
   params: {
@@ -8,8 +9,9 @@ type Params = {
 };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const data = await GetUserData({ user: params.user });
   return {
-    title: `${params.user} | X Profile`,
+    title: `${data?.name} | X Profile`,
     description:
       "X Profile is an Open Source that allows you to showcase your profile in a unique way.",
   };
