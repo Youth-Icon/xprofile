@@ -1,11 +1,10 @@
 
 import { NextResponse } from 'next/server'
-import { db, auth } from '../../../firebase';
+import { db, auth } from '../../../../backend/firebase';
 import { query, collection, orderBy, doc, startAt, endAt, getDocs, getDoc, startAfter, limit } from "firebase/firestore";
 
-import { NextResponse } from "next/server";
 // import supabase from '../../../../backend/supabase';
-
+export async function GET(request: Request) {
     const size = 6;
     const url = new URL(request.url);
     const page = parseInt(url.searchParams.get('page') || "1");

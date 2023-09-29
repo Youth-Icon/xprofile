@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
-import { signInWithGoogle } from "../firebase";
+import { signInWithGoogle } from "../../backend/firebase";
 import { userAuth } from "../context/AuthContext";
 import { useEffect } from "react";
 import { redirect } from "next/navigation";
