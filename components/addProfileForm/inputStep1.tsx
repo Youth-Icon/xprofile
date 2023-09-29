@@ -35,6 +35,7 @@ import {
 import { useRouter } from "next/navigation";
 import { PickerExample } from "../ColorPicker";
 import { useState } from "react";
+import { FaGithub, FaTwitter } from "react-icons/fa";
 
 interface InputStep1Props {
   data: {
@@ -97,7 +98,7 @@ const InputStep1 = ({
               {predefinedTags.map((tag: any) => (
                 <CommandItem
                   key={tag.value}
-                  onSelect={(currentValue) => {
+                  onSelect={(currentValue: any) => {
                     setInputTag(currentValue === inputTag ? "" : currentValue);
                     setData({
                       ...data,
@@ -127,7 +128,7 @@ const InputStep1 = ({
 
   return (
     <Card
-      className="w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 fade-in-10 transition-all duration-500"
+      className="sm:w-[400px] w-full mx-2 bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 fade-in-10 transition-all duration-500"
       style={{
         display: formStep === 1 ? "block" : "none",
       }}
@@ -140,7 +141,7 @@ const InputStep1 = ({
         <form>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="username">Username</Label>
+              <Label htmlFor="username">Full Name</Label>
               <Input
                 className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
                 id="username"
@@ -148,21 +149,25 @@ const InputStep1 = ({
                 onChange={(e) => setData({ ...data, username: e.target.value })}
               />
             </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="github">Github</Label>
+            <div className="flex flex-row space-x-1 justify-center items-center">
+              <span className="px-2 h-[38px] bg-gradient-to-br bg-black rounded-lg flex items-center justify-center">
+                <FaGithub size={20} className="text-white" />
+              </span>
               <Input
-                className="bg-slate-200 dark:bg-zinc-950"
+                className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
                 id="github"
-                placeholder="Name of your github account"
+                placeholder="Github Username"
                 onChange={(e) => setData({ ...data, github: e.target.value })}
               />
             </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="twitter">Twitter</Label>
+            <div className="flex flex-row space-x-1 justify-center items-center">
+            <span className="px-2 h-[38px] bg-gradient-to-br bg-blue-500 rounded-lg flex items-center justify-center">
+                <FaTwitter size={20} className="text-white" />
+              </span>
               <Input
                 className="bg-slate-200 dark:bg-zinc-950"
                 id="twitter"
-                placeholder="Name of twitter account"
+                placeholder="Twitter Username"
                 onChange={(e) => setData({ ...data, twitter: e.target.value })}
               />
             </div>
@@ -180,7 +185,7 @@ const InputStep1 = ({
                       className="mr-1 text-red-500 rounded-full flex items-center justify-center"
                       onClick={() => removeTag(tag)}
                     >
-                      <X size={15} />
+                      <X size={18} />
                     </button>
                     <p className="text-sm">{tag}</p>
                   </Badge>
@@ -202,11 +207,11 @@ const InputStep1 = ({
             </div>
 
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="description">Description</Label>
+              <Label htmlFor="description">About</Label>
               <Input
                 className="bg-slate-200 dark:bg-zinc-950"
                 id="description"
-                placeholder="Account description"
+                placeholder="Tell something about yourself..."
                 onChange={(e) =>
                   setData({ ...data, description: e.target.value })
                 }

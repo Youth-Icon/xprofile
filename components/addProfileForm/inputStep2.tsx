@@ -37,7 +37,7 @@ const InputStep2 = ({
 }: InputStep2Props) => {
   return (
     <Card
-      className=" w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
+      className=" sm:w-[400px] w-full mx-2 bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
       style={{ display: formStep === 2 ? "block" : "none" }}
     >
       <CardHeader>
@@ -56,7 +56,7 @@ const InputStep2 = ({
               <Input
                 className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
                 id="instagram"
-                placeholder="Instagram account"
+                placeholder="Instagram handle"
                 onChange={(e) => {
                   const updatedSocials = [...data.socials];
                   updatedSocials[0].link = e.target.value;
@@ -101,13 +101,13 @@ const InputStep2 = ({
               />
             </div>
             <div className="flex flex-row space-x-1.5">
-              <span className="p-1 bg-gradient-to-br bg-orange-600 rounded-lg flex items-center justify-center aspect-square">
+              <span className="p-1 bg-gradient-to-br bg-red-600 rounded-lg flex items-center justify-center aspect-square">
                 <BsFillPlayFill size={30} className="text-white" />
               </span>
               <Input
                 className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
                 id="youtube"
-                placeholder="Youtube account"
+                placeholder="Youtube Channel"
                 onChange={(e) => {
                   const updatedSocials = [...data.socials];
                   updatedSocials[3].link = e.target.value;

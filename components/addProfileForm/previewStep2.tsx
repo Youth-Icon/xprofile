@@ -17,7 +17,7 @@ interface PreviewStep2Props {
 const PreviewStep2 = ({ data, formStep }: PreviewStep2Props) => {
   return (
     <div
-      className="flex flex-col items-center justify-center h-auto w-[70%]"
+      className="flex flex-col items-center mx-2 justify-center h-auto w-full sm:w-[70%]"
       style={{
         display: formStep === 2 ? "block" : "none",
       }}
@@ -27,7 +27,7 @@ const PreviewStep2 = ({ data, formStep }: PreviewStep2Props) => {
         .map((social: any, index: number) => (
           <div
             key={index}
-            className="my-2 py-5 px-3 bg-slate-200 dark:bg-zinc-950 hover:scale-105 hover:my-3 cursor-pointer"
+            className="my-2 py-5 px-3 bg-slate-200 dark:bg-black/10 hover:scale-105 hover:my-3 cursor-pointer"
           >
             {social.type === "instagram" && (
               <Link
@@ -88,7 +88,7 @@ const PreviewStep2 = ({ data, formStep }: PreviewStep2Props) => {
                 className="flex items-center flex-row justify-between space-x-2 font-mono italic"
               >
                 <div className="flex flex-row gap-2 items-center">
-                  <span className="p-1 bg-gradient-to-br bg-orange-600 rounded-lg flex items-center justify-center aspect-square">
+                  <span className="p-1 bg-gradient-to-br bg-red-600 rounded-lg flex items-center justify-center aspect-square">
                     <BsFillPlayFill size={30} className="text-white" />
                   </span>
                   <p>@{social.link}</p>
@@ -99,7 +99,7 @@ const PreviewStep2 = ({ data, formStep }: PreviewStep2Props) => {
             )}
             {social.type === "paypal" && (
               <Link
-                href={"https://paypal.com/" + social.link}
+                href={"https://paypal.com/paypalme/" + social.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center flex-row justify-between space-x-2 font-mono italic"

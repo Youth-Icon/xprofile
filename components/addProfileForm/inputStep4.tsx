@@ -33,7 +33,7 @@ const InputStep4 = ({
 }: InputStep4Props) => {
   return (
     <Card
-      className=" w-[400px] bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
+      className=" sm:w-[400px] w-full mx-2 bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
       style={{
         display: formStep === 4 ? "block" : "none",
       }}
@@ -48,11 +48,11 @@ const InputStep4 = ({
         <form>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="location">Country</Label>
+              <Label htmlFor="location">Your Location</Label>
               <Input
                 className="bg-slate-200 dark:bg-zinc-950"
                 id="location"
-                placeholder="Where you're from"
+                placeholder="State, Country"
                 onChange={(e) => setData({ ...data, location: e.target.value })}
               />
             </div>
