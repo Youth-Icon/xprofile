@@ -26,7 +26,6 @@ export const AuthContextProvider = ({ children }) => {
   );
 };
 
-export const userAuth = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+export const useAuth = () => {
   return useContext(AuthContext);
 };

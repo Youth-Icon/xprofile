@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import type { Metadata } from "next";
 import AddProfile from "./AddProfile";
-import {useEffect} from 'react';
-import { userAuth } from "../context/AuthContext";
+import { useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
 import { redirect } from "next/navigation";
 import { Loader } from "lucide-react";
 
@@ -14,15 +14,15 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const {user,loading}=userAuth();  
+  const { user, loading } = useAuth();
   useEffect(() => {
-    console.log(user)
-    if(!loading){
+    console.log(user);
+    if (!loading) {
       if (!user) {
-        redirect('/login')
+        redirect("/login");
       }
     }
-  }, [user, loading])
+  }, [user, loading]);
 
-  return loading ? <Loader/> : user? <AddProfile /> : redirect('/login');
+  return loading ? <Loader /> : user ? <AddProfile /> : redirect("/login");
 }
