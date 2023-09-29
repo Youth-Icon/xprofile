@@ -13,7 +13,7 @@ export const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                console.log('User is signed in', user);
+                console.log('User is signed in');
             } else {
                 console.log('No user is signed in');
             }

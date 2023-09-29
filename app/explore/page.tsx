@@ -27,7 +27,8 @@ export default function Page() {
 
   async function fetcher(page: number) {
     setLoadingData(true)
-    const res = await fetch(`/api/explore/profiles?page=${page}`);
+    console.log("in prof id",profiles[profiles.length - 1]?.id)
+    const res = await fetch(`/api/explore/profiles?page=${page}&lastdocid=${profiles[profiles.length - 1]?.id}`);
     const { data } = await res.json()
     if (data.length === 0) {
       setLoadingData(false)

@@ -15,15 +15,14 @@ export const metadata: Metadata = {
 
 export default function Page() {
   const {user,loading}=userAuth();  
-  // useEffect(() => {
-  //   console.log(user)
-  //   if(!loading){
-  //     if (!user) {
-  //       redirect('/login')
-  //     }
-  //   }
-  // }, [user, loading])
-
+  useEffect(() => {
+    console.log(user)
+    if(!loading){
+      if (!user) {
+        redirect('/login')
+      }
+    }
+  }, [user, loading])
 
   return loading ? <Loader/> : user? <AddProfile /> : redirect('/login');
 }
