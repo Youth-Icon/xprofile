@@ -32,6 +32,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Textarea } from "@/components/ui/textarea";
 import { useRouter } from "next/navigation";
 import { PickerExample } from "../ColorPicker";
 import { useState } from "react";
@@ -161,7 +162,7 @@ const InputStep1 = ({
               />
             </div>
             <div className="flex flex-row space-x-1 justify-center items-center">
-            <span className="px-2 h-[38px] bg-gradient-to-br bg-blue-500 rounded-lg flex items-center justify-center">
+              <span className="px-2 h-[38px] bg-gradient-to-br bg-blue-500 rounded-lg flex items-center justify-center">
                 <FaTwitter size={20} className="text-white" />
               </span>
               <Input
@@ -208,7 +209,7 @@ const InputStep1 = ({
 
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="description">About</Label>
-              <Input
+              <Textarea
                 className="bg-slate-200 dark:bg-zinc-950"
                 id="description"
                 placeholder="Tell something about yourself..."
@@ -216,6 +217,14 @@ const InputStep1 = ({
                   setData({ ...data, description: e.target.value })
                 }
               />
+              {/* <Input
+                className="bg-slate-200 dark:bg-zinc-950"
+                id="description"
+                placeholder="Tell something about yourself..."
+                onChange={(e) =>
+                  setData({ ...data, description: e.target.value })
+                }
+              /> */}
             </div>
           </div>
         </form>
