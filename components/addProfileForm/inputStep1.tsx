@@ -101,13 +101,15 @@ const InputStep1 = ({
                   key={tag.value}
                   onSelect={(currentValue: any) => {
                     setInputTag(currentValue === inputTag ? "" : currentValue);
-                    setData({
-                      ...data,
-                      tags: [
-                        ...data.tags,
-                        tag.label === inputTag ? "" : tag.label,
-                      ],
-                    });
+
+                    // Check if the tag is already in data.tags before adding it
+                    if (!data.tags.includes(tag.label)) {
+                      setData({
+                        ...data,
+                        tags: [...data.tags, tag.label],
+                      });
+                    }
+
                     setOpen(false);
                   }}
                 >
@@ -193,15 +195,6 @@ const InputStep1 = ({
                 ))}
               </div>
             </div>
-            {/* <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="color">Banner Color</Label>
-              <Input
-                className="bg-slate-200 dark:bg-zinc-950"
-                id="color"
-                placeholder="Color in hex (e.g. #00FFFF)"
-                onChange={(e) => setData({ ...data, color: e.target.value })}
-              />
-            </div> */}
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="color">Banner Color</Label>
               <PickerExample data={data} setData={setData} />
@@ -217,14 +210,6 @@ const InputStep1 = ({
                   setData({ ...data, description: e.target.value })
                 }
               />
-              {/* <Input
-                className="bg-slate-200 dark:bg-zinc-950"
-                id="description"
-                placeholder="Tell something about yourself..."
-                onChange={(e) =>
-                  setData({ ...data, description: e.target.value })
-                }
-              /> */}
             </div>
           </div>
         </form>
