@@ -69,6 +69,7 @@ const InputStep1 = ({
 }: InputStep1Props) => {
   const [inputTag, setInputTag] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const router = useRouter();
 
@@ -131,7 +132,7 @@ const InputStep1 = ({
 
   return (
     <Card
-      className="sm:w-[400px] w-full mx-2 bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 fade-in-10 transition-all duration-500"
+      className="sm:w-[400px] w-full h-fit mx-2 bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 fade-in-10 transition-all duration-500"
       style={{
         display: formStep === 1 ? "block" : "none",
       }}
@@ -149,8 +150,14 @@ const InputStep1 = ({
                 className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
                 id="username"
                 placeholder="Your name"
-                onChange={(e) => setData({ ...data, username: e.target.value })}
+                onChange={(e) => {
+                  setData({ ...data, username: e.target.value });
+                  setErrorMessage("");
+                }}
               />
+              {errorMessage && (
+                <p className="text-red-500 text-sm">{errorMessage}</p>
+              )}
             </div>
             <div className="flex flex-row space-x-1 justify-center items-center">
               <span className="px-2 h-[38px] bg-gradient-to-br bg-black rounded-lg flex items-center justify-center">
@@ -240,7 +247,11 @@ const InputStep1 = ({
         </Dialog>
         <Button
           type="button"
-          onClick={() => setFormStep(formStep + 1)}
+          onClick={
+            data.username === "Username" || data.username === ""
+              ? () => setErrorMessage("Please fill this form first!")
+              : () => setFormStep(formStep + 1)
+          }
           className="active:scale-90"
         >
           Next

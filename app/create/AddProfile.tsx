@@ -129,8 +129,8 @@ const AddProfile = () => {
   return loading ? (
     <Loader />
   ) : user ? (
-    <div className="flex md:flex-row flex-col gap-5 md:gap-0 w-full min-h-screen pt-20">
-      <section className="md:flex-1 flex items-center justify-center ">
+    <div className="flex md:flex-row flex-col gap-5 md:gap-0 w-full min-h-screen">
+      <section className="md:flex-1 flex justify-center items-center">
         {/* Step 1 */}
         <InputStep1
           data={data}
