@@ -37,7 +37,7 @@ const InputStep2 = ({
 }: InputStep2Props) => {
   return (
     <Card
-      className=" sm:w-[400px] w-full mx-2 bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
+      className="h-fit sm:w-[400px] w-full mx-2 bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
       style={{ display: formStep === 2 ? "block" : "none" }}
     >
       <CardHeader>
