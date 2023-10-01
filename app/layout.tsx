@@ -27,9 +27,7 @@ export default function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="dark">
             <main className="flex flex-col bg-slate-100 dark:bg-zinc-900">
               <Nav />
-              <div className="p-6 pt-20">
-                {children}
-              </div>
+              <div className="p-6">{children}</div>
             </main>
           </ThemeProvider>
         </AuthContextProvider>
