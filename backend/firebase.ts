@@ -6,7 +6,7 @@ import {
   signOut,
   signInWithPopup,
 } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_APIKEY,
@@ -28,7 +28,26 @@ const googleProvider = new GoogleAuthProvider();
 
 const signInWithGoogle = async () => {
   try {
-    await signInWithPopup(auth, googleProvider);
+    await signInWithPopup(auth, googleProvider).then(async (res) => {
+      const ref = doc(db, "profiles", res.user?.uid);
+      const docRef = await setDoc(ref, {
+        email: res.user?.email,
+        uid: res.user?.uid,
+        createdAt: serverTimestamp(),
+        about: "",
+        banner_color: "",
+        github_followers: "",
+        github_stars: "",
+        github_username: "",
+        image: "",
+        links: [],
+        location: "",
+        name: "",
+        socials: [{}],
+        twitter: "",
+        slug: "",
+      });
+    });
   } catch (err: any) {
     console.error(err);
     alert(err.message);
