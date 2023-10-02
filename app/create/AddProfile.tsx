@@ -123,7 +123,7 @@ const AddProfile = () => {
     try {
       // console.log(JSON.parse(formData.get("socials") as string));
       await deployProfile(formData);
-      // router.replace("/explore");
+      router.replace("/explore");
     } catch (error) {
       setError(true);
     } finally {
