@@ -18,6 +18,7 @@ interface ColorPickerProps {
     tags: string[];
     color: string;
     description: string;
+    location: string;
   };
   setData: (data: {
     username: string;
@@ -26,6 +27,7 @@ interface ColorPickerProps {
     tags: string[];
     color: string;
     description: string;
+    location: string;
   }) => void;
 }
 

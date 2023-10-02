@@ -46,6 +46,7 @@ interface InputStep1Props {
     tags: string[];
     color: string;
     description: string;
+    location: string;
   };
   setData: (data: {
     username: string;
@@ -54,6 +55,7 @@ interface InputStep1Props {
     tags: string[];
     color: string;
     description: string;
+    location: string;
   }) => void;
   formStep: number;
   setFormStep: (step: number) => void;
@@ -205,6 +207,16 @@ const InputStep1 = ({
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="color">Banner Color</Label>
               <PickerExample data={data} setData={setData} />
+            </div>
+
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="location">Your Location</Label>
+              <Input
+                className="bg-slate-200 dark:bg-zinc-950"
+                id="location"
+                placeholder="State, Country"
+                onChange={(e) => setData({ ...data, location: e.target.value })}
+              />
             </div>
 
             <div className="flex flex-col space-y-1.5">
