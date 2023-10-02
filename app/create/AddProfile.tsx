@@ -10,10 +10,13 @@ import { Loader } from "lucide-react";
 import InputStep1 from "@/components/addProfileForm/inputStep1";
 import InputStep2 from "@/components/addProfileForm/inputStep2";
 import InputStep3 from "@/components/addProfileForm/inputStep3";
-import InputStep4 from "@/components/addProfileForm/inputStep4";
 import PreviewStep1 from "@/components/addProfileForm/previewStep1";
 import PreviewStep2 from "@/components/addProfileForm/previewStep2";
 import PreviewStep3 from "@/components/addProfileForm/previewStep3";
+import { getAuth } from "firebase/auth";
+
+const auth = getAuth();
+const user = auth.currentUser;
 
 const predefinedTags = [
   {
@@ -78,6 +81,7 @@ const AddProfile = () => {
     ],
     links: [],
     location: "",
+    slug: "",
   });
   const [formStep, setFormStep] = useState<number>(1);
   const [linkCount, setLinkCount] = useState<number>(0);
@@ -114,11 +118,12 @@ const AddProfile = () => {
     data.links.forEach((link: string) => {
       formData.append("links", link);
     });
+    formData.append("uid", user?.uid);
 
     try {
       // console.log(JSON.parse(formData.get("socials") as string));
       await deployProfile(formData);
-      router.replace("/explore");
+      // router.replace("/explore");
     } catch (error) {
       setError(true);
     } finally {
@@ -156,14 +161,6 @@ const AddProfile = () => {
           setFormStep={setFormStep}
           linkCount={linkCount}
           setLinkCount={setLinkCount}
-        />
-
-        {/* Step 4 */}
-        <InputStep4
-          data={data}
-          setData={setData}
-          formStep={formStep}
-          setFormStep={setFormStep}
           handleDeploy={handleDeploy}
           loading={isLoading}
           error={error}
