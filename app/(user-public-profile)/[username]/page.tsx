@@ -19,10 +19,10 @@ const page = () => {
           className="text-slate-700 rounded-full bg-white border-8 border-white relative -translate-y-1/2"
         />
 
-        <div className="relative -translate-y-14 flex items-center flex-col">
+        <div className="relative -translate-y-14 flex items-center flex-col w-max max-w-full">
           <div className="flex flex-col items-center mx-auto">
             <h1 className="text-4xl font-semibold">
-              Amena Aren
+              Amena Rahul
               <MdVerified className="text-blue-600 inline ml-1 text-2xl" />
             </h1>
             <p className="text-gray-500 text-xl -mt-0.5">@ayesha.tech 👋</p>
@@ -30,7 +30,7 @@ const page = () => {
           </div>
 
           {/* tags */}
-          <div className="flex flex-wrap justify-center gap-2 text-sm">
+          <div className="flex flex-wrap justify-center gap-3 my-4 text-sm w-4/5 mx-auto">
             <TagChips tag="3D designer" />
             <TagChips tag="UI/UX" />
             <TagChips tag="No-code" />
@@ -38,7 +38,7 @@ const page = () => {
           </div>
 
           {/* social media icons */}
-          <div className="flex gap-4 my-8">
+          <div className="flex gap-4 my-4">
             <BsTwitter className="text-3xl" />
             <AiFillLinkedin className="text-3xl" />
             <AiFillGithub className="text-3xl" />
@@ -46,9 +46,11 @@ const page = () => {
           </div>
 
           {/* Attached Link */}
-          <div className="w-full">
+          <div className="w-full bg-slate-500 bg-opacity-5 py-2 rounded-md border border-slate-700">
             <LinkPlate />
+            <span className="block border-b border-slate-700" />
             <LinkPlate />
+            <span className="block border-b border-slate-700" />
             <LinkPlate />
           </div>
         </div>
