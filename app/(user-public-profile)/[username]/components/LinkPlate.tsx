@@ -1,9 +1,9 @@
-import { BsArrowRight, BsTwitter } from "react-icons/bs";
+import { BsArrowRight } from "react-icons/bs";
 import Image from "next/image";
 
 const LinkPlate = () => {
   return (
-    <div className="flex gap-4 bg-opacity-10 items-center cursor-pointer h-16 px-4 w-full md:w-[500px]">
+    <div className="flex gap-4 items-center cursor-pointer h-16 px-4 w-full md:w-[500px]">
       <div className="max-h-full h-full aspect-square overflow-hidden rounded-full">
         <Image
           src="/youtube.png"
