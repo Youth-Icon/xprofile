@@ -22,12 +22,12 @@ export default function RootLayout({
     <html lang="en">
       <meta property="og:image" content="/public/ogImage.jpeg" />
       <meta name="twitter:image" content="/public/ogImage.jpeg" />
-      <body>
+      <body className=" bg-gradient-to-r from-slate-100 via-[rgb(17,24,39)] to-slate-100 dark:from-black dark:via-[rgb(18,27,44)] dark:to-black">
         <AuthContextProvider>
           <ThemeProvider attribute="class" defaultTheme="dark">
-            <main className="flex flex-col bg-slate-100 dark:bg-zinc-900">
+            <main>
               <Nav />
-              <div className="p-6">{children}</div>
+              {children}
             </main>
           </ThemeProvider>
         </AuthContextProvider>
