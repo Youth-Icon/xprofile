@@ -15,8 +15,8 @@ const UserProfile = ({ userData }: any) => {
       <div className="w-full h-32 md:h-48 bg-purple-700"></div>
       <div className="border-white flex flex-col items-center px-3">
         <Image
-          src={userData?.image || "/images/placeholder.png"}
-          alt={userData?.name || "User Image"}
+          src={userData.image || "/images/placeholder.png"} // TODO: Add placeholder image
+          alt={userData.name || "User Image"}
           width={150}
           height={150}
           className="rounded-full relative border -translate-y-1/2"
@@ -25,14 +25,16 @@ const UserProfile = ({ userData }: any) => {
         <div className="relative -translate-y-14 flex items-center flex-col w-max max-w-full space-y-6">
           <div className="flex flex-col items-center mx-auto">
             <h1 className="text-4xl font-semibold">
-              {userData?.name}
+              {userData.name}
               <MdVerified className="text-blue-600 inline ml-1 text-2xl" />
             </h1>
-            <p className="text-gray-500 text-xl -mt-0.5">{userData?.slug} 👋</p>
-            <p className="text-lg mt-2">{userData?.about}</p>
+            <p className="text-gray-500 text-xl -mt-0.5">{userData.slug} 👋</p>
+            <p className="text-lg mt-2 text-center max-w-md">
+              {userData.about}
+            </p>
           </div>
           {/* tags */}
-          <div className="flex flex-wrap justify-center gap-3 text-sm w-4/5 mx-auto">
+          <div className="flex flex-wrap justify-center gap-3 text-sm mx-auto max-w-lg">
             <TagChips tag="3D designer" />
             <TagChips tag="UI/UX" />
             <TagChips tag="No-code" />
@@ -46,8 +48,8 @@ const UserProfile = ({ userData }: any) => {
             <AiOutlineGooglePlus className="text-3xl" />
           </div>
           {/* Attached Link */}
-          <div>
-            <div className="w-full bg-opacity-5 rounded-md border border-purple-300 dark:border-slate-700 backdrop-filter backdrop-blur-3xl bg-purple-700 overflow-hidden">
+          <div className="w-full mx-auto max-w-lg">
+            <div className="w-full mx-auto bg-opacity-5 rounded-md border border-purple-300 dark:border-slate-700 backdrop-filter backdrop-blur-3xl bg-purple-700 overflow-hidden">
               <LinkPlate />
               <span className="block border-b border-purple-300 dark:border-slate-700" />
               <LinkPlate />
