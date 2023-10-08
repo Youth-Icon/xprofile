@@ -1,19 +1,16 @@
 import { MdVerified } from "react-icons/md";
-import { BsTwitter } from "react-icons/bs";
-import {
-  AiFillGithub,
-  AiFillLinkedin,
-  AiOutlineGooglePlus,
-} from "react-icons/ai";
 import LinkPlate from "./components/LinkPlate";
 import TagChips from "./components/TagChips";
 import Image from "next/image";
+import SocialMediaLink from "./components/SocialMediaLink";
 
 const UserProfile = ({ userData }: any) => {
+  const tags = "JS Developer,UI/UX,Coding,Designer";
+
   return (
     <section className="dark:bg-gradient-to-r dark:from-black dark:via-slate-900 dark:to-black ">
       <div
-        style={{ backgroundColor: userData.bannerColor || "#7E22CE" }}
+        style={{ backgroundColor: userData.banner_color || "#7E22CE" }}
         className="w-full h-32 md:h-48"
       ></div>
       <div className="border-white flex flex-col items-center px-3">
@@ -31,25 +28,33 @@ const UserProfile = ({ userData }: any) => {
               {userData.name}
               <MdVerified className="text-blue-600 inline ml-1 text-2xl" />
             </h1>
-            <p className="text-gray-500 text-xl -mt-0.5">{userData.slug} 👋</p>
+
+            <p className="text-gray-500 text-xl -mt-0.5">@{userData.slug} 👋</p>
             <p className="text-lg mt-2 text-center max-w-md">
               {userData.about}
             </p>
           </div>
+
           {/* tags */}
           <div className="flex flex-wrap justify-center gap-3 text-sm mx-auto max-w-lg">
-            <TagChips tag="3D designer" />
-            <TagChips tag="UI/UX" />
-            <TagChips tag="No-code" />
-            <TagChips tag="Designer" />
+            {tags.split(",").map((tag, index) => (
+              <TagChips key={index} tag={tag} />
+            ))}
           </div>
+
           {/* social media icons */}
-          <div className="flex gap-4 ">
-            <BsTwitter className="text-3xl" />
-            <AiFillLinkedin className="text-3xl" />
-            <AiFillGithub className="text-3xl" />
-            <AiOutlineGooglePlus className="text-3xl" />
+          <div className="flex gap-4 flex-wrap justify-center">
+            {userData.socials.map(
+              (social: { type: string; link: string }, index: number) => (
+                <SocialMediaLink
+                  key={index}
+                  icon={social.type}
+                  link={social.link}
+                />
+              )
+            )}
           </div>
+
           {/* Attached Link */}
           <div className="w-full mx-auto max-w-lg">
             <div className="w-full mx-auto bg-opacity-5 rounded-md border border-purple-300 dark:border-slate-700 backdrop-filter backdrop-blur-3xl bg-purple-700 overflow-hidden">
@@ -58,6 +63,7 @@ const UserProfile = ({ userData }: any) => {
               <LinkPlate />
               <span className="block border-b border-purple-300 dark:border-slate-700" />
               <LinkPlate />
+              <span className="block border-b border-purple-300 dark:border-slate-700" />
             </div>
           </div>
           {/* Attached Link End  */}
