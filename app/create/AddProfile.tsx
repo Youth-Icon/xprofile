@@ -36,16 +36,16 @@ const predefinedTags = [
     label: "📷Photographer",
   },
   {
-    value: "musician",
-    label: "🎵Musician",
+    value: "athlete",
+    label: "🏅Athlete",
   },
   {
-    value: "pirate",
-    label: "🏴‍☠️Pirate",
+    value: "chess",
+    label: "♞Chess",
   },
   {
-    value: "waffle",
-    label: "🧇Waffle",
+    value: "human",
+    label: "👀Human",
   },
 ];
 
