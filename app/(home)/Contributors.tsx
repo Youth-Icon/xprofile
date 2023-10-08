@@ -7,7 +7,7 @@ export default function Contributors(){
             <h3 className="font-semibold text-3xl">Join thousands of inspiring developers</h3>
             <img src="/creators.svg" className="w-max mx-auto mt-10" alt="creators" />
             <div className="text-center mt-10">
-                <Link href={"http://localhost:3000/explore"}>
+                <Link href={"/explore"}>
                 <Button variant={'default'} className="text-lg">Explore the most Popular XProfiles
                     <svg className="mt-1 ml-2 font-bold" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
