@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Contributors(){
     return(
         <div className=" my-20 md:my-40 text-center">
-            <h3 className="font-semibold text-3xl ">Join thousands of inspiring creatives</h3>
+            <h3 className="font-semibold text-3xl">Join thousands of inspiring developers</h3>
             <img src="/creators.svg" className="w-max mx-auto mt-10" alt="creators" />
             <div className="text-center mt-10">
                 <Link href={"http://localhost:3000/explore"}>
