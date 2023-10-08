@@ -9,7 +9,7 @@ export default function PreviewCard(){
                 <span className="place-self-end self-end font-medium text-base md:text-xl">XProfile</span>
             </div>
             <div className="my-3 md:my-5 md:mx-8">
-                <img src={'/placeholder.png'} className="md:w-full mx-auto rounded-3xl" alt="Card" />
+                <img src={'/profilesexample.svg'} className="md:w-full mx-auto rounded-3xl" alt="Card" />
             </div>
         </div>
     )
