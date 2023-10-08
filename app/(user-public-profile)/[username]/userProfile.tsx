@@ -11,8 +11,11 @@ import Image from "next/image";
 
 const UserProfile = ({ userData }: any) => {
   return (
-    <section className="dark:bg-gradient-to-r dark:from-black dark:via-slate-900 dark:to-black  ">
-      <div className="w-full h-32 md:h-48 bg-purple-700"></div>
+    <section className="dark:bg-gradient-to-r dark:from-black dark:via-slate-900 dark:to-black ">
+      <div
+        style={{ backgroundColor: userData.bannerColor || "#7E22CE" }}
+        className="w-full h-32 md:h-48"
+      ></div>
       <div className="border-white flex flex-col items-center px-3">
         <Image
           src={userData.image || "/images/placeholder.png"} // TODO: Add placeholder image
