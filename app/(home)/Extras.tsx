@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-export default function Extras(){
+export default function Extras() {
     return (
         <div className="md:px-24 grid my-20 md:grid-cols-2 grid-flow-col md:grid-flow-row md:grid-rows-1 grid-rows-2">
             <div className="md:px-10">
@@ -8,9 +9,11 @@ export default function Extras(){
                     Create & Host Your One Page Portfolio Site in less than 5 minutes
                 </h2>
                 <p className="text-xl md:text-lg leading-8 my-6 md:my-10 text-[rgba(209,213,219,1)]">Craft your unique online presence effortlessly with our intuitive one-page portfolio builder. Showcase your skills, projects, and links in minutes.</p>
-                <Button variant={'outline'} >
-                    Create Your XLink
-                </Button>
+                <Link href={"#"}>
+                    <Button variant={'outline'} >
+                        Create Your XProfile
+                    </Button>
+                </Link>
             </div>
             <div className="relative mt-16 h-52">
                 <div className="absolute top-[50%] md:left-40 left-20 w-40 aspect-square border border-slate-500 rounded-3xl backdrop-blur-md bg-[rgba(35,45,60,0.2)]">

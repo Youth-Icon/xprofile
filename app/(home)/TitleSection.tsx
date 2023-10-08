@@ -11,13 +11,13 @@ export default function TitleSection() {
             <div className="flex gap-3 md:px-20 px-0  justify-center">
                 <div className="flex">
                     <div className="bg-[rgba(255,255,255,0.94)] md:text-base font-medium  md:pl-6 md:py-3 rounded-s-lg dark:text-slate-900">
-                        xlink.io/
+                        xprofile.me/
                     </div>
                     <input placeholder="yourusername" className="bg-[rgba(255,255,255,0.94)] outline-none font-medium md:pr-6 md:py-3 rounded-e-lg dark:text-slate-900" />
                 </div>
 
                 <Button variant={'outline'} className={cn("md:px-6 md:py-3  md:text-base w-max border-slate-600 rounded-full my-auto h-full font-thin")}>
-                    Claim Your XLink
+                    Claim Your XProfile
                 </Button>
             </div>
         </div>

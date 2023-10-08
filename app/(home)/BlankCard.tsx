@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function BlankCard(){
     return (
@@ -12,7 +13,9 @@ export default function BlankCard(){
                 <span className="place-self-end self-end font-medium text-sm  md:text-2xl">Link</span>
             </div>
             <div className="rounded-lg flex h-full text-center items-center pb-16 justify-center align-middle ">
-                <Button variant={'outline'}>Claim Your XLink</Button>
+                <Link href={"#"}>
+                <Button variant={'outline'}>Claim Your XProfile</Button>
+                </Link>
             </div>
         </div>
     )

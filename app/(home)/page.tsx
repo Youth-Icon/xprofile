@@ -5,7 +5,8 @@ import TitleSection from "./TitleSection";
 import ProfileCardsLists from "./ProfileCardsLists";
 import Footer from "./Footer";
 
-export default function LandingPage() {
+
+export default function Home() {
     return (
         <div className="p-1">
             <TitleSection />
