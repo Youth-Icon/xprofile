@@ -1,8 +1,8 @@
-import "./globals.css";
+import "../globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-import { AuthContextProvider } from "./context/AuthContext";
+import { Nav } from "@/components/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,16 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <meta property="og:image" content="/public/ogImage.jpeg" />
-      <meta name="twitter:image" content="/public/ogImage.jpeg" />
-      <body>
-        <AuthContextProvider>
-          <ThemeProvider attribute="class" defaultTheme="dark">
-            {children}
-          </ThemeProvider>
-        </AuthContextProvider>
-      </body>
-    </html>
+    <ThemeProvider attribute="class" defaultTheme="dark">
+      <main className="flex flex-col bg-slate-100 dark:bg-zinc-900">
+        <Nav />
+        <div className="p-6">{children}</div>
+      </main>
+    </ThemeProvider>
   );
 }

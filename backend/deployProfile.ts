@@ -1,6 +1,6 @@
 "use server";
 
-import { collection, addDoc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { db } from "./firebase";
 
 const socialPrefix = {
@@ -42,7 +42,12 @@ export async function deployProfile(userData: FormData) {
     return inputString.toLowerCase().replace(/ /g, "-");
   }
 
-  await addDoc(collection(db, "profiles"), {
+  // const docRef = doc(db, "profiles", `${userData.get("uid")}`);
+  // // const docRef = doc(db, "profiles", "GUeFBcIcQ0wzdgu4DzFy");
+  // const docSnap = await getDoc(docRef);
+  // console.log(docSnap.data());
+
+  await setDoc(doc(db, "profiles", `${userData.get("uid")}`), {
     about: userData.get("description"),
     banner_color: userData.get("color"),
     github_followers: githubfollowers,
@@ -52,35 +57,8 @@ export async function deployProfile(userData: FormData) {
     links: userData.getAll("links"),
     location: userData.get("location"),
     name: userData.get("username"),
-    // tags: userData.getAll("tags"),
-    // socials: userData.get("socials"),
     socials: newSocial,
     twitter: userData.get("twitter"),
     slug: convertToSlug(userData.get("username") as string),
   });
-
-  // const { data, error } = await supabase.from("profiles").insert([
-  //   {
-  //     xusername: userData.get("twitter"),
-  //     name: userData.get("username"),
-  //     location: userData.get("location"),
-  //     github: userData.get("github"),
-  //     banner_color: userData.get("color"),
-  //     about: userData.get("description"),
-  //     tags: userData.getAll("tags"),
-  //     socials: userData.getAll("socials"),
-  //     repos: ["dummy repos"],
-  //     links: ["dummy links"],
-  //     github_stars: githubstars,
-  //     github_followers: githubfollowers,
-  //   },
-  // ]);
-
-  // if (error) {
-  //   console.log(error);
-  // }
-
-  // if (data) {
-  //   console.log(data);
-  // }
 }

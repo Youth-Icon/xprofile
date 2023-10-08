@@ -16,7 +16,9 @@ export default function Page() {
 
   useEffect(() => {
     async function fetchMostStar() {
-      const res = await fetch(`/api/explore/most-star`);
+      const res = await fetch(`/api/explore/most-star`, {
+        next: { revalidate: 5000 },
+      });
       // console.log("in explore", user)
       const { data } = await res.json();
       // console.log(data)
@@ -31,7 +33,8 @@ export default function Page() {
     const res = await fetch(
       `/api/explore/profiles?page=${page}&lastdocid=${
         profiles[profiles.length - 1]?.id
-      }`
+      }`,
+      { next: { revalidate: 5000 } }
     );
     const { data } = await res.json();
     if (data.length === 0) {
@@ -50,8 +53,8 @@ export default function Page() {
   }, [page]);
 
   return (
-    <React.StrictMode>
-      <div className="w-[100%]">
+    <>
+      <div className="w-[100%] pt-20">
         <h1 className="text-4xl font-bold">Github Stars</h1>
         <p className="text-gray-500 my-2">Find and connect with people</p>
         <div className="flex scrollbar pb-4 overflow-x-scroll gap-4 my-7">
@@ -84,6 +87,6 @@ export default function Page() {
           )}
         </div>
       )}
-    </React.StrictMode>
+    </>
   );
 }

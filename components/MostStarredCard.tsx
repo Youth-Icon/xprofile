@@ -10,7 +10,7 @@ export default function MostStarredCard(props: any) {
     <div className="text-center w-[200px] flex-shrink-0 my-4 flex flex-col items-center p-4 rounded-lg dark:bg-zinc-800 bg-zinc-200 border-slate-600">
       <Image
         className="w-max items-center justify-center object-contain rounded-full border border-zinc-400"
-        src={props.avatar_url}
+        src={props.image}
         alt="profile pic"
         width={96}
         height={96}

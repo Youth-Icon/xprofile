@@ -33,7 +33,7 @@ const Cardui = (props: any) => {
 
             <div className="flex  space-x-2">
               <Image
-                src={props.avatar_url}
+                src={props.image}
                 alt={props.name}
                 width={95}
                 height={95}

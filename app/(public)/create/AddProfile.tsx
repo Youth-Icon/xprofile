@@ -4,16 +4,19 @@ import { useState } from "react";
 import { deployProfile } from "@/backend/deployProfile";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { redirect } from "next/navigation";
 import { Loader } from "lucide-react";
 import InputStep1 from "@/components/addProfileForm/inputStep1";
 import InputStep2 from "@/components/addProfileForm/inputStep2";
 import InputStep3 from "@/components/addProfileForm/inputStep3";
-import InputStep4 from "@/components/addProfileForm/inputStep4";
 import PreviewStep1 from "@/components/addProfileForm/previewStep1";
 import PreviewStep2 from "@/components/addProfileForm/previewStep2";
 import PreviewStep3 from "@/components/addProfileForm/previewStep3";
+import { getAuth } from "firebase/auth";
+
+const auth = getAuth();
+const user = auth.currentUser;
 
 const predefinedTags = [
   {
@@ -78,6 +81,7 @@ const AddProfile = () => {
     ],
     links: [],
     location: "",
+    slug: "",
   });
   const [formStep, setFormStep] = useState<number>(1);
   const [linkCount, setLinkCount] = useState<number>(0);
@@ -114,11 +118,12 @@ const AddProfile = () => {
     data.links.forEach((link: string) => {
       formData.append("links", link);
     });
+    formData.append("uid", user?.uid);
 
     try {
       // console.log(JSON.parse(formData.get("socials") as string));
       await deployProfile(formData);
-      router.replace("/explore");
+      // router.replace("/explore");
     } catch (error) {
       setError(true);
     } finally {
@@ -129,8 +134,8 @@ const AddProfile = () => {
   return loading ? (
     <Loader />
   ) : user ? (
-    <div className="flex md:flex-row flex-col gap-5 md:gap-0 w-full min-h-screen pt-20">
-      <section className="md:flex-1 flex items-center justify-center ">
+    <div className="flex md:flex-row flex-col gap-5 md:gap-0 w-full min-h-screen">
+      <section className="md:flex-1 flex justify-center items-center">
         {/* Step 1 */}
         <InputStep1
           data={data}
@@ -156,14 +161,6 @@ const AddProfile = () => {
           setFormStep={setFormStep}
           linkCount={linkCount}
           setLinkCount={setLinkCount}
-        />
-
-        {/* Step 4 */}
-        <InputStep4
-          data={data}
-          setData={setData}
-          formStep={formStep}
-          setFormStep={setFormStep}
           handleDeploy={handleDeploy}
           loading={isLoading}
           error={error}

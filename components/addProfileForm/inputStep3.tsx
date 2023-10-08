@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
 interface InputStep3Props {
   data: {
     links: string[];
@@ -19,6 +18,9 @@ interface InputStep3Props {
   setFormStep: (step: number) => void;
   linkCount: number;
   setLinkCount: (count: number) => void;
+  handleDeploy: () => void;
+  loading: boolean;
+  error: boolean;
 }
 
 const InputStep3 = ({
@@ -28,10 +30,13 @@ const InputStep3 = ({
   setFormStep,
   linkCount,
   setLinkCount,
+  handleDeploy,
+  loading,
+  error,
 }: InputStep3Props) => {
   return (
     <Card
-      className=" sm:w-[400px] w-full mx-2 bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
+      className="h-fit sm:w-[400px] w-full mx-2 bg-slate-100 dark:bg-zinc-900 border-gray-600 dark:border-gray-600 transition-all duration-500"
       style={{
         display: formStep === 3 ? "block" : "none",
       }}
@@ -74,12 +79,17 @@ const InputStep3 = ({
           Back
         </Button>
         <Button
-          type="button"
-          onClick={() => setFormStep(formStep + 1)}
-          className="active:scale-90"
+          onClick={handleDeploy}
+          disabled={loading ? true : false}
+          className={`active:scale-90 ${loading && `cursor-not-allowed`}`}
         >
-          Next
+          {loading ? "Deploying..." : "Deploy"}
         </Button>
+        {error && (
+          <p className="text-red-500 dark:text-red-400">
+            Something went wrong. Please try again.
+          </p>
+        )}
       </CardFooter>
     </Card>
   );
