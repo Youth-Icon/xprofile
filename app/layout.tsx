@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Nav } from "@/components/Nav";
+import { AuthContextProvider } from "./context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,13 +22,15 @@ export default function RootLayout({
     <html lang="en">
       <meta property="og:image" content="/public/ogImage.jpeg" />
       <meta name="twitter:image" content="/public/ogImage.jpeg" />
-      <body>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <main className="flex flex-col bg-slate-100 dark:bg-zinc-900">
-            <Nav />
-            {children}
-          </main>
-        </ThemeProvider>
+      <body className=" dark:bg-gradient-to-r dark:from-black dark:via-[rgb(18,27,44)] dark:to-black bg-gradient-to-b from-white to-[#DCDCDC]">
+        <AuthContextProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark">
+            <main>
+              <Nav />
+              {children}
+            </main>
+          </ThemeProvider>
+        </AuthContextProvider>
       </body>
     </html>
   );
