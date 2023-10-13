@@ -1,40 +1,41 @@
-import {
-  AiFillGithub,
-  AiFillInfoCircle,
-  AiFillLinkedin,
-  AiFillRedditCircle,
-  AiOutlineInstagram,
-} from "react-icons/ai";
-import { BsTwitter } from "react-icons/bs";
+import { AiFillInfoCircle } from "react-icons/ai";
+import { BsFillPlayFill, BsInstagram, BsTwitter } from "react-icons/bs";
+import { FaPaypal, FaRedditAlien } from "react-icons/fa";
+import { GrLinkedinOption } from "react-icons/gr";
 
-const icons = (icon: string) => {
-  const className = "text-4xl";
-
-  switch (icon) {
+const types = (type: string) => {
+  switch (type) {
     case "twitter":
-      return <BsTwitter className={className} />;
-    case "github":
-      return <AiFillGithub className={className} />;
+      return <BsTwitter size={30} />;
+    case "youtube":
+      return <BsFillPlayFill size={30} />;
     case "linkedin":
-      return <AiFillLinkedin className={className} />;
+      return <GrLinkedinOption size={30} />;
     case "reddit":
-      return <AiFillRedditCircle className={className} />;
+      return <FaRedditAlien size={30} />;
     case "instagram":
-      return <AiOutlineInstagram className={className} />;
+      return <BsInstagram size={30} />;
+    case "paypal":
+      return <FaPaypal size={30} />;
     default:
-      return <AiFillInfoCircle className={className} />;
+      return <AiFillInfoCircle size={30} />;
   }
 };
 
 type Props = {
-  icon: string;
+  type: string;
   link: string;
 };
 
-const SocialMediaLink = ({ icon, link }: Props) => {
+const SocialMediaLink = ({ type, link }: Props) => {
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer">
-      {icons(icon)}
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="p-1.5 border border-slate-700 bg-gradient-to-br bg-blue-600 rounded-lg flex items-center justify-center"
+    >
+      {types(type)}
     </a>
   );
 };
