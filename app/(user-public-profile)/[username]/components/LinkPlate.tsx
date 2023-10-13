@@ -22,14 +22,16 @@ const LinkPlate = ({ label, url }: Params) => {
         height={30}
         alt={label}
         onError={() => setImageUrl("/images/placeholder.png")} // TODO: Add placeholder image
-        className="rounded-full"
+        className="rounded-full min-w-[30px] min-h-[30px]"
       />
-      <div className="flex-1 py-3 flex items-center justify-between">
+      <div className="flex-1 py-3 flex items-center justify-between overflow-hidden">
         <div className="max-w-full overflow-hidden">
           <div className="font-semibold text-lg">{label}</div>
           <div className="text-sm text-gray-500">{url.slice(0, 50)}</div>
         </div>
-        <BsArrowRight size={24} />
+        <div className="absolute right-4">
+          <BsArrowRight size={24} />
+        </div>
       </div>
     </div>
   );
