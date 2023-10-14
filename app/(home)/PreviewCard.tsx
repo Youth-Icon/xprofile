@@ -1,6 +1,6 @@
 export default function PreviewCard(){
     return(
-        <div className="border px-3 mx-2 md:px-8 md:py-3 mt-24 md:m-10 border-[rgba(255,255,255,0.125)] rounded-3xl backdrop-blur-md dark:bg-[rgba(35,45,60,0.2)] bg-black/5">
+        <div className="max-w-screen-xl w-full border px-3 mx-2 md:px-8 md:py-3 mt-24 md:m-10 border-[rgba(255,255,255,0.125)] rounded-3xl backdrop-blur-md dark:bg-[rgba(35,45,60,0.2)] bg-black/5">
             <div className="flex gap-4 my-2 px-3 md:px-4">
                 <svg className="w-6 h-8 md:w-10 md:h-8" viewBox="0 0 55 53" fill="none" strokeWidth="2.75" xmlns="http://www.w3.org/2000/svg">
                     <rect x="1.35587" y="2.08487" width="52.0653" height="48.8112" stroke="currentColor" strokeWidth="2.71173" />

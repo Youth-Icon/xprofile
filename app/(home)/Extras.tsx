@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function FExtras() {
     return (
-        <div className="md:px-24 grid my-20 mx-2 md:grid-cols-2 grid-flow-col md:grid-flow-row md:grid-rows-1 grid-rows-2">
+        <div className="max-w-screen-xl w-full md:px-24 grid my-20 mx-2 md:grid-cols-2 grid-flow-col md:grid-flow-row md:grid-rows-1 grid-rows-2">
             <div className="md:px-10">
                 <h2 className="md:text-5xl my-6 md:my-10 text-3xl mt-14 font-semibold h-max mx-auto bg-gradient-to-br dark:from-slate-500 from-black dark:via-slate-200 dark:to-slate-500 to-black/50 bg-clip-text text-[rgba(0,0,0,0)]">
                     Create & Host Your One Page Portfolio Site in less than 5 minutes
