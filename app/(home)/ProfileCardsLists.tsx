@@ -3,7 +3,7 @@ import ProfilesExample from "./ProfilesExample";
 
 export default function ProfileCardsLists(){
     return(
-        <div className="flex flex-col gap-2 md:gap-4 overflow-hidden">
+        <div className="w-full flex flex-col gap-2 md:gap-4 overflow-hidden">
             <div className="flex w-[200%] gap-2 md:gap-3 flex-nowrap  -translate-x-20 ">
                 <ProfilesExample />
                 <ProfilesExample />
