@@ -19,7 +19,7 @@ export default function FExtras() {
                 </Link>
             </div>
             
-            <div className="relative w-full h-full md:mt-4 justify-self-end ">                    
+            <div className="relative w-full h-full max-w-lg md:mt-4 justify-self-center">                    
                 <div className="absolute top-[50%] left-[10%] md:left-auto md:right-[30%] w-40 aspect-square border border-slate-500 rounded-3xl backdrop-blur-md dark:bg-[rgba(35,45,60,0.2)] bg-black/0">
                     <h4 className="px-5 py-2 rounded-full left-[-30%] top-[55%] absolute inline text-slate-900 bg-slate-100 ">
                             xprofile.me/hellofaizan
