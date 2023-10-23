@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
 import { BiLinkExternal } from "react-icons/bi";
 
 type Params = {
@@ -10,9 +7,12 @@ type Params = {
 };
 
 const LinkPlate = ({ label, url }: Params) => {
-  const [imageUrl, setImageUrl] = useState<string>(
-    `https://www.google.com/s2/favicons?domain=${url}&sz=${30}`
-  );
+
+  // 
+  const trimUrl = (url: string): string => {
+    return url.replace(/(^\w+:|^)\/\//, "");
+  };
+
   return (
     <a
       href={url.startsWith("http") ? url : `https://${url}`}
@@ -21,11 +21,11 @@ const LinkPlate = ({ label, url }: Params) => {
       className="flex gap-4 items-center cursor-pointer h-16 px-4 w-full md:w-[500px]"
     >
       <Image
-        src={imageUrl}
-        width={30}
-        height={30}
+        src={`https://icon.horse/icon/${trimUrl(url)}`}
+        width={60}
+        height={60}
         alt={label}
-        onError={() => setImageUrl("/images/placeholder.png")} // TODO: Add placeholder image
+        // onError={() => setImageUrl("/images/placeholder.png")} // TODO: Add placeholder image
         className="rounded-full min-w-[20px] min-h-[20px]"
       />
       <div className="flex-1 py-3 flex items-center justify-between overflow-hidden">
