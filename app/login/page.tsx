@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { signInWithGoogle } from "@/backend/firebase";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
 import { redirect } from "next/navigation";
 
