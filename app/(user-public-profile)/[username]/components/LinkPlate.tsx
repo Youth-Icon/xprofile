@@ -1,8 +1,5 @@
-"use client";
-
-import { BsArrowRight } from "react-icons/bs";
 import Image from "next/image";
-import { useState } from "react";
+import { BiLinkExternal } from "react-icons/bi";
 
 type Params = {
   label: string;
@@ -10,28 +7,34 @@ type Params = {
 };
 
 const LinkPlate = ({ label, url }: Params) => {
-  const [imageUrl, setImageUrl] = useState(
-    `https://www.google.com/s2/favicons?domain=${url}&sz=${30}`
-  );
+  url = url.startsWith("http") ? url : `https://${url}`;
+
+  const hostname = new URL(url).hostname;
 
   return (
-    <div className="flex gap-4 items-center cursor-pointer h-16 px-4 w-full md:w-[500px]">
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex gap-4 items-center cursor-pointer h-16 px-4 w-full md:w-[500px]"
+    >
       <Image
-        src={imageUrl}
-        width={30}
-        height={30}
+        src={`https://icon.horse/icon/${hostname}`}
+        width={40}
+        height={40}
         alt={label}
-        onError={() => setImageUrl("/images/placeholder.png")} // TODO: Add placeholder image
-        className="rounded-full"
+        className="rounded-full min-w-[20px] min-h-[20px]"
       />
-      <div className="flex-1 py-3 flex items-center justify-between">
-        <div className="max-w-full overflow-hidden">
-          <div className="font-semibold text-lg">{label}</div>
-          <div className="text-sm text-gray-500">{url.slice(0, 50)}</div>
+      <div className="flex-1 py-3 flex items-center justify-between overflow-hidden">
+        <div className="max-w-full overflow-hidden mr-7">
+          <div className="font-semibold text-lg italic">{hostname}</div>
+          <div className="text-gray-500 text-sm min-w-max">{url}</div>
         </div>
-        <BsArrowRight size={24} />
+        <div className="absolute right-4">
+          <BiLinkExternal size={18} />
+        </div>
       </div>
-    </div>
+    </a>
   );
 };
 

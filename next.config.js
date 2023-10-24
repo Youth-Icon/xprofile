@@ -23,6 +23,12 @@ const nextConfig = {
         pathname: "**",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "icon.horse",
+        pathname: "**",
+        port: "",
+      },
     ],
   },
 };

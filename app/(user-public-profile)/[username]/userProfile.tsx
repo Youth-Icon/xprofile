@@ -8,23 +8,8 @@ import SocialMediaLink from "./components/SocialMediaLink";
 const UserProfile = ({ userData }: any) => {
   const tags = "JS Developer,UI/UX,Coding,Designer";
 
-  const links = [
-    {
-      label: "Youtube",
-      url: "https://www.youtube.com/channel/UCgkDs77BoEhMIgRUB4MKrtQ",
-    },
-    {
-      label: "Twitter",
-      url: "https://twitter.com/aman_rana0",
-    },
-    {
-      label: "Github",
-      url: "https://github.com/amanrajrana",
-    },
-  ];
-
   return (
-    <section className="dark:bg-gradient-to-r dark:from-black dark:via-slate-900 dark:to-black ">
+    <section className="dark:bg-gradient-to-r dark:from-black dark:via-slate-900 dark:to-black min-h-screen">
       <div
         style={{ backgroundColor: userData.banner_color || "#7E22CE" }}
         className="w-full h-32 md:h-48"
@@ -64,7 +49,7 @@ const UserProfile = ({ userData }: any) => {
               (social: { type: string; link: string }, index: number) => (
                 <SocialMediaLink
                   key={index}
-                  icon={social.type}
+                  type={social.type}
                   link={social.link}
                 />
               )
@@ -74,12 +59,21 @@ const UserProfile = ({ userData }: any) => {
           {/* Attached Link */}
           <div className="w-full mx-auto max-w-lg">
             <div className="w-full mx-auto bg-opacity-5 rounded-md border border-purple-300 dark:border-slate-700 backdrop-filter backdrop-blur-3xl bg-purple-700 overflow-hidden">
-              {links.map((link, index) => (
-                <React.Fragment key={index}>
-                  <LinkPlate label={link.label} url={link.url} />
-                  <span className="block border-b border-purple-300 dark:border-slate-700" />
-                </React.Fragment>
-              ))}
+              {userData.links.length === 0 ? (
+                <div className="px-4 py-6 text-center">
+                  <p className="font-light italic text-slate-200">
+                    🌟 Explore the beauty of simplicity. No links attached, just
+                    the essence of this profile.
+                  </p>
+                </div>
+              ) : (
+                userData.links.map((link: string, index: number) => (
+                  <React.Fragment key={index}>
+                    <LinkPlate label={link} url={link} />
+                    <span className="block border-b border-purple-300 dark:border-slate-700" />
+                  </React.Fragment>
+                ))
+              )}
             </div>
           </div>
           {/* Attached Link End  */}
