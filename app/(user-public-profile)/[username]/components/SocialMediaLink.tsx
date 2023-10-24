@@ -35,7 +35,7 @@ const SocialMediaLink = ({ type, link }: Props) => {
       rel="noopener noreferrer"
       className="p-1.5 border border-slate-700 bg-gradient-to-br bg-blue-600 rounded-lg flex items-center justify-center"
     >
-      {types(type)}
+      {types(type.toLocaleLowerCase())}
     </a>
   );
 };
