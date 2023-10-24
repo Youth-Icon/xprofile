@@ -36,16 +36,16 @@ const predefinedTags = [
     label: "📷Photographer",
   },
   {
-    value: "athlete",
-    label: "🏅Athlete",
+    value: "musician",
+    label: "🎵Musician",
   },
   {
-    value: "chess",
-    label: "♞Chess",
+    value: "pirate",
+    label: "🏴‍☠️Pirate",
   },
   {
-    value: "human",
-    label: "👀Human",
+    value: "waffle",
+    label: "🧇Waffle",
   },
 ];
 
@@ -123,7 +123,7 @@ const AddProfile = () => {
     try {
       // console.log(JSON.parse(formData.get("socials") as string));
       await deployProfile(formData);
-      router.replace("/explore");
+      // router.replace("/explore");
     } catch (error) {
       setError(true);
     } finally {
