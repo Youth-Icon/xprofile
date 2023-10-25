@@ -4,7 +4,7 @@ import { useState } from "react";
 import { deployProfile } from "@/backend/deployProfile";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "@/app/context/AuthContext";
 import { redirect } from "next/navigation";
 import { Loader } from "lucide-react";
 import InputStep1 from "@/components/addProfileForm/inputStep1";
