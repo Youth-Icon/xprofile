@@ -28,15 +28,16 @@ export async function deployProfile(userData: FormData) {
       return data.followers;
     });
 
-  const newSocial = JSON.parse(userData.get("socials") as string).map(
-    (social: { [x: string]: string; type: string }) => {
+  const socialMediaProfiles = JSON.parse(userData.get("socials") as string)
+    .filter((social: { link: string }) => social.link !== "")
+    .map((social: { link: string; type: string }) => {
       return {
         link:
           socialPrefix[social.type as keyof typeof socialPrefix] + social.link,
         type: social.type,
       };
-    }
-  );
+    });
+
 
   function convertToSlug(inputString: string) {
     return inputString.toLowerCase().replace(/ /g, "-");
@@ -57,7 +58,7 @@ export async function deployProfile(userData: FormData) {
     links: userData.getAll("links"),
     location: userData.get("location"),
     name: userData.get("username"),
-    socials: newSocial,
+    socials: socialMediaProfiles,
     twitter: userData.get("twitter"),
     slug: convertToSlug(userData.get("username") as string),
   });
