@@ -4,7 +4,7 @@ import { useState } from "react";
 import { deployProfile } from "@/backend/deployProfile";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "@/app/context/AuthContext";
 import { redirect } from "next/navigation";
 import { Loader } from "lucide-react";
 import InputStep1 from "@/components/addProfileForm/inputStep1";
@@ -123,7 +123,7 @@ const AddProfile = () => {
     try {
       // console.log(JSON.parse(formData.get("socials") as string));
       await deployProfile(formData);
-      router.replace("/explore");
+      // router.replace("/explore");
     } catch (error) {
       setError(true);
     } finally {
