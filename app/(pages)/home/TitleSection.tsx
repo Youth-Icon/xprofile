@@ -1,7 +1,70 @@
+"use client"
+import { GetUserData } from "@/backend/GetUserData";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
+function random(){
+    let result = '';
+    const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < Math.floor(Math.random() * 5)) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+}
+async function getUser(userName: string) {
 
+    try {
+      const data = await GetUserData({ user: userName });
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+async function related(username:string) {
+    const relatedNames: string[] = [];
+    for (let i = 0; i < 10; i++) {
+        const name = username + random();
+        if (!(await getUser(name)) && !relatedNames.includes(name)) {
+            relatedNames.push(name);
+        }
+    }
+    return relatedNames;
+}
 export default function TitleSection() {
+    const [errorMessage, setErrorMessage] = useState<string>("");
+    const [user, setUser] = useState<string>("")
+    const [choices, setchoices] = useState<Array<any>>([])
+    const [namescheck, setNamecheck] = useState<any>(false)
+
+    const Claim = async () => {
+        try {
+            if (await getUser(user)) {
+                setErrorMessage("This user exists. Please choose  another username")
+                setNamecheck(true)
+                const names = await related(user)
+                if(names.length >0){
+                    setchoices(names);
+                    setNamecheck(true)
+                }
+            }else if(user == ""){
+                setErrorMessage("Please enter a username")
+            }
+        } catch (error) {
+            setErrorMessage("An error has occured. Please try again later.")
+        }
+        
+    }
+    const mapChoices = () => {
+        if (choices.length > 0) {
+            return choices.map((item: any) => (
+                <p onClick={()=>{setUser(item); setchoices([])}} className="hover:underline">{item}</p>
+            ))
+        }
+        return null;
+    }
     return (
         <div className="flex flex-col items-center w-full mx-1 md:my-44">
             <div className="w-full px-1 mt-32 text-center">
@@ -14,12 +77,20 @@ export default function TitleSection() {
                     <div className="dark:bg-[rgba(255,255,255,0.94)] bg-black/5 md:text-base font-medium pl-4 border-none outline-none md:pr-0 md:pl-6 py-3 md:py-3 rounded-s-lg dark:text-slate-900">
                         xprofile.me/
                     </div>
-                    <input placeholder="username" className="dark:bg-[rgba(255,255,255,0.94)] bg-black/5 outline-none border-none font-medium md:pr-6 md:py-3 rounded-e-lg dark:text-slate-900 w-full" />
+                    <input value={user} onChange={(e)=>{setUser(e.target.value)}} placeholder="username" className="dark:bg-[rgba(255,255,255,0.94)] bg-black/5 outline-none border-none font-medium md:pr-6 md:py-3 rounded-e-lg dark:text-slate-900 w-full" />
                 </div>
 
-                <Button variant={'outline'} className={cn("px-6 md:px-6 md:py-3 w-full md:w-max py-4 md:text-base dark:border-slate-600 border-black/40 shadow-sm rounded-full my-auto h-full font-normal")}>
+                <Button onClick={Claim} variant={'outline'} className={cn("px-6 md:px-6 md:py-3 w-full md:w-max py-4 md:text-base dark:border-slate-600 border-black/40 shadow-sm rounded-full my-auto h-full font-normal")}>
                     Claim Your XProfile
                 </Button>
+            </div>
+            {errorMessage && (
+                <p className="text-red-500 text-sm">{errorMessage}</p>
+            )}
+            {namescheck ?(<p>Available related names:</p>):(<></>)}
+            <div className="grid gap-4 lg:grid-cols-3 sm:grid-cols-2 my-8 ml-5 mr-5 text-center">
+              {mapChoices()}
+
             </div>
         </div>
     )
