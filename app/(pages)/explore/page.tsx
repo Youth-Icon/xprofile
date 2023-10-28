@@ -54,10 +54,10 @@ export default function Page() {
 
   return (
     <>
-      <div className="w-[100%] pt-20">
+      <div className="w-[100%] pt-20 text-center">
         <h1 className="text-4xl font-bold">Github Stars</h1>
         <p className="text-gray-500 my-2">Find and connect with people</p>
-        <div className="flex scrollbar pb-4 overflow-x-scroll gap-4 my-7">
+        <div className="grid gap-4 lg:grid-cols-3 sm:grid-cols-2 my-8 ml-5 mr-5">
           {mostStar?.map((eachprof, key) => (
             <MostStarredCard key={key} {...eachprof} />
           ))}
@@ -66,7 +66,7 @@ export default function Page() {
       {profiles.length === 0 ? (
         <Loader />
       ) : (
-        <div className="mt-10">
+        <div className="mt-10 text-center ml-5 mr-5">
           <h1 className="text-4xl font-bold my-2">Explore</h1>
           <p className="text-gray-500 my-2">Find and connect with people</p>
           <div className="grid gap-4 lg:grid-cols-3 sm:grid-cols-2 my-8 ">
