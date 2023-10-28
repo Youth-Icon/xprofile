@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { validate } from "@/backend/validategithub";
 import {
   Card,
   CardContent,
@@ -72,17 +73,30 @@ const InputStep1 = ({
   const [inputTag, setInputTag] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
-
+  const [githuberror, setgithuberror] = useState<string>("");
+  const [twittererror, settwittererror] = useState<string>("");
   const router = useRouter();
-
   const removeTag = (tag: any) => {
     const nextTags = data.tags.filter((item: string) => item !== tag);
     setData({ ...data, tags: nextTags });
   };
+  const handleNext = async()=>{
+    if(data.username === ""){
+      setErrorMessage("Please enter your name.")
+    }else if(data.username === "Username"){
+      setErrorMessage("This is nat a valid Name")
+    }else if(data.github === ""){
+      setgithuberror("Please enter your github username")
+    }else if(!await validate(data.github)){
+      setgithuberror("Please enter a valid github username")
+    }else{
+      setFormStep(formStep + 1)
+    }
+  }
 
   const renderInput = () => {
     return (
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover open={open}>
         <PopoverTrigger asChild>
           <Button
             variant="link"
@@ -171,7 +185,12 @@ const InputStep1 = ({
                 placeholder="Github Username"
                 onChange={(e) => setData({ ...data, github: e.target.value })}
               />
+              
+              
             </div>
+            {githuberror && (
+                <p className="text-red-500 text-sm">{githuberror}</p>
+              )}
             <div className="flex flex-row space-x-1 justify-center items-center">
               <span className="px-2 h-[38px] bg-gradient-to-br bg-blue-500 rounded-lg flex items-center justify-center">
                 <FaTwitter size={20} className="text-white" />
@@ -183,6 +202,7 @@ const InputStep1 = ({
                 onChange={(e) => setData({ ...data, twitter: e.target.value })}
               />
             </div>
+            
             <div className="flex flex-col space-y-2">
               <Label htmlFor="tags">Tags</Label>
               <div className="flex flex-row gap-2 flex-wrap">
@@ -259,11 +279,7 @@ const InputStep1 = ({
         </Dialog>
         <Button
           type="button"
-          onClick={
-            data.username === "Username" || data.username === ""
-              ? () => setErrorMessage("Please fill this form first!")
-              : () => setFormStep(formStep + 1)
-          }
+          onClick={handleNext}
           className="active:scale-90"
         >
           Next

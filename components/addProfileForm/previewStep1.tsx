@@ -3,6 +3,7 @@ import Image from "next/image";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { Badge } from "@/components/ui/badge";
 import { Github } from "lucide-react";
+import { validate } from "@/backend/validategithub";
 
 interface PreviewStep1Props {
   data: {
@@ -32,13 +33,23 @@ const PreviewStep1 = ({ data, formStep }: PreviewStep1Props) => {
           ></div>
 
           <div className="flex space-x-2 mb-2">
-            <Image
+            {data.github === ""  ? (
+              <Image
+                src={"/undefined.png"}
+                alt="Profile Image"
+                width={100}
+                height={100}
+                className="object-cover rounded-full ml-2 md:ml-4 -mt-8 border-4 border-white dark:border-black text-white dark:text-gray-300"
+              />
+            ) : (
+              <Image
               src={"https://avatars.githubusercontent.com/" + data.github}
-              alt={data.github}
+              alt="Profile Image"
               width={100}
               height={100}
               className="object-cover rounded-full ml-2 md:ml-4 -mt-8 border-4 border-white dark:border-black text-white dark:text-gray-300"
             />
+            )}
             <div className="flex flex-col w-full">
               <div className="flex items-baseline gap-1">
                 <p className="font-bold text-lg md:text-xl">{data.username}</p>
@@ -71,6 +82,7 @@ const PreviewStep1 = ({ data, formStep }: PreviewStep1Props) => {
 
           {/* Follow on github and on twitter button 2 in column */}
           <div className="grid grid-cols-2 gap-2 md:gap-3 text-center justify-between mt-2 mb-4 mx-4 md:mx-5">
+          {data.github !== ""  ? (
             <Link
               href={"https://github.com/" + data.github}
               target="_blank"
@@ -78,15 +90,21 @@ const PreviewStep1 = ({ data, formStep }: PreviewStep1Props) => {
               className="flex flex-row items-center justify-center gap-2 col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 rounded focus:outline-none focus:ring"
             >
               Follow on <Github size={20} />
-            </Link>
-            <Link
-              href={"https://x.com/" + data.username}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 rounded focus:outline-none focus:ring"
-            >
-              Follow on 𝕏
-            </Link>
+            </Link>)
+            :(<></>)}
+            {data.twitter !== "" && data.twitter !== "tweethandle" ? (
+              <Link
+                href={"https://x.com/" + data.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 rounded focus:outline-none focus:ring"
+              >
+                Follow on 𝕏
+              </Link>
+            ) : (
+              <></>
+            )}
+            
           </div>
         </div>
       </div>
