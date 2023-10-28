@@ -58,13 +58,19 @@ export default function TitleSection() {
         
     }
     const mapChoices = () => {
-        if (choices.length > 0) {
-            return choices.map((item: any) => (
-                <p onClick={()=>{setUser(item); setchoices([])}} className="hover:underline">{item}</p>
-            ))
-        }
-        return null;
-    }
+          if (choices.length > 0) {
+            return choices.map((item: string, index: number) => (
+              <p
+                key={index} // Add a unique key
+                onClick={() => setUser(item)}
+                className="hover:underline"
+              >
+                {item}
+              </p>
+            ));
+          }
+          return null;
+        };
     return (
         <div className="flex flex-col items-center w-full mx-1 md:my-44">
             <div className="w-full px-1 mt-32 text-center">
