@@ -1,0 +1,122 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Necessary for Next auth
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? // @db.Text
+  access_token      String? // @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? // @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  username      String    @unique @default(cuid())
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  profile       Profile?  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId     String?
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Profile {
+  id              String     @id @default(cuid())
+  name            String
+  username        String     @unique
+  email           String     @unique
+  password        String?
+  premium         Boolean    @default(false)
+  profession      String?
+  about           String?
+  avatar          String?
+  github          String
+  bannerColor     String
+  showGithubGraph Boolean    @default(false)
+  collectMessages Boolean    @default(true)
+  Socials         Socials[]
+  Links           Links[]
+  Projects        Projects[]
+  Message         Message[]
+  createdAt       DateTime   @default(now())
+  User            User[]
+}
+
+model Socials {
+  id        Int     @id @default(autoincrement())
+  type      String
+  handle    String
+  clicks    Int     @default(0)
+  Profile   Profile @relation(fields: [profileId], references: [id])
+  profileId String
+}
+
+model Links {
+  id        Int     @id @default(autoincrement())
+  title     String
+  url       String
+  clicks    Int     @default(0)
+  Profile   Profile @relation(fields: [profileId], references: [id])
+  profileId String
+}
+
+model Projects {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  repoLink    String?
+  webUrl      String?
+  tags        String[]
+  language    String
+  upVote      Int      @default(0)
+  Profile     Profile  @relation(fields: [profileId], references: [id])
+  profileId   String
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  message   String
+  Profile   Profile  @relation(fields: [profileId], references: [id])
+  profileId String
+}

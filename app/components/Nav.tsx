@@ -4,11 +4,11 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { ModeToggle } from "@/components/toggle-btn";
+import { ModeToggle } from "@/app/components/toggle-btn";
 import { Menu, GitForkIcon, StarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/app/components/ui/separator"
 
 import {
   Sheet,
@@ -17,7 +17,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "@/app/components/ui/sheet";
 import { useRouter } from "next/navigation";
 import { FaDiscord } from "react-icons/fa";
 

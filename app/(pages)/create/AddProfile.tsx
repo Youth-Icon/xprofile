@@ -7,12 +7,12 @@ import { useEffect } from "react";
 import { useAuth } from "@/app/context/AuthContext";
 import { redirect } from "next/navigation";
 import { Loader } from "lucide-react";
-import InputStep1 from "@/components/addProfileForm/inputStep1";
-import InputStep2 from "@/components/addProfileForm/inputStep2";
-import InputStep3 from "@/components/addProfileForm/inputStep3";
-import PreviewStep1 from "@/components/addProfileForm/previewStep1";
-import PreviewStep2 from "@/components/addProfileForm/previewStep2";
-import PreviewStep3 from "@/components/addProfileForm/previewStep3";
+import InputStep1 from "@/app/components/addProfileForm/inputStep1";
+import InputStep2 from "@/app/components/addProfileForm/inputStep2";
+import InputStep3 from "@/app/components/addProfileForm/inputStep3";
+import PreviewStep1 from "@/app/components/addProfileForm/previewStep1";
+import PreviewStep2 from "@/app/components/addProfileForm/previewStep2";
+import PreviewStep3 from "@/app/components/addProfileForm/previewStep3";
 import { getAuth } from "firebase/auth";
 
 const auth = getAuth();

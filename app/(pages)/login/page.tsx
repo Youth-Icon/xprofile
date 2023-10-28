@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/components/ui/button";
 import { signInWithGoogle } from "@/backend/firebase";
 import { useAuth } from "@/app/context/AuthContext";
 import { useEffect } from "react";

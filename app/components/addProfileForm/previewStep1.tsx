@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import ScrollContainer from "react-indiana-drag-scroll";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/app/components/ui/badge";
 import { Github } from "lucide-react";
 
 interface PreviewStep1Props {
