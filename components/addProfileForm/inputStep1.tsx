@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { validate } from "@/backend/validategithub";
 import {
   Card,
   CardContent,
@@ -35,8 +36,9 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useRouter } from "next/navigation";
 import { PickerExample } from "../ColorPicker";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
+import { GetUserData } from "@/backend/GetUserData";
 
 interface InputStep1Props {
   data: {
@@ -61,7 +63,15 @@ interface InputStep1Props {
   setFormStep: (step: number) => void;
   predefinedTags: any;
 }
+async function getUser(userName: string) {
 
+  try {
+    const data = await GetUserData({ user: userName });
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
 const InputStep1 = ({
   data,
   setData,
@@ -72,17 +82,44 @@ const InputStep1 = ({
   const [inputTag, setInputTag] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
-
+  const [githuberror, setgithuberror] = useState<string>("");
+  const [slugerror, setSlugerror] = useState<string>("");
+  const [slugHolder, setSlugHolder] = useState<string>(localStorage.getItem("username_slug") || "");
   const router = useRouter();
-
   const removeTag = (tag: any) => {
     const nextTags = data.tags.filter((item: string) => item !== tag);
     setData({ ...data, tags: nextTags });
   };
+  const handleNext = async()=>{
+    setSlugerror("");
+    setErrorMessage("");
+    setgithuberror("")
+    if(slugHolder ==""){
+      setSlugerror("Please enter a slug.")
+    }
+    else if(/[A-Z]/.test(slugHolder)){
+      setSlugerror("Invalid slug. Only lower case letters are allowed");
+    }else if(/\s/.test(slugHolder)){
+      setSlugerror("The slug cannot have a space. ")
+    }else if(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(slugHolder)){
+      setSlugerror("Special charecters are not allowed")
+    }else if(await getUser(slugHolder)){
+      setSlugerror("This slug is taken Please choose another slug")
+    }else if(data.username === ""){
+      setErrorMessage("Please enter your name.")
+    
+    }else if(data.github === ""){
+      setgithuberror("Please enter your github username")
+    }else if(!await validate(data.github)){
+      setgithuberror("Please enter a valid github username")
+    }else{
+      setFormStep(formStep + 1)
+    }
+  }
 
   const renderInput = () => {
     return (
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover open={open}>
         <PopoverTrigger asChild>
           <Button
             variant="link"
@@ -146,6 +183,23 @@ const InputStep1 = ({
       <CardContent>
         <form>
           <div className="grid w-full items-center gap-4">
+          <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="username">Url Slug</Label>
+              <Input
+                className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
+                id="slug"
+                placeholder="website url slug"
+                value={slugHolder}
+                onChange={(e) => {
+                  setSlugHolder(e.target.value);
+                  localStorage.setItem("username_slug", e.target.value);
+                }}
+                
+              />
+              {slugerror && (
+                  <p className="text-red-500 text-sm">{slugerror}</p>
+                )}
+            </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="username">Full Name</Label>
               <Input
@@ -171,7 +225,12 @@ const InputStep1 = ({
                 placeholder="Github Username"
                 onChange={(e) => setData({ ...data, github: e.target.value })}
               />
+              
+              
             </div>
+            {githuberror && (
+                <p className="text-red-500 text-sm">{githuberror}</p>
+              )}
             <div className="flex flex-row space-x-1 justify-center items-center">
               <span className="px-2 h-[38px] bg-gradient-to-br bg-blue-500 rounded-lg flex items-center justify-center">
                 <FaTwitter size={20} className="text-white" />
@@ -183,6 +242,7 @@ const InputStep1 = ({
                 onChange={(e) => setData({ ...data, twitter: e.target.value })}
               />
             </div>
+            
             <div className="flex flex-col space-y-2">
               <Label htmlFor="tags">Tags</Label>
               <div className="flex flex-row gap-2 flex-wrap">
@@ -259,11 +319,7 @@ const InputStep1 = ({
         </Dialog>
         <Button
           type="button"
-          onClick={
-            data.username === "Username" || data.username === ""
-              ? () => setErrorMessage("Please fill this form first!")
-              : () => setFormStep(formStep + 1)
-          }
+          onClick={handleNext}
           className="active:scale-90"
         >
           Next
