@@ -102,6 +102,8 @@ const AddProfile = () => {
 
   const handleDeploy = async () => {
     setLoading(true);
+    const slug = localStorage.getItem("username_slug") || "";
+    console.log(slug)
     const formData = new FormData();
 
     formData.append("username", data.username);
@@ -109,6 +111,7 @@ const AddProfile = () => {
     formData.append("twitter", data.twitter);
     formData.append("description", data.description);
     formData.append("color", data.color);
+    formData.append("slug_Username", slug);
     data.tags.forEach((tag: string) => {
       formData.append("tags", tag);
     });
@@ -119,12 +122,15 @@ const AddProfile = () => {
       formData.append("links", link);
     });
     formData.append("uid", user?.uid);
+    console.log(formData);
 
     try {
+      console.log("Deploying")
       // console.log(JSON.parse(formData.get("socials") as string));
       await deployProfile(formData);
       // router.replace("/explore");
     } catch (error) {
+      console.log(error)
       setError(true);
     } finally {
       setLoading(false);

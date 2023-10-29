@@ -38,11 +38,6 @@ export async function deployProfile(userData: FormData) {
       };
     });
 
-
-  function convertToSlug(inputString: string) {
-    return inputString.toLowerCase().replace(/ /g, "-");
-  }
-
   // const docRef = doc(db, "profiles", `${userData.get("uid")}`);
   // // const docRef = doc(db, "profiles", "GUeFBcIcQ0wzdgu4DzFy");
   // const docSnap = await getDoc(docRef);
@@ -60,6 +55,6 @@ export async function deployProfile(userData: FormData) {
     name: userData.get("username"),
     socials: socialMediaProfiles,
     twitter: userData.get("twitter"),
-    slug: convertToSlug(userData.get("username") as string),
+    slug: userData.get("slug_Username"),
   });
 }

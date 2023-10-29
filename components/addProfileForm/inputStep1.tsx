@@ -36,8 +36,9 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useRouter } from "next/navigation";
 import { PickerExample } from "../ColorPicker";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
+import { GetUserData } from "@/backend/GetUserData";
 
 interface InputStep1Props {
   data: {
@@ -62,7 +63,15 @@ interface InputStep1Props {
   setFormStep: (step: number) => void;
   predefinedTags: any;
 }
+async function getUser(userName: string) {
 
+  try {
+    const data = await GetUserData({ user: userName });
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
 const InputStep1 = ({
   data,
   setData,
@@ -74,17 +83,31 @@ const InputStep1 = ({
   const [open, setOpen] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [githuberror, setgithuberror] = useState<string>("");
-  const [twittererror, settwittererror] = useState<string>("");
+  const [slugerror, setSlugerror] = useState<string>("");
+  const [slugHolder, setSlugHolder] = useState<string>(localStorage.getItem("username_slug") || "");
   const router = useRouter();
   const removeTag = (tag: any) => {
     const nextTags = data.tags.filter((item: string) => item !== tag);
     setData({ ...data, tags: nextTags });
   };
   const handleNext = async()=>{
-    if(data.username === ""){
+    setSlugerror("");
+    setErrorMessage("");
+    setgithuberror("")
+    if(slugHolder ==""){
+      setSlugerror("Please enter a slug.")
+    }
+    else if(/[A-Z]/.test(slugHolder)){
+      setSlugerror("Invalid slug. Only lower case letters are allowed");
+    }else if(/\s/.test(slugHolder)){
+      setSlugerror("The slug cannot have a space. ")
+    }else if(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(slugHolder)){
+      setSlugerror("Special charecters are not allowed")
+    }else if(await getUser(slugHolder)){
+      setSlugerror("This slug is taken Please choose another slug")
+    }else if(data.username === ""){
       setErrorMessage("Please enter your name.")
-    }else if(data.username === "Username"){
-      setErrorMessage("This is nat a valid Name")
+    
     }else if(data.github === ""){
       setgithuberror("Please enter your github username")
     }else if(!await validate(data.github)){
@@ -160,6 +183,23 @@ const InputStep1 = ({
       <CardContent>
         <form>
           <div className="grid w-full items-center gap-4">
+          <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="username">Url Slug</Label>
+              <Input
+                className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
+                id="slug"
+                placeholder="website url slug"
+                value={slugHolder}
+                onChange={(e) => {
+                  setSlugHolder(e.target.value);
+                  localStorage.setItem("username_slug", e.target.value);
+                }}
+                
+              />
+              {slugerror && (
+                  <p className="text-red-500 text-sm">{slugerror}</p>
+                )}
+            </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="username">Full Name</Label>
               <Input

@@ -3,6 +3,7 @@ import { GetUserData } from "@/backend/GetUserData";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+
 function random(){
     let result = '';
     const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -35,11 +36,13 @@ async function related(username:string) {
 }
 export default function TitleSection() {
     const [errorMessage, setErrorMessage] = useState<string>("");
-    const [user, setUser] = useState<string>("")
+    const [user, setUser] = useState<string>(localStorage.getItem("username_slug") || "")
     const [choices, setchoices] = useState<Array<any>>([])
     const [namescheck, setNamecheck] = useState<any>(false)
-
+    
     const Claim = async () => {
+        setErrorMessage("")
+        setNamecheck(false)
         try {
             if (await getUser(user)) {
                 setErrorMessage("This user exists. Please choose  another username")
@@ -51,9 +54,22 @@ export default function TitleSection() {
                 }
             }else if(user == ""){
                 setErrorMessage("Please enter a username")
+            }else if(/[A-Z]/.test(user)){
+                setErrorMessage("Invalid slug. Only lower case letters are allowed");
+              }else if(/\s/.test(user)){
+                setErrorMessage("The slug cannot have a space. ")
+              }else if(await getUser(user)){
+                setErrorMessage("This slug is taken Please choose another slug")
+              }else if(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(user)){
+                setErrorMessage("Special charecters are not allowed")
+              }
+              else {
+                localStorage.setItem('username_slug', user);
+                document.getElementById("btnclick")?.click()
             }
         } catch (error) {
             setErrorMessage("An error has occured. Please try again later.")
+            console.log(error)
         }
         
     }
@@ -67,6 +83,7 @@ export default function TitleSection() {
     }
     return (
         <div className="flex flex-col items-center w-full mx-1 md:my-44">
+            <a href={"/create"} className=" hidden" id="btnclick">clickme!</a>
             <div className="w-full px-1 mt-32 text-center">
                 <h1 className="md:text-7xl py-10 text-4xl my-2 md:px-[17%] font-semibold h-max mt-14 mx-auto bg-gradient-to-r dark:from-slate-500 from-black dark:via-slate-200 dark:to-slate-500 to-black/50 bg-clip-text text-[rgba(0,0,0,0)]">The One Link for Everything</h1>
                 <p className=" text-sm md:text-lg leading-6 mb-20 md:px-[22%] dark:text-[rgba(209,213,219,1)] text-gray-900 mx-auto">Everything you&apos;re, in one simple link in bio you&apos;ll need to showcase your all socials & portfolio in one place</p>
@@ -95,3 +112,4 @@ export default function TitleSection() {
         </div>
     )
 }
+
