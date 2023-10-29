@@ -44,7 +44,9 @@ export default function TitleSection() {
         setErrorMessage("")
         setNamecheck(false)
         try {
-            if (await getUser(user)) {
+            if(user === ""){
+                setErrorMessage("Please enter a username")
+            }else if (await getUser(user)) {
                 setErrorMessage("This user exists. Please choose  another username")
                 setNamecheck(true)
                 const names = await related(user)
@@ -52,8 +54,6 @@ export default function TitleSection() {
                     setchoices(names);
                     setNamecheck(true)
                 }
-            }else if(user == ""){
-                setErrorMessage("Please enter a username")
             }else if(/[A-Z]/.test(user)){
                 setErrorMessage("Invalid slug. Only lower case letters are allowed");
               }else if(/\s/.test(user)){
