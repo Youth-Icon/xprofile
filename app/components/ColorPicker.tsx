@@ -12,7 +12,9 @@ import { Paintbrush } from "lucide-react";
 
 interface ColorPickerProps {
   data: {
+    name: string;
     username: string;
+    email: string;
     github: string;
     twitter: string;
     tags: string[];
@@ -21,7 +23,9 @@ interface ColorPickerProps {
     location: string;
   };
   setData: (data: {
+    name: string;
     username: string;
+    email: string;
     github: string;
     twitter: string;
     tags: string[];

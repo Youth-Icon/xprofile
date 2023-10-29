@@ -6,7 +6,9 @@ import { Github } from "lucide-react";
 
 interface PreviewStep1Props {
   data: {
+    name: string;
     username: string;
+    email: string;
     github: string;
     twitter: string;
     description: string;
@@ -24,7 +26,7 @@ const PreviewStep1 = ({ data, formStep }: PreviewStep1Props) => {
         display: formStep === 1 ? "block" : "none",
       }}
     >
-      <div className="bg-white dark:bg-[#080808] rounded-lg shadow-lg">
+      <div className="bg-white dark:bg-[#080808] rounded-lg shadow-lg overflow-hidden">
         <div className="flex flex-col">
           <div
             className="h-20 md:h-24"
@@ -41,14 +43,14 @@ const PreviewStep1 = ({ data, formStep }: PreviewStep1Props) => {
             />
             <div className="flex flex-col w-full">
               <div className="flex items-baseline gap-1">
-                <p className="font-bold text-lg md:text-xl">{data.username}</p>
+                <p className="font-bold text-lg md:text-xl">{data ? data.name : " Your Name"}</p>
                 <Link
-                  href={"https://twitter.com/" + data.twitter}
+                  href={"https://xprofile.me/" + data.username}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-mono italic text-black dark:text-gray-300 text-sm hover:text-blue-400 cursor-pointer"
                 >
-                  @{data.twitter}
+                  @{data.username}
                 </Link>
               </div>
 
@@ -80,7 +82,7 @@ const PreviewStep1 = ({ data, formStep }: PreviewStep1Props) => {
               Follow on <Github size={20} />
             </Link>
             <Link
-              href={"https://x.com/" + data.username}
+              href={"https://x.com/" + data.twitter}
               target="_blank"
               rel="noopener noreferrer"
               className="col-span-1 py-2 text-sm font-medium bg-white border border-gray-700 text-black hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 rounded focus:outline-none focus:ring"

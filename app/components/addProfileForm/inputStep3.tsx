@@ -18,9 +18,6 @@ interface InputStep3Props {
   setFormStep: (step: number) => void;
   linkCount: number;
   setLinkCount: (count: number) => void;
-  handleDeploy: () => void;
-  loading: boolean;
-  error: boolean;
 }
 
 const InputStep3 = ({
@@ -30,9 +27,6 @@ const InputStep3 = ({
   setFormStep,
   linkCount,
   setLinkCount,
-  handleDeploy,
-  loading,
-  error,
 }: InputStep3Props) => {
   return (
     <Card
@@ -79,17 +73,12 @@ const InputStep3 = ({
           Back
         </Button>
         <Button
-          onClick={handleDeploy}
-          disabled={loading ? true : false}
-          className={`active:scale-90 ${loading && `cursor-not-allowed`}`}
+          className={`active:scale-90`}
+          type="button"
+          onClick={() => setFormStep(formStep + 1)}
         >
-          {loading ? "Deploying..." : "Deploy"}
+          Next
         </Button>
-        {error && (
-          <p className="text-red-500 dark:text-red-400">
-            Something went wrong. Please try again.
-          </p>
-        )}
       </CardFooter>
     </Card>
   );

@@ -1,22 +1,15 @@
-"use client";
+"use client"
 
 import { useState } from "react";
 import { deployProfile } from "@/backend/deployProfile";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { useAuth } from "@/app/context/AuthContext";
-import { redirect } from "next/navigation";
-import { Loader } from "lucide-react";
 import InputStep1 from "@/app/components/addProfileForm/inputStep1";
 import InputStep2 from "@/app/components/addProfileForm/inputStep2";
 import InputStep3 from "@/app/components/addProfileForm/inputStep3";
 import PreviewStep1 from "@/app/components/addProfileForm/previewStep1";
 import PreviewStep2 from "@/app/components/addProfileForm/previewStep2";
 import PreviewStep3 from "@/app/components/addProfileForm/previewStep3";
-import { getAuth } from "firebase/auth";
+import InputStep4 from "@/app/components/addProfileForm/inputStep4";
 
-const auth = getAuth();
-const user = auth.currentUser;
 
 const predefinedTags = [
   {
@@ -49,9 +42,11 @@ const predefinedTags = [
   },
 ];
 
-const AddProfile = () => {
+export default function AddProfile({ session }: any) {
   const [data, setData] = useState<any>({
-    username: "Username",
+    name: "name",
+    username: "username",
+    email: "email",
     github: "identicon",
     twitter: "tweethandle",
     description: "this is a description",
@@ -88,18 +83,6 @@ const AddProfile = () => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
-  const { user, loading } = useAuth();
-  useEffect(() => {
-    console.log(user);
-    if (!loading) {
-      if (!user) {
-        redirect("/login");
-      }
-    }
-  }, [user, loading]);
-
-  const router = useRouter();
-
   const handleDeploy = async () => {
     setLoading(true);
     const formData = new FormData();
@@ -118,7 +101,7 @@ const AddProfile = () => {
     data.links.forEach((link: string) => {
       formData.append("links", link);
     });
-    formData.append("uid", user?.uid);
+    formData.append("uid", session?.user?.id as string);
 
     try {
       // console.log(JSON.parse(formData.get("socials") as string));
@@ -131,14 +114,13 @@ const AddProfile = () => {
     }
   };
 
-  return loading ? (
-    <Loader />
-  ) : user ? (
+  return (
     <div className="flex md:flex-row flex-col gap-5 md:gap-0 w-full min-h-screen">
       <section className="md:flex-1 flex justify-center items-center">
         {/* Step 1 */}
         <InputStep1
           data={data}
+          session={session}
           setData={setData}
           formStep={formStep}
           setFormStep={setFormStep}
@@ -161,10 +143,18 @@ const AddProfile = () => {
           setFormStep={setFormStep}
           linkCount={linkCount}
           setLinkCount={setLinkCount}
+        />
+
+        <InputStep4
+          data={data}
+          setData={setData}
+          formStep={formStep}
+          setFormStep={setFormStep}
           handleDeploy={handleDeploy}
           loading={isLoading}
           error={error}
         />
+
       </section>
       {/* ----------------------END OF FORM---------------------- */}
 
@@ -180,9 +170,5 @@ const AddProfile = () => {
         <PreviewStep3 data={data} formStep={formStep} />
       </section>
     </div>
-  ) : (
-    redirect("/login")
-  );
+  )
 };
-
-export default AddProfile;

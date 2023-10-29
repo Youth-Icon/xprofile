@@ -1,7 +1,20 @@
+"use client"
 import { Button } from "@/app/components/ui/button";
 import { cn } from "@/lib/utils";
+import {useState} from "react";
+import {useRouter} from "next/navigation";
 
 export default function TitleSection() {
+    const router = useRouter();
+    const [username, setUsername] = useState("");
+    const submitUsername = () => {
+        if (username === "") {
+            return;
+        } else {
+            return router.push(`/create?u=${username}`);
+        }
+    };
+    
     return (
         <div className="flex flex-col items-center w-full mx-1 md:my-44">
             <div className="w-full px-1 mt-32 text-center">
@@ -14,10 +27,15 @@ export default function TitleSection() {
                     <div className="dark:bg-[rgba(255,255,255,0.94)] bg-black/5 md:text-base font-medium pl-4 border-none outline-none md:pr-0 md:pl-6 py-3 md:py-3 rounded-s-lg dark:text-slate-900">
                         xprofile.me/
                     </div>
-                    <input placeholder="username" className="dark:bg-[rgba(255,255,255,0.94)] bg-black/5 outline-none border-none font-medium md:pr-6 md:py-3 rounded-e-lg dark:text-slate-900 w-full" />
+                    <input placeholder="username" className="dark:bg-[rgba(255,255,255,0.94)] bg-black/5 outline-none border-none font-medium md:pr-6 md:py-3 rounded-e-lg dark:text-slate-900 w-full"
+                    onChange={
+                        (e) => {
+                            setUsername(e.target.value);
+                        }
+                    } required />
                 </div>
 
-                <Button variant={'outline'} className={cn("px-6 md:px-6 md:py-3 w-full md:w-max py-4 md:text-base dark:border-slate-600 border-black/40 shadow-sm rounded-full my-auto h-full font-normal")}>
+                <Button variant={'outline'} onClick={submitUsername} className={cn("px-6 md:px-6 md:py-3 w-full md:w-max py-4 md:text-base dark:border-slate-600 border-black/40 shadow-sm rounded-full my-auto h-full font-normal")}>
                     Claim Your XProfile
                 </Button>
             </div>

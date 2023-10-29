@@ -37,10 +37,13 @@ import { useRouter } from "next/navigation";
 import { PickerExample } from "../ColorPicker";
 import { useState } from "react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
+import { useSearchParams } from "next/navigation";
 
 interface InputStep1Props {
   data: {
+    name: string;
     username: string;
+    email: string;
     github: string;
     twitter: string;
     tags: string[];
@@ -49,7 +52,9 @@ interface InputStep1Props {
     location: string;
   };
   setData: (data: {
+    name: string;
     username: string;
+    email: string;
     github: string;
     twitter: string;
     tags: string[];
@@ -60,6 +65,7 @@ interface InputStep1Props {
   formStep: number;
   setFormStep: (step: number) => void;
   predefinedTags: any;
+  session: any;
 }
 
 const InputStep1 = ({
@@ -68,12 +74,20 @@ const InputStep1 = ({
   formStep,
   setFormStep,
   predefinedTags,
+  session,
 }: InputStep1Props) => {
   const [inputTag, setInputTag] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  // get username from url query
+  const username = searchParams.get("u") as string
+  if (username !== null){
+    setData({...data, username: username})
+  }
 
   const removeTag = (tag: any) => {
     const nextTags = data.tags.filter((item: string) => item !== tag);
@@ -150,16 +164,13 @@ const InputStep1 = ({
               <Label htmlFor="username">Full Name</Label>
               <Input
                 className="bg-slate-200 dark:bg-zinc-950 focus:ring-0"
-                id="username"
-                placeholder="Your name"
+                id="name"
+                placeholder={session ? session.user.name : "Full Name"}
                 onChange={(e) => {
-                  setData({ ...data, username: e.target.value });
-                  setErrorMessage("");
+                  setData({ ...data, name: e.target.value });
                 }}
+                required
               />
-              {errorMessage && (
-                <p className="text-red-500 text-sm">{errorMessage}</p>
-              )}
             </div>
             <div className="flex flex-row space-x-1 justify-center items-center">
               <span className="px-2 h-[38px] bg-gradient-to-br bg-black rounded-lg flex items-center justify-center">
@@ -170,6 +181,7 @@ const InputStep1 = ({
                 id="github"
                 placeholder="Github Username"
                 onChange={(e) => setData({ ...data, github: e.target.value })}
+                required
               />
             </div>
             <div className="flex flex-row space-x-1 justify-center items-center">
@@ -181,6 +193,7 @@ const InputStep1 = ({
                 id="twitter"
                 placeholder="Twitter Username"
                 onChange={(e) => setData({ ...data, twitter: e.target.value })}
+                required
               />
             </div>
             <div className="flex flex-col space-y-2">
@@ -216,6 +229,7 @@ const InputStep1 = ({
                 id="location"
                 placeholder="State, Country"
                 onChange={(e) => setData({ ...data, location: e.target.value })}
+                required
               />
             </div>
 
@@ -230,6 +244,10 @@ const InputStep1 = ({
                 }
               />
             </div>
+            
+            {errorMessage && (
+                <p className="text-red-500 text-sm">{errorMessage}</p>
+              )}
           </div>
         </form>
       </CardContent>
@@ -260,8 +278,8 @@ const InputStep1 = ({
         <Button
           type="button"
           onClick={
-            data.username === "Username" || data.username === ""
-              ? () => setErrorMessage("Please fill this form first!")
+            data.username === "" || data.name === "" || data.github === "" || data.twitter === "" || data.location === "" || data.tags.length === 0
+              ? () => setErrorMessage("Please fill all the fields first")
               : () => setFormStep(formStep + 1)
           }
           className="active:scale-90"

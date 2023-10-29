@@ -1,7 +1,7 @@
 "use server";
 
-import { setDoc, doc } from "firebase/firestore";
-import { db } from "./firebase";
+import prisma from "@/lib/prismaconfig";
+import { getServerAuthSession } from "./auth";
 
 const socialPrefix = {
   instagram: "https://instagram.com/",
@@ -12,6 +12,7 @@ const socialPrefix = {
 };
 
 export async function deployProfile(userData: FormData) {
+  const session = await getServerAuthSession();
   const githubstars = await fetch(
     `https://api.github-star-counter.workers.dev/user/${userData.get("github")}`
   )
@@ -48,18 +49,25 @@ export async function deployProfile(userData: FormData) {
   // const docSnap = await getDoc(docRef);
   // console.log(docSnap.data());
 
-  await setDoc(doc(db, "profiles", `${userData.get("uid")}`), {
-    about: userData.get("description"),
-    banner_color: userData.get("color"),
-    github_followers: githubfollowers,
-    github_stars: githubstars,
-    github_username: userData.get("github"),
-    image: `https://avatars.githubusercontent.com/${userData.get("github")}`,
-    links: userData.getAll("links"),
-    location: userData.get("location"),
-    name: userData.get("username"),
-    socials: socialMediaProfiles,
-    twitter: userData.get("twitter"),
-    slug: convertToSlug(userData.get("username") as string),
-  });
+  // await setDoc(doc(db, "profiles", `${userData.get("uid")}`), {
+  //   about: userData.get("description"),
+  //   banner_color: userData.get("color"),
+  //   github_followers: githubfollowers,
+  //   github_stars: githubstars,
+  //   github_username: userData.get("github"),
+  //   image: `https://avatars.githubusercontent.com/${userData.get("github")}`,
+  //   links: userData.getAll("links"),
+  //   location: userData.get("location"),
+  //   name: userData.get("username"),
+  //   socials: socialMediaProfiles,
+  //   twitter: userData.get("twitter"),
+  //   slug: convertToSlug(userData.get("username") as string),
+  // });
+
+  // create profile using prisma client
+  // const profile = await prisma.profile.create({
+    
+  // });
+
+  console.log(userData);
 }
