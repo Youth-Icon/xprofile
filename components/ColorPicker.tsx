@@ -85,7 +85,7 @@ export function GradientPicker({
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-64 flex flex-wrap gap-1 mt-0">
+      <PopoverContent className=" w-72 flex flex-wrap gap-1 mt-0">
         {solids.map((s) => (
           <div
             key={s}
@@ -94,6 +94,13 @@ export function GradientPicker({
             onClick={() => setBackground(s)}
           />
         ))}
+        <div style={{ background: "#09203f" }} className="rounded-md h-6 w-6 cursor-pointer active:scale-105">
+          <Paintbrush onClick={()=>{document.getElementById("paint")?.click()}}></Paintbrush>
+          <label htmlFor="paint" style={{ display: "block", textAlign: "center" }}>
+            <input type="color" id="paint" style={{visibility: "hidden"}} value={background}  onChange={(e) => setBackground(e.currentTarget.value)}/>
+          </label>
+        </div>
+
 
         <Input
           id="custom"
