@@ -16,6 +16,12 @@ const links = z.object({
     clicks: z.number(),
 })
 
+const socials = z.object({
+    type: z.string(),
+    handle: z.string(),
+    clicks: z.number(),
+})
+
 export const formSchema = z.object({
     id: z.string(),
     email: z.string().email(),
@@ -28,7 +34,7 @@ export const formSchema = z.object({
     tags: z.array(z.string()),
     location: z.string().min(2, { message: "Location must be at least 2 characters long" }),
     portfolio: z.string(),
-    socials: z.array(z.string()),
+    socials: z.array(socials),
     links: z.array(links),
     projects: z.array(projects)
 });

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from "@/app/components/ui/button";
-import { Check, X, Plus, Twitter, ArrowRight, ArrowLeft } from "lucide-react";
+import { Check, X, Plus, Twitter, ArrowRight, ArrowLeft, Instagram, Linkedin, Youtube } from "lucide-react";
 import { Badge } from "@/app/components/ui/badge";
 import { cn } from "@/lib/utils";
 import {
@@ -96,74 +96,18 @@ const AddProfile = (
       color: "#9fff5b",
       tags: ["Coder", "Designer", "Human"],
       location: "",
-      socials: [""],
+      socials: [
+        { type: "", handle: "", clicks: 0 },
+      ],
       projects: [{ tags: [], title: "", description: "", webURL: "", repoLink: "", language: "", upVote: 0 }],
       links: [{ title: "", url: "", clicks: 0 }]
     },
 
   });
 
-  // const removeTag = (tag: any) => {
-
-  // };
-
-  // const renderInput = () => {
-  //   return (
-  //     <Popover open={open} onOpenChange={setOpen}>
-  //       <PopoverTrigger asChild>
-  //         <Button
-  //           variant="link"
-  //           type="button"
-  //           role="combobox"
-  //           aria-expanded={open}
-  //           className="hover:bg-slate-200 dark:hover:bg-zinc-800 cursor-pointer rounded-full"
-  //         >
-  //           <Plus size={15} />
-  //         </Button>
-  //       </PopoverTrigger>
-  //       <PopoverContent className="w-[200px] p-0">
-  //         <Command>
-  //           <CommandInput placeholder="Search tag..." />
-  //           <CommandEmpty>No tag found.</CommandEmpty>
-  //           <CommandGroup className="bg-slate-200 dark:bg-zinc-950 text-zinc-900 dark:text-slate-100">
-  //             {predefinedTags.map((tag: any) => (
-  //               <CommandItem
-  //                 key={tag.value}
-  //                 onSelect={(currentValue: any) => {
-  //                   setInputTag(currentValue === inputTag ? "" : currentValue);
-
-  //                   // Check if the tag is already in data.tags before adding it
-  //                   // if (!data.tags.includes(tag.label)) {
-  //                   //   setData({
-  //                   //     ...data,
-  //                   //     tags: [...data.tags, tag.label],
-  //                   //   });
-  //                   // }
-
-  //                   setOpen(false);
-  //                 }}
-  //               >
-  //                 <Check
-  //                   className={cn(
-  //                     "mr-2 h-4 w-4",
-  //                     inputTag === tag.value ? "opacity-100" : "opacity-0"
-  //                   )}
-  //                 />
-  //                 {tag.label}
-  //               </CommandItem>
-  //             ))}
-  //           </CommandGroup>
-  //         </Command>
-  //       </PopoverContent>
-  //     </Popover>
-  //   );
-  // };
-
-  function onSubmit(data: Input) {
-    alert(JSON.stringify(data, null, 4));
+  function handleSubmit(data: z.infer<typeof formSchema>) {
+    console.log(JSON.stringify(data, null, 2));
   }
-
-  console.log(form.watch())
 
   return (
     <>
@@ -176,7 +120,9 @@ const AddProfile = (
           </CardHeader>
           <CardContent>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+
+                {/* Step 1 */}
                 <div className={cn(
                   "space-y-4",
                   formStep === 0 ? "block" : "hidden"
@@ -277,49 +223,35 @@ const AddProfile = (
                   />
                 </div>
 
-                {/* Socials */}
+                {/* Step 2 */}
                 <div className={cn(
                   "space-y-4",
                   formStep === 1 ? "block" : "hidden"
                 )}>
-                  {/* make multiple input tags for socials                   */}
-                  <FormField
-                    control={form.control}
-                    name="socials"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Socials</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Twitter" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="socials"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input placeholder="Instagram" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="socials"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input placeholder="LinkedIn" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  {/* Add multiple input fields for socials and save to an array */}
+
+                  <FormItem>
+                    <FormControl>
+                      <div className='flex justify-start items-center align-middle'>
+                        <Linkedin className='w-10 h-10' />
+                        <Input placeholder="Your Instagram Handle" />
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+
+                </div>
+
+                {/* Step 3 */}
+                <div className={
+                  cn(
+                    "space-y-4",
+                    formStep === 2 ? "block" : "hidden"
+                  )
+                }>
+                  {/*Add multiple input fields for links with title and url input and save to an array */}
+
+
                 </div>
                 <div className='flex justify-between'>
                   {
