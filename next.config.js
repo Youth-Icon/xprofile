@@ -3,34 +3,11 @@ const nextConfig = {
   experimental: {
     serverActions: true,
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "avatars.githubusercontent.com",
-        pathname: "**",
-        port: "",
-      },
-      {
-        protocol: "https",
-        hostname: "s2.googleusercontent.com",
-        pathname: "**",
-        port: "",
-      },
-      {
-        protocol: "https",
-        hostname: "www.google.com",
-        pathname: "**",
-        port: "",
-      },
-      {
-        protocol: "https",
-        hostname: "icon.horse",
-        pathname: "**",
-        port: "",
-      },
-    ],
-  },
 };
 
-module.exports = nextConfig;
+module.exports = {
+  nextConfig,
+  images: {
+    domains: ["avatars.githubusercontent.com", "s2.googleusercontent.com", "www.google.com", "icon.horse"],
+  },
+};

@@ -15,8 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <>
+      <div className="min-h-screen">
       <Nav />
       {children}
+      </div>
     </>
   );
 }
