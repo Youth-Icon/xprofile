@@ -280,8 +280,7 @@ const AddProfile = (
                           <AlertDialogHeader>
                             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                             <AlertDialogDescription>
-                              This action cannot be undone. This will permanently delete your account
-                              and remove your data from our servers.
+                              This will redirect you to the home page and you will lose all your progress.
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter>
