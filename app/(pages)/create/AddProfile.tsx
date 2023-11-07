@@ -31,19 +31,13 @@ import {
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/app/components/ui/form"
 import { Input } from "@/app/components/ui/input"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/app/components/ui/select"
 import {
   Card,
   CardContent,
@@ -59,6 +53,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Github } from 'lucide-react';
 import { Textarea } from '@/app/components/ui/textarea';
+import { TagInput } from '@/app/components/TagInput';
 import { useState } from 'react';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation'
@@ -79,9 +74,8 @@ const AddProfile = (
 
   // get username from slug
   const [formStep, setFormStep] = useState<number>(0);
-  // const [inputTag, setInputTag] = useState<string>("");
-  // const [open, setOpen] = useState<boolean>(false);
-  // const [predefinedTags, setPredefinedTags] = useState<any[]>([]);
+  const [tags, setTags] = useState<string[]>([]);
+
   const form = useForm<Input>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -105,9 +99,14 @@ const AddProfile = (
 
   });
 
+
+  const { setValue } = form;
+
   function handleSubmit(data: z.infer<typeof formSchema>) {
     console.log(JSON.stringify(data, null, 2));
   }
+
+  console.log(form.getValues());
 
   return (
     <>
@@ -228,17 +227,31 @@ const AddProfile = (
                   "space-y-4",
                   formStep === 1 ? "block" : "hidden"
                 )}>
-                  {/* Add multiple input fields for socials and save to an array */}
-
-                  <FormItem>
-                    <FormControl>
-                      <div className='flex justify-start items-center align-middle'>
-                        <Linkedin className='w-10 h-10' />
-                        <Input placeholder="Your Instagram Handle" />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                  <FormField
+                    control={form.control}
+                    name="tags"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Skills</FormLabel>
+                        <FormControl>
+                          <TagInput
+                            {...field}
+                            placeholder="Enter a topic"
+                            tags={tags}
+                            className='w-full'
+                            setTags={(newTags) => {
+                              setTags(newTags);
+                              setValue("tags", newTags as [string, ...string[]]);
+                            }}
+                          />
+                        </FormControl>
+                        <FormDescription>
+                          Just type and press enter to add a new skill
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
                 </div>
 
