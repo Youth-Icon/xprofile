@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(
+export default async function POST(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -8,6 +8,5 @@ export default async function handler(
         return res.status(405).json({ message: "Method not allowed" });
     }
     const data = req.body;
-    console.log(data);
-  res.status(200).json({ name: "John Doe" });
+  res.status(200).json(data);
 }
