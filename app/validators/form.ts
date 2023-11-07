@@ -34,9 +34,9 @@ export const formSchema = z.object({
     tags: z.array(z.string()),
     location: z.string().min(2, { message: "Location must be at least 2 characters long" }),
     portfolio: z.string(),
-    socials: z.array(socials),
-    links: z.array(links),
-    projects: z.array(projects)
+    // socials: z.array(socials),
+    // links: z.array(links),
+    // projects: z.array(projects)
 });
 
 export type FormValues = z.infer<typeof formSchema>;

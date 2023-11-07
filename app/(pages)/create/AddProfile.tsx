@@ -59,6 +59,8 @@ import Image from 'next/image';
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { GradientPicker } from '@/app/components/ColorPicker';
+import prisma from '@/lib/prismaconfig';
+import { deployProfile } from '@/backend/deployProfile';
 
 type Input = z.infer<typeof formSchema>;
 
@@ -81,7 +83,6 @@ const AddProfile = (
   const form = useForm<Input>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      id: session?.user?.id as string || "",
       name: "",
       username: searchParams?.get("u") || "",
       email: session?.user?.email as string || "",
@@ -90,13 +91,13 @@ const AddProfile = (
       avatar: session?.user?.image as string || "https://cdn.discordapp.com/attachments/1065518726855807067/1168414184501952603/depositphotos_245815634-stock-illustration-person-gray-photo-placeholder-man.png?ex=6551ad81&is=653f3881&hm=21fda0259b916c8148051e85b39ac58b94965d50950c93e18c21cb5eb20b09b8&",
       about: "",
       color: "#9fff5b",
-      tags: ["Coder", "Designer", "Human"],
+      tags: [],
       location: "",
-      socials: [
-        { type: "", handle: "", clicks: 0 },
-      ],
+      // socials: [
+      //   { type: "", handle: "", clicks: 0 },
+      // ],
       // projects: [{ tags: [], title: "", description: "", webURL: "", repoLink: "", language: "", upVote: 0 }],
-      links: [{ title: "", url: "", clicks: 0 }]
+      // links: [{ title: "", url: "", clicks: 0 }]
     },
 
   });
@@ -104,11 +105,18 @@ const AddProfile = (
 
   const { setValue } = form;
 
-  function handleSubmit(data: z.infer<typeof formSchema>) {
-    console.log(JSON.stringify(data, null, 2));
+  async function handleSubmit(data: z.infer<typeof formSchema>) {
+    if (data.tags.length < 1) {
+      return
+    } else {
+      console.log(JSON.stringify(data, null, 2));
+      alert(JSON.stringify(data, null, 2));
+      // TODO:deployProfile(data)
+    }
   }
 
-  console.log(form.getValues());
+  // console.log(form.getValues());
+  // console.log(form.formState.errors);
 
   return (
     <>
@@ -262,15 +270,16 @@ const AddProfile = (
                 </div>
 
                 {/* Step 3 */}
-                <div className={
+                {/* <div className={
                   cn(
                     "space-y-4",
                     formStep === 2 ? "block" : "hidden"
                   )
                 }>
-                  {/*Add multiple input fields for links with title and url input and save to an array */}
+                  {/*Add multiple input fields for links with title and url input and save to an array
 
-                </div>
+                </div> */}
+
                 <div className='flex justify-between'>
                   {
                     formStep === 0 ?
@@ -308,9 +317,9 @@ const AddProfile = (
                           setFormStep(1)
                         }
                       }}>Next <ArrowRight /></Button>
-                      : formStep === 1 ? <Button onClick={() => setFormStep(2)}>Next</Button>
-                        : formStep === 2 ? <Button>Submit</Button>
-                          : null
+                      : formStep === 1 ? <Button type='submit'>Submit</Button>
+                        // : formStep === 2 ? <Button type='submit'>Submit</Button>
+                        : null
                   }
                 </div>
               </form>
