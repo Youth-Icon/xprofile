@@ -95,7 +95,7 @@ const AddProfile = (
       socials: [
         { type: "", handle: "", clicks: 0 },
       ],
-      projects: [{ tags: [], title: "", description: "", webURL: "", repoLink: "", language: "", upVote: 0 }],
+      // projects: [{ tags: [], title: "", description: "", webURL: "", repoLink: "", language: "", upVote: 0 }],
       links: [{ title: "", url: "", clicks: 0 }]
     },
 
