@@ -202,7 +202,10 @@ const AddProfile = (
                       <FormItem>
                         <FormLabel>Banner Color</FormLabel>
                         <FormControl>
-                          <GradientPicker {...field} className='w-full' background={background} setBackground={setBackground} />
+                          <GradientPicker {...field} className='w-full' background={background} setBackground={(background) => {
+                            setBackground(background)
+                            setValue('color', background)
+                          }} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
