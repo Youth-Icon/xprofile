@@ -58,6 +58,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
+import { GradientPicker } from '@/app/components/ColorPicker';
 
 type Input = z.infer<typeof formSchema>;
 
@@ -75,6 +76,7 @@ const AddProfile = (
   // get username from slug
   const [formStep, setFormStep] = useState<number>(0);
   const [tags, setTags] = useState<string[]>([]);
+  const [background, setBackground] = useState('#9fff5b')
 
   const form = useForm<Input>({
     resolver: zodResolver(formSchema),
@@ -200,12 +202,13 @@ const AddProfile = (
                       <FormItem>
                         <FormLabel>Banner Color</FormLabel>
                         <FormControl>
-                          <Input type='color' {...field} />
+                          <GradientPicker {...field} className='w-full' background={background} setBackground={setBackground} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
+
                   {/* About */}
                   <FormField
                     control={form.control}
@@ -263,7 +266,6 @@ const AddProfile = (
                   )
                 }>
                   {/*Add multiple input fields for links with title and url input and save to an array */}
-
 
                 </div>
                 <div className='flex justify-between'>
