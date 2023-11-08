@@ -41,13 +41,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Github } from 'lucide-react';
 import { Textarea } from '@/app/components/ui/textarea';
 import { TagInput } from '@/app/components/TagInput';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { GradientPicker } from '@/app/components/ColorPicker';
 import { Progress } from "@/app/components/ui/progress"
 import { deployProfile } from '@/backend/deployProfile';
+
 
 type Input = z.infer<typeof formSchema>;
 
@@ -66,6 +67,34 @@ const AddProfile = (
   const [formStep, setFormStep] = useState<number>(0);
   const [tags, setTags] = useState<string[]>([]);
   const [background, setBackground] = useState('#9fff5b')
+  const [socialsFields] = useState([
+    {
+      type: "Github",
+      handle: "",
+      clicks: 0,
+    },
+    {
+      type: "Twitter",
+      handle: "",
+      clicks: 0,
+    },
+    {
+      type: "Instagram",
+      handle: "",
+      clicks: 0,
+    },
+    {
+      type: "Linkedin",
+      handle: "",
+      clicks: 0,
+    },
+    {
+      type: "Youtube",
+      handle: "",
+      clicks: 0,
+    },
+  ]);
+
 
   const form = useForm<Input>({
     resolver: zodResolver(formSchema),
@@ -74,32 +103,53 @@ const AddProfile = (
       username: searchParams?.get("u") || "",
       email: session?.user?.email as string || "",
       portfolio: "",
-      github: "",
+      // github: "",
       avatar: session?.user?.image as string || "https://cdn.discordapp.com/attachments/1065518726855807067/1168414184501952603/depositphotos_245815634-stock-illustration-person-gray-photo-placeholder-man.png?ex=6551ad81&is=653f3881&hm=21fda0259b916c8148051e85b39ac58b94965d50950c93e18c21cb5eb20b09b8&",
       about: "",
       color: "#9fff5b",
       tags: [],
       location: "",
+      socials: socialsFields.map((social) => ({
+        type: social.type,
+        handle: social.handle,
+        clicks: social.clicks,
+      })),
       // socials: [
       //   { type: "", handle: "", clicks: 0 },
       // ],
       // projects: [{ tags: [], title: "", description: "", webURL: "", repoLink: "", language: "", upVote: 0 }],
-      links: [{ title: "", url: "" }]
+      links: [{ title: "", url: "" }],
+    
     },
 
   });
 
 
-  const { setValue } = form;
+  const { setValue } = form; 
+
+
+  const getSocialIcon = (socialType: string) => {
+    switch (socialType) {
+      case "Github":
+        return <Github className="w-10 h-10" />;
+      case "Twitter":
+        return <Twitter className="w-10 h-10" />;
+      case "Instagram":
+        return <Instagram className="w-10 h-10" />;
+      case "Linkedin":
+        return <Linkedin className="w-10 h-10" />;
+      case "Youtube":
+        return <Youtube className="w-10 h-10" />;
+      default:
+        return null;
+    }
+  };
 
   async function handleSubmit(data: z.infer<typeof formSchema>) {
-    if (formStep < 3) {
-      return
-    } else {
-      // console.log(JSON.stringify(data, null, 2));
+    
       alert(JSON.stringify(data, null, 2));
-      deployProfile(data)
-    }
+      deployProfile(data);
+    
   }
 
   const { fields, append, remove } = useFieldArray({
@@ -111,6 +161,8 @@ const AddProfile = (
 
   // console.log(form.getValues());
   // console.log(form.formState.errors);
+  console.log("Form values:", form.getValues());
+  console.log("Form errors:", form.formState.errors);
 
   return (
     <>
@@ -146,22 +198,34 @@ const AddProfile = (
                       </FormItem>
                     )}
                   />
-                  {/* Github */}
-                  <FormField
-                    control={form.control}
-                    name="github"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <div className='flex justify-start items-center align-middle'>
-                            <Github className='w-10 h-10' />
-                            <Input placeholder="Your Github Handle" {...field} />
-                          </div>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <div className="space-y-5">
+                    {socialsFields.map((social, index) => (
+                      <div key={index}>
+                        <FormField
+                          control={form.control}
+                          name={`socials.${index}.handle`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <div className="flex justify-start items-center align-middle">
+                                  {getSocialIcon(social.type)}
+                                  <Input
+                                    type="text"
+                                    placeholder={`Your ${social.type} Handle`}
+                                    {...field}
+                                  />
+                                </div>
+                              </FormControl>
+                              {social.type === 'Github' && form.formState.errors?.socials?.[index]?.handle && (
+                <FormMessage>{form.formState.errors?.socials?.[index]?.handle?.message}</FormMessage>
+              )}
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    ))}
+                  </div>
+
                   {/* Portfolio */}
                   <FormField
                     control={form.control}
@@ -362,12 +426,14 @@ const AddProfile = (
                     formStep === 0 ?
                       <Button onClick={() => {
                         // zod validation
-                        form.trigger(["name", "github", "location"])
+                        // form.trigger(["name", "location"])
+                        form.trigger(["name", "location", "socials.0.handle"]);
                         const name = form.getValues("name")
-                        const github = form.getValues("github")
                         const location = form.getValues("location")
-                        // const about = form.getValues("about")
-                        if (name && github && location) {
+                        const about = form.getValues("about")
+                        const github = form.getValues("socials.0.handle")
+
+                        if ( name && github && location) {
                           setFormStep(1)
                         }
                       }}>Next <ArrowRight /></Button>
