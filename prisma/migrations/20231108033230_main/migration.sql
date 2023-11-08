@@ -57,12 +57,15 @@ CREATE TABLE "Profile" (
     "password" TEXT,
     "premium" BOOLEAN NOT NULL DEFAULT false,
     "profession" TEXT,
+    "portfolio" TEXT,
     "about" TEXT,
     "avatar" TEXT,
-    "github" TEXT NOT NULL,
-    "bannerColor" TEXT NOT NULL,
+    "location" TEXT,
+    "github" TEXT,
+    "bannerColor" TEXT,
     "showGithubGraph" BOOLEAN NOT NULL DEFAULT false,
     "collectMessages" BOOLEAN NOT NULL DEFAULT true,
+    "tags" TEXT[],
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Profile_pkey" PRIMARY KEY ("id")
