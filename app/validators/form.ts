@@ -23,7 +23,6 @@ const socials = z.object({
 })
 
 export const formSchema = z.object({
-    id: z.string(),
     email: z.string().email(),
     name: z.string().min(2, { message: "Name must be at least 2 characters long" }),
     username: z.string().min(1, { message: "Username must be at least 1 character long" }),
