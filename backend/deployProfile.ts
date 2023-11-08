@@ -19,7 +19,7 @@ export async function deployProfile(data: any) {
     data: {
       User: {
         connect: {
-          id: session?.user.id,
+          id: session?.user?.id,
         },
       },
       name: data.name,

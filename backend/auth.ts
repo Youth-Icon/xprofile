@@ -17,7 +17,11 @@ import { db } from "./db";
  */
 declare module "next-auth" {
   interface Session extends DefaultSession {
-    user: {} & DefaultSession["user"];
+    user: {
+      id: string;
+      // ...other properties
+      // role: UserRole;
+    } & DefaultSession["user"];
   }
 
   // interface User {
@@ -35,15 +39,9 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
-      session: {
+      user: {
         ...session.user,
         id: user.id,
-        name: user.name,
-        email: user.email,
-        image: user.image,
-      },
-      user: {
-        ...user,
       },
     }),
     async redirect({ url, baseUrl }) {
