@@ -120,7 +120,7 @@ const AddProfile = (
           <CardHeader>
             <CardTitle>Create project</CardTitle>
             <CardDescription>Deploy your new project in few clicks</CardDescription>
-            <Progress value={progress*33.3} max={100} />
+            <Progress value={progress * 33.3} max={100} />
 
           </CardHeader>
           <CardContent>
@@ -215,21 +215,6 @@ const AddProfile = (
                       </FormItem>
                     )}
                   />
-
-                  {/* About */}
-                  <FormField
-                    control={form.control}
-                    name="about"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>About</FormLabel>
-                        <FormControl>
-                          <Textarea placeholder="About you" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
                 </div>
 
                 {/* Step 2 */}
@@ -258,6 +243,21 @@ const AddProfile = (
                         <FormDescription>
                           Just type and press enter to add a new skill
                         </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* About */}
+                  <FormField
+                    control={form.control}
+                    name="about"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>About Yourself</FormLabel>
+                        <FormControl>
+                          <Textarea placeholder="Describe you and your passion in short" {...field} />
+                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -362,20 +362,23 @@ const AddProfile = (
                     formStep === 0 ?
                       <Button onClick={() => {
                         // zod validation
-                        form.trigger(["name", "github", "location", "about"])
+                        form.trigger(["name", "github", "location"])
                         const name = form.getValues("name")
                         const github = form.getValues("github")
                         const location = form.getValues("location")
-                        const about = form.getValues("about")
-                        if (name && github && location && about) {
+                        // const about = form.getValues("about")
+                        if (name && github && location) {
                           setFormStep(1)
                         }
                       }}>Next <ArrowRight /></Button>
                       : formStep === 1 ? <Button onClick={() => {
-                        if (form.getValues("tags").length > 0) {
+                        form.trigger(["tags", "about"])
+                        const about = form.getValues("about")
+                        const tags = form.getValues("tags")
+                        if (tags && about) {
                           setFormStep(2)
                         } else {
-                          alert("Atleast 2 tags are required")
+                          return
                         }
                       }}>Next <ArrowRight /></Button>
                         : formStep === 2 ? <Button type='submit'>Submit</Button>

@@ -29,7 +29,7 @@ export const formSchema = z.object({
     avatar: z.string().url(),
     about: z.string().min(5, { message: "About must be at least 5 characters long" }),
     color: z.string().includes("#", { message: "Color must be a valid hex code" }),
-    tags: z.array(z.string()),
+    tags: z.array(z.string()).min(1, { message: "Must have at least 1 tag" }),
     location: z.string().min(2, { message: "Location must be at least 2 characters long" }),
     portfolio: z.string(),
     // socials: z.array(socials),
