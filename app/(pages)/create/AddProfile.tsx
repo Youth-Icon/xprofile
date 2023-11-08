@@ -3,20 +3,7 @@
 import React from 'react'
 import { Button } from "@/app/components/ui/button";
 import { Check, X, Plus, Twitter, ArrowRight, ArrowLeft, Instagram, Linkedin, Youtube } from "lucide-react";
-import { Badge } from "@/app/components/ui/badge";
 import { cn } from "@/lib/utils";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/app/components/ui/popover";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/app/components/ui/command";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -47,7 +34,7 @@ import {
   CardTitle,
 } from "@/app/components/ui/card"
 
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { formSchema } from "@/app/validators/form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -59,7 +46,6 @@ import Image from 'next/image';
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { GradientPicker } from '@/app/components/ColorPicker';
-import prisma from '@/lib/prismaconfig';
 import { deployProfile } from '@/backend/deployProfile';
 
 type Input = z.infer<typeof formSchema>;
@@ -97,7 +83,7 @@ const AddProfile = (
       //   { type: "", handle: "", clicks: 0 },
       // ],
       // projects: [{ tags: [], title: "", description: "", webURL: "", repoLink: "", language: "", upVote: 0 }],
-      // links: [{ title: "", url: "", clicks: 0 }]
+      links: [{ title: "", url: "" }]
     },
 
   });
@@ -106,14 +92,19 @@ const AddProfile = (
   const { setValue } = form;
 
   async function handleSubmit(data: z.infer<typeof formSchema>) {
-    if (data.tags.length < 1) {
+    if (formStep < 2) {
       return
     } else {
-      console.log(JSON.stringify(data, null, 2));
+      // console.log(JSON.stringify(data, null, 2));
       alert(JSON.stringify(data, null, 2));
-      // TODO:deployProfile(data)
+      deployProfile(data)
     }
   }
+
+  const { fields, append, remove } = useFieldArray({
+    name: "links",
+    control: form.control,
+  })
 
   // console.log(form.getValues());
   // console.log(form.formState.errors);
@@ -270,15 +261,66 @@ const AddProfile = (
                 </div>
 
                 {/* Step 3 */}
-                {/* <div className={
+                <div className={
                   cn(
                     "space-y-4",
                     formStep === 2 ? "block" : "hidden"
                   )
                 }>
-                  {/*Add multiple input fields for links with title and url input and save to an array
-
-                </div> */}
+                  {/*Add multiple input fields for links with title and url input and save to an array */}
+                  {fields.map((field, index) => (
+                    <div className='space-y-2' key={field.id}>
+                      {/* <p>Showcase all your links</p> */}
+                      <FormField
+                        control={form.control}
+                        name={`links.${index}.title`}
+                        render={({ field }) => (
+                          <FormItem>
+                            <div className='flex justify-between'>
+                              <FormLabel>URL {index + 1}</FormLabel>
+                              <Button
+                                type="button"
+                                variant="ghost"
+                                onClick={() => {
+                                  if (fields.length > 1) {
+                                    remove(index);
+                                  }
+                                }}
+                                className={cn("py-1 px-3 h-full hover:bg-transparent")}
+                              >
+                                <X size={14} />
+                              </Button> </div>
+                            <FormControl>
+                              <Input {...field} placeholder="URL Title" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name={`links.${index}.url`}
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input {...field} placeholder="Your URL" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                  ))}
+                  <Button
+                    type="button"
+                    variant={'outline'}
+                    size="sm"
+                    className="mt-2"
+                    onClick={() => append({ title: "", url: "" })}
+                  >
+                    Add URL
+                  </Button>
+                </div>
 
                 <div className='flex justify-between'>
                   {
@@ -317,9 +359,15 @@ const AddProfile = (
                           setFormStep(1)
                         }
                       }}>Next <ArrowRight /></Button>
-                      : formStep === 1 ? <Button type='submit'>Submit</Button>
-                        // : formStep === 2 ? <Button type='submit'>Submit</Button>
-                        : null
+                      : formStep === 1 ? <Button onClick={() => {
+                        if (form.getValues("tags").length > 0) {
+                          setFormStep(2)
+                        } else {
+                          alert("Atleast 2 tags are required")
+                        }
+                      }}>Next <ArrowRight /></Button>
+                        : formStep === 2 ? <Button type='submit'>Submit</Button>
+                          : null
                   }
                 </div>
               </form>

@@ -11,9 +11,8 @@ const projects = z.object({
 })
 
 const links = z.object({
-    title: z.string().min(2, { message: "Title must be at least 2 characters long" }),
+    title: z.string().min(0, { message: "Title must be at least 2 characters long" }),
     url: z.string().url(),
-    clicks: z.number(),
 })
 
 const socials = z.object({
@@ -34,7 +33,7 @@ export const formSchema = z.object({
     location: z.string().min(2, { message: "Location must be at least 2 characters long" }),
     portfolio: z.string(),
     // socials: z.array(socials),
-    // links: z.array(links),
+    links: z.array(links),
     // projects: z.array(projects)
 });
 
