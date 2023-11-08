@@ -46,6 +46,7 @@ import Image from 'next/image';
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { GradientPicker } from '@/app/components/ColorPicker';
+import { Progress } from "@/app/components/ui/progress"
 import { deployProfile } from '@/backend/deployProfile';
 
 type Input = z.infer<typeof formSchema>;
@@ -106,6 +107,8 @@ const AddProfile = (
     control: form.control,
   })
 
+  const progress = formStep + 1
+
   // console.log(form.getValues());
   // console.log(form.formState.errors);
 
@@ -113,10 +116,12 @@ const AddProfile = (
     <>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
 
-        <Card className="w-[350px]">
+        <Card className="w-[350px] min-h-[550px]">
           <CardHeader>
             <CardTitle>Create project</CardTitle>
             <CardDescription>Deploy your new project in few clicks</CardDescription>
+            <Progress value={progress*33.3} max={100} />
+
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -267,7 +272,6 @@ const AddProfile = (
                     formStep === 2 ? "block" : "hidden"
                   )
                 }>
-                  {/*Add multiple input fields for links with title and url input and save to an array */}
                   {fields.map((field, index) => (
                     <div className='space-y-2' key={field.id}>
                       {/* <p>Showcase all your links</p> */}
@@ -320,6 +324,14 @@ const AddProfile = (
                   >
                     Add URL
                   </Button>
+                </div>
+
+                {/* Step 4 */}
+                <div className={cn(
+                  "space-y-4",
+                  formStep === 3 ? "block" : "hidden"
+                )}>
+
                 </div>
 
                 <div className='flex justify-between'>
