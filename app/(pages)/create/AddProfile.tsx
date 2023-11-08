@@ -93,7 +93,7 @@ const AddProfile = (
   const { setValue } = form;
 
   async function handleSubmit(data: z.infer<typeof formSchema>) {
-    if (formStep < 2) {
+    if (formStep < 3) {
       return
     } else {
       // console.log(JSON.stringify(data, null, 2));
