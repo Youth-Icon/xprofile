@@ -19,7 +19,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const handleLogin = async () => {
     setIsLoading(true)
     try {
-      await signIn("github", { callbackUrl: "/" })
+      await signIn("github", { callbackUrl: "https://xv2profile.vercel.app" })
 
     } catch (error) {
       toast({
@@ -35,7 +35,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const handleGoogleLogin = async () => {
     setIsLoading(true)
     try {
-      await signIn("google", { callbackUrl: "/" })
+      await signIn("google", { callbackUrl: "https://xv2profile.vercel.app" })
 
     } catch (error) {
       toast({
