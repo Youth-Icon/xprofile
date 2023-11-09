@@ -1,19 +1,19 @@
 
-import Link from "next/link";
+import React from 'react'
 import { getServerAuthSession } from "@/backend/auth";
-import { Button } from "@/components/ui/button";
+import LandingNav from '@/components/LandingNav';
+import Image from 'next/image'
 
-export default async function Home() {
+export default async function page() {
   const session = await getServerAuthSession();
-
-  console.log(session);
-
+  console.log(session)
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen py-2">
+    <>
+      <div className='main min-h-screen'>
+        <LandingNav />
 
-      <p className="scroll-m-20 hover:text-green-500 text-3xl font-semibold tracking-tight">
-        <Link href="https://x.hellofaizan.me">Under construction 🚧</Link>
-      </p>
-    </div>
-  );
+      </div>
+    </>
+  )
 }
+

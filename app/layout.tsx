@@ -24,7 +24,7 @@ export default function RootLayout({
       <meta name="twitter:image" content="/public/ogImage.jpeg" />
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <main className="flex flex-col bg-slate-100 dark:bg-zinc-900">
+          <main className="flex flex-col">
             {children}
             <Toaster />
           </main>
