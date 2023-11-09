@@ -3,6 +3,7 @@ import React from 'react'
 import { getServerAuthSession } from "@/backend/auth";
 import LandingNav from '@/components/LandingNav';
 import Image from 'next/image'
+import HeroSection from './components/HeroSection';
 
 export default async function page() {
   const session = await getServerAuthSession();
@@ -10,8 +11,8 @@ export default async function page() {
   return (
     <>
       <div className='main min-h-screen'>
-        <LandingNav />
-
+        {/* cover backgound image */}
+        <HeroSection />
       </div>
     </>
   )
