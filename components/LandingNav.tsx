@@ -12,14 +12,12 @@ const LandingNav = async ({ className }: any) => {
     return (
         <div className='w-full'>
             <div className={cn(
-                'flex z-10 justify-between px-24 py-3 bg-transparent items-center',
+                'flex z-10 justify-between px-32 py-3 bg-transparent items-center h-20',
                 className,
             )}>
                 {/* Logo */}
                 <div className='flex justify-start items-center space-x-3'>
-                    <Link href={"/"}>
-                        Logo
-                    </Link>
+                    <div className='text-2xl font-extrabold'>YI / XProfile</div>
                     <NavLinks />
                 </div>
                 {/* Nav */}
