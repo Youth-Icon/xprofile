@@ -4,6 +4,7 @@ import User from './user';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from './ui/button';
 import Link from 'next/link';
+import { NavLinks } from './NavLinks';
 
 const LandingNav = async ({ className }: any) => {
     const session = await getServerAuthSession();
@@ -15,10 +16,11 @@ const LandingNav = async ({ className }: any) => {
                 className,
             )}>
                 {/* Logo */}
-                <div className='flex justify-start items-center'>
+                <div className='flex justify-start items-center space-x-3'>
                     <Link href={"/"}>
                         Logo
                     </Link>
+                    <NavLinks />
                 </div>
                 {/* Nav */}
                 <div className='flex justify-end items-center space-x-4'>
