@@ -5,22 +5,11 @@ import { cn } from '@/lib/utils';
 import { buttonVariants } from './ui/button';
 import Link from 'next/link';
 
-const LandingNav = async ({className}: any) => {
+const LandingNav = async ({ className }: any) => {
     const session = await getServerAuthSession();
 
     return (
         <div>
-            {/* {session ?
-                <User user={session.user} /> :
-                <div className=''>
-                    <Link href={"/login"} className={cn(
-                        "px-2 py-8 pr-4",
-                        buttonVariants({ variant: "outline" }),
-                    )}>
-                        Sign In
-                    </Link>
-                </div>
-            } */}
             <div className={cn(
                 'flex z-10 justify-between px-24 py-4 bg-transparent items-center',
                 className,
@@ -33,18 +22,17 @@ const LandingNav = async ({className}: any) => {
                 </div>
                 {/* Nav */}
                 <div className='flex justify-end items-center space-x-4'>
-                    <Link href={"/"}>
-                        Home
-                    </Link>
-                    <Link href={"/"}>
-                        ABout
-                    </Link>
-                    <Link href={"/"}>
-                        ABout
-                    </Link>
-                    <Link href={"/"}>
-                        ABout
-                    </Link>
+                    {session ?
+                        <User user={session.user} /> :
+                        <div className=''>
+                            <Link href={"/login"} className={cn(
+                                "px-2 py-8 pr-4",
+                                buttonVariants({ variant: "outline" }),
+                            )}>
+                                Sign In
+                            </Link>
+                        </div>
+                    }
                 </div>
 
             </div>
