@@ -146,9 +146,10 @@ const AddProfile = (
   };
 
   async function handleSubmit(data: z.infer<typeof formSchema>) {
-
-    alert(JSON.stringify(data, null, 2));
-    deployProfile(data);
+    if (formStep === 3) {
+      alert(JSON.stringify(data, null, 2));
+      deployProfile(data);
+    }
 
   }
 
@@ -161,8 +162,8 @@ const AddProfile = (
 
   // console.log(form.getValues());
   // console.log(form.formState.errors);
-  console.log("Form values:", form.getValues());
-  console.log("Form errors:", form.formState.errors);
+  // console.log("Form values:", form.getValues());
+  // console.log("Form errors:", form.formState.errors);
 
   return (
     <>
@@ -172,7 +173,7 @@ const AddProfile = (
           <CardHeader>
             <CardTitle>Create project</CardTitle>
             <CardDescription>Deploy your new project in few clicks</CardDescription>
-            <Progress value={progress * 33.3} max={100} />
+            <Progress value={progress * 25} max={100} />
 
           </CardHeader>
           <CardContent>
