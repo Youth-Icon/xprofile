@@ -6,9 +6,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { buttonVariants } from './ui/button'
 import { signOut } from 'next-auth/react';
 import {
-    ChevronDown, User2, Cloud,
+    ChevronDown, User2,
     LifeBuoy,
     LogOut,
+    Crown,
 } from 'lucide-react'
 import {
     DropdownMenu,
@@ -17,7 +18,6 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuShortcut,
-    DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
@@ -65,9 +65,13 @@ function User({ user }: any) {
                     <span>Explore</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem disabled>
-                    <Cloud className="mr-2 h-4 w-4" />
-                    <span>Docs</span>
+                    <Crown className="mr-2 h-4 w-4" />
+                    <span>Premium</span>
+                    <DropdownMenuShortcut>
+                        <span className="text-xs text-gray-400 animate-pulse">◉</span>
+                    </DropdownMenuShortcut>
                 </DropdownMenuItem>
+
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                     <LogOut className="mr-2 h-4 w-4" />

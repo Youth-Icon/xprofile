@@ -1,18 +1,19 @@
-"use client"
-
-import { FC } from 'react'
+import React from 'react'
 import { UserAuthForm } from '@/components/use-auth-form'
-import { signOut } from "next-auth/react"
-import { Button } from '@/components/ui/button'
+import { getServerAuthSession } from "@/backend/auth";
+import { redirect } from 'next/navigation';
 
-const page: FC = ({ }) => {
+const page = async ({ }) => {
+    const session = await getServerAuthSession();
+
+    if (session) {
+        // redirect to url got from query
+        redirect("/")
+    }
     return (
         <>
             <div className='flex flex-col space-y-4 justify-center items-center h-screen'>
                 <UserAuthForm />
-                <Button onClick={() => signOut()} variant="outline" size={"xxl"} type="button">
-                    Sign Out
-                </Button>
             </div>
         </>
     )
