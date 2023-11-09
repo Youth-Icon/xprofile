@@ -14,6 +14,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { Globe2 } from "lucide-react"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -107,9 +108,12 @@ export function NavLinks() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
+          <Link href="/eplore" legacyBehavior passHref>
+            <NavigationMenuLink className={cn(
+                navigationMenuTriggerStyle(),
+                "text-gray-300 hover:text-gray-200"
+            )}>
+              <p className="flex justify-center items-center"><Globe2 className="w-4 h-4 mr-1" />Explore</p>
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
