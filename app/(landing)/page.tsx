@@ -2,7 +2,7 @@
 import React from 'react'
 import { getServerAuthSession } from "@/backend/auth";
 import LandingNav from '@/components/LandingNav';
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import HeroSection from './components/HeroSection';
 
 export default async function page() {
