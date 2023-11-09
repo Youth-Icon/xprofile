@@ -9,9 +9,9 @@ const LandingNav = async ({ className }: any) => {
     const session = await getServerAuthSession();
 
     return (
-        <div>
+        <div className='w-full'>
             <div className={cn(
-                'flex z-10 justify-between px-24 py-4 bg-transparent items-center',
+                'flex z-10 justify-between px-24 py-3 bg-transparent items-center',
                 className,
             )}>
                 {/* Logo */}
