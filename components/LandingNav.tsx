@@ -33,10 +33,10 @@ const LandingNav = async ({ className }: any) => {
                             <User user={session.user} /> :
                             <div className=''>
                                 <Link href={"/login"} className={cn(
-                                    "px-2 py-8 pr-4",
-                                    buttonVariants({ variant: "outline" }),
+                                    "px-2 py-8 pr-4 font-ubuntu font-bold text-transparent",
+                                    buttonVariants({ variant: "default" }),
                                 )}>
-                                    Sign In
+                                    Get Started
                                 </Link>
                             </div>
                         }

@@ -31,7 +31,7 @@ function User({ user }: any) {
             <DropdownMenuTrigger>
                 <div className={cn(
                     buttonVariants({ variant: "ghost" }),
-                    "px-2 py-8 pr-4"
+                    "px-2 py-7 pr-4"
                 )}>
                     <div className='flex justify-center items-center'>
                         <ChevronDown />
