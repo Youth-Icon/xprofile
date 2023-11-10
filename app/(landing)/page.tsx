@@ -6,6 +6,7 @@ import Image from "next/legacy/image";
 import HeroSection from './components/HeroSection';
 import JoinSection from './components/JoinSection';
 import LandingFooter from './components/LandingFooter';
+import InfoRow from './components/InfoRow';
 
 
 export default async function page() {
@@ -16,6 +17,11 @@ export default async function page() {
       <div className='main min-h-screen'>
         {/* cover backgound image */}
         <HeroSection />
+      </div>
+
+      <div>
+        {/* Info Section */}
+        <InfoRow/>
       </div>
       <div >
         {/* Join up Section */}
