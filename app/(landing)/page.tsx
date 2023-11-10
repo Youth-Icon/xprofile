@@ -7,6 +7,9 @@ import HeroSection from './components/HeroSection';
 import JoinSection from './components/JoinSection';
 import LandingFooter from './components/LandingFooter';
 import InfoRow from './components/InfoRow';
+import Proudly from './components/Proudly';
+import HappyUsers from './components/HappyUsers';
+import Testimonials from './components/Testimonials';
 
 
 export default async function page() {
@@ -18,7 +21,18 @@ export default async function page() {
         {/* cover backgound image */}
         <HeroSection />
       </div>
-
+      <div>
+        {/* Happy Users Section */}
+        <HappyUsers/>
+      </div>
+      <div>
+        {/* Testimonials Section */}
+        <Testimonials/>
+      </div>
+      <div>
+        {/* Proudly Section */}
+        <Proudly/>
+      </div>
       <div>
         {/* Info Section */}
         <InfoRow/>
