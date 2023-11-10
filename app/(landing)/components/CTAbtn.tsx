@@ -37,8 +37,7 @@ const CTAbtn = () => {
     })
 
     function onSubmit(data: UsernameValues) {
-        // save username to local storage and redirect to /create page
-        localStorage.setItem("username", data.username)
+        localStorage.setItem("username", data.username.replace(/\s/g, '').replace(/[^a-zA-Z0-9]/g, ''))
         router.push("/create")
     }
 
@@ -52,9 +51,9 @@ const CTAbtn = () => {
                             <FormField
                                 control={form.control}
                                 name="username"
-                                render={({ field, formState }) => (
+                                render={({ field }) => (
                                     <FormControl>
-                                        <input className="rounded-l-[12px] p-4 border-t mr-0 border-b border-l bg-transparent lowercase" placeholder={oldUsername ? oldUsername : "username"} {...field} />
+                                        <input className="rounded-l-[12px] p-4 border-t mr-0 border-b border-l bg-transparent lowercas" placeholder={oldUsername ? oldUsername : "username"} {...field} />
                                     </FormControl>
                                 )}
                             />
