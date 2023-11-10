@@ -4,7 +4,9 @@ import { getServerAuthSession } from "@/backend/auth";
 import LandingNav from '@/components/LandingNav';
 import Image from "next/legacy/image";
 import HeroSection from './components/HeroSection';
+import JoinSection from './components/JoinSection';
 import LandingFooter from './components/LandingFooter';
+
 
 export default async function page() {
   const session = await getServerAuthSession();
@@ -16,7 +18,11 @@ export default async function page() {
         <HeroSection />
       </div>
       <div >
-        {/* cover backgound image */}
+        {/* Join up Section */}
+        <JoinSection />
+      </div>
+      <div >
+        {/* Footer*/}
         <LandingFooter />
       </div>
     </>

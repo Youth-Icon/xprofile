@@ -73,6 +73,8 @@ module.exports = {
       backgroundImage: {
         'hero-pattern': "url('/hero-pattern.svg')",
         'footer-texture': "url('/footer-texture.png')",
+        'grid-pattern': "url('/grid-pattern.png')",
+        'grid-bg': "url('/grid-bg.png')",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
