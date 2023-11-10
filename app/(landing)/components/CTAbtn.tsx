@@ -29,8 +29,6 @@ type UsernameValues = z.infer<typeof usernameSchema>
 const CTAbtn = () => {
     const router = useRouter()
 
-    const oldUsername = localStorage.getItem("username")
-
     const form = useForm<UsernameValues>({
         resolver: zodResolver(usernameSchema),
         mode: "onChange",
@@ -41,7 +39,7 @@ const CTAbtn = () => {
         router.push("/create")
     }
 
-    console.log(form.formState.errors)
+    // console.log(form.formState.errors)
     return (
         <>
             <div>
@@ -53,13 +51,13 @@ const CTAbtn = () => {
                                 name="username"
                                 render={({ field }) => (
                                     <FormControl>
-                                        <input className="rounded-l-[12px] p-4 border-t mr-0 border-b border-l bg-transparent lowercas" placeholder={oldUsername ? oldUsername : "username"} {...field} />
+                                        <input className="rounded-l-[12px] p-4 border-t mr-0 border-b border-l bg-transparent lowercas" placeholder={"username"} {...field} />
                                     </FormControl>
                                 )}
                             />
                             <p className="px-4 rounded-r-[12px] bg-neutral-400 bg-opacity-30 backdrop-blur-3xl font-manrope text-neutral-400  p-4 ">.xprofile.me</p>
                         </div>
-                        <Button type='submit' className="h-15 bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] hover:bg-gradient-to-r hover:from-[#FF5400] hover:via-[#FF0054] hover:to-[#FF0054] rounded-xl text-white bg-transparent text-md font-bold font-manrope p-4 px-5">CLAIM NOW ✨</Button>
+                        <Button type='submit' className="h-15 hover:shadow-md hover:shadow-[#FF5400]/20 bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] hover:bg-gradient-to-r hover:from-[#FF5400] hover:via-[#FF0054] hover:to-[#FF0054] rounded-xl text-white bg-transparent text-md font-bold font-manrope p-4 px-5">CLAIM NOW ✨</Button>
                     </form>
                 </Form>
             </div>
