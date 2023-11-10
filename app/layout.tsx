@@ -54,7 +54,7 @@ export default function RootLayout({
       <meta name="twitter:image" content="/public/ogImage.jpeg" />
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <body className="flex flex-col">
+          <body className="flex flex-col bg-black">
             {authModal}
             {children}
             <Toaster />

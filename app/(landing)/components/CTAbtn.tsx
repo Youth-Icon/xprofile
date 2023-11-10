@@ -12,6 +12,7 @@ import {
     FormField,
 } from "@/components/ui/form"
 import { useRouter } from 'next/navigation'
+import { Fira_Sans_Extra_Condensed } from 'next/font/google';
 
 const usernameSchema = z.object({
     username: z
