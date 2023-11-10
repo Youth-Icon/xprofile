@@ -7,9 +7,9 @@ import { buttonVariants } from './ui/button'
 import { signOut } from 'next-auth/react';
 import {
     ChevronDown, User2,
-    LifeBuoy,
     LogOut,
     Crown,
+    Globe2,
 } from 'lucide-react'
 import {
     DropdownMenu,
@@ -61,7 +61,7 @@ function User({ user }: any) {
                     <span>Profile</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                    <LifeBuoy className="mr-2 h-4 w-4" />
+                    <Globe2 className="mr-2 h-4 w-4" />
                     <span>Explore</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem disabled>

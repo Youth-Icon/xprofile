@@ -1,32 +1,29 @@
 import React from 'react'
-import Image from "next/image";
 import LandingNav from '@/components/LandingNav';
 import Round from './round';
-import CTAbtn from './CTAbtn';
+import TopComponent from './TopComponent';
+import SecondComponent from './SecondComp';
+import ThirdComp from './ThirdComp';
 
 const HeroSection = () => {
     return (
         <>
-            <div className="h-screen relative overflow-hidden rounded-lg bg-cover bg-no-repeat bg-[url('/hero-pattern.svg')]">
+            <div className="min-h-screen relative overflow-hidden rounded-lg">
                 <div className='flex flex-col'>
                     <LandingNav />
-                    <div className="bg-[url('/patterns.svg')]">
-                        <div className='mt-28 flex justify-center items-center'>
-                            <div className="flex flex-col">
-                                <div className="text-center flex flex-col w-full h-full">
-                                    <span className="text-white text-[95px] font-bold font-manrope">One Link with</span>
-                                    <span className="bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text text-8xl font-bold font-manrope -mt-8">Superpowers</span>
-                                </div>
-                                <div className='flex flex-col space-y-2 justify-center items-center'>
-                                    <div className="text-center max-w-3xl text-stone-400 text-xl mt-9 font-medium font-manrope">xProfile is an open-source app that provides a one-link portfolio for showcasing your projects, skills, social links, and more.</div>
-                                    <CTAbtn />
-                                </div>
-                            </div>
-                        </div>
+                    <div className="flex justify-center items-center flex-col">
+                        <TopComponent />
+                        <SecondComponent />
+                        <ThirdComp />
                     </div>
+                    {/* Pattern at top */}
+                    <div className="absolute -z-20 top-0 left-0 w-full h-[96vh] bg-hero-pattern" />
+
                     {/* Orange Circle Background */}
                     <Round className='absolute top-[420px] -left-56 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full ' />
                     <Round className='absolute top-48 -right-56 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
+                    <Round className='absolute top-[700px] -right-24 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full ' />
+                    <Round className='absolute top-[1500px] -left-10 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
 
                 </div>
             </div>
