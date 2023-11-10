@@ -1,9 +1,6 @@
 "use client"
 
-import { Button, buttonVariants } from '@/components/ui/button'
 import { UserAuthForm } from '@/components/use-auth-form'
-import { cn } from '@/lib/utils'
-import { X } from 'lucide-react'
 import { FC } from 'react'
 import CloseModel from './components/CloseModel'
 
