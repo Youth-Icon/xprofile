@@ -3,7 +3,7 @@ import Round from "./round";
 
 const HappyUsers = () => {
   return (
-    <div className="w-full h-[380px] flex justify-center items-center">
+    <div className="w-full h-[300px] flex justify-center items-center">
     <div className="w-[600px] h-80 relative text-center flex flex-col justify-center items-center">
     <Round className='absolute w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
     <div className="h-20 flex gap-2">

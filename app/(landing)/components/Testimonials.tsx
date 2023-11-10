@@ -1,17 +1,20 @@
 import React from "react";
 import FeatureBox from "./FeatureBox";
 import {GitFork, Github, Heart, Twitter} from "lucide-react"
+import Round from "./round";
 
 const Testimonials = () => {
   return (
     // Outer container for the entire component
-    <div className="w-full pt-8 flex items-center">
+    <div className="w-full flex items-center">
+      <Round className='absolute -left-[4rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
+      <Round className='absolute mt-[-40rem] -right-[4rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
       {/* Main container with three columns */}
       <div className="flex justify-between mx-auto w-[1200px] h-[1216px] gap-3 items-center top-[12px]">
 
         {/* First Column */}
         <div className="flex flex-col items-center gap-5 mt-[4rem]">
-          <FeatureBox height="540px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatureBox height="500px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -57,7 +60,7 @@ const Testimonials = () => {
           </FeatureBox>
 
           {/* Second FeatureBox in the first column */}
-          <FeatureBox height="540px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatureBox height="500px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -143,7 +146,7 @@ const Testimonials = () => {
           </FeatureBox>
 
           {/* Second FeatureBox in the middle column */}
-          <FeatureBox height="540px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatureBox height="500px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -226,7 +229,7 @@ const Testimonials = () => {
         {/* Last Column */}
         <div className="flex flex-col items-center gap-5 mt-6">
           {/* First FeatureBox in the last column */}
-          <FeatureBox height="540px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatureBox height="500px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -272,7 +275,7 @@ const Testimonials = () => {
           </FeatureBox>
 
           {/* Second FeatureBox in the last column */}
-          <FeatureBox height="540px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatureBox height="500px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
