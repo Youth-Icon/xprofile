@@ -9,7 +9,6 @@ const HeroSection = () => {
         <>
             <div className="h-screen relative overflow-hidden rounded-lg bg-cover bg-no-repeat bg-[url('/hero-pattern.svg')]">
                 <div className='flex flex-col'>
-                    {/* @ts-expect-error server component */}
                     <LandingNav />
                     <div className="bg-[url('/patterns.svg')]">
                         <div className='mt-28 flex justify-center items-center'>
