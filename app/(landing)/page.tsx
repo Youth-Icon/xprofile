@@ -8,7 +8,7 @@ import LandingFooter from './components/LandingFooter';
 
 export default async function page() {
   const session = await getServerAuthSession();
-  console.log(session)
+  // console.log(session)
   return (
     <>
       <div className='main min-h-screen'>

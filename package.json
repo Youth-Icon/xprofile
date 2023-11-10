@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.2",
     "@next-auth/prisma-adapter": "^1.0.7",
+    "@next/font": "^14.0.2",
     "@prisma/client": "^5.5.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-avatar": "^1.0.3",
@@ -40,6 +42,7 @@
     "prisma": "^5.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.48.2",
     "react-icons": "^4.11.0",
     "react-indiana-drag-scroll": "^2.2.0",
     "tailwind-merge": "^2.0.0",

@@ -73,7 +73,13 @@ module.exports = {
       backgroundImage: {
         'hero-pattern': "url('/hero-pattern.svg')",
         'footer-texture': "url('/footer-texture.png')",
-      }
+      },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
+        ubuntu: ['var(--font-ubuntu)', "sans-serif"],
+        manrope: ['var(--font-manrope)', "sans-serif"],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

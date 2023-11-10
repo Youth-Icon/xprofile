@@ -21,20 +21,27 @@ const LandingNav = async ({ className }: any) => {
                     <NavLinks />
                 </div>
                 {/* Nav */}
-                <div className='flex justify-end items-center space-x-4'>
-                    {session ?
-                        <User user={session.user} /> :
-                        <div className=''>
-                            <Link href={"/login"} className={cn(
-                                "px-2 py-8 pr-4",
-                                buttonVariants({ variant: "outline" }),
-                            )}>
-                                Sign In
-                            </Link>
-                        </div>
-                    }
+                <div className='flex flex-row justify-center items-center space-x-3'>
+                    <Link href={"/about"} className={cn(
+                        "px-2 py-8 pr-4 text-gray-300 hover:text-gray-200",
+                        buttonVariants({ variant: "ghost" }),
+                    )}>
+                        About Us
+                    </Link>
+                    <div className='flex justify-end items-center space-x-4'>
+                        {session ?
+                            <User user={session.user} /> :
+                            <div className=''>
+                                <Link href={"/login"} className={cn(
+                                    "px-2 py-8 pr-4 font-ubuntu font-bold text-transparent",
+                                    buttonVariants({ variant: "default" }),
+                                )}>
+                                    Get Started
+                                </Link>
+                            </div>
+                        }
+                    </div>
                 </div>
-
             </div>
         </div>
     )
