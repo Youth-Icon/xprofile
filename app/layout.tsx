@@ -43,8 +43,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  authModal
 }: {
   children: React.ReactNode;
+  authModal: React.ReactNode
 }) {
   return (
     <html lang="en" className={`${Ununtu.variable} ${Manrope.variable} font-sans`}>
@@ -52,10 +54,11 @@ export default function RootLayout({
       <meta name="twitter:image" content="/public/ogImage.jpeg" />
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <main className="flex flex-col">
+          <body className="flex flex-col">
+            {authModal}
             {children}
             <Toaster />
-          </main>
+          </body>
         </ThemeProvider>
       </body>
     </html>
