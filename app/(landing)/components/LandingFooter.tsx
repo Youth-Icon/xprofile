@@ -96,7 +96,9 @@ const LandingFooter = () => {
               Open-source Software
             </div>
             <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+              <a href="https://github.com/Youth-Icon/xprofile">
               GitHub
+              </a>
             </div>
             <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
               <a href="https://twitter.com/imayouthicon">
