@@ -108,7 +108,7 @@ const LandingFooter = () => {
           </div>
         </div>
       </div>
-      <div className="w-[1200px] h-[0px] left-[120px] top-[389px] absolute border border-stone-300 border-opacity-20"></div>
+      <div className="w-[calc(100%-240px)] h-[0px] left-[120px] top-[389px] absolute border border-stone-300 border-opacity-20"></div>
       <div className="left-[122px] top-[417px] absolute text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
         © 2023 youthicon, org{" "}
       </div>
