@@ -4,9 +4,9 @@ import { Github, X, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const LandingFooter = () => {
   return (
-    <div className="w-full h-[480px] relative bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70%">
+    <div className="w-[100%] h-[480px] relative bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70%">
       <div className="w-full" />
-      <div className="w-[302px] h-[187px] left-[120px] top-[100px] absolute">
+      <div className="w-[302px] h-[187px] left-[10%] top-[100px] absolute">
         <div className="flex items-start gap-2 text-center md:text-center lg:text-left">
           <h1 className="flex flex-col font-extrabold text-[#ff5400] text-[22px] text-center md:text-center lg:text-left">
             YI
@@ -33,7 +33,7 @@ const LandingFooter = () => {
           sharing their projects and skills.
         </div>
       </div>
-      <div className="h-[221px] left-[516px] top-[100px] absolute justify-start items-start gap-[68px] inline-flex">
+      <div className="h-[221px] left-[40%]  top-[100px] absolute justify-start items-start gap-[68px] inline-flex">
         <div className="pr-[37px] flex-col justify-center items-start gap-6 inline-flex">
           <div className="text-white text-base font-semibold font-Manrope">
             Features
@@ -108,7 +108,7 @@ const LandingFooter = () => {
           </div>
         </div>
       </div>
-      <div className="w-[1200px] h-[0px] left-[120px] top-[389px] absolute border border-stone-300 border-opacity-20"></div>
+      <div className="w-[calc(100%-240px)] h-[0px] left-[120px] top-[389px] absolute border border-stone-300 border-opacity-20"></div>
       <div className="left-[122px] top-[417px] absolute text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
         © 2023 youthicon, org{" "}
       </div>
