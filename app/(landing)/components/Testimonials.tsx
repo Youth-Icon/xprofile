@@ -7,8 +7,7 @@ const Testimonials = () => {
   return (
     // Outer container for the entire component
     <div className="w-full flex items-center">
-      <Round className='absolute -left-[4rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
-      <Round className='absolute mt-[-40rem] -right-[4rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
+      <Round className='absolute w-[500px] h-[500px] right-0 shadow-xl opacity-[0.27] bg-[#FF5400] blur-[150px] rounded-full ' />
       {/* Main container with three columns */}
       <div className="flex justify-between mx-auto w-[1200px] h-[1216px] gap-3 items-center top-[12px]">
 
