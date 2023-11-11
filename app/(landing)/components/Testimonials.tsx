@@ -1,5 +1,5 @@
 import React from "react";
-import FeatureBox from "./FeatureBox";
+import FeatCard from "./FeatCard";
 import {GitFork, Github, Heart, Twitter} from "lucide-react"
 import Round from "./round";
 
@@ -13,7 +13,8 @@ const Testimonials = () => {
 
         {/* First Column */}
         <div className="flex flex-col items-center gap-5 mt-[4rem]">
-          <FeatureBox height="500px" width="380px" paddingX="24px" paddingY="32px">
+
+          <FeatCard height="500px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -56,10 +57,10 @@ const Testimonials = () => {
                 </div>
               </div>
             </div>
-          </FeatureBox>
+          </FeatCard>
 
           {/* Second FeatureBox in the first column */}
-          <FeatureBox height="500px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="500px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -102,13 +103,13 @@ const Testimonials = () => {
                 </div>
               </div>
             </div>
-          </FeatureBox>
+          </FeatCard>
         </div>
 
         {/* Middle Column */}
         <div className="flex flex-col items-center gap-5">
           {/* First FeatureBox in the middle column */}
-          <FeatureBox height="429px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="429px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -142,10 +143,10 @@ const Testimonials = () => {
                 </span>
               </div>
             </div>
-          </FeatureBox>
+          </FeatCard>
 
           {/* Second FeatureBox in the middle column */}
-          <FeatureBox height="500px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="500px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -188,10 +189,10 @@ const Testimonials = () => {
                 </div>
               </div>
             </div>
-          </FeatureBox>
+          </FeatCard>
 
           {/* Third FeatureBox in the middle column */}
-          <FeatureBox height="188px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="188px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -222,13 +223,13 @@ const Testimonials = () => {
                 </span>
               </div>   
             </div>
-          </FeatureBox>
+          </FeatCard>
         </div>
 
         {/* Last Column */}
         <div className="flex flex-col items-center gap-5 mt-6">
           {/* First FeatureBox in the last column */}
-          <FeatureBox height="500px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="500px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -271,10 +272,10 @@ const Testimonials = () => {
                 </div>
               </div>
             </div>
-          </FeatureBox>
+          </FeatCard>
 
           {/* Second FeatureBox in the last column */}
-          <FeatureBox height="500px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="500px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -317,7 +318,7 @@ const Testimonials = () => {
                 </div>
               </div>
             </div>
-          </FeatureBox>
+          </FeatCard>
         </div>
       </div>
     </div>
