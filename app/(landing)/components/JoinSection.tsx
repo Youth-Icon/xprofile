@@ -14,12 +14,12 @@ const JoinSection = () => {
         <div className="text-white font-medium text-5xl ">
           Join the
         </div>
-        <div className="text-5xl font-bold font-manrope bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text">
+        <div className="text-5xl font-bold font-Manrope bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text">
           Community
         </div>
       </div>
 
-  <div className="w-[636px] text-neutral-400 text-lg font-medium font-manrope">
+  <div className="w-[636px] text-neutral-400 text-lg font-medium font-Manrope">
     Join the conversation in our community groups. Share ideas, thoughts,
     feedback and help us grow this unique network. You’ll find us on the
     usual channels below.

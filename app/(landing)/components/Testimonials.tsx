@@ -22,15 +22,15 @@ const Testimonials = () => {
                     <img className="w-10 h-10 rounded-[20px]" src="https://via.placeholder.com/40x40" alt="Profile" />
                     <div className="ml-2 w-full flex items-center justify-between">
                       <div>
-                        <div className="text-white text-[13px] font-semibold font-manrope">Andrea R.</div>
+                        <div className="text-white text-[13px] font-semibold font-Manrope">Andrea R.</div>
                         <div className="flex items-center gap-1.5">
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">@annawarren</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">@annawarren</div>
                           <div className="w-0.5 h-0.5 bg-slate-300 bg-opacity-60 rounded-full" />
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">Sep 2</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">Sep 2</div>
                         </div>
                       </div>
                       {/* Twitter icon */}
-                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope ml-auto">
+                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope ml-auto">
                         <Twitter/>
                       </div>
                     </div>
@@ -38,8 +38,8 @@ const Testimonials = () => {
 
               {/* User description */}
               <div className="mt-3">
-                <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-sky-400 text-base font-medium font-Manrope">xProfile</span>
+                <span className="text-slate-300 text-base font-medium font-Manrope">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes. <br />
                   <br /> Open source to its your next favorite tool. Keeping close 👀 on this one!
@@ -68,15 +68,15 @@ const Testimonials = () => {
                     <img className="w-10 h-10 rounded-[20px]" src="https://via.placeholder.com/40x40" alt="Profile" />
                     <div className="ml-2 w-full flex items-center justify-between">
                       <div>
-                        <div className="text-white text-[13px] font-semibold font-manrope">Andrea R.</div>
+                        <div className="text-white text-[13px] font-semibold font-Manrope">Andrea R.</div>
                         <div className="flex items-center gap-1.5">
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">@annawarren</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">@annawarren</div>
                           <div className="w-0.5 h-0.5 bg-slate-300 bg-opacity-60 rounded-full" />
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">Sep 2</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">Sep 2</div>
                         </div>
                       </div>
                       {/* Twitter icon */}
-                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope ml-auto">
+                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope ml-auto">
                         <Twitter/>
                       </div>
                     </div>
@@ -84,8 +84,8 @@ const Testimonials = () => {
 
               {/* User description */}
               <div className="mt-3">
-                <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-sky-400 text-base font-medium font-Manrope">xProfile</span>
+                <span className="text-slate-300 text-base font-medium font-Manrope">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes. <br />
                   <br /> Open source to its your next favorite tool. Keeping close 👀 on this one!
@@ -117,15 +117,15 @@ const Testimonials = () => {
                     <img className="w-10 h-10 rounded-[20px]" src="https://via.placeholder.com/40x40" alt="Profile" />
                     <div className="ml-2 w-full flex items-center justify-between">
                       <div>
-                        <div className="text-white text-[13px] font-semibold font-manrope">Andrea R.</div>
+                        <div className="text-white text-[13px] font-semibold font-Manrope">Andrea R.</div>
                         <div className="flex items-center gap-1.5">
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">@annawarren</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">@annawarren</div>
                           <div className="w-0.5 h-0.5 bg-slate-300 bg-opacity-60 rounded-full" />
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">Sep 2</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">Sep 2</div>
                         </div>
                       </div>
                       {/* Twitter icon */}
-                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope ml-auto">
+                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope ml-auto">
                         <Twitter/>
                       </div>
                     </div>
@@ -133,8 +133,8 @@ const Testimonials = () => {
 
               {/* User description */}
               <div className="mt-3">
-                <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-sky-400 text-base font-medium font-Manrope">xProfile</span>
+                <span className="text-slate-300 text-base font-medium font-Manrope">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes. <br />
                   <br /> Open source to its gonna be your next favorite tool. Open source to its gonna be your next favorite tool. Open source to its your next favorite tool.<br/><br/>
@@ -154,15 +154,15 @@ const Testimonials = () => {
                     <img className="w-10 h-10 rounded-[20px]" src="https://via.placeholder.com/40x40" alt="Profile" />
                     <div className="ml-2 w-full flex items-center justify-between">
                       <div>
-                        <div className="text-white text-[13px] font-semibold font-manrope">Andrea R.</div>
+                        <div className="text-white text-[13px] font-semibold font-Manrope">Andrea R.</div>
                         <div className="flex items-center gap-1.5">
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">@annawarren</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">@annawarren</div>
                           <div className="w-0.5 h-0.5 bg-slate-300 bg-opacity-60 rounded-full" />
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">Sep 2</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">Sep 2</div>
                         </div>
                       </div>
                       {/* Twitter icon */}
-                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope ml-auto">
+                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope ml-auto">
                         <Twitter/>
                       </div>
                     </div>
@@ -170,8 +170,8 @@ const Testimonials = () => {
 
               {/* User description */}
               <div className="mt-3">
-                <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-sky-400 text-base font-medium font-Manrope">xProfile</span>
+                <span className="text-slate-300 text-base font-medium font-Manrope">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes. <br />
                   <br /> Open source to its your next favorite tool. Keeping close 👀 on this one!
@@ -200,15 +200,15 @@ const Testimonials = () => {
                     <img className="w-10 h-10 rounded-[20px]" src="https://via.placeholder.com/40x40" alt="Profile" />
                     <div className="ml-2 w-full flex items-center justify-between">
                       <div>
-                        <div className="text-white text-[13px] font-semibold font-manrope">Andrea R.</div>
+                        <div className="text-white text-[13px] font-semibold font-Manrope">Andrea R.</div>
                         <div className="flex items-center gap-1.5">
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">@annawarren</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">@annawarren</div>
                           <div className="w-0.5 h-0.5 bg-slate-300 bg-opacity-60 rounded-full" />
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">Sep 2</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">Sep 2</div>
                         </div>
                       </div>
                       {/* Twitter icon */}
-                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope ml-auto">
+                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope ml-auto">
                         <Twitter/>
                       </div>
                     </div>
@@ -216,8 +216,8 @@ const Testimonials = () => {
 
               {/* User description */}
               <div className="mt-3">
-                <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-sky-400 text-base font-medium font-Manrope">xProfile</span>
+                <span className="text-slate-300 text-base font-medium font-Manrope">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes.
                 </span>
@@ -237,15 +237,15 @@ const Testimonials = () => {
                     <img className="w-10 h-10 rounded-[20px]" src="https://via.placeholder.com/40x40" alt="Profile" />
                     <div className="ml-2 w-full flex items-center justify-between">
                       <div>
-                        <div className="text-white text-[13px] font-semibold font-manrope">Andrea R.</div>
+                        <div className="text-white text-[13px] font-semibold font-Manrope">Andrea R.</div>
                         <div className="flex items-center gap-1.5">
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">@annawarren</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">@annawarren</div>
                           <div className="w-0.5 h-0.5 bg-slate-300 bg-opacity-60 rounded-full" />
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">Sep 2</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">Sep 2</div>
                         </div>
                       </div>
                       {/* Twitter icon */}
-                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope ml-auto">
+                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope ml-auto">
                         <Twitter/>
                       </div>
                     </div>
@@ -253,8 +253,8 @@ const Testimonials = () => {
 
               {/* User description */}
               <div className="mt-3">
-                <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-sky-400 text-base font-medium font-Manrope">xProfile</span>
+                <span className="text-slate-300 text-base font-medium font-Manrope">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes. <br />
                   <br /> Open source to its your next favorite tool. Keeping close 👀 on this one!
@@ -283,15 +283,15 @@ const Testimonials = () => {
                     <img className="w-10 h-10 rounded-[20px]" src="https://via.placeholder.com/40x40" alt="Profile" />
                     <div className="ml-2 w-full flex items-center justify-between">
                       <div>
-                        <div className="text-white text-[13px] font-semibold font-manrope">Andrea R.</div>
+                        <div className="text-white text-[13px] font-semibold font-Manrope">Andrea R.</div>
                         <div className="flex items-center gap-1.5">
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">@annawarren</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">@annawarren</div>
                           <div className="w-0.5 h-0.5 bg-slate-300 bg-opacity-60 rounded-full" />
-                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope">Sep 2</div>
+                          <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope">Sep 2</div>
                         </div>
                       </div>
                       {/* Twitter icon */}
-                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-manrope ml-auto">
+                      <div className="text-slate-300 text-opacity-60 text-[11px] font-medium font-Manrope ml-auto">
                         <Twitter/>
                       </div>
                     </div>
@@ -299,8 +299,8 @@ const Testimonials = () => {
 
               {/* User description */}
               <div className="mt-3">
-                <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-sky-400 text-base font-medium font-Manrope">xProfile</span>
+                <span className="text-slate-300 text-base font-medium font-Manrope">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes. <br />
                   <br /> Open source to its your next favorite tool. Keeping close 👀 on this one!
