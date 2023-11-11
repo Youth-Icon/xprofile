@@ -1,6 +1,7 @@
 import React from "react";
 import Round from "./round";
 import { Button } from "@/components/ui/button";
+import FeatCard from "./FeatCard";
 
 const ProjectsAndCreators = () => {
   return (
@@ -22,33 +23,53 @@ const ProjectsAndCreators = () => {
       {/* CARDS AREA  */}
       <div className="overflow-clip">
         <div className="flex min-w-max gap-8 relative right-20">
-          <BlankCard />
-          <BlankCard />
-          <BlankCard />
-          <BlankCard />
-          <BlankCard />
-          <BlankCard />
-          <BlankCard />
+          <FeatCard height="362px" width="462px" paddingX="0px" paddingY="0px">
+            <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
+          <FeatCard height="362px" width="462px" paddingX="0px" paddingY="0px">
+            <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
+          <FeatCard height="362px" width="462px" paddingX="0px" paddingY="0px">
+            <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
+          <FeatCard height="362px" width="462px" paddingX="0px" paddingY="0px">
+            <div className="h-full w-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
+          <FeatCard height="362px" width="462px" paddingX="0px" paddingY="0px">
+            <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
+          <FeatCard height="362px" width="462px" paddingX="0px" paddingY="0px">
+            <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
+          <FeatCard height="362px" width="462px" paddingX="0px" paddingY="0px">
+            <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
         </div>
         <div className="flex min-w-max gap-8 mt-8 relative right-80">
-          <BlankCard />
-          <BlankCard />
+          <FeatCard height="362px" width="362px" paddingX="0px" paddingY="0px">
+            <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
+          <FeatCard height="362px" width="462px" paddingX="0px" paddingY="0px">
+            <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
+          <FeatCard height="362px" width="462px" paddingX="0px" paddingY="0px">
+            <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
           <CardWithContent />
-          <BlankCard />
-          <BlankCard />
-          <BlankCard />
-          <BlankCard />
+          <FeatCard height="362px" width="462px" paddingX="0px" paddingY="0px">
+            <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
+          <FeatCard height="362px" width="462px" paddingX="0px" paddingY="0px">
+            <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
+          <FeatCard height="362px" width="462px" paddingX="0px" paddingY="0px">
+            <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
+          </FeatCard>
         </div>
         <Round className="absolute bottom-36 -left-32 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
         <Round className="absolute bottom-0 right-36 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
       </div>
     </section>
-  );
-};
-
-const BlankCard = () => {
-  return (
-    <div className="w-[462px] h-[362px] rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
   );
 };
 
