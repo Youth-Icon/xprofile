@@ -10,6 +10,7 @@ import InfoRow from './components/InfoRow';
 import Proudly from './components/Proudly';
 import HappyUsers from './components/HappyUsers';
 import Testimonials from './components/Testimonials';
+import CardRowSection from './components/CardRowSection';
 
 
 export default async function page() {
@@ -20,6 +21,10 @@ export default async function page() {
       <div className='main min-h-screen'>
         {/* cover backgound image */}
         <HeroSection />
+      </div>
+      <div>
+        {/* Happy Users Section */}
+        <CardRowSection/>
       </div>
       <div>
         {/* Happy Users Section */}
