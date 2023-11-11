@@ -4,7 +4,7 @@ import { Github, X, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const LandingFooter = () => {
   return (
-    <div className="w-[calc(100%-240px)] h-[480px] relative bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70%">
+    <div className="w-[100%] h-[480px] relative bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70%">
       <div className="w-full" />
       <div className="w-[302px] h-[187px] left-[10%] top-[100px] absolute">
         <div className="flex items-start gap-2 text-center md:text-center lg:text-left">
