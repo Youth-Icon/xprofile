@@ -108,7 +108,7 @@ export function NavLinks() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/eplore" legacyBehavior passHref>
+          <Link href="/explore" legacyBehavior passHref>
             <NavigationMenuLink className={cn(
                 navigationMenuTriggerStyle(),
                 "text-gray-300 hover:text-gray-200"
