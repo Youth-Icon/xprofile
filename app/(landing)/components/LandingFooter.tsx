@@ -71,7 +71,10 @@ const LandingFooter = () => {
               Showcases
             </div>
             <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+              <a href="https://github.com/Youth-Icon/xprofile">
               GitHub
+              </a>
+              
             </div>
             <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
               Community
@@ -96,7 +99,10 @@ const LandingFooter = () => {
               GitHub
             </div>
             <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+              <a href="https://twitter.com/imayouthicon">
               Twitter
+              </a>
+              
             </div>
           </div>
         </div>
