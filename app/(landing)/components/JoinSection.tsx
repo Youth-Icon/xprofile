@@ -26,10 +26,18 @@ const JoinSection = () => {
   </div>
 
   <div className="w-[600px] h-16 flex justify-center items-center gap-12 pt-12">
-    <Github className="w-16 h-16 relative" />
-    <Linkedin className="w-16 h-16 relative" />
-    <X className="w-16 h-16 relative" />
+    <a href="https://github.com/Youth-Icon/xprofile">
+      <Github className="w-16 h-16 relative" />
+    </a>
+    <a href="https://www.instagram.com/imayouthicon/">
+    <Instagram className="w-16 h-16 relative" />
+    </a>
+    <a href="https://twitter.com/imayouthicon">
+      <X className="w-16 h-16 relative" />
+    </a>
+    <a href="https://www.youtube.com/imayouthicon">
     <Youtube className="w-16 h-16 relative"/>
+    </a>
     </div>
   </div>
 </div>
