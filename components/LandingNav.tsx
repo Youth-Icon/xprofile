@@ -1,18 +1,34 @@
-import React from 'react'
-import { getServerAuthSession } from "@/backend/auth";
-import User from './user';
+"use client"
+import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from './ui/button';
 import Link from 'next/link';
 import { NavLinks } from './NavLinks';
 
-const LandingNav = async ({ className }: any) => {
-    const session = await getServerAuthSession();
+const LandingNav = ({ className, children }: any) => {
+    
+    const [scrolling, setScrolling] = useState(false);
+  
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const isScrolled = window.scrollY > 0;
+            console.log('isScrolled:', isScrolled);
+            setScrolling(isScrolled);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
-        <div className='w-full'>
+        <div className="w-full ">
             <div className={cn(
-                'flex z-10 justify-between px-32 py-3 bg-transparent items-center h-20',
+                'flex w-full z-50 justify-between px-32 py-3 bg-transparent items-center h-20 fixed top-0 transition-all duration-300 border-[0.5px]',
+                scrolling ? 'bg-gray-500 bg-opacity-25 backdrop-blur-md' : 'bg-transparent',
                 className,
             )}>
                 {/* Logo */}
@@ -28,23 +44,11 @@ const LandingNav = async ({ className }: any) => {
                     )}>
                         About Us
                     </Link>
-                    <div className='flex justify-end items-center space-x-4'>
-                        {session ?
-                            <User user={session.user} /> :
-                            <div className=''>
-                                <Link href={"/login"} className={cn(
-                                    "px-2 py-8 pr-4 font-ubuntu font-bold text-transparent",
-                                    buttonVariants({ variant: "default" }),
-                                )}>
-                                    Get Started
-                                </Link>
-                            </div>
-                        }
-                    </div>
+                    {children}
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default LandingNav
+export default LandingNav;

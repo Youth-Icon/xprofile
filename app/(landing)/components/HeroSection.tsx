@@ -4,13 +4,14 @@ import Round from './round';
 import TopComponent from './TopComponent';
 import SecondComponent from './SecondComp';
 import ThirdComp from './ThirdComp';
+import LoginLink from '@/components/LoginLink';
 
 const HeroSection = () => {
     return (
         <>
             <div className="min-h-screen relative overflow-hidden rounded-lg">
                 <div className='flex flex-col'>
-                    <LandingNav />
+                    <LandingNav><LoginLink/></LandingNav>
                     <div className="flex justify-center items-center flex-col">
                         <TopComponent />
                         <SecondComponent />

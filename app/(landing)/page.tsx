@@ -10,7 +10,10 @@ import InfoRow from './components/InfoRow';
 import Proudly from './components/Proudly';
 import HappyUsers from './components/HappyUsers';
 import Testimonials from './components/Testimonials';
-import ProjectsAndCreators from './components/ProjectsAndCreators';
+import CardRowSection from './components/CardRowSection';
+import DiscoverProjects from './components/DiscoverProjects';
+import LargeInfoBox from './components/LargeInfoBox';
+import PowerfulFeatures from './components/PowerfulFeatures';
 
 
 export default async function page() {
@@ -23,8 +26,20 @@ export default async function page() {
         <HeroSection />
       </div>
       <div>
-        {/* Projects and Creators */}
-        <ProjectsAndCreators />
+        {/* Discover Projects Section */}
+        <PowerfulFeatures/>
+      </div>
+      <div>
+        {/* Discover Projects Section */}
+        <LargeInfoBox/>
+      </div>
+      <div>
+        {/* Discover Projects Section */}
+        <DiscoverProjects/>
+      </div>
+      <div>
+        {/* Card Row Section */}
+        <CardRowSection/>
       </div>
       <div>
         {/* Happy Users Section */}
@@ -53,4 +68,3 @@ export default async function page() {
     </>
   )
 }
-
