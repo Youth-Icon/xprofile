@@ -10,12 +10,12 @@ const HappyUsers = () => {
           <div className="text-white font-medium text-5xl ">
             Join our
           </div>
-          <div className="text-5xl font-bold font-Manrope bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text">
+          <div className="text-5xl font-bold font-manrope bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text">
             Happy Users
           </div>
         </div>
 
-        <div className="text-neutral-400 text-lg font-medium font-Manrope">
+        <div className="text-neutral-400 text-lg font-medium font-manrope">
           Don&apos;t take it from us - here&apos;s what our users have to say about xProfile.
         </div>
       </div>

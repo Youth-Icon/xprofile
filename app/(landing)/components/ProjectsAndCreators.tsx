@@ -10,11 +10,11 @@ const ProjectsAndCreators = () => {
       <div className="flex gap-y-8 flex-col text-center mt-28 mb-16 items-center max-w-screen-[1200px] mx-auto">
         <h2 className="text-white font-medium text-5xl text-center">
           Discover inspiring
-          <span className="block font-bold font-Manrope bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text text-center">
+          <span className="block font-bold font-manrope bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text text-center">
             projects and creators
           </span>
         </h2>
-        <p className="text-neutral-400 text-lg font-medium font-Manrope max-w-[636px]">
+        <p className="text-neutral-400 text-lg font-medium font-manrope max-w-[636px]">
           Discover projects and meet the brilliant minds behind them. Get ready
           to be inspired as we unveil a treasure trove of talent and innovation.
         </p>

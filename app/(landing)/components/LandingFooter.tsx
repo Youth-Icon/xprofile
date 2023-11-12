@@ -15,7 +15,7 @@ const LandingFooter = () => {
             Youth Icon
           </p>
         </div>
-        <div className="w-[302px] text-slate-300 text-opacity-60 text-base font-medium font-Manrope">
+        <div className="w-[302px] text-slate-300 text-opacity-60 text-base font-medium font-manrope">
           Giving developers the power to connect with inspiring developers by
           sharing their projects and skills.
         </div>
@@ -41,74 +41,74 @@ const LandingFooter = () => {
       </div>
       <div className="h-[221px] justify-start items-start gap-[68px] inline-flex">
         <div className="pr-[37px] flex-col justify-center items-start gap-6 inline-flex">
-          <div className="text-white text-base font-semibold font-Manrope">
+          <div className="text-white text-base font-semibold font-manrope">
             Features
           </div>
           <div className="self-stretch flex-col justify-start items-start gap-5 inline-flex">
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               Showcase
             </div>
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               Social Links
             </div>
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               Personalization
             </div>
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               Profile Themes
             </div>
-            <div className="w-[113px] text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="w-[113px] text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               API
             </div>
           </div>
         </div>
         <div className="pr-[68px] pb-[39px] flex-col justify-start items-start gap-6 inline-flex">
-          <div className="text-white text-base font-semibold font-Manrope">
+          <div className="text-white text-base font-semibold font-manrope">
             Resources
           </div>
           <div className="self-stretch flex-col justify-start items-start gap-5 inline-flex">
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               Showcases
             </div>
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               <a href="https://github.com/Youth-Icon/xprofile">GitHub</a>
             </div>
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               Community
             </div>
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               Help Center
             </div>
           </div>
         </div>
         <div className="pr-px pb-[39px] flex-col justify-start items-start gap-6 inline-flex">
-          <div className="text-white text-base font-semibold font-Manrope">
+          <div className="text-white text-base font-semibold font-manrope">
             About Youth Icon
           </div>
           <div className="self-stretch flex-col justify-start items-start gap-5 inline-flex">
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               xProfile + Youth Icon
             </div>
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               Open-source Software
             </div>
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               <a href="https://github.com/Youth-Icon/xprofile">GitHub</a>
             </div>
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               <a href="https://twitter.com/imayouthicon">Twitter</a>
             </div>
           </div>
         </div>
         <div className="w-[150px] pr-[102px] pb-[117px] flex-col justify-start items-start gap-6 inline-flex">
-          <div className="text-white text-base font-semibold font-Manrope">
+          <div className="text-white text-base font-semibold font-manrope">
             Legal
           </div>
           <div className="self-stretch flex-col justify-start items-start gap-5 inline-flex">
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               Privacy
             </div>
-            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+            <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
               Terms
             </div>
           </div>
@@ -123,7 +123,7 @@ const LandingFooter = () => {
         <div className="flex justify-center items-center">
       <div className="w-[calc(100%-240px)] h-[0px] border border-stone-300 border-opacity-20"></div>
       </div>
-      <div className="pl-[120px] mt-5 text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+      <div className="pl-[120px] mt-5 text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
         © 2023 youthicon, org{" "}
       </div>
       </div>
