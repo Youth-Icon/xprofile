@@ -2,7 +2,7 @@ import React from 'react'
 import CTAbtn from './CTAbtn'
 
 const TopComponent = ({ }) => {
-    return <div className="mt-14 flex justify-center items-center bg-cover bg-no-repeat">
+    return <div className="mt-[8.5rem] flex justify-center items-center bg-cover bg-no-repeat">
         <div className="flex flex-col">
             <div className="text-center flex flex-col w-full h-full">
                 <span className="text-white text-[95px] font-bold font-manrope">One Link with</span>
