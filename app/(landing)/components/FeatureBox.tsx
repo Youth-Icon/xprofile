@@ -1,11 +1,12 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, CSSProperties } from "react";
 
 interface FeatureBoxProps {
   height?: string;
   width?: string;
   paddingX?: string;
   paddingY?: string;
-    children?: ReactNode;
+  style?: CSSProperties; // Add a style prop for custom styles
+  children?: ReactNode;
 }
 
 const FeatureBox: React.FC<FeatureBoxProps> = ({
@@ -13,13 +14,15 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({
   width,
   paddingX,
   paddingY,
-    children,
+  style,
+  children,
 }) => {
-  const boxStyles: React.CSSProperties = {
+  const boxStyles: CSSProperties = {
     height: height || "100px",
     width: width || "100px",
     padding: `${paddingY || "8px"} ${paddingX || "8px"}`,
-      };
+    ...style, // Merge custom styles
+  };
 
   const paddingClasses = `py-${paddingY} px-${paddingX}`;
 
