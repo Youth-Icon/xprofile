@@ -10,6 +10,10 @@ import InfoRow from './components/InfoRow';
 import Proudly from './components/Proudly';
 import HappyUsers from './components/HappyUsers';
 import Testimonials from './components/Testimonials';
+import CardRowSection from './components/CardRowSection';
+import DiscoverProjects from './components/DiscoverProjects';
+import LargeInfoBox from './components/LargeInfoBox';
+import PowerfulFeatures from './components/PowerfulFeatures';
 
 
 export default async function page() {
@@ -20,6 +24,22 @@ export default async function page() {
       <div className='main min-h-screen'>
         {/* cover backgound image */}
         <HeroSection />
+      </div>
+      <div>
+        {/* Discover Projects Section */}
+        <PowerfulFeatures/>
+      </div>
+      <div>
+        {/* Discover Projects Section */}
+        <LargeInfoBox/>
+      </div>
+      <div>
+        {/* Discover Projects Section */}
+        <DiscoverProjects/>
+      </div>
+      <div>
+        {/* Card Row Section */}
+        <CardRowSection/>
       </div>
       <div>
         {/* Happy Users Section */}
@@ -48,4 +68,3 @@ export default async function page() {
     </>
   )
 }
-
