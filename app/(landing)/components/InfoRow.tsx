@@ -2,7 +2,6 @@ import React from "react";
 import { GitFork, Github, Heart } from "lucide-react"
 import FeatCard from "./FeatCard";
 
-
 const InfoRow = () => {
   return (
     <div className="w-full pt-8 flex items-center">

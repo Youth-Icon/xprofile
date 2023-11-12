@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { GitFork, Github, Heart, ChevronDown, Briefcase, Award, UserSquare2, Settings2, MessageSquare, LayoutGrid} from 'lucide-react';
+import {ChevronDown, Briefcase, Award, UserSquare2, Settings2, MessageSquare, LayoutGrid} from 'lucide-react';
 
 type DropdownProps = {
   id: number;
@@ -35,7 +35,7 @@ const DropDownFeatures: React.FC = () => {
         </div>
         {/* Dropdown Content */}
         {activeDropdown === id && (
-          <div className="py-3 placeholder:gap-4">{/* Your individual dropdown content goes here */}{content}</div>
+          <div className="py-3 placeholder:gap-4">{content}</div>
         )}
         <div className="w-80 h-[0px] border-[0.8px] border-stone-100 border-opacity-20"></div>
       </div>
@@ -128,7 +128,6 @@ const DropDownFeatures: React.FC = () => {
           </>
         ),
       },
-    // Add more dropdown configurations as needed
   ];
 
   return (

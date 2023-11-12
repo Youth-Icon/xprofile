@@ -1,6 +1,6 @@
 import React from "react";
 import FeatureBox from "./FeatureBox";
-import {GitFork, Github, Heart} from "lucide-react"
+
 const CardRowSection = () => {
   return (
 <div className="w-full pt-8 flex flex-col items-center gap-[32px] overflow-clip">

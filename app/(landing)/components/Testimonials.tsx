@@ -1,6 +1,6 @@
 import React from "react";
 import FeatCard from "./FeatCard";
-import {GitFork, Github, Heart, Twitter} from "lucide-react"
+import {Twitter} from "lucide-react"
 import Round from "./round";
 
 const Testimonials = () => {

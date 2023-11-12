@@ -1,6 +1,6 @@
 import React from "react";
 import Round from './round';
-import { Github, X, Twitter, Instagram, Linkedin, Youtube, } from "lucide-react";
+import { Icons } from "@/components/icons";
 
 const JoinSection = () => {
   return (
@@ -26,18 +26,19 @@ const JoinSection = () => {
   </div>
 
   <div className="w-[600px] h-16 flex justify-center items-center gap-12 pt-12">
-    <a href="https://github.com/Youth-Icon/xprofile">
-      <Github className="w-16 h-16 relative" />
-    </a>
-    <a href="https://www.instagram.com/imayouthicon/">
-    <Instagram className="w-16 h-16 relative" />
+    <a href="https://l.hellofaizan.me/discord">
+      <Icons.discord className="w-[64px] h-[64px] relative"/>
     </a>
     <a href="https://twitter.com/imayouthicon">
-      <X className="w-16 h-16 relative" />
+      <Icons.twitter2  className="w-[64px] h-[64px] relative"/>
     </a>
-    <a href="https://www.youtube.com/imayouthicon">
-    <Youtube className="w-16 h-16 relative"/>
+    <a href="https://github.com/Youth-Icon/xprofile">
+      <Icons.linkedin className="w-[48px] h-[48px] relative"/>
     </a>
+    <a href="https://github.com/Youth-Icon/xprofile">
+      <Icons.telegram className="w-[64px] h-[64px] relative"/>
+    </a>
+ 
     </div>
   </div>
 </div>

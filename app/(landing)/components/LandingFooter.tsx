@@ -1,6 +1,5 @@
 import React from "react";
-
-import { Github, X, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Icons } from "@/components/icons";
 
 const LandingFooter = () => {
   return (
@@ -17,22 +16,23 @@ const LandingFooter = () => {
         </div>
 
         <div className="w-[171px] h-6 left-0 top-[163px] absolute justify-center items-center gap-3 inline-flex">
-          <a href="https://github.com/Youth-Icon/xprofile">
-          <Github className="w-6 h-6 relative" />
+          <a href="https://l.hellofaizan.me/discord">
+            <Icons.discord className="w-6 h-6 relative" />
           </a>
           <div className="w-px h-6 bg-neutral-400 bg-opacity-50" />
           <a href="https://twitter.com/imayouthicon">
-            <X className="w-6 h-6 relative" />
+            <Icons.twitter2 className="w-6 h-6 relative" />
           </a>
           <div className="w-px h-6 bg-neutral-400 bg-opacity-50" />
           <div className="w-6 h-6 p-[3px] justify-center items-center flex">
-            <a href="https://www.youtube.com/imayouthicon">
-            <Youtube className="w-[18px] h-[18px] relative flex-col justify-start items-start flex" />
+            <a href="https://github.com/Youth-Icon/xprofile">
+              <Icons.linkedin className="w-[18px] h-[18px] relative flex-col justify-start items-start flex" />
             </a>
           </div>
           <div className="w-px h-6 bg-neutral-400 bg-opacity-50" />
-          <a href="https://www.instagram.com/imayouthicon/"><Instagram className="w-[18px] h-[18px] relative flex-col justify-start items-start flex"></Instagram></a>
-          
+          <a href="https://github.com/Youth-Icon/xprofile">
+            <Icons.telegram className="w-[18px] h-[18px] relative flex-col justify-start items-start flex"/>
+          </a>
         </div>
         <div className="w-[302px] left-0 top-[59px] absolute text-slate-300 text-opacity-60 text-base font-medium font-Manrope">
           Giving developers the power to connect with inspiring developers by
@@ -71,10 +71,7 @@ const LandingFooter = () => {
               Showcases
             </div>
             <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
-              <a href="https://github.com/Youth-Icon/xprofile">
-              GitHub
-              </a>
-              
+              <a href="https://github.com/Youth-Icon/xprofile">GitHub</a>
             </div>
             <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
               Community
@@ -96,15 +93,10 @@ const LandingFooter = () => {
               Open-source Software
             </div>
             <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
-              <a href="https://github.com/Youth-Icon/xprofile">
-              GitHub
-              </a>
+              <a href="https://github.com/Youth-Icon/xprofile">GitHub</a>
             </div>
             <div className="text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
-              <a href="https://twitter.com/imayouthicon">
-              Twitter
-              </a>
-              
+              <a href="https://twitter.com/imayouthicon">Twitter</a>
             </div>
           </div>
         </div>
