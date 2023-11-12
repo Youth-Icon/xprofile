@@ -6,7 +6,7 @@ const LandingFooter = () => {
     <div>
     <div className="w-[100%] h-[480px] justify-center flex bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70% items--center">
       <div className="flex justify-center w-max[1200px] items-center gap-[7.5rem]">
-      <div className="w-[302px] h-[187px]">
+      <div className="flex-col w-[302px] h-[221px] gap-8 inline-flex">
         <div className="flex items-start gap-2 text-center md:text-center lg:text-left">
           <h1 className="flex flex-col font-extrabold text-[rgb(255,84,0)] text-[22px] text-center md:text-center lg:text-left">
             YI
@@ -15,7 +15,10 @@ const LandingFooter = () => {
             Youth Icon
           </p>
         </div>
-
+        <div className="w-[302px] text-slate-300 text-opacity-60 text-base font-medium font-Manrope">
+          Giving developers the power to connect with inspiring developers by
+          sharing their projects and skills.
+        </div>
         <div className="w-[171px] h-6 justify-center items-center gap-3 inline-flex">
           <a href="https://l.hellofaizan.me/discord">
             <Icons.discord className="w-6 h-6 relative" />
@@ -34,10 +37,6 @@ const LandingFooter = () => {
           <a href="https://github.com/Youth-Icon/xprofile">
             <Icons.telegram className="w-[18px] h-[18px] relative flex-col justify-start items-start flex"/>
           </a>
-        </div>
-        <div className="w-[302px] text-slate-300 text-opacity-60 text-base font-medium font-Manrope">
-          Giving developers the power to connect with inspiring developers by
-          sharing their projects and skills.
         </div>
       </div>
       <div className="h-[221px] justify-start items-start gap-[68px] inline-flex">
