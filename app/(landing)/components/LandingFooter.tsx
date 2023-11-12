@@ -3,11 +3,12 @@ import { Icons } from "@/components/icons";
 
 const LandingFooter = () => {
   return (
-    <div className="w-[100%] h-[480px] relative bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70%">
-      <div className="w-full" />
-      <div className="w-[302px] h-[187px] left-[10%] top-[100px] absolute">
+    <div>
+    <div className="w-[100%] h-[480px] justify-center flex bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70% items--center">
+      <div className="flex justify-center w-max[1200px] items-center gap-[7.5rem]">
+      <div className="w-[302px] h-[187px]">
         <div className="flex items-start gap-2 text-center md:text-center lg:text-left">
-          <h1 className="flex flex-col font-extrabold text-[#ff5400] text-[22px] text-center md:text-center lg:text-left">
+          <h1 className="flex flex-col font-extrabold text-[rgb(255,84,0)] text-[22px] text-center md:text-center lg:text-left">
             YI
           </h1>
           <p className="flex flex-col font-medium text-white text-[22px] text-center md:text-center lg:text-left">
@@ -15,7 +16,7 @@ const LandingFooter = () => {
           </p>
         </div>
 
-        <div className="w-[171px] h-6 left-0 top-[163px] absolute justify-center items-center gap-3 inline-flex">
+        <div className="w-[171px] h-6 justify-center items-center gap-3 inline-flex">
           <a href="https://l.hellofaizan.me/discord">
             <Icons.discord className="w-6 h-6 relative" />
           </a>
@@ -34,12 +35,12 @@ const LandingFooter = () => {
             <Icons.telegram className="w-[18px] h-[18px] relative flex-col justify-start items-start flex"/>
           </a>
         </div>
-        <div className="w-[302px] left-0 top-[59px] absolute text-slate-300 text-opacity-60 text-base font-medium font-Manrope">
+        <div className="w-[302px] text-slate-300 text-opacity-60 text-base font-medium font-Manrope">
           Giving developers the power to connect with inspiring developers by
           sharing their projects and skills.
         </div>
       </div>
-      <div className="h-[221px] left-[40%]  top-[100px] absolute justify-start items-start gap-[68px] inline-flex">
+      <div className="h-[221px] justify-start items-start gap-[68px] inline-flex">
         <div className="pr-[37px] flex-col justify-center items-start gap-6 inline-flex">
           <div className="text-white text-base font-semibold font-Manrope">
             Features
@@ -114,10 +115,20 @@ const LandingFooter = () => {
           </div>
         </div>
       </div>
-      <div className="w-[calc(100%-240px)] h-[0px] left-[120px] top-[389px] absolute border border-stone-300 border-opacity-20"></div>
-      <div className="left-[122px] top-[417px] absolute text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
+      </div>
+
+      
+      
+      </div>
+      <div className="py-8">
+        <div className="flex justify-center items-center">
+      <div className="w-[calc(100%-240px)] h-[0px] border border-stone-300 border-opacity-20"></div>
+      </div>
+      <div className="pl-[120px] mt-5 text-slate-300 text-opacity-60 text-sm font-medium font-Manrope">
         © 2023 youthicon, org{" "}
       </div>
+      </div>
+
     </div>
   );
 };
