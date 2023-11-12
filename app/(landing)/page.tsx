@@ -13,6 +13,7 @@ import Testimonials from './components/Testimonials';
 import CardRowSection from './components/CardRowSection';
 import DiscoverProjects from './components/DiscoverProjects';
 import LargeInfoBox from './components/LargeInfoBox';
+import PowerfulFeatures from './components/PowerfulFeatures';
 
 
 export default async function page() {
@@ -26,9 +27,12 @@ export default async function page() {
       </div>
       <div>
         {/* Discover Projects Section */}
+        <PowerfulFeatures/>
+      </div>
+      <div>
+        {/* Discover Projects Section */}
         <LargeInfoBox/>
       </div>
-
       <div>
         {/* Discover Projects Section */}
         <DiscoverProjects/>
