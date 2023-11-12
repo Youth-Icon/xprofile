@@ -15,6 +15,7 @@ const Header = async ({ className }: any) => {
 
 //testing
   const hardcodedUser = { name: "John Doe" };
+  const isLoggedIn = true;
 
   
   return (
