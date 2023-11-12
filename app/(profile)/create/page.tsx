@@ -1,17 +1,19 @@
 import React from 'react'
 import { getServerAuthSession } from "@/backend/auth";
 import { redirect } from 'next/navigation';
+import Header from './components/Header';
 
-const Page = async () => {
-    const session = await getServerAuthSession()
 
-    if (!session) {
-        redirect("/login")
-    }
+
+export default async function page() {
+    const session = await getServerAuthSession();
+    // console.log(session)
 
     return (
-        <div>Hey it&apos;s Protected Route 👋</div>
-    )
-}
 
-export default Page
+        <div className='mx-[48px] mt-[24px]'>
+        {/* Header Component */}
+        <Header/>
+        </div>
+    );
+};
