@@ -26,7 +26,7 @@ const ContactInfo = () => {
       paddingY="24px"
       style={{
         background:
-          "linear-gradient(to left, rgba(70, 6, 6, 0.1), rgba(233, 30, 99, 0.1))",
+          "linear-gradient(to top, rgba(233, 30, 99, 0.1),rgba(70, 6, 6, 0.1))",
           display:"flex",
           flexDirection:"column",
           gap:"20px"
@@ -47,14 +47,14 @@ const ContactInfo = () => {
         </div>
       </div>
 
-      <div className="w-[348px] h-[72px] bg-gradient-to-b from-orange-950 to-orange-950 "> </div>
+      <div className="w-[348px] h-[72px] bg-gradient-to-b from-[#221116] to-orange-950 "> </div>
 
       <div className="flex flex-col gap-5">
         <div className="text-white text-lg font-semibold font-manrope">
           Other links
         </div>
            <div
-        className="flex flex-col gap-2 overflow-y-scroll max-h-[250px] relative"
+        className="flex flex-col gap-2 overflow-y-scroll max-h-[255px] relative"
       >
           <ProfileLink />
           <ProfileLink />
@@ -65,7 +65,7 @@ const ContactInfo = () => {
           <ProfileLink />
           <ProfileLink />
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b  from-transparent to-orange-500/[.2] rounded-br-[23px] rounded-bl-[23px]"></div>
+        <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-orange-500/[.2] rounded-br-[23px] rounded-bl-[23px]"></div>
         
       </div>
     </FeatureBox>
