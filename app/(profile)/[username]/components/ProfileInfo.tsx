@@ -17,7 +17,8 @@ const ProfileInfo: React.FC<ProjectProps> = ({ style }) => {
         width="350px"
         paddingX="24px"
         paddingY="24px"
-        style={{ marginBottom: "32px", 
+        style={{ 
+        marginBottom:"32px",
         alignItems: "center",
         display: "flex",
         flexDirection: "column",
@@ -69,5 +70,6 @@ const ProfileInfo: React.FC<ProjectProps> = ({ style }) => {
       </FeatureBox>
   );
 };
+
 
 export default ProfileInfo;

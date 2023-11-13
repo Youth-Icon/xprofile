@@ -18,6 +18,7 @@ const ProfileDesc: React.FC<ProjectProps> = ({ style }) => {
         paddingY="24px"
         paddingX="20px"
         style={{
+        marginBottom:"32px",
           alignItems: "center",
           display: "flex",
           flexDirection: "column",
