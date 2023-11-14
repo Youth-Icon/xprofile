@@ -63,7 +63,6 @@ export const authOptions: NextAuthOptions = {
       clientId: env.GOOGLE_ID,
       clientSecret: env.GOOGLE_SECRET,
     }),
-    
     /**
      * ...add more providers here.
      *
@@ -74,6 +73,7 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
+  secret: env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login",
   },
