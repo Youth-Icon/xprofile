@@ -1,8 +1,5 @@
 
 import React from 'react'
-import { getServerAuthSession } from "@/backend/auth";
-import LandingNav from '@/components/LandingNav';
-import Image from "next/legacy/image";
 import HeroSection from './components/HeroSection';
 import JoinSection from './components/JoinSection';
 import LandingFooter from './components/LandingFooter';
@@ -16,9 +13,7 @@ import LargeInfoBox from './components/LargeInfoBox';
 import PowerfulFeatures from './components/PowerfulFeatures';
 
 
-export default async function page() {
-  const session = await getServerAuthSession();
-  // console.log(session)
+export default function page() {
   return (
     <>
       <div className='main min-h-screen'>
