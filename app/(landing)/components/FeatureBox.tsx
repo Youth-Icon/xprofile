@@ -9,7 +9,7 @@ interface FeatCardProps {
   children?: ReactNode;
 }
 
-const FeatCard: React.FC<FeatCardProps> = ({
+const FeatureBox: React.FC<FeatCardProps> = ({
   height,
   width,
   paddingX,
@@ -36,4 +36,4 @@ const FeatCard: React.FC<FeatCardProps> = ({
   );
 };
 
-export default FeatCard;
+export default FeatureBox;
