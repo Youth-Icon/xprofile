@@ -10,7 +10,7 @@ const Projects = () => {
 
   return (
     <div className="">
-      <div className="flex mr-[32px]">
+      <div className="flex ">
       <Project displayType="project" style={{background: "linear-gradient(to left, rgba(70, 6, 6, 0.1), rgba(233, 30, 99, 0.1))", borderRadius:"30px", marginRight:"32px"}}></Project>
       <Project displayType="project" style={{background: "linear-gradient(to top, rgba(70, 6, 6, 0.1), rgba(233, 30, 99, 0.1))", borderRadius:"30px"}}></Project>
       </div>
