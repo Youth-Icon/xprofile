@@ -6,6 +6,7 @@ import Projects from './components/Projects';
 import ProfileSidebar from './components/ProfileSidebar';
 import Skills from './components/Skills';
 import Tags from './components/Tags';
+import Achievements from './components/Achievements';
 
 export default async function page() {
   const session = await getServerAuthSession();
@@ -26,7 +27,9 @@ export default async function page() {
             <Skills />
             <Tags />
           </div>
-
+          <div className="mt-[32px]">
+          <Achievements />
+          </div>
           
 
 

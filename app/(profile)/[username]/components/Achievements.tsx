@@ -1,34 +1,18 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import FeatureBox from "@/app/(landing)/components/FeatureBox";
 
-const Tags = () => {
-  let test_tags = [
-    "tag1",
-    "tag2",
-    "tag3",
-    "tag1",
-    "tag2",
-    "tag3",
-    "tag1",
-    "tag2",
-    "tag3",
+const Achievements = () => {
+  const achievements = [
+    { name: "New Start", date: "2022-01-01", style: "w-[100px] h-[100px] bg-gradient-to-br from-yellow-400 via-red-600 to-amber-500 rounded-full relative group"},
+    { name: "Hey Friendo", date: "2022-02-15" , style: "w-[100px] h-[100px] bg-gradient-to-br from-amber-100 via-orange-400 to-stone-300 rounded-full relative group"},
+    { name: "Hi-Projector", date: "2022-03-20" , style: "w-[100px] h-[100px] bg-gradient-to-br from-orange-600 via-rose-600 to-stone-300 rounded-full relative group"},
+    { name: "Star Power", date: "2022-04-05", style: "w-[100px] h-[100px] bg-gradient-to-br from-stone-100 via-stone-400 to-yellow-700 rounded-full relative group" },
   ];
-
-  const tagsHTML = test_tags.map((tag, index) => (
-    <div
-      key={index}
-      className=" h-[27px] px-3 py-1 mb-3 mr-3 bg-stone-300 bg-opacity-20 rounded-3xl justify-center items-center gap-1 inline-flex"
-    >
-      <div className="text-center text-white text-sm font-medium font-manrope">
-        {tag}
-      </div>
-    </div>
-  ));
 
   return (
     <FeatureBox
-      width="465px"
-      height="282px"
+      width="962px"
+      height="194px"
       paddingX="20px"
       paddingY="24px"
       style={{
@@ -36,21 +20,30 @@ const Tags = () => {
           "linear-gradient(to right, rgba(70, 6, 6, 0.1), rgba(233, 30, 99, 0.1))",
       }}
     >
-      <div className="mb-[32px] text-white text-lg font-semibold font-manrope">
-        Tags & hobbies
+      <div className="mb-[20px] text-white text-lg font-semibold font-manrope">
+        Achievements
       </div>
-      {tagsHTML}
+      <div className="flex gap-5">
+        {achievements.map((achievement, index) => (
+          <div
+            key={index}
+            className={achievement.style}
+          >
+            <div className="absolute invisible group-hover:visible bottom-full left-[7px] p-2 bg-neutral-100 bg-opacity-25 rounded-xl backdrop-blur-[32px] justify-center items-center gap-1.5 shadow-md text-manrope text-sm">
+              <div className="block">{achievement.name}</div>
 
-      <div>
-        <div className=" h-[27px] px-3 py-1 mt-3 mr-2 bg-stone-300 bg-opacity-20 rounded-3xl justify-center items-center gap-1 inline-flex">
-          <div className="text-center text-white text-sm font-medium font-manrope">
-            {" "}
-            + Add More
-          </div>
+            </div>
+            <div style={{ width: "100px", height: "100px" }}>
+          {/* Use SpinningNebula component here */}
+          
         </div>
+            
+          </div>
+        ))}
       </div>
     </FeatureBox>
   );
 };
 
-export default Tags;6
+export default Achievements;
+
