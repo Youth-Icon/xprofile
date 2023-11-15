@@ -1,7 +1,5 @@
 import React from "react";
 import FeatureBox from "@/app/(landing)/components/FeatureBox";
-import ThreeDBall from "./SpinningSphere";
-import SpinningSphere from "./SpinningSphere";
 import BlobCanvas from "./BlobCanvas";
 
 const Achievements = () => {
