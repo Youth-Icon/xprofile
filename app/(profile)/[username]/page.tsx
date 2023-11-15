@@ -1,38 +1,45 @@
-import React from 'react';
+import React from "react";
 import { getServerAuthSession } from "@/backend/auth";
-import { redirect } from 'next/navigation';
-import Header from './components/Header';
-import Projects from './components/Projects';
-import ProfileSidebar from './components/ProfileSidebar';
-import Skills from './components/Skills';
-import Tags from './components/Tags';
-import Achievements from './components/Achievements';
+import Header from "./components/Header";
+import Projects from "./components/Projects";
+import ProfileSidebar from "./components/ProfileSidebar";
+import Skills from "./components/Skills";
+import Tags from "./components/Tags";
+import Achievements from "./components/Achievements";
+import FeatureBox from "@/app/(landing)/components/FeatureBox";
+import Round from "@/app/(landing)/components/round";
+import {ArrowUpRight} from 'lucide-react'
+import Discover from "./components/Discover";
 
 export default async function page() {
   const session = await getServerAuthSession();
 
   return (
-    <div className='px-12'>
+    <div className="px-12 pb-12">
       {/* Header Component */}
-      <div className='mb-[32px]'>
+      <div className="mb-[32px]">
         <Header />
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '32px' }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          columnGap: "32px",
+        }}
+      >
         <div>
           {/* Projects Component */}
           <Projects />
-          
+
           {/* Nested grid for Skills and Tags */}
           <div className="w-full flex gap-[32px]">
             <Skills />
             <Tags />
           </div>
           <div className="mt-[32px]">
-          <Achievements />
+            {/* Achievements Component */}
+            <Achievements />
           </div>
-          
-
-
         </div>
 
         <div>
@@ -40,6 +47,12 @@ export default async function page() {
           <ProfileSidebar />
         </div>
       </div>
+      <div>
+        {/* Discover Component */}
+        <Discover/>
+      </div>
+
+      
     </div>
   );
-};
+}
