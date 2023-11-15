@@ -6,10 +6,9 @@ import ProfileSidebar from "./components/ProfileSidebar";
 import Skills from "./components/Skills";
 import Tags from "./components/Tags";
 import Achievements from "./components/Achievements";
-import FeatureBox from "@/app/(landing)/components/FeatureBox";
-import Round from "@/app/(landing)/components/round";
-import {ArrowUpRight} from 'lucide-react'
 import Discover from "./components/Discover";
+import Blob from "./components/Blob";
+import BlobCanvas from "./components/BlobCanvas";
 
 export default async function page() {
   const session = await getServerAuthSession();
@@ -51,6 +50,8 @@ export default async function page() {
         {/* Discover Component */}
         <Discover/>
       </div>
+
+
 
       
     </div>
