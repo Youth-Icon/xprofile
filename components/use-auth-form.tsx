@@ -49,16 +49,10 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   }
 
   return (
-    <div className={cn("grid gap-6", className)} {...props}>
-      <Button variant="outline" onClick={handleLogin} size={"xxl"} type="button" disabled={isLoading}>
-        {isLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.gitHub className="mr-2 h-4 w-4" />
-        )}{" "}
-        Continue with Github
-      </Button>
-      <Button variant="outline" onClick={handleGoogleLogin} size={"xxl"} type="button" disabled={isLoading}>
+    <div className={cn("grid gap-6 text-center", className)} {...props}>
+      <h1 className=" text-2xl">Sign up</h1>
+      <p className=" text-gray-500">Let's get started woth crafting your profile</p>
+      <Button variant="outline" className=" border cursor-pointer" onClick={handleGoogleLogin} size={"xxl"} type="button" disabled={isLoading}>
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
@@ -66,6 +60,16 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         )}{" "}
         Continue with Google
       </Button>
+      <Button variant="outline" className=" bg-white cursor-pointer text-black" onClick={handleLogin} size={"xxl"} type="button" disabled={isLoading}>
+        {isLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.gitHub className="mr-2 h-4 w-4" />
+        )}{" "}
+        Continue with Github
+      </Button>
+      
+      <p>Already have an accout? <a href="#" className=" text-orange-600">Log in</a></p>
     </div>
   )
 }
