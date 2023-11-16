@@ -51,7 +51,8 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   return (
     <div className={cn("grid gap-6 text-center", className)} {...props}>
       <h1 className=" text-2xl">Sign up</h1>
-      <p className=" text-gray-500">Let's get started woth crafting your profile</p>
+      <p className=" text-gray-500">Let&#39;s get started woth crafting your profile</p>
+
       <Button variant="outline" className=" border cursor-pointer" onClick={handleGoogleLogin} size={"xxl"} type="button" disabled={isLoading}>
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
