@@ -2,9 +2,6 @@
 import React, { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { MathUtils, Mesh, BufferGeometry, ShaderMaterial, NormalBufferAttributes , IcosahedronGeometry } from "three";
-import { } from "@react-three/drei";
-// import vertexShader from "./vertexShader";
-// import fragmentShader from "./fragmentShader";
 
 interface BlobProps {
   scale?: [number, number, number];

@@ -3,17 +3,12 @@ import FeatureBox from "@/app/(landing)/components/FeatureBox";
 import BlobCanvas from "./BlobCanvas";
 
 const Achievements = () => {
-//   const achievements = [
-//     { name: "New Start", date: "2022-01-01", style: "w-[100px] h-[100px] bg-gradient-to-br from-yellow-400 via-red-600 to-amber-500 rounded-full relative group"},
-//     { name: "Hey Friendo", date: "2022-02-15" , style: "w-[100px] h-[100px] bg-gradient-to-br from-amber-100 via-orange-400 to-stone-300 rounded-full relative group"},
-//     { name: "Hi-Projector", date: "2022-03-20" , style: "w-[100px] h-[100px] bg-gradient-to-br from-orange-600 via-rose-600 to-stone-300 rounded-full relative group"},
-//     { name: "Star Power", date: "2022-04-05", style: "w-[100px] h-[100px] bg-gradient-to-br from-stone-100 via-stone-400 to-yellow-700 rounded-full relative group" },
-//   ];
+
 const achievements = [
     { name: "New Start", date: "2022-01-01", style: "w-[100px] h-[100px] bg-gradient-to-br from-yellow-400 via-red-600 to-amber-500 rounded-full relative group", isSpinning:false},
     { name: "Hey Friendo", date: "2022-02-15" , style: "w-[100px] h-[100px] bg-gradient-to-br from-amber-100 via-orange-400 to-stone-300 rounded-full relative group" , isSpinning:false},
     { name: "Hi-Projector", date: "2022-03-20" , style: "w-[100px] h-[100px] h-[100px] bg-gradient-to-br from-orange-600 via-rose-600 to-stone-300 rounded-full relative group", isSpinning:false},
-    { name: "Star Power", date: "2022-04-05", style: "w-[100px] h-[100px] rounded-full relative group" , isSpinning:true},
+    { name: "Star Power", date: "2022-04-05", style: "w-[100px] h-[100px] bg-gradient-to-br from-stone-100 via-stone-400 to-yellow-700 rounded-full relative group" , isSpinning:false},
   ];
 
   return (
