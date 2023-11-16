@@ -53,7 +53,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       <h1 className=" text-2xl">Login</h1>
       <p className=" text-gray-500">Welcome back! Good to see you again.</p>
 
-      <Button variant="outline" className=" border cursor-pointer" onClick={handleGoogleLogin} size={"xxl"} type="button" disabled={isLoading}>
+      <Button variant="outline" className=" border cursor-pointer" style={{color: "white"}} onClick={handleGoogleLogin} size={"xxl"} type="button" disabled={isLoading}>
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
