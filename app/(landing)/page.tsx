@@ -11,6 +11,7 @@ import CardRowSection from './components/CardRowSection';
 import DiscoverProjects from './components/DiscoverProjects';
 import LargeInfoBox from './components/LargeInfoBox';
 import PowerfulFeatures from './components/PowerfulFeatures';
+import { LoginComponent } from './components/loginComponent';
 
 
 export default function page() {
@@ -59,6 +60,10 @@ export default function page() {
       <div >
         {/* Footer*/}
         <LandingFooter />
+      </div>
+      <div>
+        {/*Login*/}
+        <LoginComponent></LoginComponent>
       </div>
     </>
   )
