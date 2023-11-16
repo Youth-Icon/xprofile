@@ -9,7 +9,7 @@ interface pageProps {
 }
 
 const page: FC<pageProps> = ({ }) => {
-    return <div className='absolute top-1/2 left-1/2 h-56 -translate-x-1/2 -translate-y-1/2 z-10 p-10 bg-transparent backdrop-blur-xl border rounded-xl overflow-hidden max-w-lg'>
+    return <div className='absolute top-1/2 left-1/2 w-1/2  -translate-x-1/2 -translate-y-1/2 z-10 p-10 bg-transparent backdrop-blur-xl border rounded-xl overflow-hidden max-w-lg' style={{position: 'fixed'}}>
         <div className='absolute top-2 right-2'>
             <CloseModel />
         </div>
