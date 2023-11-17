@@ -4,6 +4,7 @@ import FeatureBox from "@/app/(landing)/components/FeatureBox";
 import { getServerAuthSession } from "@/backend/auth";
 import { Bell, Upload } from "lucide-react";
 import Image from 'next/image';
+import Round from "@/app/(landing)/components/round";
 
 
 
@@ -27,9 +28,12 @@ const Header = async ({ className }: any) => {
         alignItems: "center",
         display: "flex",
         justifyContent: "space-between",
-        background: "linear-gradient(to left, rgba(255, 152, 0, 0.1), rgba(233, 30, 99, 0.1))",
+        overflow:"hidden"
+       
       }}
     >
+      <Round className="absolute left-[-6rem] top-[-9rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
+        <Round className="absolute right-[-16rem] top-[1rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
       <div className="flex items-center gap-3">
         <div className="text-white text-[22px] font-extrabold font-manrope">X</div>
         <div className="text-white text-[22px] font-thin">/</div>
@@ -46,17 +50,16 @@ const Header = async ({ className }: any) => {
 
       {isLoggedIn ? (
          <div className="flex items-center gap-5">
-          <div className="w-10 h-10 p-2 rounded-[10px] border border-stone-300 border-opacity-20 justify-center items-center inline-flex hover:bg-neutral-400 hover:bg-opacity-10">
+          <div className="w-10 h-10 p-2 rounded-[10px] border border-stone-300 border-opacity-20 justify-center items-center inline-flex cursor-pointer hover:bg-neutral-400 hover:bg-opacity-10 transition-all duration-300">
           <Bell/>
           </div>
-          <div className="w-10 h-10 p-2 rounded-[10px] border border-stone-300 border-opacity-20 justify-center items-center inline-flex hover:bg-neutral-400 hover:bg-opacity-10">
+          <div className="w-10 h-10 p-2 rounded-[10px] border border-stone-300 border-opacity-20 justify-center items-center inline-flex cursor-pointer hover:bg-neutral-400 hover:bg-opacity-10 transition-all duration-300">
             <Upload/>
           </div>
             <Image src="/tyler-pic.jpeg" alt="default profile picture"  width={50} height={50} style={{borderRadius:"30px", border:"1px"}}/>
        </div>
         ) : (
       
-        //<div bg-neutral-400 bg-opacity-10">
 
       <div className="flex items-center gap-5">
         <div className="text-center text-neutral-400 text-sm font-medium font-manrope leading-none">Login</div>

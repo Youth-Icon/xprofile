@@ -34,7 +34,7 @@ const Discover = () => {
             <FeatureBox height="362px" width="426px"></FeatureBox>
           </div>
 
-          <div className="w-[145px] h-[50px] mt-[4.75rem] px-5 py-4 bg-neutral-100 bg-opacity-75 rounded-lg backdrop-blur-[32px] justify-center items-center gap-1.5 inline-flex">
+          <div className="w-[145px] h-[50px] mt-[4.75rem] px-5 py-4 bg-neutral-100 bg-opacity-75 rounded-lg backdrop-blur-[32px] justify-center items-center gap-1.5 inline-flex cursor-pointer hover:bg-white transition-all duration-300">
             <div className="text-center text-red-950 text-m font-semibold font-manrope leading-none">
               See more
             </div>

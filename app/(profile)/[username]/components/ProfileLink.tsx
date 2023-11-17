@@ -10,15 +10,14 @@ const ProfileLink = () => {
 
   return (
     <div>
-        <div className="w-[310px] h-14 px-3 py-2 bg-white bg-opacity-5 rounded-xl justify-start items-center gap-2.5 inline-flex">
-  <ExternalLink/>
+        <div className="w-[310px] h-14 px-3 py-2 bg-white bg-opacity-5 rounded-xl justify-start items-center gap-2.5 inline-flex cursor-pointer hover:bg-neutral-400 hover:bg-opacity-20 transition-all duration-300">
+  
   <div className="grow shrink basis-0 flex-col justify-start items-start gap-0.5 inline-flex">
     <div className="self-stretch text-white text-base font-semibold font-manrope">Personal Website</div>
-    <div className="self-stretch text-slate-300 text-opacity-60 text-xs font-medium font-['Manrope']">https://hello.faizan.me</div>
+    <div className="self-stretch text-slate-300 text-opacity-60 text-xs font-medium font-manrope">https://hello.faizan.me</div>
   </div>
-  <div className="w-8 h-8 p-1.5 justify-center items-center flex">
-    <div className="w-5 h-5 relative flex-col justify-start items-start flex" />
-  </div>
+  
+  <ExternalLink/>
 </div>
 
 
