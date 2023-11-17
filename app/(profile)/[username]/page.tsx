@@ -7,8 +7,7 @@ import Skills from "./components/Skills";
 import Tags from "./components/Tags";
 import Achievements from "./components/Achievements";
 import Discover from "./components/Discover";
-import Blob from "./components/Blob";
-import BlobCanvas from "./components/BlobCanvas";
+import ProjectAnalytics from "./components/ProjectAnalytics"
 
 export default async function page() {
   const session = await getServerAuthSession();
@@ -49,6 +48,10 @@ export default async function page() {
       <div>
         {/* Discover Component */}
         <Discover/>
+      </div>
+      <div>
+        {/* Analytics Component */}
+        <ProjectAnalytics selectedTimePeriod="thisWeek" />
       </div>
 
 
