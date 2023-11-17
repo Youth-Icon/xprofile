@@ -15,6 +15,7 @@ import {
 import { Icons } from "@/components/icons";
 import Image from "next/image";
 import ProfileLink from "./ProfileLink";
+import Round from "@/app/(landing)/components/round";
 
 const ContactInfo = () => {
 
@@ -25,14 +26,17 @@ const ContactInfo = () => {
       paddingX="20px"
       paddingY="24px"
       style={{
-        background:
-          "linear-gradient(to top, rgba(233, 30, 99, 0.1),rgba(70, 6, 6, 0.1))",
+        overflow:"hidden",
+        // background:
+        //   "linear-gradient(to bottom, rgba(255, 84, 0, 0.2),rgba(70, 6, 6, 0.1))",
           display:"flex",
           flexDirection:"column",
           gap:"20px"
           
       }}
     >
+
+<Round className="absolute -left-[6rem] -top-[4rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
       <div className="flex flex-col gap-5">
         <div className="text-white text-lg font-semibold font-manrope ">
           Reach me At
@@ -47,7 +51,7 @@ const ContactInfo = () => {
         </div>
       </div>
 
-      <div className="w-[348px] h-[72px] bg-gradient-to-b from-[#221116] to-orange-950 "> </div>
+      <div className="w-[348px] h-[72px] bg-gradient-to-b from-[#221116] to-[rgba(255,84,0,1)] "> </div>
 
       <div className="flex flex-col gap-5">
         <div className="text-white text-lg font-semibold font-manrope">
