@@ -22,14 +22,6 @@ export default function page() {
       </div>
       <div>
         {/* Discover Projects Section */}
-        <PowerfulFeatures/>
-      </div>
-      <div>
-        {/* Discover Projects Section */}
-        <LargeInfoBox/>
-      </div>
-      <div>
-        {/* Discover Projects Section */}
         <DiscoverProjects/>
       </div>
       <div>

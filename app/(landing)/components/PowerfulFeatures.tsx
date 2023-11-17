@@ -3,7 +3,7 @@ import Round from "./round";
 
 const PowerfulFeatures = () => {
   return (
-    <div className="w-full h-[300px] flex justify-center items-center">
+    <div className="w-full mt-5 h-[300px] flex justify-center items-center">
       <div className="w-[600px] relative text-center flex flex-col justify-center items-center selection:gap-8">
         <Round className='absolute w-[400px] ml-[37.25rem] mt-[-25rem] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full z-10' />
 

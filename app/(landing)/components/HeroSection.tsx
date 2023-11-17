@@ -5,6 +5,8 @@ import TopComponent from './TopComponent';
 import SecondComponent from './SecondComp';
 import ThirdComp from './ThirdComp';
 import LoginLink from '@/components/LoginLink';
+import PowerfulFeatures from './PowerfulFeatures';
+import LargeInfoBox from './LargeInfoBox';
 
 const HeroSection = () => {
     return (
@@ -16,6 +18,8 @@ const HeroSection = () => {
                         <TopComponent />
                         <SecondComponent />
                         <ThirdComp />
+                        <PowerfulFeatures />
+                        <LargeInfoBox />
                     </div>
                     {/* Pattern at top */}
                     <div className="absolute -z-20 top-0 left-0 w-full h-[96vh] bg-hero-pattern" />
