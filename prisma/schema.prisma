@@ -109,11 +109,13 @@ model Following {
 }
 
 model Projects {
-  id          String @id @default(cuid())
+  id          String   @id @default(cuid())
   title       String
   description String
-  image       String
-  url         String
-  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  repoLink    String
+  webUrl      String
+  tags        String[]
+  stars       Int      @default(0)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String
 }
