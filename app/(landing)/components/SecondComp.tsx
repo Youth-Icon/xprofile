@@ -13,7 +13,7 @@ const SecondComponent = ({ }) => {
             </div>
             <div className="w-full">
                 <Image
-                    src="/db.svg"
+                    src="/main.svg"
                     alt='Image'
                     width={0}
                     height={0}
