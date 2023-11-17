@@ -23,6 +23,8 @@ export default async function page() {
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           columnGap: "32px",
+          maxWidth: "1350px",
+          margin: "auto", 
         }}
       >
         <div>
@@ -49,7 +51,7 @@ export default async function page() {
         {/* Discover Component */}
         <Discover/>
       </div>
-      <div>
+      <div className="max-w-[1325px] m-auto">
         {/* Analytics Component */}
         <ProjectAnalytics selectedTimePeriod="thisWeek" />
       </div>
