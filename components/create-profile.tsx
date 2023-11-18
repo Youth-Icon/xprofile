@@ -3,74 +3,67 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
 import { Button } from "./ui/button"
 import { useState } from "react"
-import { signIn } from "next-auth/react"
 import { useToast } from "@/components/ui/use-toast"
+import { Code, LucideWorkflow, User } from "lucide-react"
+import { Separator } from "./ui/separator"
 
 
 interface CreateProfile extends React.HTMLAttributes<HTMLDivElement> { }
 
 export function CreateProfile({ className, ...props }: CreateProfile) {
-  const { toast } = useToast()
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+    const { toast } = useToast()
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [formStep, setFormStep] = useState<number>(0);
 
-  const handleLogin = async () => {
-    setIsLoading(true)
-    try {
-      await signIn("github", { callbackUrl: "/" })
-
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Something went wrong",
-      })
-    } finally {
-      setIsLoading(false)
-    }
-
-  }
-
-  const handleGoogleLogin = async () => {
-    setIsLoading(true)
-    try {
-      await signIn("google", { callbackUrl: "/" })
-
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Something went wrong",
-      })
-    } finally {
-      setIsLoading(false)
-    }
-
-  }
-
-  return (
-    <div className={cn("grid gap-6 text-center z-50", className)} {...props}>
-      <h1 className=" text-2xl">Get Started</h1>
-      <p className=" text-gray-500">Start by loggin to your account</p>
-
-      <Button variant="outline" className=" bg-black/20 cursor-pointer text-white" onClick={handleLogin} size={"xxl"} type="button" disabled={isLoading}>
-        {isLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.gitHub className="mr-2 h-4 w-4" />
-        )}{" "}
-        Continue with Github
-      </Button>
-
-      <Button variant="outline" className=" border cursor-pointer" onClick={handleGoogleLogin} size={"xxl"} type="button" disabled={isLoading}>
-        {isLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.google className="mr-2 h-4 w-4" />
-        )}{" "}
-        Continue with Google
-      </Button>
-
-    </div>
-  )
+    return (
+        <div className={"grid gap-6 text-center z-50"}>
+            <h1 className=" text-2xl">Complete your profile</h1>
+            {/* Steps to complete your profile */}
+            <div className="w-full grid grid-flow-col gap-1 justify-stretch">
+                <div className="flex flex-col gap-1 items-center">
+                    <p className={cn(
+                        "w-12 h-12 rounded-full flex items-center justify-center",
+                        formStep === 0 ? "bg-[#FF5400]/20 text-[#FF5400]" : "bg-[#8D8D8D]/10 text-white"
+                    )}>1</p>
+                    <p className={cn(
+                        "text-sm",
+                        formStep === 0 ? "text-[#FF5400]" : "text-[#8D8D8D]"
+                    )}>Profile</p>
+                </div>
+                <div className="flex flex-col gap-1 items-center">
+                    <p className={cn(
+                        "w-12 h-12 rounded-full flex items-center justify-center",
+                        formStep === 1 ? "bg-[#FF5400]/20 text-[#FF5400]" : "bg-[#8D8D8D]/10 text-white"
+                    )}>2</p>
+                    <p className={cn(
+                        "text-sm",
+                        formStep === 1 ? "text-[#FF5400]" : "text-[#8D8D8D]"
+                    )}>Profile</p>
+                </div>
+                <div className="flex flex-col gap-1 items-center">
+                    <p className={cn(
+                        "w-12 h-12 rounded-full flex items-center justify-center",
+                        formStep === 2 ? "bg-[#FF5400]/20 text-[#FF5400]" : "bg-[#8D8D8D]/10 text-white"
+                    )}>3</p>
+                    <p className={cn(
+                        "text-sm",
+                        formStep === 2 ? "text-[#FF5400]" : "text-[#8D8D8D]"
+                    )}>Profile</p>
+                </div>
+                <div className="flex flex-col gap-1 items-center">
+                    <p className={cn(
+                        "w-12 h-12 rounded-full flex items-center justify-center",
+                        formStep === 3 ? "bg-[#FF5400]/20 text-[#FF5400]" : "bg-[#8D8D8D]/10 text-white"
+                    )}>4</p>
+                    <p className={cn(
+                        "text-sm",
+                        formStep === 3 ? "text-[#FF5400]" : "text-[#8D8D8D]"
+                    )}>Profile</p>
+                </div>
+            </div>
+            <Separator />
+        </div>
+    )
 }
