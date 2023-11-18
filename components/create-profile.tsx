@@ -6,8 +6,16 @@ import { cn } from "@/lib/utils"
 import { Button } from "./ui/button"
 import { useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
-import { Code, LucideWorkflow, User } from "lucide-react"
 import { Separator } from "./ui/separator"
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+  } from "./ui/form"
 
 
 interface CreateProfile extends React.HTMLAttributes<HTMLDivElement> { }
@@ -64,6 +72,10 @@ export function CreateProfile({ className, ...props }: CreateProfile) {
                 </div>
             </div>
             <Separator />
+            {/* Form */}
+            <div>
+                
+            </div>
         </div>
     )
 }
