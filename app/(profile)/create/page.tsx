@@ -7,7 +7,7 @@ import { getServerAuthSession } from '@/backend/auth'
 const page = async () => {
   const session = await getServerAuthSession()
   return (
-    <main className="md:h-[100vh] md:w-[100vh]">
+    <main className="min-h-screen min-w-full">
       <div className="absolute -z-20 top-0 left-0 w-full h-[96vh] bg-hero-pattern"></div>
       <Nav />
       <div className='absolute top-1/2 left-1/2 w-1/2  -translate-x-1/2 -translate-y-1/2 z-10 p-5 bg-transparent backdrop-blur-xl border rounded-xl overflow-hidden md:max-w-lg max-w-full' style={{ position: 'fixed' }}>
