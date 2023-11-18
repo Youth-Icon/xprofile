@@ -60,7 +60,7 @@ model User {
   portfolio        String?
   about            String?     @default("🗽 New to XProfile")
   pronouns         String?
-  skills           String[]
+  skills           Skills[]
   interests        String[]
   Account          Account[]
   Session          Session[]
@@ -88,6 +88,14 @@ model Links {
   url    String
   order  Int
   clicks Int    @default(0)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+}
+
+model Skills {
+  id     String @id @default(cuid())
+  title  String
+  icon   String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 }
