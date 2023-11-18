@@ -7,6 +7,10 @@ import { Button } from "./ui/button"
 import { useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
 import { Separator } from "./ui/separator"
+import { useForm, useFieldArray } from "react-hook-form";
+import { formSchema } from "@/backend/validators/createForm"
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
     Form,
     FormControl,
@@ -15,12 +19,17 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-  } from "./ui/form"
+} from "./ui/form"
 
+type Input = z.infer<typeof formSchema>;
 
 interface CreateProfile extends React.HTMLAttributes<HTMLDivElement> { }
 
-export function CreateProfile({ className, ...props }: CreateProfile) {
+export function CreateProfile(props: {
+    session: any;
+}) {
+    const { session } = props
+    console.log(session)
     const { toast } = useToast()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [formStep, setFormStep] = useState<number>(0);
@@ -74,7 +83,7 @@ export function CreateProfile({ className, ...props }: CreateProfile) {
             <Separator />
             {/* Form */}
             <div>
-                
+
             </div>
         </div>
     )

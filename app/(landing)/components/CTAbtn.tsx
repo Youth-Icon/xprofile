@@ -1,9 +1,8 @@
 "use client";
 
 import { Button } from '@/components/ui/button'
-import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useFieldArray, useForm } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import * as z from "zod"
 import React from 'react'
 import {
@@ -12,7 +11,6 @@ import {
     FormField,
 } from "@/components/ui/form"
 import { useRouter } from 'next/navigation'
-import { Fira_Sans_Extra_Condensed } from 'next/font/google';
 
 const usernameSchema = z.object({
     username: z
