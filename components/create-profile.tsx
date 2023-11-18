@@ -116,7 +116,7 @@ export function CreateProfile(props: {
         const isValid = await completeProfileForm.trigger();
         if (isValid) {
             // axiom post request
-            const res = await fetch("/api/updateProfile", {
+            const res = await fetch("/api/profile", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {

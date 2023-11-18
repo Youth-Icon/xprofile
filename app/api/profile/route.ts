@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getServerAuthSession } from "@/backend/auth";
 import prisma from "@/lib/prisma";
 
-export default async function updateProfile(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
