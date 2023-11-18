@@ -1,16 +1,15 @@
 // POST req to update profile on prisma
 
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { getServerAuthSession } from "@/backend/auth";
 import prisma from "@/lib/prisma";
 
 export default async function POST(
-  req: Request,
-  res: NextApiResponse
+  req: Request
 ) {
   const session = await getServerAuthSession();
   if (!session) {
-    res.status(401).json({ message: "Unauthorized" });
+    NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     return;
   }
   const { body } = req;
@@ -23,12 +22,12 @@ export default async function POST(
   });
 
   if (!profile) {
-    res.status(404).json({ message: "User not found" });
+    NextResponse.json({ message: "User not found" }, { status: 404 });
     return;
   }
 
   if (profile.id !== session.user.id) {
-    res.status(403).json({ message: "Forbidden Request" });
+    NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     return;
   }
 
@@ -42,9 +41,9 @@ export default async function POST(
       },
     });
 
-    res.status(200).json(updatedProfile);
+    return NextResponse.json(updatedProfile);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Something went wrong" });
+    return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
   }
 }
