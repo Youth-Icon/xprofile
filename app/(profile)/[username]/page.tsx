@@ -8,9 +8,26 @@ import Tags from "./components/Tags";
 import Achievements from "./components/Achievements";
 import Discover from "./components/Discover";
 import ProjectAnalytics from "./components/ProjectAnalytics"
+import { env } from "@/env.mjs";
 
-export default async function page() {
+export default async function page({ params }: { params: { username: string } }) {
   const session = await getServerAuthSession();
+  const username = params.username;
+
+
+  const getProfile = async () => {
+    const res = await fetch(`${env.NEXTAUTH_URL}/api/profile/${username}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const profile = await res.json();
+    return profile;
+  };
+
+  const profile = await getProfile();
+  console.log(profile);
 
   return (
     <div className="px-12 pb-12">
@@ -24,7 +41,7 @@ export default async function page() {
           gridTemplateColumns: "1fr 1fr",
           columnGap: "32px",
           maxWidth: "1350px",
-          margin: "auto", 
+          margin: "auto",
         }}
       >
         <div>
@@ -49,7 +66,7 @@ export default async function page() {
       </div>
       <div>
         {/* Discover Component */}
-        <Discover/>
+        <Discover />
       </div>
       <div className="max-w-[1325px] m-auto">
         {/* Analytics Component */}
@@ -58,7 +75,7 @@ export default async function page() {
 
 
 
-      
+
     </div>
   );
 }
