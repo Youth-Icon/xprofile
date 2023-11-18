@@ -3,25 +3,29 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "./ui/button"
+import { Button, buttonVariants } from "./ui/button"
+import { Input } from "./ui/input"
+import { Label } from "./ui/label"
+import { Textarea } from "./ui/textarea"
+import Image from "next/image"
 import { useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
 import { Separator } from "./ui/separator"
 import { useForm, useFieldArray } from "react-hook-form";
-import { formSchema } from "@/backend/validators/createForm"
+import { completeForm, formSchema } from "@/backend/validators/createForm"
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useSearchParams } from "next/navigation";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
     FormMessage,
 } from "./ui/form"
 
-type Input = z.infer<typeof formSchema>;
+type Input = z.infer<typeof completeForm>;
 
 interface CreateProfile extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -29,14 +33,115 @@ export function CreateProfile(props: {
     session: any;
 }) {
     const { session } = props
-    console.log(session)
+    const searchParams = useSearchParams()
     const { toast } = useToast()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [formStep, setFormStep] = useState<number>(0);
+    const [intrests, setIntrests] = useState<string[]>([]);
+    const [socialsFields] = useState([
+        {
+            type: "Github",
+            handle: "",
+            clicks: 0,
+        },
+        {
+            type: "Twitter",
+            handle: "",
+            clicks: 0,
+        },
+        {
+            type: "Instagram",
+            handle: "",
+            clicks: 0,
+        },
+        {
+            type: "Linkedin",
+            handle: "",
+            clicks: 0,
+        },
+        {
+            type: "Youtube",
+            handle: "",
+            clicks: 0,
+        },
+    ]);
+
+    const completeProfileForm = useForm<Input>({
+        resolver: zodResolver(completeForm),
+        defaultValues: {
+            name: session?.user.name || "",
+            username: searchParams?.get("u") || "",
+            about: "",
+            profession: "",
+            portfolio: "",
+            pronouns: "",
+            completedProfile: true,
+        },
+    });
+
+    async function handleSubmit(data: Input) {
+        setIsLoading(true);
+        // try {
+        //     const res = await fetch("/api/profile", {
+        //         method: "POST",
+        //         body: JSON.stringify(data),
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //     });
+        //     if (res.ok) {
+        //         toast({
+        //             title: "Profile created",
+        //             description: "Your profile has been created successfully",
+        //         });
+        //     } else {
+        //         toast({
+        //             title: "Error",
+        //             description: "Something went wrong",
+        //         });
+        //     }
+        // } catch (error) {
+        //     toast({
+        //         title: "Error",
+        //         description: "Something went wrong",
+        //     });
+        // } finally {
+        //     setIsLoading(false);
+        // }
+        alert(JSON.stringify(data))
+    }
+
+    async function updateProfile() {
+        const data = completeProfileForm.getValues();
+        const isValid = await completeProfileForm.trigger();
+        if (isValid) {
+            // axiom post request
+            const res = await fetch("/api/updateProfile", {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            if (res.ok) {
+                toast({
+                    title: "Profile Updated!",
+                    description: "Your profile has been created successfully",
+                });
+                setFormStep(1);
+            } else {
+                toast({
+                    title: "Error",
+                    description: "Something went wrong",
+                });
+            }
+        }
+    }
+
 
     return (
-        <div className={"grid gap-6 text-center z-50"}>
-            <h1 className=" text-2xl">Complete your profile</h1>
+        <div className={"grid gap-4 items-center z-50"}>
+            <h1 className=" text-3xl text-center">Complete your profile</h1>
             {/* Steps to complete your profile */}
             <div className="w-full grid grid-flow-col gap-1 justify-stretch">
                 <div className="flex flex-col gap-1 items-center">
@@ -82,9 +187,124 @@ export function CreateProfile(props: {
             </div>
             <Separator />
             {/* Form */}
-            <div>
+            <Form {...completeProfileForm}>
+                <form onSubmit={completeProfileForm.handleSubmit(handleSubmit)}>
+                    {/* Step 1 */}
+                    <div className={cn(
+                        "space-y-4",
+                        formStep === 0 ? "block" : "hidden"
+                    )}>
+                        {/* Name */}
+                        <FormField
+                            control={completeProfileForm.control}
+                            name="name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Full Name</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder={"Your Name"} {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
-            </div>
+                        {/* Username */}
+                        <FormField
+                            control={completeProfileForm.control}
+                            name="username"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Username</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Unique Username" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        {/* Portfolio */}
+                        <FormField
+                            control={completeProfileForm.control}
+                            name="portfolio"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormControl>
+                                        <div className='flex justify-start gap-1 items-center align-middle'>
+                                            <Image
+                                                src={"https://icon.horse/icon/" + { ...field }.value + "/256.png"}
+                                                alt={"Web Icon of " + { ...field }.value}
+                                                width={35}
+                                                height={35}
+                                                className="rounded-sm"
+                                            />
+                                            <Input placeholder="yourportfolio.com" {...field} />
+                                        </div>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        {/* Profession */}
+                        <FormField
+                            control={completeProfileForm.control}
+                            name="profession"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Profession</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Your Role" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        {/* Pronouns */}
+                        <FormField
+                            control={completeProfileForm.control}
+                            name="pronouns"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Pronouns</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="he/him || she/her" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        {/* Bio */}
+                        <FormField
+                            control={completeProfileForm.control}
+                            name="about"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>About</FormLabel>
+                                    <FormControl>
+                                        <Textarea placeholder="Tell us about yourself" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        {/* Next Button */}
+                        <div className="flex justify-end">
+                            <Button
+                                type="button"
+                                onClick={() => updateProfile()}
+                            >
+                                Next
+                            </Button>
+                        </div>
+
+                    </div>
+                </form>
+            </Form>
         </div>
     )
 }
