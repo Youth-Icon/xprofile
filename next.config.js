@@ -1,16 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   images: {
-    domains: ['icons.duckduckgo.com'],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "avatars.githubusercontent.com",
-        pathname: "**",
-        port: "",
-      },
-    ],
+    domains: ["avatars.githubusercontent.com", "s2.googleusercontent.com", "www.google.com", "icon.horse"],
   },
 };
-
-module.exports = nextConfig;
