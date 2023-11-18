@@ -15,7 +15,7 @@ const LoginLink = async ({ className }: any) => {
         {session ?
             <User user={session.user} /> :
             <div className=''>
-                <Link href={"/login"} className={cn(
+                <Link href={"/signin"} className={cn(
                     "px-2 py-8 pr-4 font-ubuntu font-bold text-transparent",
                     buttonVariants({ variant: "default" }),
                 )}>
