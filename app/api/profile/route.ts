@@ -1,19 +1,19 @@
 // POST req to update profile on prisma
 
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { getServerAuthSession } from "@/backend/auth";
 import prisma from "@/lib/prisma";
 
 export async function POST(
-  req: Request
+  req: Request,
 ) {
   const session = await getServerAuthSession();
   if (!session) {
     NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     return;
   }
-  const { body } = req;
-  console.log(session)
+  const body = await req.json();
+  console.log(body);
 
   const profile = await prisma.user.findUnique({
     where: {
@@ -41,7 +41,7 @@ export async function POST(
       },
     });
 
-    return NextResponse.json(updatedProfile);
+    return NextResponse.json(updatedProfile, { status: 200 });
   } catch (error) {
     console.log(error);
     return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
