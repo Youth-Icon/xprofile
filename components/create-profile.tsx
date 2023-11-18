@@ -23,7 +23,7 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "./ui/form"
+} from "./ui/form";
 
 type Input = z.infer<typeof completeForm>;
 
