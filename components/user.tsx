@@ -5,6 +5,7 @@ import React from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { buttonVariants } from './ui/button'
 import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import {
     ChevronDown, User2,
     LogOut,
@@ -22,6 +23,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 function User({ user }: any) {
+    const router = useRouter()
     const handleSignOut = () => {
         signOut()
     }
@@ -58,7 +60,9 @@ function User({ user }: any) {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                     <User2 className="mr-2 h-4 w-4" />
-                    <span>Profile</span>
+                    <span onClick={() => {
+                        router.push('/' + user.username)
+                    }}>Profile</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                     <Globe2 className="mr-2 h-4 w-4" />

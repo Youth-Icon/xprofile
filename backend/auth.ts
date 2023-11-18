@@ -25,10 +25,6 @@ declare module "next-auth" {
     } & DefaultSession["user"];
   }
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
 }
 
 /**
@@ -43,11 +39,11 @@ export const authOptions: NextAuthOptions = {
       user: {
         ...session.user,
         id: user.id,
+        username: user.username,
         completedProfile: user.completedProfile,
       },
     }),
     async redirect({ url, baseUrl }) {
-      console.log("url", url);
       if (url.startsWith("/")) return `${baseUrl}${url}`;
       // Allows callback URLs on the same origin
       else if (new URL(url).origin === baseUrl) return url;

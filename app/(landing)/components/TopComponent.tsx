@@ -1,7 +1,9 @@
 import React from 'react'
 import CTAbtn from './CTAbtn'
+import { getServerAuthSession } from '@/backend/auth'
 
-const TopComponent = ({ }) => {
+const TopComponent = async ({ }) => {
+    const session = await getServerAuthSession()
     return <div className="mt-[8.5rem] flex justify-center items-center bg-cover bg-no-repeat">
         <div className="flex flex-col">
             <div className="text-center flex flex-col w-full h-full">
@@ -10,7 +12,7 @@ const TopComponent = ({ }) => {
             </div>
             <div className='flex flex-col space-y-2 justify-center items-center'>
                 <div className="text-center max-w-3xl text-stone-400 text-xl mt-9 font-medium font-manrope">xProfile is an open-source app that provides a one-link portfolio for showcasing your projects, skills, social links, and more.</div>
-                <CTAbtn />
+                <CTAbtn session={session}/>
             </div>
         </div>
     </div>
