@@ -334,6 +334,17 @@ export function CreateProfile(props: {
                         </div>
 
                     </div>
+
+                    {/* Step2 */}
+                    <div className={cn(
+                        "space-y-4 mb-2",
+                        formStep === 1 ? "block" : "hidden"
+                    )}>
+                        {/* Skills Picker */}
+
+
+                        {/* Intrests Picker */}
+                    </div>
                 </form>
             </Form>
         </div>
