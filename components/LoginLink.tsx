@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 const LoginLink = async ({ className }: any) => {
     const session = await getServerAuthSession();
+    console.log(session);
 
     return (
         <div className='flex justify-end items-center space-x-4'>
