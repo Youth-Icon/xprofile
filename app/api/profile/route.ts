@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerAuthSession } from "@/backend/auth";
 import prisma from "@/lib/prisma";
 
-export default async function POST(
+export async function POST(
   req: Request
 ) {
   const session = await getServerAuthSession();
