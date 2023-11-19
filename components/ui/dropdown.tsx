@@ -36,9 +36,6 @@ export function Dropdown({options, selectedOption, setSelectedOption}: DropdownP
             console.log(selectedOption) 
         } catch (error) {
             console.log(error)
-        }finally {
-        
-        
         }
     }
     setIsOpen(false);
