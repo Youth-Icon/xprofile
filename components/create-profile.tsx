@@ -14,7 +14,7 @@ import { Separator } from "./ui/separator"
 import { useForm, useFieldArray } from "react-hook-form";
 import { formSchema } from "@/backend/validators/createForm"
 import { z } from "zod";
-import { Github, Instagram, Linkedin, Twitter, Youtube, ArrowLeft, ArrowRight } from "lucide-react";
+import { Github, Instagram, Linkedin, Twitter, Youtube, ArrowLeft, ArrowRight, Plus, X } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation"
@@ -51,6 +51,7 @@ export function CreateProfile(props: {
     const { toast } = useToast()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [formStep, setFormStep] = useState<number>(0);
+    const [linkOrder, setLinkOrder] = useState<number>(1);
     const [intrests, setIntrests] = useState<string[]>([]);
     const [socialsFields] = useState([
         {
@@ -91,10 +92,10 @@ export function CreateProfile(props: {
             pronouns: "",
             completedProfile: true,
             socials: socialsFields,
-            links: [{ title: "", url: "" }],
+            links: [{ title: "", order: linkOrder, url: "" }],
             skills: [{ title: "", icon: "" }],
             interests: ["XProfile", "Coding"],
-            projects: [{ title: "", description: "", repoLink: "", webURL: "", tags: [], language: "" }],
+            // projects: [{ title: "", description: "", repoLink: "", webURL: "", tags: [], language: "" }],
         },
     });
 
@@ -129,7 +130,7 @@ export function CreateProfile(props: {
         alert(JSON.stringify(data))
     }
     // form logs
-    // console.log(form.getValues());
+    console.log(form.getValues());
     console.log(form.formState.errors);
 
     // async function updateProfile() {
@@ -210,6 +211,7 @@ export function CreateProfile(props: {
             {/* Form */}
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleSubmit)}>
+
                     {/* Step 1 */}
                     <div className={cn(
                         "space-y-4 mb-2",
@@ -315,7 +317,7 @@ export function CreateProfile(props: {
 
                     </div>
 
-                    {/* Step2 */}
+                    {/* Step2 - */}
                     <div className={cn(
                         "space-y-4 mb-2",
                         formStep === 1 ? "block" : "hidden"
@@ -362,10 +364,79 @@ export function CreateProfile(props: {
 
                     </div>
 
+                    {/* Step 3 - Links */}
+                    <div className={cn(
+                        "space-y-4 mb-2",
+                        formStep === 2 ? "block" : "hidden"
+                    )}>
+                        {fields.map((field, index) => (
+                            <>
+                                <div className='space-y-2' key={field.id}>
+                                    {/* <p>Showcase all your links</p> */}
+                                    <FormField
+                                        control={form.control}
+                                        name={`links.${index}.title`}
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <div className='flex justify-between'>
+                                                    <FormLabel>URL {index + 1}</FormLabel>
+                                                    <Button
+                                                        type="button"
+                                                        variant="ghost"
+                                                        onClick={() => {
+                                                            if (fields.length > 1) {
+                                                                remove(index);
+                                                            }
+                                                        }}
+                                                        className={cn("py-1 px-3 h-full hover:bg-transparent")}
+                                                    >
+                                                        <X size={14} />
+                                                    </Button>
+                                                </div>
+                                                <FormControl>
+                                                    <Input {...field} placeholder="URL Title" />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name={`links.${index}.url`}
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormControl>
+                                                    <Input {...field} placeholder="URL" />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                            </>
+                        ))}
+                        <div className={cn(
+                            "w-full py-2 px-2 pl-5 flex gap-3 cursor-pointer",
+                            buttonVariants({ variant: "secondary" })
+                        )} onClick={() => {
+                            setLinkOrder(linkOrder + 1);
+                            append({ title: "", order: linkOrder + 1, url: "" });
+                        }}>
+                            <Plus size={14} />
+                            Add another link
+                        </div>
+                    </div>
 
+                    {/* Step 4 - Socials */}
+                    <div className={cn(
+                        "space-y-4 mb-2",
+                        formStep === 3 ? "block" : "hidden"
+                    )}>
+                        {/* Socials Picker */}
+                    </div>
 
-
-                    <div className='flex justify-between'>
+                    {/* Next Close Bitton */}
+                    <div className='flex justify-between mt-5'>
                         {
                             formStep === 0 ?
                                 <AlertDialog>

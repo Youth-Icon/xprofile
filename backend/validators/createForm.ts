@@ -66,7 +66,7 @@ export const formSchema = z.object({
   skills: z.array(skills).optional(),
   socials: z.array(socials),
   links: z.array(links).min(1, { message: "Must have at least 1 link" }),
-  projects: z.array(projects).optional(),
+  // projects: z.array(projects).optional(),
 });
 
 export type FormValues = z.infer<typeof formSchema>;
