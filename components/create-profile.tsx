@@ -5,7 +5,6 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "./ui/button"
 import { Input } from "./ui/input"
-import { Label } from "./ui/label"
 import { TagInput } from "./TagsInput"
 import { Textarea } from "./ui/textarea"
 import Image from "next/image"
@@ -13,8 +12,8 @@ import { useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
 import { Separator } from "./ui/separator"
 import { useForm, useFieldArray } from "react-hook-form";
-import { completeForm, restFormSchema } from "@/backend/validators/createForm"
-import { string, z } from "zod";
+import { formSchema } from "@/backend/validators/createForm"
+import { z } from "zod";
 import { Github, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
@@ -39,8 +38,7 @@ import {
     FormMessage,
 } from "./ui/form";
 
-type Input = z.infer<typeof completeForm>;
-type AllInput = z.infer<typeof restFormSchema>;
+type Input = z.infer<typeof formSchema>;
 
 interface CreateProfile extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -82,8 +80,8 @@ export function CreateProfile(props: {
         },
     ]);
 
-    const completeProfileForm = useForm<Input>({
-        resolver: zodResolver(completeForm),
+    const form = useForm<Input>({
+        resolver: zodResolver(formSchema),
         defaultValues: {
             name: session?.user.name || "",
             username: searchParams?.get("u") || "",
@@ -92,12 +90,6 @@ export function CreateProfile(props: {
             portfolio: "",
             pronouns: "",
             completedProfile: true,
-        },
-    });
-
-    const restForm = useForm<AllInput>({
-        resolver: zodResolver(restFormSchema),
-        defaultValues: {
             socials: socialsFields,
             links: [{ title: "", url: "" }],
             skills: [{ title: "", icon: "" }],
@@ -108,7 +100,7 @@ export function CreateProfile(props: {
 
     const { fields, append, remove } = useFieldArray({
         name: "links",
-        control: restForm.control,
+        control: form.control,
     })
 
 
@@ -129,67 +121,43 @@ export function CreateProfile(props: {
         }
     };
 
-    const { setValue } = restForm;
+    const { setValue } = form;
 
 
-    async function handleSubmit(data: AllInput) {
+    async function handleSubmit(data: Input) {
         setIsLoading(true);
-        // try {
-        //     const res = await fetch("/api/profile", {
-        //         method: "POST",
-        //         body: JSON.stringify(data),
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //     });
-        //     if (res.ok) {
-        //         toast({
-        //             title: "Profile created",
-        //             description: "Your profile has been created successfully",
-        //         });
-        //     } else {
-        //         toast({
-        //             title: "Error",
-        //             description: "Something went wrong",
-        //         });
-        //     }
-        // } catch (error) {
-        //     toast({
-        //         title: "Error",
-        //         description: "Something went wrong",
-        //     });
-        // } finally {
-        //     setIsLoading(false);
-        // }
         alert(JSON.stringify(data))
     }
+    // form logs
+    console.log(form.getValues());
+    console.log(form.formState.errors);
 
-    async function updateProfile() {
-        const data = completeProfileForm.getValues();
-        const isValid = await completeProfileForm.trigger();
-        if (isValid) {
-            // axiom post request
-            const res = await fetch("/api/profile", {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-            if (res.ok) {
-                toast({
-                    title: "Profile Updated!",
-                    description: "Your profile has been created successfully",
-                });
-                setFormStep(1);
-            } else {
-                toast({
-                    title: "Error",
-                    description: "Something went wrong",
-                });
-            }
-        }
-    }
+    // async function updateProfile() {
+    //     const data = completeProfileForm.getValues();
+    //     const isValid = await completeProfileForm.trigger();
+    //     if (isValid) {
+    //         // axiom post request
+    //         const res = await fetch("/api/profile", {
+    //             method: "POST",
+    //             body: JSON.stringify(data),
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //         });
+    //         if (res.ok) {
+    //             toast({
+    //                 title: "Profile Updated!",
+    //                 description: "Your profile has been created successfully",
+    //             });
+    //             setFormStep(1);
+    //         } else {
+    //             toast({
+    //                 title: "Error",
+    //                 description: "Something went wrong",
+    //             });
+    //         }
+    //     }
+    // }
 
     return (
         <div className={"grid gap-4 items-center z-50"}>
@@ -240,8 +208,8 @@ export function CreateProfile(props: {
 
             <Separator />
             {/* Form */}
-            <Form {...completeProfileForm}>
-                <form onSubmit={completeProfileForm.handleSubmit(updateProfile)}>
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(handleSubmit)}>
                     {/* Step 1 */}
                     <div className={cn(
                         "space-y-4 mb-2",
@@ -249,7 +217,7 @@ export function CreateProfile(props: {
                     )}>
                         {/* Name */}
                         <FormField
-                            control={completeProfileForm.control}
+                            control={form.control}
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
@@ -264,7 +232,7 @@ export function CreateProfile(props: {
 
                         {/* Username */}
                         <FormField
-                            control={completeProfileForm.control}
+                            control={form.control}
                             name="username"
                             render={({ field }) => (
                                 <FormItem>
@@ -279,7 +247,7 @@ export function CreateProfile(props: {
 
                         {/* Portfolio */}
                         <FormField
-                            control={completeProfileForm.control}
+                            control={form.control}
                             name="portfolio"
                             render={({ field }) => (
                                 <FormItem>
@@ -302,7 +270,7 @@ export function CreateProfile(props: {
 
                         {/* Profession */}
                         <FormField
-                            control={completeProfileForm.control}
+                            control={form.control}
                             name="profession"
                             render={({ field }) => (
                                 <FormItem>
@@ -317,7 +285,7 @@ export function CreateProfile(props: {
 
                         {/* Pronouns */}
                         <FormField
-                            control={completeProfileForm.control}
+                            control={form.control}
                             name="pronouns"
                             render={({ field }) => (
                                 <FormItem>
@@ -332,7 +300,7 @@ export function CreateProfile(props: {
 
                         {/* Bio */}
                         <FormField
-                            control={completeProfileForm.control}
+                            control={form.control}
                             name="about"
                             render={({ field }) => (
                                 <FormItem>
@@ -366,7 +334,20 @@ export function CreateProfile(props: {
                             </AlertDialog>
                             <Button
                                 className="px-10"
-                                type="submit"
+                                type="button"
+                                onClick={() => {
+                                    form.trigger(["name", "username", "portfolio", "profession", "pronouns", "about"])
+
+                                    const name = form.getValues("name")
+                                    const username = form.getValues("username")
+                                    const profession = form.getValues("profession")
+                                    const pronouns = form.getValues("pronouns")
+                                    const about = form.getValues("about")
+
+                                    if (name && username && profession && pronouns && about) {
+                                        setFormStep(1)
+                                    }
+                                }}
                             >
                                 Next
                             </Button>
@@ -381,7 +362,7 @@ export function CreateProfile(props: {
                     )}>
                         {/* Skills Picker */}
                         <FormField
-                            control={restForm.control}
+                            control={form.control}
                             name="skills"
                             render={({ field }) => (
                                 <FormItem>
@@ -397,7 +378,7 @@ export function CreateProfile(props: {
 
                         {/* Intrests Picker */}
                         <FormField
-                            control={restForm.control}
+                            control={form.control}
                             name="interests"
                             render={({ field }) => (
                                 <FormItem>
