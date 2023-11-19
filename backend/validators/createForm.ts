@@ -25,32 +25,30 @@ const skills = z.object({
   title: z
     .string()
     .min(2, { message: "Title must be at least 2 characters long" }),
-  icom: z.string(),
+  icon: z.string(),
 });
 
-const socials = z
-  .object({
-    type: z.string(),
-    handle: z.string(),
-    order: z.number(),
-  })
-  .superRefine((values, ctx) => {
-    if (values.type == "Github" && !values.handle) {
-      ctx.addIssue({
-        message: "Github handle must be at least 1 character long",
-        code: z.ZodIssueCode.custom,
-        path: ["handle"],
-      });
-    }
-  });
+const socials = z.object({
+  type: z.string(),
+  handle: z.string(),
+  order: z.number(),
+});
+//   .superRefine((values, ctx) => {
+//     if (values.type == "Github" && !values.handle) {
+//       ctx.addIssue({
+//         message: "Github handle must be at least 1 character long",
+//         code: z.ZodIssueCode.custom,
+//         path: ["handle"],
+//       });
+//     }
+//   });
 
 export const restFormSchema = z.object({
   interests: z
-    .array(z.string())
-    .min(1, { message: "Must have at least 1 tag" }),
+    .array(z.string()),
   skills: z.array(skills).min(1, { message: "Must have at least 1 skill" }),
   socials: z.array(socials),
-  links: z.array(links),
+  links: z.array(links).min(1, { message: "Must have at least 1 link" }),
   projects: z.array(projects),
 });
 

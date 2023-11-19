@@ -6,14 +6,16 @@ import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "./ui/button"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
+import { TagInput } from "./TagsInput"
 import { Textarea } from "./ui/textarea"
 import Image from "next/image"
 import { useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
 import { Separator } from "./ui/separator"
 import { useForm, useFieldArray } from "react-hook-form";
-import { completeForm, formSchema } from "@/backend/validators/createForm"
-import { z } from "zod";
+import { completeForm, restFormSchema } from "@/backend/validators/createForm"
+import { string, z } from "zod";
+import { Github, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation"
@@ -38,6 +40,7 @@ import {
 } from "./ui/form";
 
 type Input = z.infer<typeof completeForm>;
+type AllInput = z.infer<typeof restFormSchema>;
 
 interface CreateProfile extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -92,7 +95,44 @@ export function CreateProfile(props: {
         },
     });
 
-    async function handleSubmit(data: Input) {
+    const restForm = useForm<AllInput>({
+        resolver: zodResolver(restFormSchema),
+        defaultValues: {
+            socials: socialsFields,
+            links: [{ title: "", url: "" }],
+            skills: [{ title: "", icon: "" }],
+            interests: intrests,
+            projects: [{ title: "", description: "", repoLink: "", webURL: "", tags: [], language: "" }],
+        },
+    });
+
+    const { fields, append, remove } = useFieldArray({
+        name: "links",
+        control: restForm.control,
+    })
+
+
+    const getSocialIcon = (socialType: string) => {
+        switch (socialType) {
+            case "Github":
+                return <Github className="w-10 h-10" />;
+            case "Twitter":
+                return <Twitter className="w-10 h-10" />;
+            case "Instagram":
+                return <Instagram className="w-10 h-10" />;
+            case "Linkedin":
+                return <Linkedin className="w-10 h-10" />;
+            case "Youtube":
+                return <Youtube className="w-10 h-10" />;
+            default:
+                return null;
+        }
+    };
+
+    const { setValue } = restForm;
+
+
+    async function handleSubmit(data: AllInput) {
         setIsLoading(true);
         // try {
         //     const res = await fetch("/api/profile", {
@@ -201,7 +241,7 @@ export function CreateProfile(props: {
             <Separator />
             {/* Form */}
             <Form {...completeProfileForm}>
-                <form onSubmit={completeProfileForm.handleSubmit(handleSubmit)}>
+                <form onSubmit={completeProfileForm.handleSubmit(updateProfile)}>
                     {/* Step 1 */}
                     <div className={cn(
                         "space-y-4 mb-2",
@@ -326,8 +366,7 @@ export function CreateProfile(props: {
                             </AlertDialog>
                             <Button
                                 className="px-10"
-                                type="button"
-                                onClick={() => updateProfile()}
+                                type="submit"
                             >
                                 Next
                             </Button>
@@ -341,9 +380,61 @@ export function CreateProfile(props: {
                         formStep === 1 ? "block" : "hidden"
                     )}>
                         {/* Skills Picker */}
+                        <FormField
+                            control={restForm.control}
+                            name="skills"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Skills</FormLabel>
+                                    <FormControl>
+                                        {/* Skills Icon Picker */}
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
 
                         {/* Intrests Picker */}
+                        <FormField
+                            control={restForm.control}
+                            name="interests"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Intrests</FormLabel>
+                                    <FormControl>
+                                        <TagInput
+                                            {...field}
+                                            placeholder="Enter a topic"
+                                            tags={intrests}
+                                            className='w-full'
+                                            setTags={(newTags) => {
+                                                setIntrests(newTags);
+                                                setValue("interests", newTags as [string, ...string[]]);
+                                            }}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        {/* Next and Previous Buttons */}
+                        <div className="flex justify-between">
+                            <Button
+                                className="px-10"
+                                variant={"outline"}
+                                onClick={() => setFormStep(formStep - 1)}
+                            >
+                                Previous
+                            </Button>
+                            <Button
+                                className="px-10"
+                                onClick={() => setFormStep(formStep + 1)}
+                            >
+                                Next
+                            </Button>
+                        </div>
                     </div>
                 </form>
             </Form>
