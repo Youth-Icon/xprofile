@@ -5,7 +5,6 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "./ui/button"
 import { Input } from "./ui/input"
-import { Label } from "./ui/label"
 import { TagInput } from "./TagsInput"
 import { Textarea } from "./ui/textarea"
 import Image from "next/image"
@@ -13,9 +12,9 @@ import { useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
 import { Separator } from "./ui/separator"
 import { useForm, useFieldArray } from "react-hook-form";
-import { completeForm, restFormSchema } from "@/backend/validators/createForm"
-import { string, z } from "zod";
-import { Github, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import { formSchema } from "@/backend/validators/createForm"
+import { z } from "zod";
+import { Github, Instagram, Linkedin, Twitter, Youtube, ArrowLeft, ArrowRight, Plus, X } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation"
@@ -39,8 +38,7 @@ import {
     FormMessage,
 } from "./ui/form";
 
-type Input = z.infer<typeof completeForm>;
-type AllInput = z.infer<typeof restFormSchema>;
+type Input = z.infer<typeof formSchema>;
 
 interface CreateProfile extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -53,6 +51,7 @@ export function CreateProfile(props: {
     const { toast } = useToast()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [formStep, setFormStep] = useState<number>(0);
+    const [linkOrder, setLinkOrder] = useState<number>(1);
     const [intrests, setIntrests] = useState<string[]>([]);
     const [socialsFields] = useState([
         {
@@ -82,8 +81,8 @@ export function CreateProfile(props: {
         },
     ]);
 
-    const completeProfileForm = useForm<Input>({
-        resolver: zodResolver(completeForm),
+    const form = useForm<Input>({
+        resolver: zodResolver(formSchema),
         defaultValues: {
             name: session?.user.name || "",
             username: searchParams?.get("u") || "",
@@ -92,23 +91,17 @@ export function CreateProfile(props: {
             portfolio: "",
             pronouns: "",
             completedProfile: true,
-        },
-    });
-
-    const restForm = useForm<AllInput>({
-        resolver: zodResolver(restFormSchema),
-        defaultValues: {
             socials: socialsFields,
-            links: [{ title: "", url: "" }],
+            links: [{ title: "", order: linkOrder, url: "" }],
             skills: [{ title: "", icon: "" }],
-            interests: intrests,
-            projects: [{ title: "", description: "", repoLink: "", webURL: "", tags: [], language: "" }],
+            interests: ["XProfile", "Coding"],
+            // projects: [{ title: "", description: "", repoLink: "", webURL: "", tags: [], language: "" }],
         },
     });
 
     const { fields, append, remove } = useFieldArray({
         name: "links",
-        control: restForm.control,
+        control: form.control,
     })
 
 
@@ -129,67 +122,43 @@ export function CreateProfile(props: {
         }
     };
 
-    const { setValue } = restForm;
+    const { setValue } = form;
 
 
-    async function handleSubmit(data: AllInput) {
+    async function handleSubmit(data: Input) {
         setIsLoading(true);
-        // try {
-        //     const res = await fetch("/api/profile", {
-        //         method: "POST",
-        //         body: JSON.stringify(data),
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //     });
-        //     if (res.ok) {
-        //         toast({
-        //             title: "Profile created",
-        //             description: "Your profile has been created successfully",
-        //         });
-        //     } else {
-        //         toast({
-        //             title: "Error",
-        //             description: "Something went wrong",
-        //         });
-        //     }
-        // } catch (error) {
-        //     toast({
-        //         title: "Error",
-        //         description: "Something went wrong",
-        //     });
-        // } finally {
-        //     setIsLoading(false);
-        // }
         alert(JSON.stringify(data))
     }
+    // form logs
+    console.log(form.getValues());
+    console.log(form.formState.errors);
 
-    async function updateProfile() {
-        const data = completeProfileForm.getValues();
-        const isValid = await completeProfileForm.trigger();
-        if (isValid) {
-            // axiom post request
-            const res = await fetch("/api/profile", {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-            if (res.ok) {
-                toast({
-                    title: "Profile Updated!",
-                    description: "Your profile has been created successfully",
-                });
-                setFormStep(1);
-            } else {
-                toast({
-                    title: "Error",
-                    description: "Something went wrong",
-                });
-            }
-        }
-    }
+    // async function updateProfile() {
+    //     const data = completeProfileForm.getValues();
+    //     const isValid = await completeProfileForm.trigger();
+    //     if (isValid) {
+    //         // axiom post request
+    //         const res = await fetch("/api/profile", {
+    //             method: "POST",
+    //             body: JSON.stringify(data),
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //         });
+    //         if (res.ok) {
+    //             toast({
+    //                 title: "Profile Updated!",
+    //                 description: "Your profile has been created successfully",
+    //             });
+    //             setFormStep(1);
+    //         } else {
+    //             toast({
+    //                 title: "Error",
+    //                 description: "Something went wrong",
+    //             });
+    //         }
+    //     }
+    // }
 
     return (
         <div className={"grid gap-4 items-center z-50"}>
@@ -240,8 +209,9 @@ export function CreateProfile(props: {
 
             <Separator />
             {/* Form */}
-            <Form {...completeProfileForm}>
-                <form onSubmit={completeProfileForm.handleSubmit(updateProfile)}>
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(handleSubmit)}>
+
                     {/* Step 1 */}
                     <div className={cn(
                         "space-y-4 mb-2",
@@ -249,7 +219,7 @@ export function CreateProfile(props: {
                     )}>
                         {/* Name */}
                         <FormField
-                            control={completeProfileForm.control}
+                            control={form.control}
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
@@ -264,7 +234,7 @@ export function CreateProfile(props: {
 
                         {/* Username */}
                         <FormField
-                            control={completeProfileForm.control}
+                            control={form.control}
                             name="username"
                             render={({ field }) => (
                                 <FormItem>
@@ -279,7 +249,7 @@ export function CreateProfile(props: {
 
                         {/* Portfolio */}
                         <FormField
-                            control={completeProfileForm.control}
+                            control={form.control}
                             name="portfolio"
                             render={({ field }) => (
                                 <FormItem>
@@ -302,7 +272,7 @@ export function CreateProfile(props: {
 
                         {/* Profession */}
                         <FormField
-                            control={completeProfileForm.control}
+                            control={form.control}
                             name="profession"
                             render={({ field }) => (
                                 <FormItem>
@@ -317,7 +287,7 @@ export function CreateProfile(props: {
 
                         {/* Pronouns */}
                         <FormField
-                            control={completeProfileForm.control}
+                            control={form.control}
                             name="pronouns"
                             render={({ field }) => (
                                 <FormItem>
@@ -332,7 +302,7 @@ export function CreateProfile(props: {
 
                         {/* Bio */}
                         <FormField
-                            control={completeProfileForm.control}
+                            control={form.control}
                             name="about"
                             render={({ field }) => (
                                 <FormItem>
@@ -345,43 +315,16 @@ export function CreateProfile(props: {
                             )}
                         />
 
-                        {/* Next Button */}
-                        <div className="flex justify-between">
-                            <AlertDialog>
-                                <AlertDialogTrigger asChild><Button variant="outline">Cancel</Button></AlertDialogTrigger>
-                                <AlertDialogContent>
-                                    <AlertDialogHeader>
-                                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                        <AlertDialogDescription>
-                                            This will redirect you to the home page and you will lose all your progress.
-                                        </AlertDialogDescription>
-                                    </AlertDialogHeader>
-                                    <AlertDialogFooter>
-                                        <AlertDialogAction onClick={() => {
-                                            router.push('/')
-                                        }}>Continue</AlertDialogAction>
-                                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                    </AlertDialogFooter>
-                                </AlertDialogContent>
-                            </AlertDialog>
-                            <Button
-                                className="px-10"
-                                type="submit"
-                            >
-                                Next
-                            </Button>
-                        </div>
-
                     </div>
 
-                    {/* Step2 */}
+                    {/* Step2 - */}
                     <div className={cn(
                         "space-y-4 mb-2",
                         formStep === 1 ? "block" : "hidden"
                     )}>
                         {/* Skills Picker */}
                         <FormField
-                            control={restForm.control}
+                            control={form.control}
                             name="skills"
                             render={({ field }) => (
                                 <FormItem>
@@ -397,7 +340,7 @@ export function CreateProfile(props: {
 
                         {/* Intrests Picker */}
                         <FormField
-                            control={restForm.control}
+                            control={form.control}
                             name="interests"
                             render={({ field }) => (
                                 <FormItem>
@@ -419,22 +362,135 @@ export function CreateProfile(props: {
                             )}
                         />
 
-                        {/* Next and Previous Buttons */}
-                        <div className="flex justify-between">
-                            <Button
-                                className="px-10"
-                                variant={"outline"}
-                                onClick={() => setFormStep(formStep - 1)}
-                            >
-                                Previous
-                            </Button>
-                            <Button
-                                className="px-10"
-                                onClick={() => setFormStep(formStep + 1)}
-                            >
-                                Next
-                            </Button>
+                    </div>
+
+                    {/* Step 3 - Links */}
+                    <div className={cn(
+                        "space-y-4 mb-2",
+                        formStep === 2 ? "block" : "hidden"
+                    )}>
+                        {fields.map((field, index) => (
+                            <>
+                                <div className='space-y-2' key={field.id}>
+                                    {/* <p>Showcase all your links</p> */}
+                                    <FormField
+                                        control={form.control}
+                                        name={`links.${index}.title`}
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <div className='flex justify-between'>
+                                                    <FormLabel>URL {index + 1}</FormLabel>
+                                                    <Button
+                                                        type="button"
+                                                        variant="ghost"
+                                                        onClick={() => {
+                                                            if (fields.length > 1) {
+                                                                remove(index);
+                                                            }
+                                                        }}
+                                                        className={cn("py-1 px-3 h-full hover:bg-transparent")}
+                                                    >
+                                                        <X size={14} />
+                                                    </Button>
+                                                </div>
+                                                <FormControl>
+                                                    <Input {...field} placeholder="URL Title" />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name={`links.${index}.url`}
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormControl>
+                                                    <Input {...field} placeholder="URL" />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                            </>
+                        ))}
+                        <div className={cn(
+                            "w-full py-2 px-2 pl-5 flex gap-3 cursor-pointer",
+                            buttonVariants({ variant: "secondary" })
+                        )} onClick={() => {
+                            setLinkOrder(linkOrder + 1);
+                            append({ title: "", order: linkOrder + 1, url: "" });
+                        }}>
+                            <Plus size={14} />
+                            Add another link
                         </div>
+                    </div>
+
+                    {/* Step 4 - Socials */}
+                    <div className={cn(
+                        "space-y-4 mb-2",
+                        formStep === 3 ? "block" : "hidden"
+                    )}>
+                        {/* Socials Picker */}
+                    </div>
+
+                    {/* Next Close Bitton */}
+                    <div className='flex justify-between mt-5'>
+                        {
+                            formStep === 0 ?
+                                <AlertDialog>
+                                    <AlertDialogTrigger asChild><Button variant="outline">Cancel</Button></AlertDialogTrigger>
+                                    <AlertDialogContent>
+                                        <AlertDialogHeader>
+                                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                            <AlertDialogDescription>
+                                                This will redirect you to the home page and you will lose all your progress.
+                                            </AlertDialogDescription>
+                                        </AlertDialogHeader>
+                                        <AlertDialogFooter>
+                                            <AlertDialogAction onClick={() => {
+                                                router.push('/')
+                                            }}>Continue</AlertDialogAction>
+                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                        </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                </AlertDialog>
+                                :
+                                <Button onClick={() => setFormStep(formStep - 1)} variant='ghost'><ArrowLeft /> Go Back</Button>
+                        }
+
+                        {
+                            formStep === 0 ?
+                                <Button onClick={() => {
+                                    // zod validation
+                                    form.trigger(["name", "username", "profession", "pronouns", "about"]);
+                                    const name = form.getValues("name")
+                                    const username = form.getValues("username")
+                                    const profession = form.getValues("profession")
+                                    const about = form.getValues("about")
+                                    // const portfolio = form.getValues("portfolio")
+
+                                    if (name && username && profession && about) {
+                                        setFormStep(1)
+                                    }
+                                }}>Next <ArrowRight /></Button>
+                                : formStep === 1 ? <Button onClick={() => {
+                                    const skills = form.getValues("skills")
+                                    const interests = form.getValues("interests")
+                                    if (skills && interests) {
+                                        setFormStep(2)
+                                    } else {
+                                        form.trigger(["skills", "interests"])
+                                        return
+                                    }
+                                }}>Next <ArrowRight /></Button>
+                                    : formStep === 2 ? <Button onClick={() => {
+                                        setFormStep(3)
+                                    }}>Next <ArrowRight /></Button>
+                                        : formStep === 3 ? <Button type='submit'>Submit</Button>
+                                            : null
+                        }
                     </div>
                 </form>
             </Form>

@@ -43,16 +43,7 @@ const socials = z.object({
 //     }
 //   });
 
-export const restFormSchema = z.object({
-  interests: z
-    .array(z.string()),
-  skills: z.array(skills).min(1, { message: "Must have at least 1 skill" }),
-  socials: z.array(socials),
-  links: z.array(links).min(1, { message: "Must have at least 1 link" }),
-  projects: z.array(projects),
-});
-
-export const completeForm = z.object({
+export const formSchema = z.object({
   name: z
     .string()
     .min(2, { message: "Name must be at least 2 characters long" }),
@@ -65,11 +56,17 @@ export const completeForm = z.object({
   profession: z
     .string()
     .min(3, { message: "Profession must be at least 2 characters long" }),
-  portfolio: z.string(),
+  portfolio: z.string().optional(),
   pronouns: z
     .string()
     .min(2, { message: "Pronouns must be at least 2 characters long" }),
   completedProfile: z.boolean(),
+  interests: z
+    .array(z.string()).min(1, { message: "Must have at least 1 interest" }),
+  skills: z.array(skills).optional(),
+  socials: z.array(socials),
+  links: z.array(links).min(1, { message: "Must have at least 1 link" }),
+  // projects: z.array(projects).optional(),
 });
 
-export type FormValues = z.infer<typeof restFormSchema>;
+export type FormValues = z.infer<typeof formSchema>;
