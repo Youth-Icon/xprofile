@@ -37,6 +37,7 @@ import {
     FormLabel,
     FormMessage,
 } from "./ui/form";
+import { Dropdown } from "./dropdown"
 
 type Input = z.infer<typeof formSchema>;
 
@@ -53,6 +54,7 @@ export function CreateProfile(props: {
     const [formStep, setFormStep] = useState<number>(0);
     const [linkOrder, setLinkOrder] = useState<number>(1);
     const [intrests, setIntrests] = useState<string[]>([]);
+    const [skills, setSkills] = useState<[]>([]);
     const [socialsFields] = useState([
         {
             type: "Github",
@@ -80,6 +82,14 @@ export function CreateProfile(props: {
             clicks: 0,
         },
     ]);
+
+    const dropdownOptions = [
+        { name: 'Option 1', icon: 'devicon-androidstudio-plain' },
+        { name: 'Option 2', icon: 'devicon-adonisjs-original' },
+        { name: 'Option 3', icon: 'devicon-amazonwebservices-original' },
+        { name: 'option', icon: 'devicon-androidstudio-plain' }
+        // Add more options as needed
+    ];
 
     const form = useForm<Input>({
         resolver: zodResolver(formSchema),
@@ -323,19 +333,27 @@ export function CreateProfile(props: {
                         formStep === 1 ? "block" : "hidden"
                     )}>
                         {/* Skills Picker */}
-                        <FormField
-                            control={form.control}
-                            name="skills"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Skills</FormLabel>
-                                    <FormControl>
-                                        {/* Skills Icon Picker */}
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                        {fields.map((field, index) => (
+                            <>
+                                <div className='space-y-2' key={field.id}>
+                                    {/* Skills */}
+                                    <FormField
+                                        control={form.control}
+                                        name={`skills.${index}.title`}
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Skills</FormLabel>
+                                                <FormControl>
+                                                    {/* Skills Icon Picker */}
+                                                    <Dropdown options={dropdownOptions} selectedOption={skills} setSelectedOption={setSkills} {...field} />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                            </>
+                        ))}
 
 
                         {/* Intrests Picker */}
@@ -344,11 +362,11 @@ export function CreateProfile(props: {
                             name="interests"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Intrests</FormLabel>
+                                    <FormLabel>Interests</FormLabel>
                                     <FormControl>
                                         <TagInput
                                             {...field}
-                                            placeholder="Enter a topic"
+                                            placeholder="Seperate each interest with a comma"
                                             tags={intrests}
                                             className='w-full'
                                             setTags={(newTags) => {
