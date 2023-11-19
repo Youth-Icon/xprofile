@@ -16,6 +16,18 @@ import { completeForm, formSchema } from "@/backend/validators/createForm"
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation"
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "./ui/alert-dialog"
 import {
     Form,
     FormControl,
@@ -32,6 +44,7 @@ interface CreateProfile extends React.HTMLAttributes<HTMLDivElement> { }
 export function CreateProfile(props: {
     session: any;
 }) {
+    const router = useRouter()
     const { session } = props
     const searchParams = useSearchParams()
     const { toast } = useToast()
@@ -138,60 +151,60 @@ export function CreateProfile(props: {
         }
     }
 
-
     return (
         <div className={"grid gap-4 items-center z-50"}>
-            <h1 className=" text-3xl text-center">Complete your profile</h1>
+            <h1 className=" text-xl text-center">Complete your profile</h1>
             {/* Steps to complete your profile */}
             <div className="w-full grid grid-flow-col gap-1 justify-stretch">
                 <div className="flex flex-col gap-1 items-center">
                     <p className={cn(
-                        "w-12 h-12 rounded-full flex items-center justify-center",
+                        "w-10 h-10 rounded-full flex items-center justify-center",
                         formStep === 0 ? "bg-[#FF5400]/20 text-[#FF5400]" : "bg-[#8D8D8D]/10 text-white"
                     )}>1</p>
                     <p className={cn(
-                        "text-sm",
+                        "text-xs",
                         formStep === 0 ? "text-[#FF5400]" : "text-[#8D8D8D]"
                     )}>Profile</p>
                 </div>
                 <div className="flex flex-col gap-1 items-center">
                     <p className={cn(
-                        "w-12 h-12 rounded-full flex items-center justify-center",
+                        "w-10 h-10 rounded-full flex items-center justify-center",
                         formStep === 1 ? "bg-[#FF5400]/20 text-[#FF5400]" : "bg-[#8D8D8D]/10 text-white"
                     )}>2</p>
                     <p className={cn(
-                        "text-sm",
+                        "text-xs",
                         formStep === 1 ? "text-[#FF5400]" : "text-[#8D8D8D]"
                     )}>Profile</p>
                 </div>
                 <div className="flex flex-col gap-1 items-center">
                     <p className={cn(
-                        "w-12 h-12 rounded-full flex items-center justify-center",
+                        "w-10 h-10 rounded-full flex items-center justify-center",
                         formStep === 2 ? "bg-[#FF5400]/20 text-[#FF5400]" : "bg-[#8D8D8D]/10 text-white"
                     )}>3</p>
                     <p className={cn(
-                        "text-sm",
+                        "text-xs",
                         formStep === 2 ? "text-[#FF5400]" : "text-[#8D8D8D]"
                     )}>Profile</p>
                 </div>
                 <div className="flex flex-col gap-1 items-center">
                     <p className={cn(
-                        "w-12 h-12 rounded-full flex items-center justify-center",
+                        "w-10 h-10 rounded-full flex items-center justify-center",
                         formStep === 3 ? "bg-[#FF5400]/20 text-[#FF5400]" : "bg-[#8D8D8D]/10 text-white"
                     )}>4</p>
                     <p className={cn(
-                        "text-sm",
+                        "text-xs",
                         formStep === 3 ? "text-[#FF5400]" : "text-[#8D8D8D]"
                     )}>Profile</p>
                 </div>
             </div>
+
             <Separator />
             {/* Form */}
             <Form {...completeProfileForm}>
                 <form onSubmit={completeProfileForm.handleSubmit(handleSubmit)}>
                     {/* Step 1 */}
                     <div className={cn(
-                        "space-y-4",
+                        "space-y-4 mb-2",
                         formStep === 0 ? "block" : "hidden"
                     )}>
                         {/* Name */}
@@ -293,8 +306,26 @@ export function CreateProfile(props: {
                         />
 
                         {/* Next Button */}
-                        <div className="flex justify-end">
+                        <div className="flex justify-between">
+                            <AlertDialog>
+                                <AlertDialogTrigger asChild><Button variant="outline">Cancel</Button></AlertDialogTrigger>
+                                <AlertDialogContent>
+                                    <AlertDialogHeader>
+                                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                        <AlertDialogDescription>
+                                            This will redirect you to the home page and you will lose all your progress.
+                                        </AlertDialogDescription>
+                                    </AlertDialogHeader>
+                                    <AlertDialogFooter>
+                                        <AlertDialogAction onClick={() => {
+                                            router.push('/')
+                                        }}>Continue</AlertDialogAction>
+                                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                    </AlertDialogFooter>
+                                </AlertDialogContent>
+                            </AlertDialog>
                             <Button
+                                className="px-10"
                                 type="button"
                                 onClick={() => updateProfile()}
                             >
@@ -302,6 +333,17 @@ export function CreateProfile(props: {
                             </Button>
                         </div>
 
+                    </div>
+
+                    {/* Step2 */}
+                    <div className={cn(
+                        "space-y-4 mb-2",
+                        formStep === 1 ? "block" : "hidden"
+                    )}>
+                        {/* Skills Picker */}
+
+
+                        {/* Intrests Picker */}
                     </div>
                 </form>
             </Form>
