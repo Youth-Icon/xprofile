@@ -23,53 +23,43 @@ export function Dropdown({options, selectedOption, setSelectedOption}: DropdownP
   };
 
   const selectOption = (option:Option) => {
-    if(selectedOption.includes(option)){
-        let index = selectedOption.indexOf(option);
-        if (index !== -1) {
-            selectedOption.splice(index, 1);
-        }
+    if(selectedOption.some((opt) => opt.name === option.name)){
+      setSelectedOption(selectedOption.filter((opt) => opt.name !== option.name));
 
     }else{
-        try {
-                
-            setSelectedOption([...selectedOption, option])
-            console.log(selectedOption) 
-        } catch (error) {
-            console.log(error)
-        }
+      setSelectedOption([...selectedOption, option]);
     }
     setIsOpen(false);
   };
 
   return (
     <div className="relative w-auto">
+      <section className={`flex flex-wrap gap-2  w-full bg-gray-50 rounded-md ${selectedOption.length !== 0 && 'mb-3'}`}>
+          {selectedOption.map((opt, index) => (
+          <div key={index} className='cursor-pointer flex mx-1 bg-gray-100 p-1 justify-center items-center rounded-full group hover:bg-gray-300' onClick={() => selectOption(opt)}>
+              <X className=' w-4 invisible text-black group-hover:visible'></X>
+              {opt.icon?(
+                <i className={`${opt.icon} ${opt.iconStyle} mr-5`}/>
+              ):(<></>)}
+            <p className=' text-sm text-black group-hover:text-black'>{opt.name}</p>
+          </div>
+        ))}
+      </section>
       <button
         type="button"
-        className=" relative bg-gray-200 text-gray-800 cursor-auto font-semibold py-2 px-4 rounded inline-flex items-center w-full overflow-y-scroll"
+        onClick={toggleDropdown}
+        className=" relative bg-gray-200 text-gray-800 cursor-pointer font-semibold py-2 px-4 rounded inline-flex items-center w-full overflow-y-scroll"
       >
-        {selectedOption[0] ? (
-            <section className='flex'>
-                {selectedOption.map((opt, index) => (
-                    <div key={index} className='flex mx-1 bg-gray-100 p-1 justify-center items-center rounded-full group hover:bg-gray-500' onClick={() => selectOption(opt)}>
-                        <X className=' w-4 invisible group-hover:visible'></X>
-                        {opt.icon?(
-                            <i className={`${opt.icon} ${opt.iconStyle} mr-5`}/>
-                        ):(<></>)}
-                        <p className=' text-sm text-black group-hover:text-white'>{opt.name}</p>
-                    </div>
-                ))}
-                </section>
-            
-        ) : (
-            <p>Select an option</p>
-        )}
+        <p>Select an option</p>
+
+        
         
        {isOpen?(
         <ChevronDown className="h-full ml-2 cursor-pointer right-0 absolute"
-          onClick={toggleDropdown}/>
+          />
        ):(
         <ChevronUp className="h-full ml-2 cursor-pointer right-0 absolute"
-          onClick={toggleDropdown}/>
+          />
        )}
 
       </button>
@@ -81,7 +71,7 @@ export function Dropdown({options, selectedOption, setSelectedOption}: DropdownP
               className="cursor-pointer py-2 px-4 hover:bg-gray-200 flex"
               onClick={() => selectOption(option)}
             >
-              {selectedOption.includes(option)?(
+              {selectedOption.find((selectedOpt) => (selectedOpt.name === option.name)) ?(
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -100,7 +90,7 @@ export function Dropdown({options, selectedOption, setSelectedOption}: DropdownP
               ):(<></>)}
               {option.name}
               {option.icon ?(
-                <i className={`${option.icon} ${option.iconStyle}`}/>
+                <i className={`${option.icon} ${option.iconStyle} ml-5`}/>
               ):(
                 <></>
               )}
