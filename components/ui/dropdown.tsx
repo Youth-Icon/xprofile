@@ -31,12 +31,7 @@ export function Dropdown({options, selectedOption, setSelectedOption}: DropdownP
 
     }else{
         try {
-            if(selectedOption[0].name === "Select an option"){
-                
-                selectedOption.splice(0, 1);
-                
-                console.log(selectedOption)
-            }  
+             
         } catch (error) {
             console.log(error)
         }finally {
