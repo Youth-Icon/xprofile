@@ -33,6 +33,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cmdk": "^0.2.0",
+    "devicon": "^2.15.1",
     "eslint": "8.49.0",
     "eslint-config-next": "^14.0.0",
     "lucide-react": "^0.292.0",
