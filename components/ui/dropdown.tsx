@@ -31,13 +31,13 @@ export function Dropdown({options, selectedOption, setSelectedOption}: DropdownP
 
     }else{
         try {
-             
+                
+            setSelectedOption([...selectedOption, option])
+            console.log(selectedOption) 
         } catch (error) {
             console.log(error)
         }finally {
         
-        setSelectedOption([...selectedOption, option])
-        console.log(selectedOption)
         
         }
     }
