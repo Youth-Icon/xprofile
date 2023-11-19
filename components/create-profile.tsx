@@ -14,7 +14,7 @@ import { Separator } from "./ui/separator"
 import { useForm, useFieldArray } from "react-hook-form";
 import { formSchema } from "@/backend/validators/createForm"
 import { z } from "zod";
-import { Github, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Github, Instagram, Linkedin, Twitter, Youtube, ArrowLeft, ArrowRight } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation"
@@ -93,7 +93,7 @@ export function CreateProfile(props: {
             socials: socialsFields,
             links: [{ title: "", url: "" }],
             skills: [{ title: "", icon: "" }],
-            interests: intrests,
+            interests: ["XProfile", "Coding"],
             projects: [{ title: "", description: "", repoLink: "", webURL: "", tags: [], language: "" }],
         },
     });
@@ -129,7 +129,7 @@ export function CreateProfile(props: {
         alert(JSON.stringify(data))
     }
     // form logs
-    console.log(form.getValues());
+    // console.log(form.getValues());
     console.log(form.formState.errors);
 
     // async function updateProfile() {
@@ -313,46 +313,6 @@ export function CreateProfile(props: {
                             )}
                         />
 
-                        {/* Next Button */}
-                        <div className="flex justify-between">
-                            <AlertDialog>
-                                <AlertDialogTrigger asChild><Button variant="outline">Cancel</Button></AlertDialogTrigger>
-                                <AlertDialogContent>
-                                    <AlertDialogHeader>
-                                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                        <AlertDialogDescription>
-                                            This will redirect you to the home page and you will lose all your progress.
-                                        </AlertDialogDescription>
-                                    </AlertDialogHeader>
-                                    <AlertDialogFooter>
-                                        <AlertDialogAction onClick={() => {
-                                            router.push('/')
-                                        }}>Continue</AlertDialogAction>
-                                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                    </AlertDialogFooter>
-                                </AlertDialogContent>
-                            </AlertDialog>
-                            <Button
-                                className="px-10"
-                                type="button"
-                                onClick={() => {
-                                    form.trigger(["name", "username", "portfolio", "profession", "pronouns", "about"])
-
-                                    const name = form.getValues("name")
-                                    const username = form.getValues("username")
-                                    const profession = form.getValues("profession")
-                                    const pronouns = form.getValues("pronouns")
-                                    const about = form.getValues("about")
-
-                                    if (name && username && profession && pronouns && about) {
-                                        setFormStep(1)
-                                    }
-                                }}
-                            >
-                                Next
-                            </Button>
-                        </div>
-
                     </div>
 
                     {/* Step2 */}
@@ -400,22 +360,66 @@ export function CreateProfile(props: {
                             )}
                         />
 
-                        {/* Next and Previous Buttons */}
-                        <div className="flex justify-between">
-                            <Button
-                                className="px-10"
-                                variant={"outline"}
-                                onClick={() => setFormStep(formStep - 1)}
-                            >
-                                Previous
-                            </Button>
-                            <Button
-                                className="px-10"
-                                onClick={() => setFormStep(formStep + 1)}
-                            >
-                                Next
-                            </Button>
-                        </div>
+                    </div>
+
+
+
+
+                    <div className='flex justify-between'>
+                        {
+                            formStep === 0 ?
+                                <AlertDialog>
+                                    <AlertDialogTrigger asChild><Button variant="outline">Cancel</Button></AlertDialogTrigger>
+                                    <AlertDialogContent>
+                                        <AlertDialogHeader>
+                                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                            <AlertDialogDescription>
+                                                This will redirect you to the home page and you will lose all your progress.
+                                            </AlertDialogDescription>
+                                        </AlertDialogHeader>
+                                        <AlertDialogFooter>
+                                            <AlertDialogAction onClick={() => {
+                                                router.push('/')
+                                            }}>Continue</AlertDialogAction>
+                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                        </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                </AlertDialog>
+                                :
+                                <Button onClick={() => setFormStep(formStep - 1)} variant='ghost'><ArrowLeft /> Go Back</Button>
+                        }
+
+                        {
+                            formStep === 0 ?
+                                <Button onClick={() => {
+                                    // zod validation
+                                    form.trigger(["name", "username", "profession", "pronouns", "about"]);
+                                    const name = form.getValues("name")
+                                    const username = form.getValues("username")
+                                    const profession = form.getValues("profession")
+                                    const about = form.getValues("about")
+                                    // const portfolio = form.getValues("portfolio")
+
+                                    if (name && username && profession && about) {
+                                        setFormStep(1)
+                                    }
+                                }}>Next <ArrowRight /></Button>
+                                : formStep === 1 ? <Button onClick={() => {
+                                    const skills = form.getValues("skills")
+                                    const interests = form.getValues("interests")
+                                    if (skills && interests) {
+                                        setFormStep(2)
+                                    } else {
+                                        form.trigger(["skills", "interests"])
+                                        return
+                                    }
+                                }}>Next <ArrowRight /></Button>
+                                    : formStep === 2 ? <Button onClick={() => {
+                                        setFormStep(3)
+                                    }}>Next <ArrowRight /></Button>
+                                        : formStep === 3 ? <Button type='submit'>Submit</Button>
+                                            : null
+                        }
                     </div>
                 </form>
             </Form>
