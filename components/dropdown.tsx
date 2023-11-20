@@ -8,8 +8,6 @@ import { X, ChevronDown, ChevronUp, Check } from 'lucide-react';
 interface Option {
   name: string;
   icon?: string;
-  iconStyle?: string;
-  selectedOption: object;
 }
 
 interface DropdownProps {
@@ -40,7 +38,7 @@ export function Dropdown({ options, selectedOption, setSelectedOption }: Dropdow
         {selectedOption.map((opt, index) => (
           <div key={index} className='transition-all border bg-secondary text-secondary-foreground hover:bg-secondary/80 inline-flex h-8 items-center text-sm pl-2 rounded-md' onClick={() => selectOption(opt)}>
             {opt.icon ? (
-              <i className={`${opt.icon} ${opt.iconStyle} mr-2`} />
+              <i className={`${opt.icon} mr-2`} />
             ) : (<></>)}
             <p className=' text-sm text-white group-hover:text-white'>{opt.name}</p>
             <Button
@@ -80,7 +78,7 @@ export function Dropdown({ options, selectedOption, setSelectedOption }: Dropdow
                 <Check className='text-white w-4 h-4' />
               ) : (<></>)}
               {option.icon ? (
-                <i className={`${option.icon} ${option.iconStyle} ml-3  text-white`} />
+                <i className={`${option.icon} ml-3  text-white`} />
               ) : (
                 <></>
               )}
