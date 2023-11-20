@@ -13,9 +13,17 @@ interface Option {
 }
 
 interface DropdownProps {
-  options: Option[];
+  options: ({
+    name: string;
+    icon: string;
+    iconStyle: string;
+} | {
+    name: string;
+    icon?: string;
+    iconStyle?: string;
+})[];
   selectedOption: Option[];
-  setSelectedOption: React.Dispatch<React.SetStateAction<Option[]>>;
+  setSelectedOption: any;
 
 }
 export function Dropdown({ options, selectedOption, setSelectedOption }: DropdownProps) {
@@ -24,7 +32,7 @@ export function Dropdown({ options, selectedOption, setSelectedOption }: Dropdow
     setIsOpen(!isOpen);
   };
 
-  const selectOption = (option: Option) => {
+  const selectOption = (option: any) => {
     if (selectedOption.some((opt) => opt.name === option.name)) {
       setSelectedOption(selectedOption.filter((opt) => opt.name !== option.name));
 
