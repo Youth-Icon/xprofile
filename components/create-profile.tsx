@@ -137,10 +137,11 @@ export function CreateProfile(props: {
 
     async function handleSubmit(data: Input) {
         setIsLoading(true);
-        alert(JSON.stringify(data))
+        alert(JSON.stringify(data, null, 2));
+        console.log(data);
     }
     // form logs
-    console.log(form.getValues());
+    // console.log(form.getValues());
     console.log(form.formState.errors);
 
     // async function updateProfile() {
@@ -451,6 +452,33 @@ export function CreateProfile(props: {
                         formStep === 3 ? "block" : "hidden"
                     )}>
                         {/* Socials Picker */}
+                        <div className="space-y-5">
+                            {socialsFields.map((social, index) => (
+                                <div key={index}>
+                                    <FormField
+                                        control={form.control}
+                                        name={`socials.${index}.handle`}
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormControl>
+                                                    <div className="flex justify-start items-center align-middle">
+                                                        {getSocialIcon(social.type)}
+                                                        <Input
+                                                            type="text"
+                                                            placeholder={`Your ${social.type} Handle`}
+                                                            {...field}
+                                                        />
+                                                    </div>
+                                                </FormControl>
+                                                {social.type === 'Github' && form.formState.errors?.socials?.[index]?.handle && (
+                                                    <FormMessage>{form.formState.errors?.socials?.[index]?.handle?.message}</FormMessage>
+                                                )}
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
                     {/* Next Close Bitton */}
@@ -512,6 +540,6 @@ export function CreateProfile(props: {
                     </div>
                 </form>
             </Form>
-        </div>
+        </div >
     )
 }

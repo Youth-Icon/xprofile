@@ -21,27 +21,20 @@ const links = z.object({
   order: z.number(),
 });
 
-const skills = z.object({
-  title: z
-    .string()
-    .min(2, { message: "Title must be at least 2 characters long" }),
-  icon: z.string(),
-});
-
-const socials = z.object({
-  type: z.string(),
-  handle: z.string(),
-  order: z.number(),
-});
-//   .superRefine((values, ctx) => {
-//     if (values.type == "Github" && !values.handle) {
-//       ctx.addIssue({
-//         message: "Github handle must be at least 1 character long",
-//         code: z.ZodIssueCode.custom,
-//         path: ["handle"],
-//       });
-//     }
-//   });
+const socials = z
+  .object({
+    type: z.string(),
+    handle: z.string(),
+  })
+  .superRefine((values, ctx) => {
+    if (values.type == "Github" && !values.handle) {
+      ctx.addIssue({
+        message: "Github handle must be at least 1 character long",
+        code: z.ZodIssueCode.custom,
+        path: ["handle"],
+      });
+    }
+  });
 
 export const formSchema = z.object({
   name: z
@@ -62,8 +55,15 @@ export const formSchema = z.object({
     .min(2, { message: "Pronouns must be at least 2 characters long" }),
   completedProfile: z.boolean(),
   interests: z
-    .array(z.string()).min(1, { message: "Must have at least 1 interest" }),
-  skills: z.array(skills).optional(),
+    .array(z.string().min(2, { message: "Interest must be at least 2 characters long" })).min(1, { message: "Must have at least 1 interest" }),
+  skills: z
+    .array(
+      z.object({
+        title: z.string(),
+        icon: z.string(),
+      })
+    )
+    .optional(),
   socials: z.array(socials),
   links: z.array(links).min(1, { message: "Must have at least 1 link" }),
   // projects: z.array(projects).optional(),
