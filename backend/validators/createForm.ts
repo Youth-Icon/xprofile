@@ -26,20 +26,20 @@ const skills = z.object({
   icon: z.string(),
 });
 
-const socials = z.object({
-  type: z.string(),
-  handle: z.string(),
-  order: z.number(),
-});
-//   .superRefine((values, ctx) => {
-//     if (values.type == "Github" && !values.handle) {
-//       ctx.addIssue({
-//         message: "Github handle must be at least 1 character long",
-//         code: z.ZodIssueCode.custom,
-//         path: ["handle"],
-//       });
-//     }
-//   });
+const socials = z
+  .object({
+    type: z.string(),
+    handle: z.string(),
+  })
+  .superRefine((values, ctx) => {
+    if (values.type == "Github" && !values.handle) {
+      ctx.addIssue({
+        message: "Github handle must be at least 1 character long",
+        code: z.ZodIssueCode.custom,
+        path: ["handle"],
+      });
+    }
+  });
 
 export const formSchema = z.object({
   name: z
@@ -60,7 +60,8 @@ export const formSchema = z.object({
     .min(2, { message: "Pronouns must be at least 2 characters long" }),
   completedProfile: z.boolean(),
   interests: z
-    .array(z.string()).min(1, { message: "Must have at least 1 interest" }),
+    .array(z.string())
+    .min(1, { message: "Must have at least 1 interest" }),
   skills: z.array(skills).optional(),
   socials: z.array(socials),
   links: z.array(links).min(1, { message: "Must have at least 1 link" }),
