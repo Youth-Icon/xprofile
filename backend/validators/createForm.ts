@@ -22,9 +22,7 @@ const links = z.object({
 });
 
 const skills = z.object({
-  title: z
-    .string()
-    .min(2, { message: "Title must be at least 2 characters long" }),
+  title: z.string(),
   icon: z.string(),
 });
 
