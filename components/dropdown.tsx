@@ -28,6 +28,7 @@ export function Dropdown({ options, selectedOption, setSelectedOption }: Dropdow
 
     } else {
       setSelectedOption([...selectedOption, option]);
+      console.log(selectedOption);
     }
     setIsOpen(false);
   };
