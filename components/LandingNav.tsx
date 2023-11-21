@@ -27,7 +27,7 @@ const LandingNav = ({ className, children }: any) => {
     return (
         <div className="w-full ">
             <div className={cn(
-                'flex w-full z-50 justify-between px-32 py-3 bg-transparent items-center h-[68px] fixed top-0 transition-all duration-300',
+                'flex w-full z-50 justify-between px-32 py-3 bg-transparent items-center h-[68px] fixed top-0 transition-all duration-200',
                 scrolling ? 'border-[0.5px] bg-gray-500 bg-opacity-25 backdrop-blur-md' : 'bg-transparent',
                 className,
             )}>
