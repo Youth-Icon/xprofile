@@ -300,7 +300,7 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
     { viewerId: 17, viewedId: 1, timestamp: new Date("2023-10-31T12:00:00Z") },
   ];
 
-  console.log(profileViews);
+  
 
   // State to store the selected time period data
   const [selectedData, setSelectedData] = useState<{
@@ -315,7 +315,7 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
   
 
   const handleTimePeriodChange = (selectedTime: string) => {
-    console.log("Selected Time:", selectedTime);
+   
     setSelectedData(getDataForTimePeriod(selectedTime));
     setActiveTimePeriod(selectedTime);
   };
@@ -480,7 +480,7 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
   const getLastMonthData = () => {
     const lastMonthViews = filterViewsByTimePeriod(profileViews, "lastMonth");
     const viewsPerDay = countViewsPerDayNumber(lastMonthViews);
-    console.log("Last Month Views:", lastMonthViews);
+
     return generateLastMonthLabels().map((day) => viewsPerDay[day] || 0);
   };
 
@@ -646,8 +646,8 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
         height="auto"
         width="auto"
         paddingX="32px"
-        paddingY="32px"
-        style={{ display: "flex", flexDirection: "column" }}
+      
+        style={{ display: "flex", flexDirection: "column", paddingTop:"32px", paddingBottom:"20px" }}
       >
         <div className="flex justify-between">
           <div className="text-white text-2xl font-semibold font-manrope">
