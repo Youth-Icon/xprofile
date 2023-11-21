@@ -12,23 +12,23 @@ import { env } from "@/env.mjs";
 import CompactFooter from "./components/CompactFooter";
 
 export default async function page({ params }: { params: { username: string } }) {
-  // const session = await getServerAuthSession();
-  // const username = params.username;
+  const session = await getServerAuthSession();
+  const username = params.username;
 
 
-  // const getProfile = async () => {
-  //   const res = await fetch(`${env.NEXTAUTH_URL}/api/profile/${username}`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   const profile = await res.json();
-  //   return profile;
-  // };
+  const getProfile = async () => {
+    const res = await fetch(`${env.NEXTAUTH_URL}/api/profile/${username}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const profile = await res.json();
+    return profile;
+  };
 
-  // const profile = await getProfile();
-  // console.log(profile);
+  const profile = await getProfile();
+  console.log(profile);
 
   return (
     <div>
