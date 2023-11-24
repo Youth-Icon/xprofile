@@ -45,6 +45,7 @@ const CTAbtn = ({
 
     // Completed Form ?
     const isProfile = session?.user?.completedProfile;
+    
     return (
         <>
             <div>
