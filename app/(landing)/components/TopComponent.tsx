@@ -12,7 +12,7 @@ const TopComponent = async ({ }) => {
                     <span className="bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text text-6xl sm:text-6xl lg:text-8xl font-bold font-manrope ">Superpowers</span>
                 </div>
                 <div className='flex flex-col space-y-3 justify-center items-center'>
-                    <div className="text-center max-w-3xl text-stone-400 text-base px-4 sm:text-lg lg:text-xl mt-4 sm:mt-6 lg:mt-12 font-medium font-manrope leading-snug">xProfile is an open-source app that provides a one-link portfolio for showcasing your projects, skills, social links, and more.</div>
+                    <div className="text-center max-w-3xl text-stone-400 text-base px-4 sm:text-lg lg:text-xl mt-4 sm:mt-6 lg:mt-12 font-medium font-manrope leading-snug">XProfile is an open-source app that provides a one-link portfolio for showcasing your projects, skills, social links, and more.</div>
                     <CTAbtn session={session} />
                 </div>
             </div>
