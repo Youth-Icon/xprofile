@@ -9,6 +9,7 @@ import Achievements from "./components/Achievements";
 import Discover from "./components/Discover";
 import ProjectAnalytics from "./components/ProjectAnalytics"
 import { env } from "@/env.mjs";
+import CompactFooter from "./components/CompactFooter";
 
 export default async function page({ params }: { params: { username: string } }) {
   const session = await getServerAuthSession();
@@ -30,6 +31,7 @@ export default async function page({ params }: { params: { username: string } })
   console.log(profile);
 
   return (
+    <div>
     <div className="px-12 pb-12">
       {/* Header Component */}
       <div className="mb-[32px]">
@@ -68,14 +70,18 @@ export default async function page({ params }: { params: { username: string } })
         {/* Discover Component */}
         <Discover />
       </div>
-      <div className="max-w-[1325px] m-auto">
+      <div className="max-w-[1325px] mx-auto">
         {/* Analytics Component */}
         <ProjectAnalytics selectedTimePeriod="thisWeek" />
       </div>
+    
 
 
 
-
+    </div>
+      <div className="mt-10">
+      <CompactFooter/>
+    </div>
     </div>
   );
 }

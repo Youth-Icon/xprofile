@@ -4,6 +4,7 @@ import FeatureBox from "@/app/(landing)/components/FeatureBox";
 import Graph from "./Graph";
 import { ArrowRight } from "lucide-react";
 import Round from "@/app/(landing)/components/round";
+import { actionAsyncStorage } from "next/dist/client/components/action-async-storage.external";
 
 interface ProfileView {
   viewerId: number;
@@ -300,7 +301,7 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
     { viewerId: 17, viewedId: 1, timestamp: new Date("2023-10-31T12:00:00Z") },
   ];
 
-  console.log(profileViews);
+  
 
   // State to store the selected time period data
   const [selectedData, setSelectedData] = useState<{
@@ -315,7 +316,7 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
   
 
   const handleTimePeriodChange = (selectedTime: string) => {
-    console.log("Selected Time:", selectedTime);
+   
     setSelectedData(getDataForTimePeriod(selectedTime));
     setActiveTimePeriod(selectedTime);
   };
@@ -480,7 +481,7 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
   const getLastMonthData = () => {
     const lastMonthViews = filterViewsByTimePeriod(profileViews, "lastMonth");
     const viewsPerDay = countViewsPerDayNumber(lastMonthViews);
-    console.log("Last Month Views:", lastMonthViews);
+
     return generateLastMonthLabels().map((day) => viewsPerDay[day] || 0);
   };
 
@@ -638,7 +639,7 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
   };
 
   return (
-    <div className="h-[638px] overflow-hidden relative">
+    <div className="h-[638px] mt-5 overflow-hidden relative">
       <Round className="absolute right-[9rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
       <Round className="absolute -left-[4rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
 
@@ -646,8 +647,8 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
         height="auto"
         width="auto"
         paddingX="32px"
-        paddingY="32px"
-        style={{ display: "flex", flexDirection: "column" }}
+      
+        style={{ display: "flex", flexDirection: "column", paddingTop:"32px", paddingBottom:"20px" }}
       >
         <div className="flex justify-between">
           <div className="text-white text-2xl font-semibold font-manrope">
@@ -663,7 +664,7 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
 
         <div className="flex gap-[51px] items-center mt-[48px]">
           <div className="flex justify-between gap-5 items-center">
-            <div className="text-white text-[24px] font-semibold font-manrope">
+            <div className="text-white text-[20px] font-semibold font-manrope">
               See your profile views
             </div>
             <ArrowRight color="white" />
@@ -701,10 +702,18 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
             ))}
           </div>
         </div>
-
+       {calculateSumForTimePeriod(activeTimePeriod) > 0 &&
         <div className="h-400px">
           <Graph data={selectedData.data} labels={selectedData.labels} />
+        </div>}
+        {calculateSumForTimePeriod(activeTimePeriod)==0 &&
+        <div className="h-[350px] flex text-center items-center justify-center text-manrope text-5xl">
+          No views in this selection
         </div>
+        
+        
+        }
+
       </FeatureBox>
     </div>
   );
