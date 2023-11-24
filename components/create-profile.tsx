@@ -95,7 +95,7 @@ export function CreateProfile(props: {
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: session?.user.name || "",
-            username: searchParams?.get("u") || "",
+            username: searchParams?.get("username") || "",
             about: "",
             profession: "",
             portfolio: "",
