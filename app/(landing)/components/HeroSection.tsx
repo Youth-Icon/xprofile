@@ -25,9 +25,9 @@ const HeroSection = () => {
                     <div className="absolute -z-20 top-0 left-0 w-full h-[96vh] bg-hero-pattern" />
 
                     {/* Orange Circle Background */}
-                    <Round className='absolute top-[420px] -left-56 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full ' />
+                    <Round className='hidden md:block absolute top-[420px] -left-56 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full ' />
                     <Round className='absolute top-48 -right-56 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
-                    <Round className='absolute top-[700px] -right-24 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full ' />
+                    <Round className='hidden md:block absolute top-[700px] -right-24 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full ' />
                     <Round className='absolute top-[1500px] -left-10 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
 
                 </div>
