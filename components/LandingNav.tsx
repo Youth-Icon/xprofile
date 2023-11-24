@@ -5,13 +5,17 @@ import { buttonVariants } from "./ui/button";
 import Link from "next/link";
 import { NavLinks } from "./NavLinks";
 import MobileNav from "./MobileNav";
-
 const LandingNav = ({ className, children }: any) => {
     const [scrolling, setScrolling] = useState(false);
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState(0); // Set initial width to 0
     const [showMobileMenu, setShowMobileMenu] = useState(false);
 
     useEffect(() => {
+        // Check if window is defined before accessing window.innerWidth
+        if (typeof window !== 'undefined') {
+            setWindowWidth(window.innerWidth);
+        }
+
         const handleScroll = () => {
             const isScrolled = window.scrollY > 0;
             setScrolling(isScrolled);
@@ -21,20 +25,51 @@ const LandingNav = ({ className, children }: any) => {
             setWindowWidth(window.innerWidth);
         };
 
-             // Check if window is defined before adding event listeners
-             if (typeof window !== 'undefined') {
-                window.addEventListener("scroll", handleScroll);
-                window.addEventListener("resize", handleResize);
+        // Check if window is defined before adding event listeners
+        if (typeof window !== 'undefined') {
+            window.addEventListener("scroll", handleScroll);
+            window.addEventListener("resize", handleResize);
+        }
+
+        return () => {
+            // Check if window is defined before removing event listeners
+            if (typeof window !== 'undefined') {
+                window.removeEventListener("scroll", handleScroll);
+                window.removeEventListener("resize", handleResize);
             }
-    
-            return () => {
-                // Check if window is defined before removing event listeners
-                if (typeof window !== 'undefined') {
-                    window.removeEventListener("scroll", handleScroll);
-                    window.removeEventListener("resize", handleResize);
-                }
-            };
+        };
     }, []);
+
+
+// const LandingNav = ({ className, children }: any) => {
+//     const [scrolling, setScrolling] = useState(false);
+//     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+//     const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+//     useEffect(() => {
+//         const handleScroll = () => {
+//             const isScrolled = window.scrollY > 0;
+//             setScrolling(isScrolled);
+//         };
+
+//         const handleResize = () => {
+//             setWindowWidth(window.innerWidth);
+//         };
+
+//              // Check if window is defined before adding event listeners
+//              if (typeof window !== 'undefined') {
+//                 window.addEventListener("scroll", handleScroll);
+//                 window.addEventListener("resize", handleResize);
+//             }
+    
+//             return () => {
+//                 // Check if window is defined before removing event listeners
+//                 if (typeof window !== 'undefined') {
+//                     window.removeEventListener("scroll", handleScroll);
+//                     window.removeEventListener("resize", handleResize);
+//                 }
+//             };
+//     }, []);
 
 
 
