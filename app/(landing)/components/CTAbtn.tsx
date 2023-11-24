@@ -45,6 +45,7 @@ const CTAbtn = ({
 
     // Completed Form ?
     const isProfile = session?.user?.completedProfile;
+    
     return (
         <>
             <div>
@@ -65,7 +66,7 @@ const CTAbtn = ({
                     </Button>
                 ) : (
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className='flex flex-col gap-0 md:gap-4 mt-4 md:mt-12 md:flex-row md:items-center '>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className='flex flex-col md:gap-4 mt-4 md:mt-12 md:flex-row md:items-center'>
                             <div className="flex md:flex-row ">
                                 <FormField
                                     control={form.control}
