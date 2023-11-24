@@ -1,15 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
+import { Icons } from '@/components/icons';
 
-const SecondComponent = () => {
+const ProfileExample = () => {
     return (
         <div className='mt-8 md:mt-24  overflow-hidden'>
             <div className="max-w-screen-md mx-5 rounded-3xl border p-2 md:p-4 flex-shrink-0 bg-neutral-500/10 text-stone-400 bg-opacity-30 backdrop-blur-3xl border-t border-b border-l">
                 <div className="flex md:flex-row gap-2 md:gap-4 mb-2 px-1">
-                    <svg className="w-7 h-8 md:w-10 md:h-12" viewBox="0 0 55 53" fill="none" strokeWidth="2.75" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="1.35587" y="2.08487" width="52.0653" height="48.8112" stroke="currentColor" strokeWidth="2.71173" />
-                        <path stroke="currentColor" fill="currentColor" strokeWidth="1" d="M34.7813 39.1532H28.464L22.8063 30.0938L17.2527 39.1532H11.8032L20.151 26.4146L12.0635 14.0577H18.3287L23.3443 22.1799L28.3078 14.0577H33.6879L25.9476 25.7551L34.7813 39.1532ZM37.4469 39.1532V33.6343H43.0006V39.1532H37.4469Z" />
-                    </svg>
+                    <Icons.boxlogo/>
                     <span className="place-self-end self-end font-medium text-sm md:text-xl">XProfile</span>
                 </div>
                 <div className="w-full">
@@ -28,4 +26,4 @@ const SecondComponent = () => {
     );
 }
 
-export default SecondComponent;
+export default ProfileExample;

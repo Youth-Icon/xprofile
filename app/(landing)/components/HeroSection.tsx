@@ -2,7 +2,7 @@ import React from 'react'
 import LandingNav from '@/components/LandingNav';
 import Round from './round';
 import TopComponent from './TopComponent';
-import SecondComponent from './SecondComp';
+import SecondComponent from './ProfileExample';
 import ThirdComp from './ThirdComp';
 import LoginLink from '@/components/LoginLink';
 import PowerfulFeatures from './PowerfulFeatures';
