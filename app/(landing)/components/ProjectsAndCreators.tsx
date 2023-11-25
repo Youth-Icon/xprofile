@@ -66,8 +66,8 @@ const ProjectsAndCreators = () => {
             <div className="w-full h-full rounded-3xl border border-opacity-20 border-[#BDBDBD] bg-[#454545] bg-opacity-20"></div>
           </FeatCard>
         </div>
-        <Round className="absolute bottom-36 -left-32 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
-        <Round className="absolute bottom-0 right-36 w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
+        <Round className="absolute bottom-36 -left-32 w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
+        <Round className="absolute bottom-0 right-36 w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
       </div>
     </section>
   );

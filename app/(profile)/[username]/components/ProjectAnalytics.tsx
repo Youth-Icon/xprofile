@@ -640,8 +640,8 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
 
   return (
     <div className="h-[638px] mt-5 overflow-hidden relative">
-      <Round className="absolute right-[9rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
-      <Round className="absolute -left-[4rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
+      <Round className="absolute right-[9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
+      <Round className="absolute -left-[4rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
 
       <FeatureBox
         height="auto"

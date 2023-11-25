@@ -4,8 +4,8 @@ import FeatCard from "./FeatCard";
 
 const InfoRow = () => {
   return (
-    <div className="w-full pt-8 flex items-center">
-      <div className="flex justify-between mx-auto w-[1200px] h-[188px] gap-3 items-center top-[12px]">
+    <div className="w-full pt-8 flex items-center overflow-none">
+      <div className="flex flex-col lgx:flex-row lgx:justify-between mx-auto gap-3 lgx:items-center top-[12px]">
 
         <FeatCard height="188px" width="380px" paddingX="24px" paddingY="28px">
           <div className="grow shrink basis-0 self-stretch relative">
@@ -25,7 +25,7 @@ const InfoRow = () => {
           </div>
         </FeatCard>
 
-        <FeatCard height="188px" width="380px" paddingX="24px" paddingY="28px">
+        <FeatCard height="188px" width="380px" paddingX="24px" paddingY="28px" >
           <div className="grow shrink basis-0 self-stretch relative">
             <div className="w-[332px] left-0 top-[66px] absolute text-slate-300 text-opacity-60 text-base font-medium font-manrope">
               Fork the project on GitHub to create your unique version. Customize it to suit your unique needs and preferences.

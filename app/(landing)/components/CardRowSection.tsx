@@ -5,7 +5,7 @@ const CardRowSection = () => {
   return (
 <div className="w-full pt-8 flex flex-col items-center gap-[32px] overflow-clip">
 {/* First Row */}
-<div className="flex justify-between gap-[32px] ml-[17rem]">
+<div className="flex justify-between gap-[32px] ml-[12rem] md:ml-[17rem]">
   <FeatureBox height="362px" width="462px" paddingX="24px" paddingY="28px">
     {/* FeatureBox Content */}
   </FeatureBox>
@@ -20,7 +20,7 @@ const CardRowSection = () => {
   </FeatureBox>
 </div>
 {/* Second Row */}
-<div className="flex justify-between gap-[32px] mr-[7rem]">
+<div className="flex justify-between gap-[32px] mr-[21rem] md:mr-[7rem]">
   <FeatureBox height="362px" width="462px" paddingX="24px" paddingY="28px">
     {/* FeatureBox Content */}
   </FeatureBox>

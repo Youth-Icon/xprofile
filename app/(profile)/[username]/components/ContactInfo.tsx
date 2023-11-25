@@ -36,7 +36,7 @@ const ContactInfo = () => {
       }}
     >
 
-<Round className="absolute -left-[6rem] -top-[4rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
+<Round className="absolute -left-[6rem] -top-[4rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
       <div className="flex flex-col gap-5">
         <div className="text-white text-lg font-semibold font-manrope ">
           Reach me At

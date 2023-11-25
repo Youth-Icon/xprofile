@@ -1,48 +1,44 @@
 import React from "react";
-import Round from './round';
+import Round from "./round";
 import { Icons } from "@/components/icons";
 
 const JoinSection = () => {
   return (
-    
-    <div className="w-full h-[564px] flex justify-center items-center bg-grid-bg bg-center bg-cover">
-    <Round className='absolute right-[9rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
-    <Round className='absolute -left-[4rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
-        
-    <div className="w-[600px] h-80 relative text-center flex flex-col justify-center items-center">
-      <div className="h-20 flex gap-2">
-        <div className="text-white font-medium text-5xl ">
+    <div className="w-full px-4 mt-5 h-[350px] md:h-[500px] lgx:h-[564px] flex justify-center items-center bg-grid-bg bg-center bg-cover">
+      <div className="w-full md:w-[600px] relative text-center flex flex-col justify-center items-center md:gap-8">
+      <Round className='absolute w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
+
+        <div className="h-20 flex gap-2">
+          <div className="text-[2rem] md:text-[3rem] font-bold font-manrope bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text">
           Join the
-        </div>
-        <div className="text-5xl font-bold font-manrope bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text">
+          </div>
+          <div className="text-white font-medium text-[2rem] md:text-[3rem] font-manrope ">
           Community
+          </div>
         </div>
-      </div>
-
-  <div className="w-[636px] text-neutral-400 text-lg font-medium font-manrope">
-    Join the conversation in our community groups. Share ideas, thoughts,
-    feedback and help us grow this unique network. You’ll find us on the
+        <div className="w-full mx-4 md:w-[636px] text-neutral-400 text-lg md:text-xl font-medium font-manrope">
+        Join the conversation in our community groups. Share ideas, thoughts,
+    feedback and help us grow this unique network. You&apos;ll find us on the
     usual channels below.
-  </div>
+        </div>
 
-  <div className="w-[600px] h-16 flex justify-center items-center gap-12 pt-12">
-    <a href="https://l.hellofaizan.me/discord">
-      <Icons.discord className="w-[64px] h-[64px] relative"/>
-    </a>
-    <a href="https://twitter.com/imayouthicon">
-      <Icons.twitter2  className="w-[64px] h-[64px] relative"/>
-    </a>
-    <a href="https://github.com/Youth-Icon/xprofile">
-      <Icons.linkedin className="w-[48px] h-[48px] relative"/>
-    </a>
-    <a href="https://github.com/Youth-Icon/xprofile">
-      <Icons.telegram className="w-[64px] h-[64px] relative"/>
-    </a>
- 
-    </div>
-  </div>
+<div className=" w-[80%] md:w-[600px] h-16 flex justify-center items-center gap-12 pt-12">
+<a href="https://l.hellofaizan.me/discord">
+  <Icons.discord className="w-[64px] h-[64px] relative"/>
+</a>
+<a href="https://twitter.com/imayouthicon">
+  <Icons.twitter2  className="w-[64px] h-[64px] relative"/>
+</a>
+<a href="https://github.com/Youth-Icon/xprofile">
+  <Icons.linkedin className="w-[48px] h-[48px] relative"/>
+</a>
+<a href="https://github.com/Youth-Icon/xprofile">
+  <Icons.telegram className="w-[64px] h-[64px] relative"/>
+</a>
+
 </div>
-
+    </div>
+     </div>
   );
 };
 

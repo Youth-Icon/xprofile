@@ -9,7 +9,13 @@ module.exports = {
   ],
   theme: {
     screens: {
+      "sm":	"640px"	,
+      "md":	"768px",	
       "mlg": "960px",
+      "lg":	"1024px",	
+      "lgx": "1208px",
+      "xl":	"1280px",	
+      "2xl":	"1536px",
     },
 
     container: {

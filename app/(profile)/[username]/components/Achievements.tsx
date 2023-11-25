@@ -24,8 +24,8 @@ const achievements = [
         //   "linear-gradient(to right, rgba(70, 6, 6, 0.1), rgba(233, 30, 99, 0.1))",
       }}
     >
-        <Round className="absolute left-[-6rem] top-[-9rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
-        <Round className="absolute right-[-16rem] top-[1rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
+        <Round className="absolute left-[-6rem] top-[-9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
+        <Round className="absolute right-[-16rem] top-[1rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
       <div className="mb-[20px] text-white text-lg font-semibold font-manrope">
         Achievements
       </div>

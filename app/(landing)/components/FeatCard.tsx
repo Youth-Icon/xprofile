@@ -63,7 +63,7 @@ const FeatCard: React.FC<FeatCardProps> = ({
             onBlur={handleBlur}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className='relative flex items-center justify-center overflow-hidden border shadow-2xl rounded-3xl'
+            className='relative flex items-center justify-center border shadow-2xl rounded-3xl'
         >
             <div
                 className='pointer-events-none absolute -inset-px opacity-0 transition duration-300'

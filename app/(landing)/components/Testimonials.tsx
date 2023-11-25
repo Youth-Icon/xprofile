@@ -9,10 +9,10 @@ const Testimonials = () => {
     <div className="w-full flex items-center">
       <Round className='absolute w-[500px] h-[500px] right-0 shadow-xl opacity-[0.27] bg-[#FF5400] blur-[150px] rounded-full ' />
       {/* Main container with three columns */}
-      <div className="flex justify-between mx-auto w-[1200px] h-[1216px] gap-3 items-center top-[12px]">
+      <div className="flex justify-between mx-auto h-[1216px] gap-3 items-center top-[12px]">
 
         {/* First Column */}
-        <div className="flex flex-col items-center gap-5 mt-[4rem]">
+        <div className="hidden lgx:flex flex-col items-center gap-5 mt-[4rem]">
 
           <FeatCard height="500px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
@@ -227,7 +227,7 @@ const Testimonials = () => {
         </div>
 
         {/* Last Column */}
-        <div className="flex flex-col items-center gap-5 mt-6">
+        <div className="hidden md:flex flex-col items-center gap-5 mt-6">
           {/* First FeatureBox in the last column */}
           <FeatCard height="500px" width="380px" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
