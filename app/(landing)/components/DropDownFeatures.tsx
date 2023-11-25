@@ -18,7 +18,7 @@ const DropDownFeatures: React.FC = () => {
 
   const renderDropdown = ({ id, icon, triggerText, content }: DropdownProps) => {
     return (
-      <div className="w-80" key={id}>
+      <div className="w-full mlg:w-80" key={id}>
         {/* Dropdown Trigger */}
         <div
           className="flex items-center justify-between gap-4 pb-[1.5rem] cursor-pointer"
@@ -37,7 +37,7 @@ const DropDownFeatures: React.FC = () => {
         {activeDropdown === id && (
           <div className="py-3 placeholder:gap-4">{content}</div>
         )}
-        <div className="w-80 h-[0px] border-[0.8px] border-stone-100 border-opacity-20"></div>
+        <div className="w-full mlg:w-80 h-[0px] border-[0.8px] border-stone-100 border-opacity-20"></div>
       </div>
       
     );

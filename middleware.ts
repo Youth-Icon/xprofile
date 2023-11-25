@@ -1,10 +1,12 @@
-import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export default async function middleware(req: NextRequest) {
+
   // Retrieving the user session information
-  const session = await getSession();
+  // Replaced getSession from next-auth
+  const session = await getToken ( { req: req, secret: process.env.NEXTAUTH_SECRET });
 
   // Extracting the pathname from the requested URL
   const pathname = req.nextUrl.pathname;
