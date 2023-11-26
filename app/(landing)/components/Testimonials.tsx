@@ -12,9 +12,9 @@ const Testimonials = () => {
       <div className="flex justify-between mx-auto h-[1216px] gap-3 items-center top-[12px]">
 
         {/* First Column */}
-        <div className="hidden lgx:flex flex-col items-center gap-5 mt-[4rem]">
+        <div className="hidden lgx:flex flex-col items-center gap-5 mt-[4rem] w-[290px] xs:w-[300px] sm:w-[380px]">
 
-          <FeatCard height="500px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="500px" width="auto" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -39,7 +39,7 @@ const Testimonials = () => {
               {/* User description */}
               <div className="mt-3">
                 <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-slate-300 text-base font-medium font-manrope text-[11px] sm:text-base ">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes. <br />
                   <br /> Open source to its your next favorite tool. Keeping close 👀 on this one!
@@ -47,7 +47,7 @@ const Testimonials = () => {
               </div>
 
               {/* Placeholder image container */}
-              <div className="w-[331px] h-[212px] bg-white rounded-xl mt-5">
+              <div className="w-full h-[212px] bg-white rounded-xl mt-5">
                 <div className="flex flex-col justify-start items-start h-full">
                   <img
                     className="w-[274.56px] h-[110.34px] opacity-30"
@@ -60,7 +60,7 @@ const Testimonials = () => {
           </FeatCard>
 
           {/* Second FeatureBox in the first column */}
-          <FeatCard height="500px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="500px" width="auto" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -85,7 +85,7 @@ const Testimonials = () => {
               {/* User description */}
               <div className="mt-3">
                 <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-slate-300 text-base font-medium font-manrope text-[11px] sm:text-base">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes. <br />
                   <br /> Open source to its your next favorite tool. Keeping close 👀 on this one!
@@ -93,7 +93,7 @@ const Testimonials = () => {
               </div>
 
               {/* Placeholder image container */}
-              <div className="w-[331px] h-[212px] bg-white rounded-xl mt-5">
+              <div className="w-full h-[212px] bg-white rounded-xl mt-5">
                 <div className="flex flex-col justify-start items-start h-full">
                   <img
                     className="w-[274.56px] h-[110.34px] opacity-30"
@@ -107,9 +107,9 @@ const Testimonials = () => {
         </div>
 
         {/* Middle Column */}
-        <div className="flex flex-col items-center gap-5">
+        <div className="flex flex-col items-center gap-5 w-[300px] xs:w-[300px] sm:w-[380px]">
           {/* First FeatureBox in the middle column */}
-          <FeatCard height="429px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="429px" width="auto" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -134,19 +134,19 @@ const Testimonials = () => {
               {/* User description */}
               <div className="mt-3">
                 <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <div className="text-slate-300  font-medium font-manrope text-[11px] sm:text-base ">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes. <br />
                   <br /> Open source to its gonna be your next favorite tool. Open source to its gonna be your next favorite tool. Open source to its your next favorite tool.<br/><br/>
                   We love it. Very useful. <br/><br/>
                   Open source too it is gonna be your next favourite tool. Try it today. Its your next favourite tool.
-                </span>
+                </div>
               </div>
             </div>
           </FeatCard>
 
           {/* Second FeatureBox in the middle column */}
-          <FeatCard height="500px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="500px" width="auto" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -171,7 +171,7 @@ const Testimonials = () => {
               {/* User description */}
               <div className="mt-3">
                 <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-slate-300 font-medium font-manrope text-[11px] sm:text-base">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes. <br />
                   <br /> Open source to its your next favorite tool. Keeping close 👀 on this one!
@@ -179,7 +179,7 @@ const Testimonials = () => {
               </div>
 
               {/* Placeholder image container */}
-              <div className="w-[331px] h-[212px] bg-white rounded-xl mt-5">
+              <div className="w-full h-[212px] bg-white rounded-xl mt-5">
                 <div className="flex flex-col justify-start items-start h-full">
                   <img
                     className="w-[274.56px] h-[110.34px] opacity-30"
@@ -192,7 +192,7 @@ const Testimonials = () => {
           </FeatCard>
 
           {/* Third FeatureBox in the middle column */}
-          <FeatCard height="188px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="188px" width="auto" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -217,7 +217,7 @@ const Testimonials = () => {
               {/* User description */}
               <div className="mt-3">
                 <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-slate-300 font-medium font-manrope text-[11px] sm:text-base">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes.
                 </span>
@@ -227,9 +227,9 @@ const Testimonials = () => {
         </div>
 
         {/* Last Column */}
-        <div className="hidden md:flex flex-col items-center gap-5 mt-6">
+        <div className="hidden md:flex flex-col items-center gap-5 mt-6 w-[290px] xs:w-[300px] sm:w-[380px]">
           {/* First FeatureBox in the last column */}
-          <FeatCard height="500px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="500px" width="auto" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -254,7 +254,7 @@ const Testimonials = () => {
               {/* User description */}
               <div className="mt-3">
                 <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-slate-300 text-base font-medium font-manrope text-[11px] sm:text-base">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes. <br />
                   <br /> Open source to its your next favorite tool. Keeping close 👀 on this one!
@@ -262,7 +262,7 @@ const Testimonials = () => {
               </div>
 
               {/* Placeholder image container */}
-              <div className="w-[331px] h-[212px] bg-white rounded-xl mt-5">
+              <div className="w-full h-[212px] bg-white rounded-xl mt-5">
                 <div className="flex flex-col justify-start items-start h-full">
                   <img
                     className="w-[274.56px] h-[110.34px] opacity-30"
@@ -275,7 +275,7 @@ const Testimonials = () => {
           </FeatCard>
 
           {/* Second FeatureBox in the last column */}
-          <FeatCard height="500px" width="380px" paddingX="24px" paddingY="32px">
+          <FeatCard height="500px" width="auto" paddingX="24px" paddingY="32px">
             <div className="flex flex-col items-start gap-5">
 
               {/* Container for user information */}
@@ -300,7 +300,7 @@ const Testimonials = () => {
               {/* User description */}
               <div className="mt-3">
                 <span className="text-sky-400 text-base font-medium font-manrope">xProfile</span>
-                <span className="text-slate-300 text-base font-medium font-manrope">
+                <span className="text-slate-300 text-base font-medium font-manrope text-[11px] sm:text-base">
                   {' '}
                   is not just a bio link, it’s a portfolio which you can claim in just 5 minutes. <br />
                   <br /> Open source to its your next favorite tool. Keeping close 👀 on this one!
@@ -308,7 +308,7 @@ const Testimonials = () => {
               </div>
 
               {/* Placeholder image container */}
-              <div className="w-[331px] h-[212px] bg-white rounded-xl mt-5">
+              <div className="w-full h-[212px] bg-white rounded-xl mt-5">
                 <div className="flex flex-col justify-start items-start h-full">
                   <img
                     className="w-[274.56px] h-[110.34px] opacity-30"

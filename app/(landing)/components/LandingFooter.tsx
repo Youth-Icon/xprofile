@@ -4,7 +4,7 @@ import { Icons } from "@/components/icons";
 const LandingFooter = () => {
   return (
     <div>
-    <div className=" h-[530px] lgx:h-[480px] sm:justify-center flex bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70% items--center">
+    <div className=" h-auto lgx:h-[480px] pt-[10%] pl-[10%] sm:justify-center flex bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70% items--center">
       <div className="lgx:flex mt-4 lgx:mt-[-100px] justify-center items-center gap-[7.5rem]">
       <div className="flex-col w-[302px] h-[221px] gap-8 inline-flex ">
         <div className="flex items-start gap-2 text-center md:text-center lg:text-left">
@@ -46,7 +46,7 @@ const LandingFooter = () => {
       </div>
 
 
-<div className="flex flex-col sm:flex-row justify-center lgx:justify-start items-start gap-[68px] sm:gap-0 lgx:inline-flex whitespace-nowrap">
+<div className="flex flex-col sm:flex-row justify-center lgx:justify-start items-start gap-[68px] sm:gap-0 lgx:inline-flex whitespace-nowrap mb-2">
   <div className="sm:flex sm:w-full">
     <div className="sm:pr-[37px] flex-col justify-center items-start gap-6 inline-flex w-full sm:w-1/2">
       {/* Features section */}

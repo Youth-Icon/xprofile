@@ -4,7 +4,7 @@ import { Icons } from "@/components/icons";
 
 const JoinSection = () => {
   return (
-    <div className="w-full px-4 mt-5 h-[350px] md:h-[500px] lgx:h-[564px] flex justify-center items-center bg-grid-bg bg-center bg-cover">
+    <div className="w-full pb-[10%] px-4 mt-5 h-[350px] md:h-[500px] lgx:h-[564px] flex justify-center items-center bg-grid-bg bg-center bg-cover">
       <div className="w-full md:w-[600px] relative text-center flex flex-col justify-center items-center md:gap-8">
       <Round className='absolute w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
 
@@ -22,7 +22,7 @@ const JoinSection = () => {
     usual channels below.
         </div>
 
-<div className=" w-[80%] md:w-[600px] h-16 flex justify-center items-center gap-12 pt-12">
+<div className=" w-auto xs:w-[80%] md:w-[600px] h-16 flex justify-center items-center gap-5 xs:gap-8 md:gap-12 pt-12">
 <a href="https://l.hellofaizan.me/discord">
   <Icons.discord className="w-[64px] h-[64px] relative"/>
 </a>

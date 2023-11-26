@@ -28,7 +28,7 @@ const DropDownFeatures: React.FC = () => {
             {/* Trigger Icon */}
             {icon}
             {/* Trigger Text */}
-            <div className="text-lg font-semibold font-manrope text-slate-300 ">{triggerText}</div>
+            <div className="text-[14px] xs:text-lg font-semibold font-manrope text-slate-300 ">{triggerText}</div>
           </div>
           {/* Trigger Arrow Icon */}
           <ChevronDown className={` w-6 h-6 ${activeDropdown === id ? 'rotate-180' : ''} `} />
