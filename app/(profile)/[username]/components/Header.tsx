@@ -32,8 +32,8 @@ const Header = async ({ className }: any) => {
        
       }}
     >
-      <Round className="absolute left-[-6rem] top-[-9rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
-        <Round className="absolute right-[-16rem] top-[1rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
+      <Round className="absolute left-[-6rem] top-[-9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
+        <Round className="absolute right-[-16rem] top-[1rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
       <div className="flex items-center gap-3">
         <div className="text-white text-[22px] font-extrabold font-manrope">X</div>
         <div className="text-white text-[22px] font-thin">/</div>

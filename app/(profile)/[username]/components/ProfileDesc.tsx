@@ -28,7 +28,7 @@ const ProfileDesc: React.FC<ProjectProps> = ({ style }) => {
         //     "linear-gradient(to left, rgba(70, 6, 6, 0.1), rgba(233, 30, 99, 0.1))",
         }}
       >
-        <Round className="absolute -left-[7rem] -top-[7rem] w-[400px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
+        <Round className="absolute -left-[7rem] -top-[7rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
         <div className=" w-full pb-2 text-white text-lg font-semibold font-manrope">
           Full Stack Developer
         </div>

@@ -8,6 +8,7 @@ interface FeatCardProps {
     paddingX?: string;
     paddingY?: string;
     children?: ReactNode;
+    className?:string;
 }
 
 const FeatCard: React.FC<FeatCardProps> = ({
@@ -16,6 +17,7 @@ const FeatCard: React.FC<FeatCardProps> = ({
     paddingX,
     paddingY,
     children,
+    className 
 }) => {
     const divRef = useRef<HTMLDivElement>(null);
     const [isFocused, setIsFocused] = useState(false);
@@ -63,7 +65,7 @@ const FeatCard: React.FC<FeatCardProps> = ({
             onBlur={handleBlur}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className='relative flex items-center justify-center overflow-hidden border shadow-2xl rounded-3xl'
+            className={`relative flex justify-center border shadow-2xl rounded-3xl ${className}`}
         >
             <div
                 className='pointer-events-none absolute -inset-px opacity-0 transition duration-300'

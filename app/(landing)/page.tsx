@@ -15,7 +15,7 @@ import PowerfulFeatures from './components/PowerfulFeatures';
 
 export default function page() {
   return (
-    <>
+    <div className='w-full'>
       <div className='main min-h-screen'>
         {/* cover backgound image */}
         <HeroSection />
@@ -52,6 +52,6 @@ export default function page() {
         {/* Footer*/}
         <LandingFooter />
       </div>
-    </>
+    </div>
   )
 }

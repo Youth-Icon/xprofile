@@ -5,7 +5,7 @@ const CardRowSection = () => {
   return (
 <div className="w-full pt-8 flex flex-col items-center gap-[32px] overflow-clip">
 {/* First Row */}
-<div className="flex justify-between gap-[32px] ml-[17rem]">
+<div className="flex justify-between gap-[32px] ml-[10rem] xs:ml-[12rem] md:ml-[17rem]">
   <FeatureBox height="362px" width="462px" paddingX="24px" paddingY="28px">
     {/* FeatureBox Content */}
   </FeatureBox>
@@ -20,7 +20,7 @@ const CardRowSection = () => {
   </FeatureBox>
 </div>
 {/* Second Row */}
-<div className="flex justify-between gap-[32px] mr-[7rem]">
+<div className="flex justify-between gap-[32px] mr-[28rem] xs:mr-[21rem] md:mr-[7rem]">
   <FeatureBox height="362px" width="462px" paddingX="24px" paddingY="28px">
     {/* FeatureBox Content */}
   </FeatureBox>
@@ -56,7 +56,7 @@ const CardRowSection = () => {
   </defs>
 </svg>
   </div>
-  <div className="w-[369px] pt-4 pb-8 text-center text-slate-300 text-2xl font-[400] font-manrope">Why wait? Grab yours now before this opportunity slips away!</div>
+  <div className="w-[300px] xs:w-[369px] pt-4 pb-8 text-center text-slate-300 text-xl xs:text-2xl font-[400] font-manrope">Why wait? Grab yours now before this opportunity slips away!</div>
   {/* button with a gradient background and rounded corners */}
   <div className="w-[185px] h-[50px] px-6 py-4 bg-gradient-to-r from-amber-500 via-orange-600 to-rose-600 rounded-xl justify-center items-center inline-flex">
     

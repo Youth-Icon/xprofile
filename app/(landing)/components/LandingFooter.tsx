@@ -4,8 +4,8 @@ import { Icons } from "@/components/icons";
 const LandingFooter = () => {
   return (
     <div>
-    <div className="w-[100%]  h-[480px] justify-center flex bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70% items--center">
-      <div className="flex mt-[-100px] justify-center  w-max[1200px] items-center gap-[7.5rem]">
+    <div className=" h-auto lgx:h-[480px] pt-[10%] pl-[10%] sm:justify-center flex bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70% items--center">
+      <div className="lgx:flex mt-4 lgx:mt-[-100px] justify-center items-center gap-[7.5rem]">
       <div className="flex-col w-[302px] h-[221px] gap-8 inline-flex ">
         <div className="flex items-start gap-2 text-center md:text-center lg:text-left">
           <h1 className="flex flex-col font-extrabold text-[rgb(255,84,0)] text-[22px] text-center md:text-center lg:text-left">
@@ -15,7 +15,7 @@ const LandingFooter = () => {
             Youth Icon
           </p>
         </div>
-        <div className="w-[302px] text-slate-300 text-opacity-60 text-base font-medium font-manrope">
+        <div className=" text-slate-300 text-opacity-60 text-base font-medium font-manrope">
           Giving developers the power to connect with inspiring developers by
           sharing their projects and skills.
         </div>
@@ -44,9 +44,13 @@ const LandingFooter = () => {
           </a>
         </div>
       </div>
-      <div className="h-[221px] justify-start items-start gap-[68px] inline-flex">
-        <div className="pr-[37px] flex-col justify-center items-start gap-6 inline-flex">
-          <div className="text-white text-base font-semibold font-manrope">
+
+
+<div className="flex flex-col sm:flex-row justify-center lgx:justify-start items-start gap-[68px] sm:gap-0 lgx:inline-flex whitespace-nowrap mb-2">
+  <div className="sm:flex sm:w-full">
+    <div className="sm:pr-[37px] flex-col justify-center items-start gap-6 inline-flex w-full sm:w-1/2">
+      {/* Features section */}
+      <div className="text-white text-base font-semibold font-manrope">
             Features
           </div>
           <div className="self-stretch flex-col justify-start items-start gap-5 inline-flex">
@@ -66,9 +70,10 @@ const LandingFooter = () => {
               API
             </div>
           </div>
-        </div>
-        <div className="pr-[68px] flex-col justify-start items-start gap-6 inline-flex">
-          <div className="text-white text-base font-semibold font-manrope">
+    </div>
+    <div className="sm:pr-[68px] flex-col justify-start items-start gap-6 inline-flex w-full sm:w-1/2">
+      {/* Resources section */}
+      <div className="text-white text-base font-semibold font-manrope">
             Resources
           </div>
           <div className="self-stretch flex-col justify-start items-start gap-5 inline-flex">
@@ -85,9 +90,12 @@ const LandingFooter = () => {
               Help Center
             </div>
           </div>
-        </div>
-        <div className="pr-px flex-col justify-start items-start gap-6 inline-flex">
-          <div className="text-white text-base font-semibold font-manrope">
+    </div>
+  </div>
+  <div className="sm:flex sm:w-full">
+    <div className="sm:pr-[150px] flex-col justify-start items-start gap-6 inline-flex w-full sm:w-1/2">
+      {/* About Youth Icon section */}
+      <div className="text-white text-base font-semibold font-manrope">
             About Youth Icon
           </div>
           <div className="self-stretch flex-col justify-start items-start gap-5 inline-flex">
@@ -104,9 +112,10 @@ const LandingFooter = () => {
               <a href="https://twitter.com/imayouthicon">Twitter</a>
             </div>
           </div>
-        </div>
-        <div className="w-[150px] pr-[102px] flex-col justify-start items-start gap-6 inline-flex">
-          <div className="text-white text-base font-semibold font-manrope">
+    </div>
+    <div className="sm:pr-px flex-col justify-start items-start gap-6 inline-flex w-full sm:w-1/2">
+      {/* Legal section */}
+      <div className="text-white text-base font-semibold font-manrope">
             Legal
           </div>
           <div className="self-stretch flex-col justify-start items-start gap-5 inline-flex">
@@ -117,14 +126,16 @@ const LandingFooter = () => {
               Terms
             </div>
           </div>
-        </div>
-      </div>
+    </div>
+  </div>
+</div>
+
       </div>
 
       
       
       </div>
-      <div className="pb-5 mt-[-150px]">
+      <div className="pb-5 lgx:mt-[-150px]">
         <div className="flex justify-center items-center">
       <div className="w-[calc(100%-240px)] h-[0px] border border-stone-300 border-opacity-20"></div>
       </div>
