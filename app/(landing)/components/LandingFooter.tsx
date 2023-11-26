@@ -4,7 +4,7 @@ import { Icons } from "@/components/icons";
 const LandingFooter = () => {
   return (
     <div>
-    <div className=" h-auto lgx:h-[480px] pt-[10%] pl-[10%] sm:justify-center flex bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70% items--center">
+    <div className=" h-auto lgx:h-[480px] pt-[10%] md:pt-[5%] lgx:pt-0 pl-[10%] sm:justify-center flex bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70% items--center">
       <div className="lgx:flex mt-4 lgx:mt-[-100px] justify-center items-center gap-[7.5rem]">
       <div className="flex-col w-[302px] h-[221px] gap-8 inline-flex ">
         <div className="flex items-start gap-2 text-center md:text-center lg:text-left">
