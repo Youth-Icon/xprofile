@@ -15,9 +15,10 @@ const achievements = [
   return (
     <FeatureBox
       width="auto"
-      height="194px"
+      height="auto"
       paddingX="20px"
       paddingY="24px"
+      background="bg-gradient-to-l from-orange-500/10 to-pink-500/10 xs:bg-none"
       style={{
         overflow:"hidden",
       }}
@@ -27,7 +28,7 @@ const achievements = [
       <div className="mb-[20px] text-white text-lg font-semibold font-manrope">
         Achievements
       </div>
-      <div className="flex gap-5 overflow-scroll">
+      <div className="flex flex-wrap gap-5 ">
         {achievements.map((achievement, index) => (
           <div
             key={index}

@@ -30,14 +30,12 @@ const Skills = () => {
   return (
     <FeatureBox
       width="auto"
-      height="282px"
+      height="auto"
       paddingX="20px"
       paddingY="24px"
+      background="bg-gradient-to-l from-orange-500/10 to-pink-500/10 xs:bg-none"
       style={{
         overflow:"hidden",
-        // background:
-        //   "linear-gradient(to right, rgba(70, 6, 6, 0.1), rgba(233, 30, 99, 0.1))",
-          margin:"0px"
       }}
     >
         <Round className="hidden xs:block absolute left-[-6rem] top-[-9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full z-10" />

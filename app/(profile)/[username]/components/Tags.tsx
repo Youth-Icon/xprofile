@@ -29,9 +29,10 @@ const Tags = () => {
   return (
     <FeatureBox
       width="auto"
-      height="282px"
+      height="auto"
       paddingX="20px"
       paddingY="24px"
+      background="bg-gradient-to-l from-orange-500/10 to-pink-500/10 xs:bg-none"
       style={{
         overflow:"hidden"
         // background:

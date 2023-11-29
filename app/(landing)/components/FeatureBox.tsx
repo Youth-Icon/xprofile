@@ -6,6 +6,7 @@ interface FeatCardProps {
   paddingX?: string;
   paddingY?: string;
   style?: CSSProperties; // Add a style prop for custom styles
+  background?:string;
   children?: ReactNode;
 }
 
@@ -15,7 +16,9 @@ const FeatureBox: React.FC<FeatCardProps> = ({
   paddingX,
   paddingY,
   style,
+  background,
   children,
+
 }) => {
   const boxStyles: CSSProperties = {
     height: height || "100px",
@@ -28,7 +31,7 @@ const FeatureBox: React.FC<FeatCardProps> = ({
 
   return (
     <div
-      className={`rounded-3xl border flex-shrink-0 bg-neutral-500/10 text-stone-400 bg-opacity-30 backdrop-blur-3xl border-t border-b border-l ${paddingClasses}`}
+      className={`rounded-3xl border flex-shrink-0 bg-neutral-500/10 text-stone-400 bg-opacity-30 backdrop-blur-3xl border-t border-b border-l ${background} ${paddingClasses}`}
       style={boxStyles}
     >
       {children}

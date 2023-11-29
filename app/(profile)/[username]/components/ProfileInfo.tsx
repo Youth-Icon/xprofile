@@ -18,6 +18,7 @@ const ProfileInfo: React.FC<ProjectProps> = ({ style }) => {
         width="auto"
         paddingX="24px"
         paddingY="24px"
+        background="bg-gradient-to-l from-orange-500/10 to-pink-500/10 xs:bg-none"
         style={{ 
         alignItems: "center",
         display: "flex",

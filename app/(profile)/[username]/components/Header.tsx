@@ -23,6 +23,8 @@ const Header = async ({ className }: any) => {
     <FeatureBox
       height="82px"
       paddingX="32px"
+      background="bg-gradient-to-l from-orange-500/10 to-pink-500/10 xs:bg-none"
+
       style={{
         width: "full",
         alignItems: "center",

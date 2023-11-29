@@ -24,6 +24,7 @@ const Project: React.FC<ProjectProps> = ({ displayType, style, children }) => {
           height="auto"
           paddingY="20px"
           paddingX="20px"
+          background="bg-gradient-to-l from-orange-500/10 to-pink-500/10 xs:bg-none"
         >
           {children}
           
