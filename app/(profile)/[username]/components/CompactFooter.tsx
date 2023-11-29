@@ -4,13 +4,13 @@ import React from "react";
 
 const CompactFooter = () => {
   return (
-    <div className="h-[175px] px-12 flex flex-col items-center border-t-[1px] border-t-stone-300 border-opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70%">
-      <div className="w-full flex justify-between mx-auto items-center text-center">
-        <div className="flex gap-2 items-center py-10">
+    <div className="h-[175px] mb-4 px-12 flex flex-col items-center border-t-[1px] border-t-stone-300 border-opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-600/25 from-0% to-black to-70%">
+      <div className="w-full flex flex-col xs:flex-row justify-between mx-auto xs:items-center text-center">
+        <div className="flex gap-2 xs:items-center py-10">
           <h1 className="flex flex-col font-extrabold text-[rgb(255,84,0)] text-[22px] text-center md:text-center lg:text-left">
             YI
           </h1>
-          <div className=" text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
+          <div className=" text-slate-300 text-opacity-60 text-sm font-medium font-manrope whitespace-nowrap">
             © 2023 youthicon, org{" "}
           </div>
         </div>
@@ -35,9 +35,9 @@ const CompactFooter = () => {
         </div>
       </div>
 
-      <div className="w-full h-[0px] border-[0.5px] border-stone-300 border-opacity-20"></div>
+      <div className="w-full my-5 h-[0px] border-[0.5px] border-stone-300 border-opacity-20"></div>
 
-        <div className="flex flex-col xs:flex-row h-full justify-between w-full xs:items-center">
+        <div className="flex mb-5 flex-col xs:flex-row h-full justify-between w-full xs:items-center">
             <a className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white transition-all duration-200">Home</a>
             <a className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white transition-all duration-200">Showcase</a>
             <a className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white transition-all duration-200">Projects</a>
