@@ -37,7 +37,7 @@ const CompactFooter = () => {
 
       <div className="w-full h-[0px] border-[0.5px] border-stone-300 border-opacity-20"></div>
 
-        <div className="flex h-full justify-between w-full items-center">
+        <div className="flex flex-col xs:flex-row h-full justify-between w-full xs:items-center">
             <a className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white transition-all duration-200">Home</a>
             <a className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white transition-all duration-200">Showcase</a>
             <a className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white transition-all duration-200">Projects</a>

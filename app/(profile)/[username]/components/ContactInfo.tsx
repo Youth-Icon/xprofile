@@ -37,7 +37,7 @@ const ContactInfo =  () => {
       }}
     >
 
-<Round className="absolute -left-[6rem] -top-[4rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
+<Round className="hidden xs:block absolute -left-[6rem] -top-[4rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
       
       
       <div className="flex flex-col gap-5 ">
@@ -64,7 +64,7 @@ const ContactInfo =  () => {
           Other links
         </div>
         <div
-          className="flex flex-col gap-2 overflow-auto max-h-[268px] "
+          className="flex flex-col gap-2 xs:overflow-auto max-h-[268px] "
         >
           <ProfileLink/>
           <ProfileLink/>
@@ -79,7 +79,7 @@ const ContactInfo =  () => {
           
 
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-orange-500/[.2] rounded-br-[23px] rounded-bl-[23px]"></div>
+        <div className="hidden xs:block absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-orange-500/[.2] rounded-br-[23px] rounded-bl-[23px]"></div>
       </div>
     </FeatureBox>
   );

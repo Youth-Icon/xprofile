@@ -12,8 +12,8 @@ const Discover = () => {
 
   return (
     <div className=" w-full mt-14 pb-5">
-        <Round className="absolute right-[9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
-        <Round className="absolute -left-[4rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
+        <Round className="hidden xs:block absolute right-[9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
+        <Round className="hidden xs:block absolute -left-[4rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
 
         <div className=" h-[0px] border border-stone-300 border-opacity-20"></div>
 

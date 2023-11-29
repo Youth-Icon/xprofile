@@ -13,13 +13,13 @@ const Projects = () => {
           displayType="project"
           style={{ overflow: "hidden", borderRadius: "24px" }}
         >
-          <Round className="absolute left-[-6rem] top-[-9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
+          <Round className="hidden xs:block absolute left-[-6rem] top-[-9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
         </Project>
         <Project
           displayType="project"
           style={{ overflow: "hidden", borderRadius: "24px" }}
         >
-          <Round className="absolute left-[8rem] top-[1rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
+          <Round className="hidden xs:block absolute left-[8rem] top-[1rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
         </Project>
       </div>
       <div className="flex flex-col lgx:flex-row gap-6">
@@ -27,13 +27,13 @@ const Projects = () => {
           displayType="project"
           style={{ overflow: "hidden", borderRadius: "24px" }}
         >
-          <Round className="absolute left-[-6rem] top-[-9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
+          <Round className="hidden xs:block absolute left-[-6rem] top-[-9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
         </Project>
         <Project
           displayType="project"
           style={{ overflow: "hidden", borderRadius: "24px" }}
         >
-          <Round className="absolute left-[8rem] top-[1rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
+          <Round className="hidden xs:block absolute left-[8rem] top-[1rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
         </Project>
       </div>
       {/* <div className="flex flex-col lgx:flex-row lgx:my-[32px]">

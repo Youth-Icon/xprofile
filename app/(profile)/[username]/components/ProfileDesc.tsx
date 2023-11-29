@@ -25,7 +25,7 @@ const ProfileDesc: React.FC<ProjectProps> = ({ style }) => {
           overflow:"hidden"
         }}
       >
-        <Round className="absolute -left-[7rem] -top-[7rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
+        <Round className="hidden xs:block absolute -left-[7rem] -top-[7rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
         <div className=" w-full pb-2 text-white text-lg font-semibold font-manrope">
           Full Stack Developer
         </div>

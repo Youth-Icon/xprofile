@@ -25,7 +25,7 @@ const ProfileInfo: React.FC<ProjectProps> = ({ style }) => {
         overflow:"hidden",
       }}
       >
-        <Round className="absolute -left-[7rem] top-[8rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
+        <Round className="hidden xs:block absolute -left-[7rem] top-[8rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
         <div className="mb-[2.25rem]">
         <Image src="/tyler-pic.jpeg" alt="default profile picture"  width={160} height={160} style={{borderRadius:"100px", border:"1px"}}/>
         {/* TODO get emoji from server */}
