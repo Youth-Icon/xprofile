@@ -29,7 +29,7 @@ const Skills = () => {
 
   return (
     <FeatureBox
-      width="465px"
+      width="auto"
       height="282px"
       paddingX="20px"
       paddingY="24px"

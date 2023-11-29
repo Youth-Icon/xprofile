@@ -14,14 +14,12 @@ const achievements = [
 
   return (
     <FeatureBox
-      width="962px"
+      width="auto"
       height="194px"
       paddingX="20px"
       paddingY="24px"
       style={{
-        overflow:"hidden"
-        // background:
-        //   "linear-gradient(to right, rgba(70, 6, 6, 0.1), rgba(233, 30, 99, 0.1))",
+        overflow:"hidden",
       }}
     >
         <Round className="absolute left-[-6rem] top-[-9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
@@ -29,7 +27,7 @@ const achievements = [
       <div className="mb-[20px] text-white text-lg font-semibold font-manrope">
         Achievements
       </div>
-      <div className="flex gap-5">
+      <div className="flex gap-5 overflow-scroll">
         {achievements.map((achievement, index) => (
           <div
             key={index}
