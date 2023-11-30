@@ -51,6 +51,7 @@ export default function page() {
       <div >
         {/* Footer*/}
         <LandingFooter />
+        
       </div>
     </div>
   )

@@ -670,7 +670,7 @@ const ProjectAnalytics: React.FC<ProjectAnalyticsProps> = ({
             <ArrowRight color="white" />
           </div>
 
-          <div className="flex gap-[51px]">
+          <div className="flex gap-[51px] overflow-scroll">
             {[
               "thisWeek",
               "lastWeek",

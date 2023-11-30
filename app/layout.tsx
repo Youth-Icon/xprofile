@@ -49,12 +49,12 @@ export default function RootLayout({
   authModal: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${Ununtu.variable} ${Manrope.variable} font-sans overflow-x-hidden`}>
+    <html lang="en" className={`${Ununtu.variable} ${Manrope.variable} font-sans `}>
       <meta property="og:image" content="/public/ogImage.jpeg" />
       <meta name="twitter:image" content="/public/ogImage.jpeg" />
-      <body>
+      <body className="flex flex-col bg-black">
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <body className="flex flex-col bg-black overflow-x-hidden ">
+          <body>
             {authModal}
             {children}
             <Toaster />

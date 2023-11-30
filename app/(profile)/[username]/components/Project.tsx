@@ -15,15 +15,16 @@ const Project: React.FC<ProjectProps> = ({ displayType, style, children }) => {
 
   switch (displayType) {
     case "blank":
-      content = <FeatureBox width="465px" height="282px">{children}</FeatureBox>;
+      content = <FeatureBox width="auto" height="auto">{children}</FeatureBox>;
       break;
     case "project":
       content = (
         <FeatureBox
-          width="465px"
-          height="282px"
+          width="auto"
+          height="auto"
           paddingY="20px"
           paddingX="20px"
+          background="bg-gradient-to-l from-orange-500/10 to-pink-500/10 xs:bg-none"
         >
           {children}
           
@@ -47,13 +48,13 @@ const Project: React.FC<ProjectProps> = ({ displayType, style, children }) => {
           </div>
 
           <div className="flex justify-between">
-            <div className="w-[204.50px] h-10 px-4 py-3 bg-neutral-100 bg-opacity-75 rounded-lg backdrop-blur-[32px] justify-center items-center gap-1.5 inline-flex cursor-pointer hover:bg-opacity-100 transition-all duration-300">
+            <div className=" h-10 px-4 py-3 bg-neutral-100 bg-opacity-75 rounded-lg backdrop-blur-[32px] justify-center items-center gap-1.5 inline-flex cursor-pointer hover:bg-opacity-100 transition-all duration-300">
               <ExternalLink color="rgb(38 38 38)"></ExternalLink>
               <div className="text-center text-neutral-800 text-base font-semibold font-manrope leading-none">
                 Live demo
               </div>
             </div>
-            <div className="w-[204.50px] h-10 px-4 py-3  bg-opacity-75 rounded-lg backdrop-blur-[32px] justify-center items-center gap-1.5 inline-flex cursor-pointer hover:bg-neutral-400 hover:bg-opacity-10 transition-all duration-300">
+            <div className=" h-10 px-4 py-3  bg-opacity-75 rounded-lg backdrop-blur-[32px] justify-center items-center gap-1.5 inline-flex cursor-pointer hover:bg-neutral-400 hover:bg-opacity-10 transition-all duration-300">
               <Icons.gitHub className="h-[20px] w-[20px]"></Icons.gitHub>
               <div className="text-center text-neutral-100 text-opacity-75 text-base font-semibold font-manrope leading-none">
                 Source code
@@ -67,8 +68,8 @@ const Project: React.FC<ProjectProps> = ({ displayType, style, children }) => {
     case "add":
       content = (
         <FeatureBox
-          width="465px"
-          height="282px"
+          width="auto"
+          height="auto"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -91,7 +92,7 @@ const Project: React.FC<ProjectProps> = ({ displayType, style, children }) => {
       break;
     default:
       // Default to blank if the displayType is not recognized
-      content = <FeatureBox width="465px" height="282px">{children}</FeatureBox>;
+      content = <FeatureBox width="auto" height="auto">{children}</FeatureBox>;
   }
 
   return <div style={style}>{content}</div>;

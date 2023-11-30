@@ -23,6 +23,8 @@ const Header = async ({ className }: any) => {
     <FeatureBox
       height="82px"
       paddingX="32px"
+      background="bg-gradient-to-l from-orange-500/10 to-pink-500/10 xs:bg-none"
+
       style={{
         width: "full",
         alignItems: "center",
@@ -32,8 +34,8 @@ const Header = async ({ className }: any) => {
        
       }}
     >
-      <Round className="absolute left-[-6rem] top-[-9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
-        <Round className="absolute right-[-16rem] top-[1rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
+      <Round className="hidden xs:block absolute left-[-6rem] top-[-9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full " />
+        <Round className="hidden xs:block absolute right-[-16rem] top-[1rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
       <div className="flex items-center gap-3">
         <div className="text-white text-[22px] font-extrabold font-manrope">X</div>
         <div className="text-white text-[22px] font-thin">/</div>

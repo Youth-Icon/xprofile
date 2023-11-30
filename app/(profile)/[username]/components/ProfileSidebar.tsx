@@ -15,13 +15,12 @@ const ProfileSidebar: React.FC<ProjectProps> = ({ style }) => {
 
 
   return (
-    <div className="flex-col">
-        <ProfileInfo/>
-        <ProfileDesc/>
-        <ContactInfo/>
-
-
-    </div>
+    <div className="flex flex-col gap-6">
+      {/* ProfileInfo and ProfileDesc will take up as much height as they need */}
+      <ProfileInfo />
+      <ProfileDesc />  
+      <ContactInfo />
+      </div>
   );
 };
 

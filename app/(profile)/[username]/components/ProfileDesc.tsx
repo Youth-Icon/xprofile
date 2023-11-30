@@ -14,21 +14,19 @@ const ProfileDesc: React.FC<ProjectProps> = ({ style }) => {
 
   return (
       <FeatureBox
-        height="160px"
-        width="350px"
+        height="auto"
+        width="auto"
         paddingY="24px"
         paddingX="20px"
+        background="bg-gradient-to-l from-orange-500/10 to-pink-500/10 xs:bg-none"
         style={{
-        marginBottom:"32px",
           alignItems: "center",
           display: "flex",
           flexDirection: "column",
           overflow:"hidden"
-        //   background:
-        //     "linear-gradient(to left, rgba(70, 6, 6, 0.1), rgba(233, 30, 99, 0.1))",
         }}
       >
-        <Round className="absolute -left-[7rem] -top-[7rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
+        <Round className="hidden xs:block absolute -left-[7rem] -top-[7rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full " />
         <div className=" w-full pb-2 text-white text-lg font-semibold font-manrope">
           Full Stack Developer
         </div>
