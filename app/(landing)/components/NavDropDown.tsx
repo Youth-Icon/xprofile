@@ -76,7 +76,7 @@ const DropDownFeatures: React.FC = () => {
             </div>
             <div className="flex gap-1">
             <LayoutGrid/>
-            <Link className="pb-4" href={"/"}>Profile themes (coming soon)</Link>
+            <Link className="pb-4" href={"/"}>Profile themes <span className="text-[#C6CFDC99]">(coming soon)</span></Link>
             </div>
 
           

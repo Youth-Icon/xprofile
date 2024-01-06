@@ -34,7 +34,7 @@ const DiscoverProjects = () => {
       <div className="w-full md:w-[600px] relative text-center flex flex-col justify-center items-center md:gap-8">
       <Round className='absolute w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full ' />
 
-        <div className="h-20 flex gap-2" >
+        <div className="h-20 lg:flex gap-2" >
           <div className="text-[2rem] md:text-[3rem] font-bold font-manrope bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text">
           Join our
           </div>
@@ -42,7 +42,7 @@ const DiscoverProjects = () => {
           Happy Users
           </div>
         </div>
-        <div className="w-full mx-4 md:w-[636px] text-neutral-400 text-lg md:text-xl font-medium font-manrope">
+        <div className="w-full mx-4 mt-10 md:w-[636px] text-neutral-400 text-lg md:text-xl font-medium font-manrope">
         Don&apos;t take it from us - here&apos;s what our users have to say about xProfile.
         </div>
       </div>
