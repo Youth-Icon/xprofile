@@ -78,3 +78,7 @@
 ::-webkit-scrollbar {
   display: none;
 }
+svg path:hover {
+  fill:  rgb(203 213 225);
+  transition: 0.3s;
+}

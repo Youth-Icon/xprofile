@@ -61,7 +61,7 @@ const CardRowSection = () => {
   <div className="w-[185px] h-[50px] px-6 py-4 bg-gradient-to-r from-amber-500 via-orange-600 to-rose-600 rounded-xl justify-center items-center inline-flex">
     
     {/* Text element with specific styling */}
-    <div className="text-center text-white text-[17px] font-weight-600 font-manrope leading-[18px]">Claim yours now!</div>
+    <div className="text-center text-white text-[17px] font-weight-600 font-manrope leading-[18px] cursor-pointer">Claim yours now! </div>
   </div>
 </div>
 </FeatureBox>

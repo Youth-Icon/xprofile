@@ -28,7 +28,7 @@ const DropDownFeatures: React.FC = () => {
             {/* Trigger Icon */}
             {icon}
             {/* Trigger Text */}
-            <div className="text-[14px] xs:text-lg font-semibold font-manrope text-slate-300 ">{triggerText}</div>
+            <div className="text-[14px] xs:text-lg font-semibold font-manrope text-slate-300  hover:text-slate-100 transition-colors duration-300 ease-in-out">{triggerText}</div>
           </div>
           {/* Trigger Arrow Icon */}
           <ChevronDown className={` w-6 h-6 ${activeDropdown === id ? 'rotate-180' : ''} `} />
@@ -51,7 +51,7 @@ const DropDownFeatures: React.FC = () => {
       content: (
         <>
           <div className="pb-6">You can add 3 projects on your showcase page.</div>
-          <div className="w-[117px] h-[38px] px-4 py-2 bg-white rounded-3xl justify-center items-center gap-1 inline-flex">
+          <div className="w-[117px] h-[38px] px-4 py-2 bg-white rounded-3xl justify-center items-center gap-1 inline-flex cursor-pointer  hover:bg-slate-200  transition-colors duration-300 ease-in-out">
             <div className="text-center text-black text-base font-medium font-manrope">Learn more</div>
           </div>
           
@@ -65,7 +65,7 @@ const DropDownFeatures: React.FC = () => {
         content: (
           <>
             <div className="pb-6">You can add 3 projects on your showcase page.</div>
-            <div className="w-[117px] h-[38px] px-4 py-2 bg-white rounded-3xl justify-center items-center gap-1 inline-flex">
+            <div className="w-[117px] h-[38px] px-4 py-2 bg-white rounded-3xl justify-center items-center gap-1 inline-flex cursor-pointer  hover:bg-slate-200  transition-colors duration-300 ease-in-out">
               <div className="text-center text-black text-base font-medium font-manrope">Learn more</div>
             </div>
             
@@ -79,7 +79,7 @@ const DropDownFeatures: React.FC = () => {
         content: (
           <>
             <div className="pb-6">You can add 3 projects on your showcase page.</div>
-            <div className="w-[117px] h-[38px] px-4 py-2 bg-white rounded-3xl justify-center items-center gap-1 inline-flex">
+            <div className="w-[117px] h-[38px] px-4 py-2 bg-white rounded-3xl justify-center items-center gap-1 inline-flex cursor-pointer  hover:bg-slate-200  transition-colors duration-300 ease-in-out">
               <div className="text-center text-black text-base font-medium font-manrope">Learn more</div>
             </div>
             
@@ -93,7 +93,7 @@ const DropDownFeatures: React.FC = () => {
         content: (
           <>
             <div className="pb-6">You can add 3 projects on your showcase page.</div>
-            <div className="w-[117px] h-[38px] px-4 py-2 bg-white rounded-3xl justify-center items-center gap-1 inline-flex">
+            <div className="w-[117px] h-[38px] px-4 py-2 bg-white rounded-3xl justify-center items-center gap-1 inline-flex cursor-pointer  hover:bg-slate-200  transition-colors duration-300 ease-in-out">
               <div className="text-center text-black text-base font-medium font-manrope">Learn more</div>
             </div>
             
@@ -107,7 +107,7 @@ const DropDownFeatures: React.FC = () => {
         content: (
           <>
             <div className="pb-6">You can add 3 projects on your showcase page.</div>
-            <div className="w-[117px] h-[38px] px-4 py-2 bg-white rounded-3xl justify-center items-center gap-1 inline-flex">
+            <div className="w-[117px] h-[38px] px-4 py-2 bg-white rounded-3xl justify-center items-center gap-1 inline-flex cursor-pointer  hover:bg-slate-200  transition-colors duration-300 ease-in-out">
               <div className="text-center text-black text-base font-medium font-manrope">Learn more</div>
             </div>
             
@@ -121,7 +121,7 @@ const DropDownFeatures: React.FC = () => {
         content: (
           <>
             <div className="pb-6">You can add 3 projects on your showcase page.</div>
-            <div className="w-[117px] h-[38px] px-4 py-2 bg-white rounded-3xl justify-center items-center gap-1 inline-flex">
+            <div className="w-[117px] h-[38px] px-4 py-2 bg-white rounded-3xl justify-center items-center gap-1 inline-flex cursor-pointer  hover:bg-slate-200  transition-colors duration-300 ease-in-out">
               <div className="text-center text-black text-base font-medium font-manrope">Learn more</div>
             </div>
             
