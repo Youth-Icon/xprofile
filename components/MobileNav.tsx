@@ -20,8 +20,9 @@ interface MobileNavProps {
 
 <NavDropDown/>
 <div className="flex flex-col justify-end w-full items-center">
-<div onClick={onClose} className="flex  justify-center w-[60px] h-[60px] relative bg-white bg-opacity-5 rounded-[34px] border border-stone-300 border-opacity-20 items-center text-center">
-    <X width={40} height={40} style={{opacity:"60"}}/>
+<div onClick={onClose} className="flex  justify-center w-[40px] h-[40px] absolute top-5 right-5 bg-white bg-opacity-5 rounded-[34px] border border-stone-300 border-opacity-20 items-center text-center">
+    <X width={20}  style={{opacity:"60"}}/>
+    <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] rounded-[34px] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
 </div>
 </div>
 </div>
