@@ -19,7 +19,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const handleLogin = async () => {
     setIsLoading(true)
     try {
-      await signIn("github")
+      await signIn("github", { callbackUrl: "/" })
 
     } catch (error) {
       toast({
@@ -35,7 +35,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const handleGoogleLogin = async () => {
     setIsLoading(true)
     try {
-      await signIn("google")
+      await signIn("google", { callbackUrl: "/" })
 
     } catch (error) {
       toast({
