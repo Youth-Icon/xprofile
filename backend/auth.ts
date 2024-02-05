@@ -24,7 +24,6 @@ declare module "next-auth" {
       // role: UserRole;
     } & DefaultSession["user"];
   }
-
 }
 
 /**
@@ -43,6 +42,9 @@ export const authOptions: NextAuthOptions = {
         completedProfile: user.completedProfile,
       },
     }),
+    async redirect({ url, baseUrl }) {
+      return baseUrl
+    },
   },
   adapter: PrismaAdapter(db),
   providers: [
