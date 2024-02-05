@@ -43,7 +43,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
     async redirect({ url, baseUrl }) {
-      return url.startsWith(baseUrl) ? url : baseUrl;
+      return Promise.resolve(url)
     },
   },
   adapter: PrismaAdapter(db),
@@ -67,6 +67,9 @@ export const authOptions: NextAuthOptions = {
      */
   ],
   secret: env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: "/login",
+  },
 };
 
 /**
