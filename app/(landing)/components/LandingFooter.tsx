@@ -21,7 +21,7 @@ const LandingFooter = () => {
             </div>
             <div className="w-[171px] h-6 justify-center items-center gap-3 inline-flex">
               <a
-                href="https://l.hellofaizan.me/discord"
+                href="https://discord.gg/vUHMxPvege"
                 className=" relative group"
               >
                 <div className="m-[-5px] absolute inset-0  bg-gray-600 rounded-lg shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)] opacity-0 group-hover:opacity-30 transition duration-200" />
@@ -36,23 +36,12 @@ const LandingFooter = () => {
                 <Icons.twitter2 className="w-6 h-6 relative" />
               </a>
               <div className="w-px h-6 bg-neutral-400 bg-opacity-50" />
-              <div className="w-6 h-6 p-[3px] justify-center items-center flex">
-                <a
-                  href="https://github.com/Youth-Icon/xprofile"
-                  className=" relative group"
-                >
-                  <div className="m-[-5px] absolute inset-0  bg-gray-600 rounded-lg shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)] opacity-0 group-hover:opacity-30 transition duration-200" />
-
-                  <Icons.linkedin className="w-[18px] h-[18px] relative flex-col justify-start items-start flex" />
-                </a>
-              </div>
-              <div className="w-px h-6 bg-neutral-400 bg-opacity-50" />
               <a
                 href="https://github.com/Youth-Icon/xprofile"
                 className=" relative group"
               >
                 <div className="m-[-5px] absolute inset-0  bg-gray-600 rounded-lg shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)] opacity-0 group-hover:opacity-30 transition duration-200" />
-                <Icons.telegram className="w-[18px] h-[18px] relative flex-col justify-start items-start flex" />
+                <Icons.gitHub className="w-[18px] h-[18px] relative flex-col justify-start items-start flex text-white" />
               </a>
             </div>
           </div>
@@ -147,7 +136,7 @@ const LandingFooter = () => {
           <div className="w-[calc(100%-240px)] h-[0px] border border-stone-300 border-opacity-20"></div>
         </div>
         <div className="pl-[120px] mt-5 text-slate-300 text-opacity-60 text-sm font-medium font-manrope">
-          © 2023 youthicon, org{" "}
+          © {new Date().getFullYear()} youthicon, org{" "}
         </div>
       </div>
     </div>

@@ -11,11 +11,11 @@ const CompactFooter = () => {
             YI
           </h1>
           <div className=" text-slate-300 text-opacity-60 text-sm font-medium font-manrope whitespace-nowrap">
-            © 2023 youthicon, org{" "}
+            © {new Date().getFullYear()} youthicon, org{" "}
           </div>
         </div>
         <div className="w-[171px] justify-center items-center gap-3 inline-flex">
-          <a href="https://l.hellofaizan.me/discord">
+          <a href="https://discord.gg/vUHMxPvege">
             <Icons.discord className="w-6 h-6 relative" />
           </a>
           <div className="w-px h-6 bg-neutral-400 bg-opacity-50" />
@@ -23,14 +23,9 @@ const CompactFooter = () => {
             <Icons.twitter2 className="w-6 h-6 relative" />
           </a>
           <div className="w-px h-6 bg-neutral-400 bg-opacity-50" />
-          <div className="w-6 h-6 p-[3px] justify-center items-center flex">
-            <a href="https://github.com/Youth-Icon/xprofile">
-              <Icons.linkedin className="w-[18px] h-[18px] relative flex-col justify-start items-start flex" />
-            </a>
-          </div>
-          <div className="w-px h-6 bg-neutral-400 bg-opacity-50" />
+          
           <a href="https://github.com/Youth-Icon/xprofile">
-            <Icons.telegram className="w-[18px] h-[18px] relative flex-col justify-start items-start flex" />
+            <Icons.gitHub className="w-[18px] h-[18px] relative flex-col justify-start items-start flex text-white" />
           </a>
         </div>
       </div>
