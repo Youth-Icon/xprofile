@@ -11,7 +11,7 @@ const CompactFooter = () => {
             YI
           </h1>
           <div className=" text-slate-300 text-opacity-60 text-sm font-medium font-manrope whitespace-nowrap">
-            © 2023 youthicon, org{" "}
+            © {new Date().getFullYear()} youthicon, org{" "}
           </div>
         </div>
         <div className="w-[171px] justify-center items-center gap-3 inline-flex">
