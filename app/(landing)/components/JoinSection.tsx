@@ -30,10 +30,7 @@ const JoinSection = () => {
   <Icons.twitter2  className="w-[64px] h-[64px] relative"/>
 </a>
 <a href="https://github.com/Youth-Icon/xprofile">
-  <Icons.linkedin className="w-[48px] h-[48px] relative"/>
-</a>
-<a href="https://github.com/Youth-Icon/xprofile">
-  <Icons.telegram className="w-[64px] h-[64px] relative"/>
+  <Icons.gitHub  className="w-[64px] h-[64px] relative  text-white"/>
 </a>
 
 </div>
