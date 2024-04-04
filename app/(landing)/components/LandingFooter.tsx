@@ -21,7 +21,7 @@ const LandingFooter = () => {
             </div>
             <div className="w-[171px] h-6 justify-center items-center gap-3 inline-flex">
               <a
-                href="https://l.hellofaizan.me/discord"
+                href="https://discord.gg/vUHMxPvege"
                 className=" relative group"
               >
                 <div className="m-[-5px] absolute inset-0  bg-gray-600 rounded-lg shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)] opacity-0 group-hover:opacity-30 transition duration-200" />

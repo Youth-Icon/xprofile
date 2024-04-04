@@ -15,7 +15,7 @@ const CompactFooter = () => {
           </div>
         </div>
         <div className="w-[171px] justify-center items-center gap-3 inline-flex">
-          <a href="https://l.hellofaizan.me/discord">
+          <a href="https://discord.gg/vUHMxPvege">
             <Icons.discord className="w-6 h-6 relative" />
           </a>
           <div className="w-px h-6 bg-neutral-400 bg-opacity-50" />
