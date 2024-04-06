@@ -1,0 +1,218 @@
+ /* Default style for fabButton */
+ #pickaxe-fabButton {
+    background-color: white;
+    display: flex;
+    justify-content: center;  /* centers children horizontally */
+    align-items: center;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.12);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;  /* Smooth transition */
+  }
+  
+  /* Style for fabButton when chatbot is active */
+  #pickaxe-fabButton.active {
+    background-color: rgb(255, 255, 255) !important;
+    box-shadow: none;
+  }
+  
+  #pickaxe-chatbotContainer {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.12);
+    transition: all 0.4s ease-in-out;
+    z-index: 99999999;
+    max-height: 70%;
+  }
+  
+  /* Mobile view */
+  @media (max-width: 768px) {
+    #pickaxe-chatbotContainer {
+      width: 95%;
+      height: 50%;  /* adjust as needed */
+      max-width: 98%;
+      max-height: 98%;
+      margin: auto;
+      right: 8px;
+      left: 8px;
+    }
+  }
+  
+  .pickaxe-hidden {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden; /* This ensures that even if the iframe loads, it won't be visible */
+    display: none;
+  }
+  
+  .pickaxe-visible {
+    width: 500px;  
+    height: 600px; 
+    opacity: 1;
+    display: flex;
+    max-width: 100%;
+  }
+   
+   .pickaxe-white {
+      background-color: #FFFFFF !important;
+    }
+  
+  
+    .pickaxe-link {
+      /* background-color: transparent;
+      /* 1 */
+      -webkit-text-decoration-skip: objects  !important;
+      /* 2 */
+      color: #039be5  !important;
+      text-decoration: none  !important;
+      -webkit-tap-highlight-color: transparent  !important;
+      text-decoration: none  !important;
+      -webkit-box-sizing: border-box  !important;
+      box-sizing: border-box  !important;
+    }
+  
+    .pickaxe-img {
+      border-style: none !important;
+      -webkit-box-sizing: inherit !important;
+      box-sizing: inherit !important;
+      min-width: 32px; 
+      min-height: 32px;
+    }
+      
+  
+      .pickaxe-btn, .pickaxe-btn-large, .pickaxe-btn-small,
+      .pickaxe-btn-flat {
+        border: none;
+        border-radius: 2px;
+        display: inline-block;
+        height: 36px;
+        line-height: 36px;
+        padding: 0 16px;
+        text-transform: uppercase;
+        vertical-align: middle;
+        -webkit-tap-highlight-color: transparent;
+      }
+  
+      .pickaxe-btn, .pickaxe-btn-large, .pickaxe-btn-small,
+      .pickaxe-btn-floating,
+      .pickaxe-btn-large,
+      .pickaxe-btn-small,
+      .pickaxe-btn-flat {
+        font-size: 14px;
+        outline: 0;
+      }
+  
+      .pickaxe-btn i, .pickaxe-btn-large i, .pickaxe-btn-small i,
+      .pickaxe-btn-floating i,
+      .pickaxe-btn-large i,
+      .pickaxe-btn-small i,
+      .pickaxe-btn-flat i {
+        font-size: 1.3rem;
+        line-height: inherit;
+      }
+      
+      .pickaxe-btn:focus, .pickaxe-btn-large:focus, .pickaxe-btn-small:focus,
+      .pickaxe-btn-floating:focus {
+        background-color: #1d7d74;
+      }
+      
+      .pickaxe-btn, .pickaxe-btn-large, .pickaxe-btn-small {
+        text-decoration: none;
+        color: #fff;
+        background-color: #26a69a;
+        text-align: center;
+        letter-spacing: 0.5px;
+        -webkit-transition: background-color 0.2s ease-out;
+        -moz-transition: background-color 0.2s ease-out;
+        -o-transition: background-color 0.2s ease-out;
+        transition: background-color 0.2s ease-out;
+        cursor: pointer;
+      }
+      
+      .pickaxe-btn:hover, .pickaxe-btn-large:hover, .pickaxe-btn-small:hover {
+        background-color: #2bbbad;
+      }
+      
+      .pickaxe-btn-floating {
+        display: inline-block;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0;
+        background-color: #26a69a;
+        border-radius: 50%;
+        -webkit-transition: background-color .3s;
+        transition: background-color .3s;
+        cursor: pointer;
+        vertical-align: middle;
+      }
+      
+      .pickaxe-btn-floating:hover {
+        background-color: #26a69a;
+      }
+      
+      .pickaxe-btn-floating:before {
+        border-radius: 0;
+      }
+      
+      .btn-floating.pickaxe-btn-large {
+        width: 56px;
+        height: 56px;
+        padding: 0;
+      }
+      
+      .btn-floating.btn-large.pickaxe-halfway-fab {
+        bottom: -28px;
+      }
+      
+      .btn-floating.pickaxe-btn-large i {
+        line-height: 56px;
+      }
+      
+      .btn-floating.pickaxe-btn-small {
+        width: 32.4px;
+        height: 32.4px;
+      }
+  
+      .pickaxe-fixed-action-btn {
+        position: fixed;
+        right: 23px;
+        bottom: 23px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 9999;
+      }
+  
+      .pickaxe-btn-large {
+        height: 54px;
+        line-height: 54px;
+        font-size: 15px;
+        padding: 0 28px;
+      }
+  
+      .pickaxe-waves-effect {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        overflow: hidden;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        vertical-align: middle;
+        z-index: 1;
+        -webkit-transition: background-color 0.3s ease-out;
+        -moz-transition: background-color 0.3s ease-out;
+        -o-transition: background-color 0.3s ease-out;
+        transition: background-color 0.3s ease-out;
+      }
+  
+      .pickaxe-waves-effect img {
+        position: relative;
+        z-index: -1;
+      }
