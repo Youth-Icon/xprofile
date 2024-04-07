@@ -7,17 +7,20 @@ export function Search() {
     useEffect(() => {
         const str = "How may I help you today?";
         const letters = Array.from(str);
-
-        const addLetterWithDelay = (index:number) => {
+        let timerId: NodeJS.Timeout; // Declare a variable to hold the timeout ID
+    
+        const addLetterWithDelay = (index: number) => {
             if (index < letters.length) {
-                setTimeout(() => {
+                timerId = setTimeout(() => {
                     setPlaceholder(prevPlaceholder => prevPlaceholder + letters[index]);
                     addLetterWithDelay(index + 1);
                 }, 1000); // Delay of 1 second
             }
         };
-
+    
         addLetterWithDelay(0); // Start adding letters from index 0
+    
+        return () => clearTimeout(timerId); // Clear the timeout when the component is unmounted or the useEffect hook re-runs
     }, []);
     const clickPoint = useRef<HTMLDivElement>(null);
 

@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react";
 import { LayoutGrid, Table2 } from "lucide-react";
-import FeatCard from "@/app/(landing)/components/FeatCard";
+import { Category } from "./category";
 
 export function Categories() {
     const [view, setView] = useState('layout'); // Initialize view state
@@ -20,74 +20,28 @@ export function Categories() {
                     <LayoutGrid
                         onClick={() => handleViewChange('layout')}
                         size={30}
-                        className={view === 'layout' ? " bg-slate-400 text-black rounded transition-colors" : " cursor-pointer transition-colors"}
+                        className={view === 'layout' ? " bg-slate-400 text-black rounded transition-colors" : " cursor-pointer"}
                     />
                     {/* Table view icon */}
                     <Table2
                         onClick={() => handleViewChange('grid')}
                         size={30}
-                        className={view === 'grid' ? " bg-slate-400 text-black rounded transition-colors" : " cursor-pointer transition-colors"}
+                        className={view === 'grid' ? " bg-slate-400 text-black rounded transition-colors" : " cursor-pointer"}
                     />
                 </div>
             </nav>
 
             {/* Content section */}
-            <div className={view === 'layout' ?"grid grid-cols-3 gap-4 mt-5": " space-y-4 mt-5"}>
-                <FeatCard height="auto" width="auto" paddingX="24px" paddingY="32px" className=" backdrop-blur-md">
-                    <div className="flex flex-col items-start gap-5 text-center">
-                        {/* Container for user information */}
-                        <h1 className="text-center text-2xl">Account Support</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <button className=" h-10 w-full text-neutral-800 px-4 py-3 bg-neutral-100 bg-opacity-75 rounded-lg backdrop-blur-[32px] justify-center items-center gap-1.5 inline-flex cursor-pointer hover:bg-opacity-100 transition-all duration-300">View</button>
-                        
-                    </div>
-                </FeatCard>
-                <FeatCard height="auto" width="auto" paddingX="24px" paddingY="32px" className=" backdrop-blur-md">
-                    <div className="flex flex-col items-start gap-5 text-center">
-                        {/* Container for user information */}
-                        <h1 className="text-center text-2xl">Account Support</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <button className=" h-10 w-full text-neutral-800 px-4 py-3 bg-neutral-100 bg-opacity-75 rounded-lg backdrop-blur-[32px] justify-center items-center gap-1.5 inline-flex cursor-pointer hover:bg-opacity-100 transition-all duration-300">View</button>
-                        
-                    </div>
-                </FeatCard>
-                <FeatCard height="auto" width="auto" paddingX="24px" paddingY="32px" className=" backdrop-blur-md">
-                    <div className="flex flex-col items-start gap-5 text-center">
-                        {/* Container for user information */}
-                        <h1 className="text-center text-2xl">Account Support</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <button className=" h-10 w-full text-neutral-800 px-4 py-3 bg-neutral-100 bg-opacity-75 rounded-lg backdrop-blur-[32px] justify-center items-center gap-1.5 inline-flex cursor-pointer hover:bg-opacity-100 transition-all duration-300">View</button>
-                        
-                    </div>
-                </FeatCard>
-                <FeatCard height="auto" width="auto" paddingX="24px" paddingY="32px" className=" backdrop-blur-md">
-                    <div className="flex flex-col items-start gap-5 text-center">
-                        {/* Container for user information */}
-                        <h1 className="text-center text-2xl">Account Support</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <button className=" h-10 w-full text-neutral-800 px-4 py-3 bg-neutral-100 bg-opacity-75 rounded-lg backdrop-blur-[32px] justify-center items-center gap-1.5 inline-flex cursor-pointer hover:bg-opacity-100 transition-all duration-300">View</button>
-                        
-                    </div>
-                </FeatCard>
-                <FeatCard height="auto" width="auto" paddingX="24px" paddingY="32px" className=" backdrop-blur-md">
-                    <div className="flex flex-col items-start gap-5 text-center">
-                        {/* Container for user information */}
-                        <h1 className="text-center text-2xl">Account Support</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <button className=" h-10 w-full text-neutral-800 px-4 py-3 bg-neutral-100 bg-opacity-75 rounded-lg backdrop-blur-[32px] justify-center items-center gap-1.5 inline-flex cursor-pointer hover:bg-opacity-100 transition-all duration-300">View</button>
-                        
-                    </div>
-                </FeatCard>
-                <FeatCard height="auto" width="auto" paddingX="24px" paddingY="32px" className=" backdrop-blur-md">
-                    <div className="flex flex-col items-start gap-5 text-center">
-                        {/* Container for user information */}
-                        <h1 className="text-center text-2xl">Account Support</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <button className=" h-10 w-full text-neutral-800 px-4 py-3 bg-neutral-100 bg-opacity-75 rounded-lg backdrop-blur-[32px] justify-center items-center gap-1.5 inline-flex cursor-pointer hover:bg-opacity-100 transition-all duration-300">View</button>
-                        
-                    </div>
-                </FeatCard>
-                
+            <div className={view === 'layout' ?"grid sm:grid-cols-2 grid-cols-3 gap-4 mt-5": " space-y-4 mt-5"}>
+                <Category title="Account Support" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
+                <Category title="Account Support" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
+                <Category title="Account Support" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
+                <Category title="Account Support" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
+                <Category title="Account Support" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
+                <Category title="Account Support" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
+                <Category title="Account Support" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
+                <Category title="Account Support" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
+                <Category title="Account Support" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
             </div>
         </section>
     );
