@@ -38,7 +38,7 @@ const CompactFooter = () => {
             <a className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white transition-all duration-200">Projects</a>
             <a className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white transition-all duration-200">Documentation</a>
             <a className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white transition-all duration-200">Community</a>
-            <a className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white transition-all duration-200">Help Center</a>
+            <a className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white transition-all duration-200" href="/help">Help Center</a>
         </div>
     </div>
   );
