@@ -23,21 +23,22 @@ export function Content() {
             <Round className="hidden xs:block absolute left-[-6rem] top-[-9rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF0054] blur-[150px] rounded-full z-10" />
             <Round className="hidden xs:block absolute right-[-16rem] top-[1rem] w-[380px] h-[400px] shadow-xl opacity-[0.25] bg-[#FF5400] blur-[150px] rounded-full z-10 " />
             <div className="text-lg text-white">
-                <section className=" w-2/3">
+                <section className="w-2/3">
                     <h2 className="text-4xl bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text">About</h2>
                     <p>
                         XProfile is a platform that allows you to create personalized profile pages with links to your various social media accounts, websites, and more. Additionally, it offers a unique feature: the ability to explore profiles based on specific criteria. Whether you want to discover profiles with the most GitHub stars, XProfile makes it easy.
                     </p>
                 </section>
-                <section className=" w-2/3 mt-[5%]" >
+                <section className="w-2/3 mt-[5%]">
                     <h2 className="text-4xl bg-gradient-to-r from-[#FF5400] via-[#FF5400] to-[#FF0054] text-transparent bg-clip-text">Features</h2>
-                    <ul className=" list-item">
+                    <ul className="list-item">
                         <li><strong>Personalized Profiles</strong>: Create your own profile page with links to your various online presence.</li>
                         <li><strong>Explore Profiles</strong>: Browse and discover profiles that has most GitHub stars</li>
-                        <li><strong>Open Source</strong>: Unlike other projects out there, XProfile is an open-source project, meaning it's developed and maintained by a community of contributors.</li>
+                        <li><strong>Open Source</strong>: Unlike other projects out there, XProfile is an open-source project, meaning it&apos;s developed and maintained by a community of contributors.</li>
                     </ul>
                 </section>
             </div>
+
         </FeatureBox>
     )
 }
