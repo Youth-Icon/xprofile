@@ -24,13 +24,13 @@ const JoinSection = () => {
 
 <div className=" w-auto xs:w-[80%] md:w-[600px] h-16 flex justify-center items-center gap-5 xs:gap-8 md:gap-12 pt-12">
 <a href="https://discord.gg/vUHMxPvege">
-  <Icons.discord className="w-[64px] h-[64px] relative"/>
+  <Icons.discord className="w-[40px] h-[40px] relative"/>
 </a>
 <a href="https://twitter.com/imayouthicon">
-  <Icons.twitter2  className="w-[64px] h-[64px] relative"/>
+  <Icons.twitter2  className="w-[40px] h-[40px] relative"/>
 </a>
 <a href="https://github.com/Youth-Icon/xprofile">
-  <Icons.gitHub  className="w-[64px] h-[64px] relative  text-white"/>
+  <Icons.gitHub  className="w-[35px] h-[35px] relative  text-white"/>
 </a>
 
 </div>

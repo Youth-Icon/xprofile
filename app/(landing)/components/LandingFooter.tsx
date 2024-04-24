@@ -86,9 +86,9 @@ const LandingFooter = () => {
                   <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white">
                     Community
                   </div>
-                  <div className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white">
+                  <a className="text-slate-300 text-opacity-60 text-sm font-medium font-manrope cursor-pointer hover:text-white" href="/help">
                     Help Center
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
