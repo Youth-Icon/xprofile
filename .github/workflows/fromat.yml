@@ -28,7 +28,7 @@ jobs:
       run: npm install prettier
 
     - name: Run script
-      run: npx prettier src/. --write
+      run: npx prettier app/. backend/. components/. lib/. types/. prisma/. public/. --write
 
     - name: Configure git
       run: |
@@ -37,7 +37,7 @@ jobs:
 
     - name: Commit changes
       run: |
-        git add app/. backend /. components/. lib/. types/. prisma/. public/.
+        git add app/. backend/. components/. lib/. types/. prisma/. public/.
         git commit -m "Format"
         git push origin HEAD:${{ github.ref }}
       env:
