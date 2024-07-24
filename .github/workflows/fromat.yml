@@ -37,8 +37,8 @@ jobs:
 
     - name: Commit changes
       run: |
-        git add app/. backend/. components/. lib/. types/. prisma/. public/.
-        git commit -m "Format"
+        git add app/* backend/. components/* lib/* types/* prisma/* public/*
+        git commit -m "Formatted code 🔥"
         git push origin HEAD:${{ github.ref }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
