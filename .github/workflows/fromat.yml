@@ -25,7 +25,7 @@ jobs:
         node-version: '14' # You can specify the Node.js version here
 
     - name: Install dependencies
-      run: npm install prettier
+      run: npm install -g prettier
 
     - name: Run script
       run: npx prettier app/. backend/. components/. lib/. types/. prisma/. public/. --write
@@ -37,7 +37,7 @@ jobs:
 
     - name: Commit changes
       run: |
-        git add app/* backend/* components/* lib/* types/* prisma/* public/*
+        git add .
         git commit -m "Formatted code 🔥"
         git push origin HEAD:${{ github.ref }}
       env:
